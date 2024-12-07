@@ -1,0 +1,19 @@
+{
+    "NavbarLinks": {
+        "home": "홈",
+        "homeTitle": "홈 페이지",
+        "about": "어바웃",
+        "aboutTitle": "어바웃 페이지",
+        "profile": "프로필",
+        "profileTitle": "프로필 페이지"
+    },
+    "HomePage": {
+        "title": "랜딩 페이지"
+    },
+    "AboutPage": {
+        "title": "About"
+    },
+    "ProfilePage": {
+        "title": "Profile"
+    }
+}
