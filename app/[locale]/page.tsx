@@ -1,5 +1,6 @@
 import { useTranslations } from "next-intl";
 import { getMessages } from "next-intl/server";
+import { Button } from "@/components/ui/button";
 
 export async function generateMetadata({
   params,
