@@ -1,11 +1,11 @@
 import Link from 'next/link';
 import { IoMenu } from 'react-icons/io5';
 
-import { AccountMenu } from '@/components/account-menu';
-import { Logo } from '@/components/logo';
-import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTrigger } from '@/components/ui/sheet';
-import { getSession } from '@/features/account/controllers/get-session';
+import { AccountMenu } from '@/design/components/account-menu';
+import { Logo } from '@/design/components/logo';
+import { Button } from '@/design/components/ui/button';
+import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTrigger } from '@/design/components/ui/sheet';
+import { getSession } from '@/design/features/account/controllers/get-session';
 
 import { signOut } from './(auth)/auth-actions';
 

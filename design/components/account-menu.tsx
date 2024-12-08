@@ -10,7 +10,7 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
+} from '@/design/components/ui/dropdown-menu';
 import { ActionResponse } from '@/types/action-response';
 
 import { useToast } from './ui/use-toast';

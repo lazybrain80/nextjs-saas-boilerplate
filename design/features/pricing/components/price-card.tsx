@@ -4,9 +4,9 @@ import { useMemo, useState } from 'react';
 import Link from 'next/link';
 import { IoCheckmark } from 'react-icons/io5';
 
-import { SexyBoarder } from '@/components/sexy-boarder';
-import { Button } from '@/components/ui/button';
-import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { SexyBoarder } from '@/design/components/sexy-boarder';
+import { Button } from '@/design/components/ui/button';
+import { Tabs, TabsList, TabsTrigger } from '@/design/components/ui/tabs';
 
 import { PriceCardVariant, productMetadataSchema } from '../models/product-metadata';
 import { BillingInterval, Price, ProductWithPrices } from '../types';

@@ -2,7 +2,7 @@
 
 import React from "react";
 
-import { Button } from "@/components/ui/button";
+import { Button } from "@/design/components/ui/button";
 import { cn } from "@/libs/utils";
 
 import { Icons } from "./icons";
