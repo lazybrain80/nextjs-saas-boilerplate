@@ -1,4 +1,3 @@
-import Navbar from "@/design/components/Navbar";
 import '@/styles/globals.css';
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
@@ -13,10 +12,11 @@ import { IoLogoFacebook, IoLogoInstagram, IoLogoTwitter } from 'react-icons/io5'
 
 import { Logo } from '@/design/components/logo';
 import { Toaster } from '@/design/components/ui/toaster';
-import { cn } from '@/utils/cn';
+import { cn } from '@/utils/helpers';
 
 import { Navigation } from './navigation';
 import { Footer } from '@/design/templates/Footer';
+import { Navbar } from '@/design/templates/Navbar';
 
 const montserrat = Montserrat({
   variable: '--font-montserrat',
@@ -55,7 +55,7 @@ export default async function RootLayout({
       <body className={cn('font-sans antialiased', montserrat.variable, montserratAlternates.variable)}>
         <NextIntlClientProvider messages={messages}>
           <div className='m-auto flex h-full max-w-[1440px] flex-col px-4'>
-            <AppBar
+            <Navbar
               lang={locale}
             />
               <main className='relative flex-1'>
@@ -68,16 +68,5 @@ export default async function RootLayout({
         </NextIntlClientProvider>
       </body>
     </html>
-  );
-}
-
-async function AppBar({ lang }: { lang: string }) {
-  return (
-    <header className='flex items-center justify-between py-8'>
-      <Logo />
-      <Navigation
-        lang={lang}
-      />
-    </header>
   );
 }
