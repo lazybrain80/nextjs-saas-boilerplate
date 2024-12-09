@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 
-import { ToggleMenuButton } from '@/design/components/toggleMenuButton';
+import { ToggleMenuButton } from '@/design/components';
 import { useMenu } from '@/hooks/use-menu';
 import { cn } from '@/utils/helpers';
 

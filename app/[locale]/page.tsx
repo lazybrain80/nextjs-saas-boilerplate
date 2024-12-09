@@ -1,6 +1,11 @@
 import { useTranslations } from "next-intl";
 import { getMessages } from "next-intl/server";
-import { MainBody } from '@/design/templates/MainBody';
+import {
+  MainBody,
+  Features,
+  Pricing,
+  FAQ
+} from '@/design/templates';
 
 export async function generateMetadata({
   params,
@@ -21,6 +26,9 @@ export default function Home() {
   return (
     <>
       <MainBody />
+      <Features />
+      <Pricing />
+      <FAQ />
     </>
   );
 }

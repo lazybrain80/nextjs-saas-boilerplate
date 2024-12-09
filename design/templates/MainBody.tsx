@@ -1,10 +1,8 @@
 import { GitHubLogoIcon, TwitterLogoIcon } from '@radix-ui/react-icons';
 import { useTranslations } from 'next-intl';
 
-import { badgeVariants } from '@/design/components/ui/badgeVariants';
-import { buttonVariants } from '@/design/components/ui/buttonVariants';
-import { CenteredMain } from '@/design/features/landing/CenteredMain';
-import { Section } from '@/design/features/landing/Section';
+import { badgeVariants, buttonVariants } from '@/design/components/ui';
+import { Section, CenteredMain } from '@/design/features/landing';
 
 export const MainBody = () => {
   const t = useTranslations('Main');

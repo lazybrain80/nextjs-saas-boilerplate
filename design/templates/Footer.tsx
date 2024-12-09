@@ -1,11 +1,10 @@
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 
-import { CenteredFooter } from '@/design/features/landing/CenteredFooter';
-import { Section } from '@/design/features/landing/Section';
+import { Logo } from '@/design/components';
+import { CenteredFooter, Section } from '@/design/features/landing';
 import { AppConfig } from '@/utils/AppConfig';
 
-import { Logo } from '@/design/components/logo';
 
 export const Footer = () => {
   const t = useTranslations('Footer');

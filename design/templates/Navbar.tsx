@@ -1,12 +1,9 @@
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 
-import { LocaleSwitcher } from '@/design/components/localeSwitcher';
-import { buttonVariants } from '@/design/components/ui/buttonVariants';
-import { CenteredMenu } from '@//design/features/landing/CenteredMenu';
-import { Section } from '@/design/features/landing/Section';
-
-import { Logo } from '@/design/components/logo';
+import { LocaleSwitcher, Logo } from '@/design/components';
+import { buttonVariants } from '@/design/components/ui';
+import { CenteredMenu, Section } from '@/design/features/landing';
 
 export const Navbar = ({
   lang

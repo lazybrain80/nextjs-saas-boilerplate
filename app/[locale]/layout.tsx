@@ -1,22 +1,13 @@
-import '@/styles/globals.css';
-import { NextIntlClientProvider } from "next-intl";
-import { getMessages } from "next-intl/server";
-import { notFound } from 'next/navigation';
-import { routing } from '@/i18n/routing';
+import '@/styles/globals.css'
+import type { Metadata } from 'next'
+import { NextIntlClientProvider } from "next-intl"
+import { getMessages } from "next-intl/server"
+import { notFound } from 'next/navigation'
+import { routing } from '@/i18n/routing'
 
-import { PropsWithChildren } from 'react';
-import type { Metadata } from 'next';
-import { Montserrat, Montserrat_Alternates } from 'next/font/google';
-import Link from 'next/link';
-import { IoLogoFacebook, IoLogoInstagram, IoLogoTwitter } from 'react-icons/io5';
-
-import { Logo } from '@/design/components/logo';
-import { Toaster } from '@/design/components/ui/toaster';
-import { cn } from '@/utils/helpers';
-
-import { Navigation } from './navigation';
-import { Footer } from '@/design/templates/Footer';
-import { Navbar } from '@/design/templates/Navbar';
+import { Montserrat, Montserrat_Alternates } from 'next/font/google'
+import { Navbar, Footer } from '@/design/templates'
+import { cn } from '@/utils/helpers'
 
 const montserrat = Montserrat({
   variable: '--font-montserrat',
