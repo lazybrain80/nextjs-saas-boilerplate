@@ -64,7 +64,7 @@ export function AuthUI({
   }
 
   return (
-    <section className='mt-16 flex w-full flex-col gap-16 rounded-lg bg-black p-10 px-4 text-center'>
+    <section className='mt-16 flex w-full flex-col gap-16 rounded-lg bg-white p-10 px-4 text-center'>
       <div className='flex flex-col gap-4'>
         <Image src='/logo.png' width={80} height={80} alt='' className='m-auto' />
         <h1 className='text-lg'>{titleMap[mode]}</h1>
