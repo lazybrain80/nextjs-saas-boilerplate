@@ -4,7 +4,8 @@ import {
   MainBody,
   Features,
   Pricing,
-  FAQ
+  FAQ,
+  CTA,
 } from '@/design/templates';
 
 export async function generateMetadata({
@@ -29,6 +30,7 @@ export default function Home() {
       <Features />
       <Pricing />
       <FAQ />
+      <CTA />
     </>
   );
 }
