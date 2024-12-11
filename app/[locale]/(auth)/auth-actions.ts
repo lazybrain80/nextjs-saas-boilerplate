@@ -6,13 +6,15 @@ import { createSupabaseServerClient } from '@/libs/supabase/supabase-server-clie
 import { ActionResponse } from '@/types/action-response';
 import { getURL } from '@/utils/get-url';
 
-export async function signInWithOAuth(provider: 'github' | 'google'): Promise<ActionResponse> {
+export async function signInWithOAuth(
+  locale: string,
+  provider: 'github' | 'google'): Promise<ActionResponse> {
   const supabase = await createSupabaseServerClient();
-
+  console.log('requesting sign in with OAuth', provider);
   const { data, error } = await supabase.auth.signInWithOAuth({
     provider,
     options: {
-      redirectTo: getURL('/auth/callback'),
+      redirectTo: getURL(`/${locale}/auth/callback`),
     },
   });
 
