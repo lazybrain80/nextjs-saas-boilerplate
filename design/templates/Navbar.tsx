@@ -1,9 +1,11 @@
+import * as React from "react"
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 
 import { LocaleSwitcher, Logo } from '@/design/components';
 import {
   buttonVariants,
+  navigationMenuTriggerStyle,
   NavigationMenu,
   NavigationMenuList,
   NavigationMenuItem,
@@ -12,6 +14,33 @@ import {
   NavigationMenuLink,
 } from '@/design/components/ui';
 import { CenteredMenu, Section } from '@/design/features/landing';
+import { cn } from "@/libs/utils"
+
+const ListItem = React.forwardRef<
+  React.ElementRef<"a">,
+  React.ComponentPropsWithoutRef<"a">
+>(({ className, title, children, ...props }, ref) => {
+  return (
+    <li>
+      <NavigationMenuLink asChild>
+        <a
+          ref={ref}
+          className={cn(
+            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+            className
+          )}
+          {...props}
+        >
+          <div className="text-sm font-medium leading-none">{title}</div>
+          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+            {children}
+          </p>
+        </a>
+      </NavigationMenuLink>
+    </li>
+  )
+})
+ListItem.displayName = "ListItem"
 
 export const Navbar = ({
   lang
@@ -58,11 +87,21 @@ export const Navbar = ({
             <NavigationMenuItem
               className='hover:text-blue-700'
             >
-              <NavigationMenuLink
-                href={`/${lang}/product`}
+              <NavigationMenuTrigger
+                className='text-xl font-normal'
               >
                 {t('product')}
-              </NavigationMenuLink>
+              </NavigationMenuTrigger>
+              <NavigationMenuContent>
+                <ul className="gap-3 p-6 md:w-[10rem] lg:w-[20rem] lg:grid-cols-[.75fr_1fr]">
+                  <ListItem href="/project/intro" title="Intro">
+                    Introduction to the project
+                  </ListItem>
+                  <ListItem href="/project/install" title="Install">
+                    How to install the project
+                  </ListItem>
+                </ul>
+              </NavigationMenuContent>
             </NavigationMenuItem>
             <NavigationMenuItem
               className='hover:text-blue-700'
