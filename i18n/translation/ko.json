@@ -17,13 +17,13 @@
         "title": "Profile"
     },
     "Navbar": {
-        "sign_in": "Sign In",
-        "sign_up": "Sign Up",
-        "product": "Product",
-        "docs": "Docs",
-        "blog": "Blog",
-        "community": "Community",
-        "company": "Company"
+        "functions": "기능소개",
+        "product": "제품설명",
+        "docs": "문서",
+        "purchase": "구매하기",
+        "support": "기술지원",
+        "sign_in": "로그인",
+        "sign_up": "가입하기"
     },
     "Main": {
         "follow_twitter": "Follow @Ixartz on Twitter",

@@ -2,7 +2,15 @@ import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 
 import { LocaleSwitcher, Logo } from '@/design/components';
-import { buttonVariants } from '@/design/components/ui';
+import {
+  buttonVariants,
+  NavigationMenu,
+  NavigationMenuList,
+  NavigationMenuItem,
+  NavigationMenuContent,
+  NavigationMenuTrigger,
+  NavigationMenuLink,
+} from '@/design/components/ui';
 import { CenteredMenu, Section } from '@/design/features/landing';
 
 export const Navbar = ({
@@ -34,25 +42,57 @@ export const Navbar = ({
           </>
         )}
       >
-        <li>
-          <Link href={`/${lang}/sign-up`}>{t('product')}</Link>
-        </li>
-
-        <li>
-          <Link href={`/${lang}/sign-up`}>{t('docs')}</Link>
-        </li>
-
-        <li>
-          <Link href={`/${lang}/sign-up`}>{t('blog')}</Link>
-        </li>
-
-        <li>
-          <Link href={`/${lang}/sign-up`}>{t('community')}</Link>
-        </li>
-
-        <li>
-          <Link href={`/${lang}/sign-up`}>{t('company')}</Link>
-        </li>
+        <NavigationMenu>
+          <NavigationMenuList
+            className='space-x-10 text-xl'
+          >
+            <NavigationMenuItem
+              className='hover:text-blue-700'
+            >
+              <NavigationMenuLink
+                href={`/${lang}/functions`}
+              >
+                {t('functions')}
+              </NavigationMenuLink>
+            </NavigationMenuItem>
+            <NavigationMenuItem
+              className='hover:text-blue-700'
+            >
+              <NavigationMenuLink
+                href={`/${lang}/product`}
+              >
+                {t('product')}
+              </NavigationMenuLink>
+            </NavigationMenuItem>
+            <NavigationMenuItem
+              className='hover:text-blue-700'
+            >
+              <NavigationMenuLink
+                href={`/${lang}/docs`}
+              >
+                {t('docs')}
+              </NavigationMenuLink>
+            </NavigationMenuItem>
+            <NavigationMenuItem
+              className='hover:text-blue-700'
+            >
+              <NavigationMenuLink
+                href={`/${lang}/purchase`}
+              >
+                {t('purchase')}
+              </NavigationMenuLink>
+            </NavigationMenuItem>
+            <NavigationMenuItem
+              className='hover:text-blue-700'
+            >
+              <NavigationMenuLink
+                href={`/${lang}/support`}
+              >
+                {t('support')}
+              </NavigationMenuLink>
+            </NavigationMenuItem>
+          </NavigationMenuList>
+        </NavigationMenu>
       </CenteredMenu>
     </Section>
   );

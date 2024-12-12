@@ -29,11 +29,7 @@ export const CenteredMenu = ({
         <ToggleMenuButton onClick={handleToggleMenu} />
       </div>
 
-      <nav className={cn('rounded-t max-lg:mt-2', navClass)}>
-        <ul className="flex gap-x-6 gap-y-1 text-lg font-medium max-lg:flex-col [&_a:hover]:opacity-100 [&_a]:opacity-60 max-lg:[&_a]:inline-block max-lg:[&_a]:w-full">
-          {children}
-        </ul>
-      </nav>
+      {children}
 
       <div
         className={cn(

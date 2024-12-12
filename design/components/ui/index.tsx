@@ -1,3 +1,4 @@
+// https://www.radix-ui.com/primitives/docs/overview/introduction
 export { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from './accordion'
 export {
     AlertDialog,
@@ -17,3 +18,15 @@ export { AspectRatio } from './aspect-ratio'
 export { Avatar, AvatarImage, AvatarFallback } from './avatar'
 export { badgeVariants } from './badgeVariants'
 export { buttonVariants } from './buttonVariants'
+export {
+    navigationMenuTriggerStyle,
+    NavigationMenu,
+    NavigationMenuList,
+    NavigationMenuItem,
+    NavigationMenuContent,
+    NavigationMenuTrigger,
+    NavigationMenuLink,
+    NavigationMenuIndicator,
+    NavigationMenuViewport,
+} from './navigation-menu'
+

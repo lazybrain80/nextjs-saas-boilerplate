@@ -17,13 +17,13 @@
         "title": "Profile"
     },
     "Navbar": {
-        "sign_in": "Sign In",
-        "sign_up": "Sign Up",
+        "functions": "Functions",
         "product": "Product",
         "docs": "Docs",
-        "blog": "Blog",
-        "community": "Community",
-        "company": "Company"
+        "purchase": "Purchase",
+        "support": "Support",
+        "sign_in": "Sign In",
+        "sign_up": "Sign Up"
     },
     "Main": {
         "follow_twitter": "Follow @Ixartz on Twitter",
