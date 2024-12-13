@@ -29,4 +29,5 @@ export {
     NavigationMenuIndicator,
     NavigationMenuViewport,
 } from './navigation-menu'
+export { AnimatedGradientText } from './animated-gradient-text'
 

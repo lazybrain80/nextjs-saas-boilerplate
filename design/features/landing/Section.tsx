@@ -28,6 +28,6 @@ export const Section = (props: {
       </div>
     )}
 
-    <div className="mx-auto max-w-screen-lg">{props.children}</div>
+    <div className="mx-auto max-w-screen-xl">{props.children}</div>
   </div>
 );

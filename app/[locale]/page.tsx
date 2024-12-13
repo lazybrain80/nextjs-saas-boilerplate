@@ -1,7 +1,7 @@
 import { useTranslations } from "next-intl";
 import { getMessages } from "next-intl/server";
 import {
-  MainBody,
+  Lead,
   Features,
   Pricing,
   FAQ,
@@ -26,7 +26,7 @@ export default function Home() {
   const t = useTranslations("HomePage");
   return (
     <>
-      <MainBody />
+      <Lead />
       <Features />
       <Pricing />
       <FAQ />

@@ -45,7 +45,7 @@ export default async function RootLayout({
     <html lang={locale}>
       <body className={cn('font-sans antialiased', montserrat.variable, montserratAlternates.variable)}>
         <NextIntlClientProvider messages={messages}>
-          <div className='m-auto flex h-full max-w-[1440px] flex-col px-4'>
+          <div className='m-auto flex h-full w-full flex-col'>
             <Navbar
               lang={locale}
             />

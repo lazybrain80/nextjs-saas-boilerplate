@@ -50,7 +50,7 @@ export const Navbar = ({
   const t = useTranslations('Navbar');
 
   return (
-    <Section className="px-3 py-6">
+    <Section className="py-6">
       <CenteredMenu
         logo={<Logo />}
         rightMenu={(
