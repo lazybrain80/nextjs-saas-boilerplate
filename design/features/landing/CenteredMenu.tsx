@@ -33,7 +33,7 @@ export const CenteredMenu = ({
 
       <div
         className={cn(
-          'rounded-b max-lg:border-t max-lg:border-border',
+          'rounded-b max-lg:border-t max-lg:border-border ml-10',
           navClass,
         )}
       >

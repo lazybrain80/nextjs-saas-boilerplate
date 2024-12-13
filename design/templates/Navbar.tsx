@@ -1,3 +1,5 @@
+"use client";
+
 import * as React from "react"
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
@@ -15,6 +17,8 @@ import {
 } from '@/design/components/ui';
 import { CenteredMenu, Section } from '@/design/features/landing';
 import { cn } from "@/libs/utils"
+import { useScroll } from "@/hooks/use-scroll";
+
 
 const ListItem = React.forwardRef<
   React.ElementRef<"a">,
@@ -48,9 +52,14 @@ export const Navbar = ({
   lang: string;
 }) => {
   const t = useTranslations('Navbar');
-
+  const scrolled = useScroll(50);
+  
   return (
-    <Section className="py-6">
+    <header
+      className={`py-6 sticky top-0 z-40 flex w-full justify-center border-border bg-background/60 backdrop-blur-xl transition-all ${
+        scrolled ? "border-b" : "bg-background/0"
+      }`}
+    >
       <CenteredMenu
         logo={<Logo />}
         rightMenu={(
@@ -73,7 +82,7 @@ export const Navbar = ({
       >
         <NavigationMenu>
           <NavigationMenuList
-            className='space-x-10 text-xl'
+            className='space-x-5 text-xl'
           >
             <NavigationMenuItem
               className='hover:text-blue-700'
@@ -133,6 +142,6 @@ export const Navbar = ({
           </NavigationMenuList>
         </NavigationMenu>
       </CenteredMenu>
-    </Section>
+    </header>
   );
 };

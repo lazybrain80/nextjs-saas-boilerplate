@@ -1,13 +1,12 @@
 import '@/styles/globals.css'
 import type { Metadata } from 'next'
-import { NextIntlClientProvider } from "next-intl"
+import { Suspense } from "react";
 import { getMessages } from "next-intl/server"
 import { notFound } from 'next/navigation'
 import { routing } from '@/i18n/routing'
 
 import { Montserrat, Montserrat_Alternates } from 'next/font/google'
 import { Navbar, Footer } from '@/design/templates'
-import { cn } from '@/utils/helpers'
 
 const montserrat = Montserrat({
   variable: '--font-montserrat',
@@ -42,12 +41,18 @@ export default async function RootLayout({
 
   const messages = await getMessages();
   return (
-    <html lang={locale}>
-      <body className={cn('font-sans antialiased', montserrat.variable, montserratAlternates.variable)}>
-        <NextIntlClientProvider messages={messages}>
-          {children}
-        </NextIntlClientProvider>
-      </body>
-    </html>
+    <div className='m-auto flex h-full w-full flex-col'>
+      <Suspense fallback="...">
+        <Navbar
+          lang={locale}
+        />
+      </Suspense>
+        <main className='relative flex-1'>
+          <div className='relative h-full'>
+            {children}
+          </div>
+        </main>
+      <Footer />
+    </div>
   );
 }
