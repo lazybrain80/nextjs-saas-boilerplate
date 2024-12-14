@@ -1,23 +1,10 @@
 import '@/styles/globals.css'
 import type { Metadata } from 'next'
 import { Suspense } from "react";
-import { getMessages } from "next-intl/server"
 import { notFound } from 'next/navigation'
 import { routing } from '@/i18n/routing'
-
-import { Montserrat, Montserrat_Alternates } from 'next/font/google'
 import { Navbar, Footer } from '@/design/templates'
-
-const montserrat = Montserrat({
-  variable: '--font-montserrat',
-  subsets: ['latin'],
-});
-
-const montserratAlternates = Montserrat_Alternates({
-  variable: '--font-montserrat-alternates',
-  weight: ['500', '600', '700'],
-  subsets: ['latin'],
-});
+import { getLandingNavbarConfig } from "@/config/ui/landing";
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -25,26 +12,17 @@ export const metadata: Metadata = {
 };
 
 
-export default async function RootLayout({
-  children,
-  params,
+export default function LandingLayout({
+  children
 }: Readonly<{
   children: React.ReactNode;
-  params: { locale: string };
 }>) {
-  const { locale } = await params;
 
-  // Ensure that the incoming `locale` is valid
-  if (!routing.locales.includes(locale as any)) {
-    notFound();
-  }
-
-  const messages = await getMessages();
   return (
     <div className='m-auto flex h-full w-full flex-col'>
       <Suspense fallback="...">
         <Navbar
-          lang={locale}
+          items={getLandingNavbarConfig().mainNav}
         />
       </Suspense>
         <main className='relative flex-1'>

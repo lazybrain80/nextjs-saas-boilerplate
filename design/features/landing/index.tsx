@@ -5,3 +5,5 @@ export { Section } from "./Section"
 export { FeatureCard } from "./FeatureCard"
 export { CTABanner } from "./CTABanner"
 export { LeadMain } from "./LeadMain"
+export { MobileNavbar } from "./MobileNavbar"
+

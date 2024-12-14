@@ -7,6 +7,7 @@ import { routing } from '@/i18n/routing'
 
 import { Montserrat, Montserrat_Alternates } from 'next/font/google'
 import { Navbar, Footer } from '@/design/templates'
+import { getLandingNavbarConfig } from "@/config/ui/landing";
 
 const montserrat = Montserrat({
   variable: '--font-montserrat',
@@ -25,26 +26,17 @@ export const metadata: Metadata = {
 };
 
 
-export default async function RootLayout({
+export default async function DocumentsLayout({
   children,
-  params,
 }: Readonly<{
   children: React.ReactNode;
-  params: { locale: string };
 }>) {
-  const { locale } = await params;
 
-  // Ensure that the incoming `locale` is valid
-  if (!routing.locales.includes(locale as any)) {
-    notFound();
-  }
-
-  const messages = await getMessages();
   return (
     <div className='m-auto flex h-full w-full flex-col'>
       <Suspense fallback="...">
         <Navbar
-          lang={locale}
+          items={getLandingNavbarConfig().mainNav}
         />
       </Suspense>
         <main className='relative flex-1'>

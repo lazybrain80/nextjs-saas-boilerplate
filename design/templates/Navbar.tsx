@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import Link from 'next/link';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 
 import { LocaleSwitcher, Logo } from '@/design/components';
 import {
@@ -15,10 +15,11 @@ import {
   NavigationMenuTrigger,
   NavigationMenuLink,
 } from '@/design/components/ui';
-import { CenteredMenu, Section } from '@/design/features/landing';
+import { CenteredMenu, MobileNavbar } from '@/design/features/landing';
 import { cn } from "@/libs/utils"
 import { useScroll } from "@/hooks/use-scroll";
-
+import { MainNavItem } from "@/types";
+import { EyeClosedIcon } from '@radix-ui/react-icons';
 
 const ListItem = React.forwardRef<
   React.ElementRef<"a">,
@@ -47,12 +48,21 @@ const ListItem = React.forwardRef<
 ListItem.displayName = "ListItem"
 
 export const Navbar = ({
-  lang
-}:{
-  lang: string;
+    items
+  } : {
+    items: MainNavItem[];
 }) => {
+  const locale = useLocale();
   const t = useTranslations('Navbar');
   const scrolled = useScroll(50);
+
+  const [showMobileMenu, setShowMobileMenu] = React.useState<boolean>(false);
+  const toggleMenu = () => {
+    setShowMobileMenu(!showMobileMenu);
+  };
+  const handleMenuItemClick = () => {
+    toggleMenu();
+  };
   
   return (
     <header
@@ -68,79 +78,50 @@ export const Navbar = ({
               <LocaleSwitcher />
             </li>
             <li className="ml-1 mr-2.5" data-fade>
-              <Link href={`/${lang}/signin`}>
+              <Link href={`/${locale}/signin`}>
                 {t('sign_in')}
               </Link>
             </li>
             <li>
-              <Link className={buttonVariants()} href={`/${lang}/signup`}>
+              <Link className={buttonVariants()} href={`/${locale}/signup`}>
                 {t('sign_up')}
               </Link>
             </li>
           </>
         )}
       >
-        <NavigationMenu>
+        <NavigationMenu
+          className="hidden gap-6 md:flex"
+        >
           <NavigationMenuList
             className='space-x-5 text-xl'
           >
-            <NavigationMenuItem
-              className='hover:text-blue-700'
-            >
-              <NavigationMenuLink
-                href={`/${lang}/functions`}
-              >
-                {t('functions')}
-              </NavigationMenuLink>
-            </NavigationMenuItem>
-            <NavigationMenuItem
-              className='hover:text-blue-700'
-            >
-              <NavigationMenuTrigger
-                className='text-xl font-normal'
-              >
-                {t('product')}
-              </NavigationMenuTrigger>
-              <NavigationMenuContent>
-                <ul className="gap-3 p-6 md:w-[10rem] lg:w-[20rem] lg:grid-cols-[.75fr_1fr]">
-                  <ListItem href="/project/intro" title="Intro">
-                    Introduction to the project
-                  </ListItem>
-                  <ListItem href="/project/install" title="Install">
-                    How to install the project
-                  </ListItem>
-                </ul>
-              </NavigationMenuContent>
-            </NavigationMenuItem>
-            <NavigationMenuItem
-              className='hover:text-blue-700'
-            >
-              <NavigationMenuLink
-                href={`/${lang}/docs`}
-              >
-                {t('docs')}
-              </NavigationMenuLink>
-            </NavigationMenuItem>
-            <NavigationMenuItem
-              className='hover:text-blue-700'
-            >
-              <NavigationMenuLink
-                href={`/${lang}/purchase`}
-              >
-                {t('purchase')}
-              </NavigationMenuLink>
-            </NavigationMenuItem>
-            <NavigationMenuItem
-              className='hover:text-blue-700'
-            >
-              <NavigationMenuLink
-                href={`/${lang}/support`}
-              >
-                {t('support')}
-              </NavigationMenuLink>
-            </NavigationMenuItem>
+            {items?.length ? (
+              items.map((item, index) => (
+                <NavigationMenuItem
+                  key={index}
+                  className='hover:text-blue-700'
+                >
+                  <NavigationMenuLink
+                    href={item.disabled ? "#" : item.href}
+                  >
+                    {item.title}
+                  </NavigationMenuLink>
+                </NavigationMenuItem>
+              ))
+            ) : null}
           </NavigationMenuList>
         </NavigationMenu>
+        <button
+          className="flex items-center space-x-2 md:hidden"
+          onClick={() => setShowMobileMenu(!showMobileMenu)}
+        >
+          {showMobileMenu ? <EyeClosedIcon /> : ''}
+          <span className="font-bold">Menu</span>
+        </button>
+        {showMobileMenu && items && (
+          <MobileNavbar items={items} menuItemClick={handleMenuItemClick} />
+        )}
       </CenteredMenu>
     </header>
   );

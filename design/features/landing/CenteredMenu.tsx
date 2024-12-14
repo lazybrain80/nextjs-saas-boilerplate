@@ -22,9 +22,11 @@ export const CenteredMenu = ({
   });
 
   return (
-    <div className="flex flex-wrap items-center justify-between">
-      {logo}
-
+    <div className="container flex flex-wrap items-center justify-between">
+      <div className="hidden gap-6 md:flex">
+        {logo}
+      </div>
+      
       <div className="lg:hidden [&_button:hover]:opacity-100 [&_button]:opacity-60">
         <ToggleMenuButton onClick={handleToggleMenu} />
       </div>
@@ -33,7 +35,7 @@ export const CenteredMenu = ({
 
       <div
         className={cn(
-          'rounded-b max-lg:border-t max-lg:border-border ml-10',
+          'flex items-center space-x-3',
           navClass,
         )}
       >

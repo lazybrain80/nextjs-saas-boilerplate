@@ -47,7 +47,7 @@ export interface DocsConfig {
   sidebarNav: SidebarNavItem[];
 }
 
-export interface MarketingConfig {
+export interface LandingConfig {
   mainNav: MainNavItem[];
 }
 
