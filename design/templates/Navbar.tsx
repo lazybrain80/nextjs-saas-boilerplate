@@ -91,10 +91,10 @@ export const Navbar = ({
         )}
       >
         <NavigationMenu
-          className="hidden gap-6 md:flex"
+          className="hidden gap-10 md:flex"
         >
           <NavigationMenuList
-            className='space-x-5 text-xl'
+            className='space-x-10 text-xl'
           >
             {items?.length ? (
               items.map((item, index) => (

@@ -13,8 +13,8 @@ export const LeadMain = ({
 }) => (
   <>
     <div className="flex justify-center">
-      <div className="w-1/2">
-        <div className="mt-20 ext-left">
+      <div className="w-7/10 md:w-1/2">
+        <div className="mt-20 text-left">
           {banner}
         </div>
         <div className="my-10 text-left text-5xl font-bold tracking-tight">
@@ -28,7 +28,7 @@ export const LeadMain = ({
         </div>
       </div>
       <Image
-        className="my-20"
+        className="my-20 hidden gap-10 md:flex"
         src="/images/landing/lead_main.png"
         width={639}
         height={450}
