@@ -113,7 +113,7 @@ export const Navbar = ({
           </NavigationMenuList>
         </NavigationMenu>
         <button
-          className="flex items-center space-x-2 md:hidden"
+          className="flex items-center space-x-2 md:hidden ml-10"
           onClick={() => setShowMobileMenu(!showMobileMenu)}
         >
           {showMobileMenu ? <EyeClosedIcon /> : ''}
