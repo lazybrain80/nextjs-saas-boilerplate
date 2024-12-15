@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 import { buttonVariants, AnimatedGradientText } from '@/design/components/ui';
 import { Section, LeadMain } from '@/design/features/landing';
-import { ChevronRight } from "lucide-react"
+import { ChevronRight } from "@/design/icons";
 import { cn } from "@/utils/cn";
 
 export const Lead = () => {

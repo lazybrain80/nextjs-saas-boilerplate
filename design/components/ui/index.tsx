@@ -1,5 +1,11 @@
 // https://www.radix-ui.com/primitives/docs/overview/introduction
-export { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from './accordion'
+export { Button } from './button'
+export {
+    Accordion,
+    AccordionItem,
+    AccordionTrigger,
+    AccordionContent
+} from './accordion'
 export {
     AlertDialog,
     AlertDialogPortal,
