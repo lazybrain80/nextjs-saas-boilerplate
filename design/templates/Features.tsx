@@ -2,7 +2,7 @@ import { useTranslations } from 'next-intl';
 
 import { Background } from '@/design/components';
 import { Section, FeatureCard } from '@/design/features/landing';
-import { Box } from '@/design/icons';
+import { Box, Circle, Nextjs, React, Tailwind, Typescript  } from '@/design/icons';
 
 export const Features = () => {
   const t = useTranslations('Features');
@@ -16,45 +16,45 @@ export const Features = () => {
       >
         <div className="grid grid-cols-1 gap-x-3 gap-y-8 md:grid-cols-3">
           <FeatureCard
-            icon={<Box className="size-8" />}
+            icon={<Nextjs className="size-8" />}
             title={t('feature1_title')}
           >
-            {t('feature_description')}
+            {t('feature1_description')}
           </FeatureCard>
 
           <FeatureCard
-            icon={<Box className="size-8" />}
+            icon={<React className="size-8" />}
             title={t('feature2_title')}
           >
-            {t('feature_description')}
+            {t('feature2_description')}
           </FeatureCard>
 
           <FeatureCard
-            icon={<Box className="size-8" />}
+            icon={<Tailwind className="size-8" />}
             title={t('feature3_title')}
           >
-            {t('feature_description')}
+            {t('feature3_description')}
           </FeatureCard>
 
           <FeatureCard
-            icon={<Box className="size-8" />}
+            icon={<Typescript className="size-8" />}
             title={t('feature4_title')}
           >
-            {t('feature_description')}
+            {t('feature4_description')}
           </FeatureCard>
 
           <FeatureCard
             icon={<Box className="size-8" />}
             title={t('feature5_title')}
           >
-            {t('feature_description')}
+            {t('feature5_description')}
           </FeatureCard>
 
           <FeatureCard
-            icon={<Box className="size-8" />}
+            icon={<Circle className="size-8" />}
             title={t('feature6_title')}
           >
-            {t('feature_description')}
+            {t('feature6_description')}
           </FeatureCard>
         </div>
       </Section>

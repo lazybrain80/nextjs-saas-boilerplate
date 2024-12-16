@@ -37,13 +37,18 @@
         "section_subtitle": "Features",
         "section_title": "Unlock the Full Potential of the SaaS Template",
         "section_description": "A free and open-source landing page template for your SaaS business, built with React, TypeScript, Shadcn UI, and Tailwind CSS.",
-        "feature1_title": "Node.js",
+        "feature1_title": "Next.js",
+        "feature1_description": "Next.js is a React-based web framework that supports server-side rendering (SSR) and static site generation (SSG) to optimise SEO and performance. It boosts development productivity with built-in features like routing, code splitting, API routes, and more. Flexible choice of rendering methods to meet different needs.",
         "feature2_title": "React",
+        "feature2_description": "React is a JavaScript library for creating user interfaces that leverages a component-based architecture and a virtual DOM for efficient rendering. It is suitable for developing a wide range of web applications, from large-scale applications to simple UIs.",
         "feature3_title": "Tailwind CSS",
+        "feature3_description": "Tailwind CSS is a utility class-based CSS framework that helps you write styles efficiently. It improves development productivity by allowing you to quickly construct UIs by combining predefined classes.",
         "feature4_title": "TypeScript",
+        "feature4_description": "TypeScript is a programming language that adds static types to JavaScript, making your code more readable and reliable. Its robust type system and support for the latest JavaScript features make it ideal for developing large-scale applications.",
         "feature5_title": "Shadcn UI",
-        "feature6_title": "ESLint",
-        "feature_description": "A free and open-source landing page template for your SaaS business, built with React, TypeScript, Shadcn UI, and Tailwind CSS."
+        "feature5_description": "Shadcn UI is a React component library integrated with Tailwind CSS that provides a sleek design and easy customisation. Its modular component structure allows for flexible and efficient UI development.",
+        "feature6_title": "Radix UI",
+        "feature6_description": "Radix UI is an accessible and flexible UI component library for React applications. It provides a variety of basic components that make it easy for developers to build user interfaces."
     },
     "Pricing": {
         "section_subtitle": "Features",
