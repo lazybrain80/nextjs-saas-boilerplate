@@ -1,19 +1,23 @@
+import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import React from 'react';
+import { buttonVariants } from '@/design/components/ui';
 
 import type { BillingInterval } from '@/types/Subscription';
 
 export const PricingCard = ({
   planId,
+  href,
+  btText,
   price,
   interval,
-  button,
   children,
 }: {
   planId: string;
+  href: string;
+  btText: string;
   price: number;
   interval: BillingInterval;
-  button: React.ReactNode;
   children: React.ReactNode;
 }) => {
   const t = useTranslations('PricingPlan');
@@ -38,7 +42,15 @@ export const PricingCard = ({
         {t(`${planId}_plan_description`)}
       </div>
 
-      {button}
+      <Link
+        className={buttonVariants({
+          size: 'sm',
+          className: 'mt-5 w-full bg-gradient-to-br from-indigo-400 via-purple-400 to-pink-400',
+        })}
+        href={href}
+      >
+        {t(btText)}
+      </Link>
 
       <ul className="mt-8 space-y-3">{children}</ul>
     </div>

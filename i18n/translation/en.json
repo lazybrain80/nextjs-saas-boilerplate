@@ -51,15 +51,16 @@
         "feature6_description": "Radix UI is an accessible and flexible UI component library for React applications. It provides a variety of basic components that make it easy for developers to build user interfaces."
     },
     "Pricing": {
-        "section_subtitle": "Features",
-        "section_title": "Unlock the Full Potential of the SaaS Template",
-        "section_description": "A free and open-source landing page template for your SaaS business, built with React, TypeScript, Shadcn UI, and Tailwind CSS.",
-        "button_text": "Get Started"
+        "section_title": "Great the SaaS Template Starts With a Plan",
+        "section_description": "SaaS templates starting at the right price! Efficient and simple solutions that give you the opportunity to grow your business further."
     },
     "PricingPlan": {
         "free_plan_name": "Free",
+        "free_plan_button": "Create account",
         "premium_plan_name": "Premium",
+        "premium_plan_button": "Get started",
         "enterprise_plan_name": "Enterprise",
+        "enterprise_plan_button": "Contact Sales",
         "free_plan_description": "For individuals",
         "premium_plan_description": "For small teams",
         "enterprise_plan_description": "For industry leaders",

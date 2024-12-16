@@ -51,15 +51,16 @@
         "feature6_description": "Radix UI는 React 애플리케이션을 위한 접근 가능하고 유연한 UI 구성 요소 라이브러리입니다. 이 라이브러리는 개발자가 사용자 인터페이스를 쉽게 구축할 수 있도록 다양한 기본 구성 요소를 제공합니다."
     },
     "Pricing": {
-        "section_subtitle": "Features",
-        "section_title": "Unlock the Full Potential of the SaaS Template",
-        "section_description": "A free and open-source landing page template for your SaaS business, built with React, TypeScript, Shadcn UI, and Tailwind CSS.",
-        "button_text": "Get Started"
+        "section_title": "적절한 가격으로 시작하는 SaaS 템플릿",
+        "section_description": "적절한 가격으로 시작하는 SaaS 템플릿을 만나보세요! 효율적이고 간편한 솔루션으로 비즈니스를 더욱 성장시키는 기회를 제공합니다."
     },
     "PricingPlan": {
-        "free_plan_name": "Free",
-        "premium_plan_name": "Premium",
-        "enterprise_plan_name": "Enterprise",
+        "free_plan_name": "무료",
+        "free_plan_button": "계정 생성",
+        "premium_plan_name": "프리미엄",
+        "premium_plan_button": "시작 하기",
+        "enterprise_plan_name": "엔터프라이즈",
+        "enterprise_plan_button": "영업팀 문의",
         "free_plan_description": "For individuals",
         "premium_plan_description": "For small teams",
         "enterprise_plan_description": "For industry leaders",

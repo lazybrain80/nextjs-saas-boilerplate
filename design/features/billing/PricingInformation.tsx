@@ -2,10 +2,10 @@ import { useTranslations } from 'next-intl';
 
 import { PricingCard } from './PricingCard';
 import { PricingFeature } from './PricingFeature';
-import { PricingPlanList } from '@/utils/AppConfig';
+import { PricingPlanList } from '@/config/ui/pricing';
 
-export const PricingInformation = (props: {
-  buttonList: Record<string, React.ReactNode>;
+export const PricingInformation = ({
+}: {
 }) => {
   const t = useTranslations('PricingPlan');
 
@@ -17,7 +17,8 @@ export const PricingInformation = (props: {
           planId={plan.id}
           price={plan.price}
           interval={plan.interval}
-          button={props.buttonList[plan.id]}
+          href={plan.href}
+          btText={plan.btText}
         >
           <PricingFeature>
             {t('feature_team_member', {

@@ -1,4 +1,4 @@
-import type { PLAN_ID } from '@/utils/AppConfig';
+import type { PLAN_ID } from '@/config/ui/pricing';
 
 import type { EnumValues } from './Enum';
 
@@ -23,6 +23,8 @@ export const SUBSCRIPTION_STATUS = {
 // You can find a live demo at: https://pro-demo.nextjs-boilerplate.com
 export type PricingPlan = {
   id: PlanId;
+  href: string;
+  btText: string;
   price: number;
   interval: BillingInterval;
   testPriceId: string; // Use for testing
