@@ -12,6 +12,7 @@ export const PricingCard = ({
   price,
   interval,
   children,
+  isPopular = false,
 }: {
   planId: string;
   href: string;
@@ -19,11 +20,12 @@ export const PricingCard = ({
   price: number;
   interval: BillingInterval;
   children: React.ReactNode;
+  isPopular?: boolean;
 }) => {
   const t = useTranslations('PricingPlan');
 
   return (
-    <div className="rounded-xl border border-border px-6 py-8 text-center">
+    <div className={`rounded-xl border border-border px-6 py-8 text-center ${isPopular ? 'border-primary' : ''}`}>
       <div className="text-lg font-semibold">
         {t(`${planId}_plan_name`)}
       </div>

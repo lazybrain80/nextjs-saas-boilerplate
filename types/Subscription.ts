@@ -25,16 +25,20 @@ export type PricingPlan = {
   id: PlanId;
   href: string;
   btText: string;
+  isPopular: boolean;
   price: number;
   interval: BillingInterval;
   testPriceId: string; // Use for testing
   devPriceId: string;
   prodPriceId: string;
   features: {
-    teamMember: number;
-    website: number;
-    storage: number;
-    transfer: number;
+    common: {
+      teamMember: number;
+      website: number;
+      storage: number;
+      transfer: number;
+    },
+    individual: string []
   };
 };
 

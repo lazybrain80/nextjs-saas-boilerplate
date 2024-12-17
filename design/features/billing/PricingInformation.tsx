@@ -19,32 +19,36 @@ export const PricingInformation = ({
           interval={plan.interval}
           href={plan.href}
           btText={plan.btText}
+          isPopular={plan.isPopular}
         >
           <PricingFeature>
-            {t('feature_team_member', {
-              number: plan.features.teamMember,
+            {t('feature_common_team_member', {
+              number: plan.features.common.teamMember,
             })}
           </PricingFeature>
 
           <PricingFeature>
-            {t('feature_website', {
-              number: plan.features.website,
+            {t('feature_common_website', {
+              number: plan.features.common.website,
             })}
           </PricingFeature>
 
           <PricingFeature>
-            {t('feature_storage', {
-              number: plan.features.storage,
+            {t('feature_common_storage', {
+              number: plan.features.common.storage,
             })}
           </PricingFeature>
 
           <PricingFeature>
-            {t('feature_transfer', {
-              number: plan.features.transfer,
+            {t('feature_common_transfer', {
+              number: plan.features.common.transfer,
             })}
           </PricingFeature>
 
-          <PricingFeature>{t('feature_email_support')}</PricingFeature>
+          {plan.features.individual.map((feature, index) => (
+            <PricingFeature key={index}>{t(feature)}</PricingFeature>
+          ))}
+
         </PricingCard>
       ))}
     </div>
