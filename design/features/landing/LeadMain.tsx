@@ -5,11 +5,13 @@ export const LeadMain = ({
   title,
   description,
   buttons,
+  review
 }: {
   banner: React.ReactNode;
   title: React.ReactNode;
   description: string;
   buttons: React.ReactNode;
+  review: React.ReactNode;
 }) => (
   <>
     <div className="flex justify-center">
@@ -23,8 +25,11 @@ export const LeadMain = ({
         <div className="my-10 max-w-screen-md text-xl text-muted-foreground">
           {description}
         </div>
-        <div className="my-20 mt-8 flex gap-x-5 gap-y-3 max-sm:flex-col">
+        <div className="my-10 flex gap-x-5 max-sm:flex-col">
           {buttons}
+        </div>
+        <div className="my-10">
+          {review}
         </div>
       </div>
       <Image

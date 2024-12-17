@@ -36,4 +36,5 @@ export {
     NavigationMenuViewport,
 } from './navigation-menu'
 export { AnimatedGradientText } from './animated-gradient-text'
+export { ReviewCard } from './reviewCard'
 
