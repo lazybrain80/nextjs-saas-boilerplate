@@ -6,4 +6,4 @@ export { FeatureCard } from "./FeatureCard"
 export { CTABanner } from "./CTABanner"
 export { LeadMain } from "./LeadMain"
 export { MobileNavbar } from "./MobileNavbar"
-
+export { HeroLeftImage } from "./HeroLeftImage"
