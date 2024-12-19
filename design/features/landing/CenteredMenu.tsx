@@ -16,7 +16,7 @@ export const CenteredMenu = ({
   rightMenu: React.ReactNode;
 }) => {
   return (
-    <div className="container flex flex-wrap items-center justify-between">
+    <div className="flex items-center justify-between">
       <div className="hidden gap-6 md:flex">
         {logo}
       </div>

@@ -17,14 +17,14 @@ export const HeroLeftImage = ({
 }) => (
   <>
     <div className="grid grid-cols-1 gap-x-6 gap-y-8 md:grid-cols-2">
-      <div className={`rounded-xl border border-border`}>
+      <div className={`rounded-xl`}>
         <Image
           className="hidden gap-10 md:flex rounded-xl"
           src={imgSrc}
           width={0}
           height={0}
           sizes="100vw"
-          style={{ width: '100%', height: '100%' }}
+          style={{ width: '100%', height: 'auto' }}
           alt="First Image"
         />
       </div>

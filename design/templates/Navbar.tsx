@@ -15,7 +15,7 @@ import {
   NavigationMenuTrigger,
   NavigationMenuLink,
 } from '@/design/components/ui';
-import { CenteredMenu, MobileNavbar } from '@/design/features/landing';
+import { CenteredMenu, MobileNavbar, Section } from '@/design/features/landing';
 import { cn } from "@/libs/utils"
 import { useScroll } from "@/hooks/use-scroll";
 import { MainNavItem } from "@/types";
@@ -65,64 +65,67 @@ export const Navbar = ({
   };
   
   return (
+    
     <header
-      className={`py-6 sticky top-0 z-40 flex w-full justify-center border-border bg-background/60 backdrop-blur-xl transition-all ${
+      className={`py-0 sticky top-0 z-40 flex w-full justify-center border-border bg-background/60 backdrop-blur-xl transition-all ${
         scrolled ? "border-b" : "bg-background/0"
       }`}
     >
-      <CenteredMenu
-        logo={<Logo />}
-        rightMenu={(
-          <>
-            <li data-fade>
-              <LocaleSwitcher />
-            </li>
-            <li className="ml-1 mr-2.5" data-fade>
-              <Link href={`/${locale}/signin`}>
-                {t('sign_in')}
-              </Link>
-            </li>
-            <li>
-              <Link className={buttonVariants()} href={`/${locale}/signup`}>
-                {t('sign_up')}
-              </Link>
-            </li>
-          </>
-        )}
-      >
-        <NavigationMenu
-          className="hidden gap-10 md:flex"
+      <Section className="py-0 my-5 w-full">
+        <CenteredMenu
+          logo={<Logo />}
+          rightMenu={(
+            <>
+              <li data-fade>
+                <LocaleSwitcher />
+              </li>
+              <li className="ml-1 mr-2.5" data-fade>
+                <Link href={`/${locale}/signin`}>
+                  {t('sign_in')}
+                </Link>
+              </li>
+              <li>
+                <Link className={buttonVariants()} href={`/${locale}/signup`}>
+                  {t('sign_up')}
+                </Link>
+              </li>
+            </>
+          )}
         >
-          <NavigationMenuList
-            className='space-x-10 text-xl'
+          <NavigationMenu
+            className="hidden gap-10 md:flex"
           >
-            {items?.length ? (
-              items.map((item, index) => (
-                <NavigationMenuItem
-                  key={index}
-                  className='hover:text-blue-700'
-                >
-                  <NavigationMenuLink
-                    href={item.disabled ? "#" : item.href}
+            <NavigationMenuList
+              className='space-x-10 text-xl'
+            >
+              {items?.length ? (
+                items.map((item, index) => (
+                  <NavigationMenuItem
+                    key={index}
+                    className='hover:text-blue-700'
                   >
-                    {item.title}
-                  </NavigationMenuLink>
-                </NavigationMenuItem>
-              ))
-            ) : null}
-          </NavigationMenuList>
-        </NavigationMenu>
-        <button
-          className="flex items-center space-x-2 md:hidden ml-10"
-          onClick={() => setShowMobileMenu(!showMobileMenu)}
-        >
-          {showMobileMenu ? <EyeClosedIcon /> : ''}
-          <span className="font-bold">Menu</span>
-        </button>
-        {showMobileMenu && items && (
-          <MobileNavbar items={items} menuItemClick={handleMenuItemClick} />
-        )}
-      </CenteredMenu>
+                    <NavigationMenuLink
+                      href={item.disabled ? "#" : item.href}
+                    >
+                      {item.title}
+                    </NavigationMenuLink>
+                  </NavigationMenuItem>
+                ))
+              ) : null}
+            </NavigationMenuList>
+          </NavigationMenu>
+          <button
+            className="flex items-center space-x-2 md:hidden ml-10"
+            onClick={() => setShowMobileMenu(!showMobileMenu)}
+          >
+            {showMobileMenu ? <EyeClosedIcon /> : ''}
+            <span className="font-bold">Menu</span>
+          </button>
+          {showMobileMenu && items && (
+            <MobileNavbar items={items} menuItemClick={handleMenuItemClick} />
+          )}
+        </CenteredMenu>
+      </Section>
     </header>
   );
 };

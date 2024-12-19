@@ -36,14 +36,12 @@ export const HeroRightImage = ({
           {review}
         </div>
       </div>
-      <div className={`rounded-xl border border-border`}>
+      <div className={`rounded-xl`}>
         <Image
           className="hidden gap-10 md:flex rounded-xl"
           src={imgSrc}
-          width={0}
-          height={0}
-          sizes="100vw"
-          style={{ width: '100%', height: '100%' }}
+          width={640}
+          height={640}
           alt="First Image"
         />
       </div>
