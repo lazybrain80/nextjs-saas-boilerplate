@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-export const HeroLeftImage = ({
+export const HeroRightImage = ({
   imgSrc,
   banner,
   title,
@@ -17,17 +17,6 @@ export const HeroLeftImage = ({
 }) => (
   <>
     <div className="grid grid-cols-1 gap-x-6 gap-y-8 md:grid-cols-2">
-      <div className={`rounded-xl border border-border`}>
-        <Image
-          className="hidden gap-10 md:flex rounded-xl"
-          src={imgSrc}
-          width={0}
-          height={0}
-          sizes="100vw"
-          style={{ width: '100%', height: '100%' }}
-          alt="First Image"
-        />
-      </div>
       <div className={`text-left`}>
         {banner
           ? (<div className="mt-5 text-left">
@@ -47,7 +36,17 @@ export const HeroLeftImage = ({
           {review}
         </div>
       </div>
-      
+      <div className={`rounded-xl border border-border`}>
+        <Image
+          className="hidden gap-10 md:flex rounded-xl"
+          src={imgSrc}
+          width={0}
+          height={0}
+          sizes="100vw"
+          style={{ width: '100%', height: '100%' }}
+          alt="First Image"
+        />
+      </div>
     </div>
   </>
 );
