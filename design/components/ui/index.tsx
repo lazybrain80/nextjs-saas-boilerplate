@@ -1,5 +1,4 @@
 // https://www.radix-ui.com/primitives/docs/overview/introduction
-export { Button } from './button'
 export {
     Accordion,
     AccordionItem,
@@ -20,10 +19,13 @@ export {
     AlertDialogCancel,
 } from './alert-dialog'
 export { Alert, AlertTitle, AlertDescription } from './alert'
+export { AnimatedGradientText } from './animated-gradient-text'
 export { AspectRatio } from './aspect-ratio'
 export { Avatar, AvatarImage, AvatarFallback } from './avatar'
+export { Button } from './button'
 export { badgeVariants } from './badgeVariants'
 export { buttonVariants } from './buttonVariants'
+export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent } from './card'
 export {
     navigationMenuTriggerStyle,
     NavigationMenu,
@@ -35,6 +37,5 @@ export {
     NavigationMenuIndicator,
     NavigationMenuViewport,
 } from './navigation-menu'
-export { AnimatedGradientText } from './animated-gradient-text'
 export { ReviewCard } from './reviewCard'
 

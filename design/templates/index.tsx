@@ -7,3 +7,4 @@ export  { CTA } from "./CTA";
 export { Footer } from "./Footer";
 export { FirstHero } from "./FirstHero";
 export { SecondHero } from "./SecondHero";
+export { Process } from "./Process";
