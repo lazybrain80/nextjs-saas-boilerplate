@@ -9,6 +9,7 @@ import {
   FirstHero,
   SecondHero,
   Process,
+  News
 } from '@/design/templates';
 
 export async function generateMetadata({
@@ -36,6 +37,7 @@ export default function Home() {
       <Process />
       <Pricing />
       <FAQ />
+      <News />
       <CTA />
     </>
   );
