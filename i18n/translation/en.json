@@ -50,6 +50,32 @@
         "feature6_title": "Radix UI",
         "feature6_description": "Radix UI is an accessible and flexible UI component library for React applications. It provides a variety of basic components that make it easy for developers to build user interfaces."
     },
+    "FirstHero": {
+        "title": "Build an efficient and secure collaboration environment",
+        "description": "It's easy to integrate with your existing systems, adjust settings to achieve maximum efficiency, collaborate with team members in a safe environment, and provide the highest level of security measures to ensure data safety.",
+        "get_start": "Get Started!",
+        "reviewer_name": "Emily Johnson",
+        "reviewer_position": "(Creative Solutions Project Manager)",
+        "reviewer_opinion": "nextjs boilerplate is revolutionary - it has quickly streamlined our data processes!"
+    },
+    "SecondHero": {
+        "title": "A new standard for collaboration: Safety and convenience",
+        "description": "Easily connect and customise everything to your liking, safely collaborate with colleagues in real time, and protect your data with the latest security features.",
+        "get_start": "Get Started!",
+        "reviewer_name": "Michael Brown",
+        "reviewer_position": "(Director of Technical Solutions Operations)",
+        "reviewer_opinion": "The nextjs boilerplate has revolutionised our development process - smooth, secure, and simple!"
+    },
+    "Process": {
+        "title": "The Complete Guide to Next.js Boilerplate",
+        "description": "This guide introduces you to all the features of Next.js boilerplate and walks you through how to install and use them step-by-step. Discover the benefits and unique selling points of each feature, easily install them, and put them to good use with common use cases.",
+        "step1_title": "Features",
+        "step1_description": "Learn all the features of the Next.js boilerplate, and see the benefits and unique selling points of each feature.",
+        "step2_title": "Installation guide",
+        "step2_description": "Make it easy with our step-by-step guide on how to install Boilerplate.",
+        "step3_title": "How to use",
+        "step3_description": "After installation, we'll show you how to use the Next.js boilerplate and explain common use cases."
+    },
     "Pricing": {
         "section_title": "Great the SaaS Template Starts With a Plan",
         "section_description": "SaaS templates starting at the right price! Efficient and simple solutions that give you the opportunity to grow your business further."
@@ -77,8 +103,16 @@
         "next_renew_date": "Your subscription renews on {date}"
     },
     "FAQ": {
-        "question": "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
-        "answer": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam aliquam enim dui, id consequat turpis ullamcorper ac. Mauris id quam dolor. Nullam eu egestas turpis. Proin risus elit, sollicitudin in mi a, accumsan euismod turpis. In euismod mi sed diam tristique hendrerit."
+        "question1": "What does Next.js Boilerplate do?",
+        "answer1": "Next.js Boilerplate provides basic Next.js setup, as well as routing, state management, API communication, styling, test setup, and more. This allows developers to get started quickly and easily add the features they need.",
+        "question2": "How do I install this project?",
+        "answer2": "Next.js Boilerplate is available by cloning it from GitHub. Simply follow the installation guide to install the necessary dependencies, set up environment variables, and start the development server with the npm run dev command.",
+        "question3": "What is the licence for Next.js Boilerplate?",
+        "answer3": "Next.js Boilerplate is under the MIT licence. This allows anyone to use, modify, and distribute it freely. However, you must retain the original copyright and licence notices.",
+        "question4": "How do I implement user authentication in Next.js Boilerplate?",
+        "answer4": "Next.js Boilerplate provides a basic structure for user authentication. It's set up to make it easy to integrate authentication methods like JSON Web Token (JWT) or OAuth, and you can see how to implement them in the related documentation.",
+        "question5": "How easy is it to customise Next.js Boilerplate?",
+        "answer5": "Next.js Boilerplate is designed with a modular structure, making it easy to customise to your needs. You're free to modify and add components, pages, API routes, and more, and the documentation provides a guide on how to customise it."
     },
     "CTA": {
         "title": "You are ready?",

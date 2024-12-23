@@ -50,6 +50,32 @@
         "feature6_title": "Radix UI",
         "feature6_description": "Radix UI는 React 애플리케이션을 위한 접근 가능하고 유연한 UI 구성 요소 라이브러리입니다. 이 라이브러리는 개발자가 사용자 인터페이스를 쉽게 구축할 수 있도록 다양한 기본 구성 요소를 제공합니다."
     },
+    "FirstHero": {
+        "title": "효율적이고 안전한 협업 환경 구축",
+        "description": "기존 시스템과 쉽게 통합할 수 있으며, 설정 조정을 통해 최대 효율을 달성하고, 안전한 환경에서 팀원과 협력하며 데이터 안전성을 보장하는 최고 수준의 보안 조치를 제공합니다.",
+        "get_start": "무료로 시작하기!",
+        "reviewer_name": "에밀리 존슨",
+        "reviewer_position": "(크리에이티브 솔루션즈 프로젝트 매니저)",
+        "reviewer_opinion": "nextjs boilerplate는 혁신적입니다! 우리의 데이터 프로세스를 신속하게 간소화했습니다!"
+    },
+    "SecondHero": {
+        "title": "협업의 새로운 기준: 안전성과 편리함",
+        "description": "모든 기능을 쉽게 연결하고 원하는 대로 설정할 수 있으며, 동료들과 안전하게 실시간 협업하고 최신 보안 기능으로 데이터를 보호합니다.",
+        "get_start": "무료로 시작하기!",
+        "reviewer_name": "마이클 브라운",
+        "reviewer_position": "(기술 솔루션 운영 이사)",
+        "reviewer_opinion": "nextjs boilerplate 덕분에 우리의 개발 과정이 혁신적으로 바뀌었습니다 - 매끄럽고, 안전하며, 간단합니다!"
+    },
+    "Process": {
+        "title": "Next.js Boilerplate 완벽 가이드",
+        "description": "이 가이드는 Next.js boilerplate의 모든 기능을 소개하고, 설치 방법과 사용법을 단계별로 안내합니다. 각 기능의 이점과 고유 판매 포인트를 확인하고, 쉽게 설치하여 일반적인 사용 사례를 통해 효과적으로 활용해보세요.",
+        "step1_title": "기능 소개",
+        "step1_description": "Next.js boilerplate의 모든 기능을 알아보고, 각 기능의 이점과 고유 판매 포인트를 확인하세요.",
+        "step2_title": "설치 가이드",
+        "step2_description": "Boilerplate를 설치하는 방법에 대한 단계별 가이드를 이용하여 쉽게 설치해보세요.",
+        "step3_title": "사용 방법",
+        "step3_description": "설치 후 Next.js boilerplate 사용법과 일반적인 사용 사례에 대한 설명을 제공합니다."
+    },
     "Pricing": {
         "section_title": "적절한 가격으로 시작하는 SaaS 템플릿",
         "section_description": "적절한 가격으로 시작하는 SaaS 템플릿을 만나보세요! 효율적이고 간편한 솔루션으로 비즈니스를 더욱 성장시키는 기회를 제공합니다."
@@ -77,8 +103,16 @@
         "next_renew_date": "Your subscription renews on {date}"
     },
     "FAQ": {
-        "question": "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
-        "answer": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam aliquam enim dui, id consequat turpis ullamcorper ac. Mauris id quam dolor. Nullam eu egestas turpis. Proin risus elit, sollicitudin in mi a, accumsan euismod turpis. In euismod mi sed diam tristique hendrerit."
+        "question1": "Next.js Boilerplate는 어떤 기능을 제공하나요?",
+        "answer1": "Next.js Boilerplate는 기본적인 Next.js 설정 외에도 라우팅, 상태 관리, API 통신, 스타일링, 테스트 설정 등 다양한 기능을 제공합니다. 이를 통해 개발자는 빠르게 프로젝트를 시작하고, 필요한 기능을 쉽게 추가할 수 있습니다.",
+        "question2": "이 프로젝트를 어떻게 설치하나요?",
+        "answer2": "Next.js Boilerplate는 GitHub에서 클론하여 사용할 수 있습니다. 설치 가이드를 따라 필요한 의존성을 설치하고, 환경 변수를 설정한 후, npm run dev 명령어로 개발 서버를 시작하면 됩니다.",
+        "question3": "Next.js Boilerplate의 라이센스는 무엇인가요?",
+        "answer3": "Next.js Boilerplate는 MIT 라이센스를 따릅니다. 이는 누구나 자유롭게 사용, 수정, 배포할 수 있도록 허용합니다. 다만, 원본 저작권 및 라이센스 고지를 유지해야 합니다.",
+        "question4": "Next.js Boilerplate에서 사용자 인증은 어떻게 구현하나요?",
+        "answer4": "Next.js Boilerplate는 사용자 인증을 위한 기본적인 구조를 제공합니다. JWT(JSON Web Token) 또는 OAuth와 같은 인증 방식을 쉽게 통합할 수 있도록 설정되어 있으며, 관련 문서에서 구현 방법을 확인할 수 있습니다.",
+        "question5": "Next.js Boilerplate의 커스터마이징은 얼마나 쉬운가요?",
+        "answer5": "Next.js Boilerplate는 모듈화된 구조로 설계되어 있어, 필요에 따라 쉽게 커스터마이징할 수 있습니다. 컴포넌트, 페이지, API 라우트 등을 자유롭게 수정하고 추가할 수 있으며, 문서에서 커스터마이징 방법에 대한 가이드를 제공합니다."
     },
     "CTA": {
         "title": "You are ready?",
