@@ -115,9 +115,9 @@
         "answer5": "Next.js Boilerplate is designed with a modular structure, making it easy to customise to your needs. You're free to modify and add components, pages, API routes, and more, and the documentation provides a guide on how to customise it."
     },
     "CTA": {
-        "title": "You are ready?",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-        "button_text": "Star on GitHub"
+        "title": "Ready to join us?",
+        "description": "Let's grow together through new opportunities, build a better future, start a new business, and get on the path to success!",
+        "button_text": "Subscribe"
     },
     "Footer": {
         "product": "Product",
