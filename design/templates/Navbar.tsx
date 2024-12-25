@@ -7,12 +7,9 @@ import { useTranslations, useLocale } from 'next-intl';
 import { LocaleSwitcher, Logo } from '@/design/components';
 import {
   buttonVariants,
-  navigationMenuTriggerStyle,
   NavigationMenu,
   NavigationMenuList,
   NavigationMenuItem,
-  NavigationMenuContent,
-  NavigationMenuTrigger,
   NavigationMenuLink,
 } from '@/design/components/ui';
 import { CenteredMenu, MobileNavbar, Section } from '@/design/features/landing';
@@ -105,7 +102,7 @@ export const Navbar = ({
                     className='hover:text-blue-700'
                   >
                     <NavigationMenuLink
-                      href={item.disabled ? "#" : item.href}
+                      href={item.disabled ? "#" : `/${locale}${item.href}`}
                     >
                       {item.title}
                     </NavigationMenuLink>

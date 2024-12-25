@@ -13,6 +13,15 @@
     "AboutPage": {
         "title": "About"
     },
+    "ProductPage": {
+        "title": "Product"
+    },
+    "PurchasePage": {
+        "title": "Purchase"
+    },
+    "DocumentsPage": {
+        "title": "Documents"
+    },
     "ProfilePage": {
         "title": "Profile"
     },
