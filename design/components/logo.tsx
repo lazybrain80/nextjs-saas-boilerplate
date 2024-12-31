@@ -1,9 +1,10 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { siteConfig } from '@/config/site';
 
 export function Logo() {
   return (
-    <Link href='/' className='flex items-center text-2xl font-semibold mr-10'>
+    <Link href='/' className='flex items-center text-3xl font-semibold mr-10'>
       <Image
         className='mr-2'
         src='/icon_logo.svg'
@@ -11,9 +12,9 @@ export function Logo() {
         height={40}
         priority
         quality={100}
-        alt='Saas Boilerplate'
+        alt={siteConfig.name}
       />
-      <span className='font-alt text-2xl text-black'>Saas Boilerplate</span>
+      <span className='font-alt text-3xl text-black'>{siteConfig.name}</span>
     </Link>
   );
 }

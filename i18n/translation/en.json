@@ -1,7 +1,7 @@
 {
     "NavbarLinks": {
         "home": "Home",
-        "homeTitle": "Home page",
+        "homeTitle": "LaunchX",
         "about": "About",
         "aboutTitle": "About page",
         "profile": "Profile",
@@ -36,7 +36,7 @@
     },
     "Main": {
         "follow_twitter": "Follow @Ixartz on Twitter",
-        "introducing": "introducing",
+        "introducing": "LaunchX Introduction",
         "title": "The ultimate <important>SaaS template</important> designed to help you effortlessly launch and grow your business!",
         "description": "A free and open-source landing page template for your SaaS business, built with React, TypeScript, Shadcn UI, and Tailwind CSS.",
         "primary_button": "Get Started",
