@@ -8,6 +8,7 @@ import { Montserrat, Montserrat_Alternates } from 'next/font/google'
 import { ThemeProvider } from '@/design/components/theme-provider'
 import { cn } from '@/utils/helpers'
 import { siteConfig } from '@/config/site'
+import { TailwindIndicator } from '@/design/components'
 
 const montserrat = Montserrat({
   variable: '--font-montserrat',
@@ -62,9 +63,9 @@ export default async function RootLayout({
   return (
     <html lang={locale} suppressHydrationWarning>
       <body className={cn(
-        'font-sans antialiased',
-        montserrat.variable,
-        montserratAlternates.variable
+          'font-sans antialiased',
+          montserrat.variable,
+          montserratAlternates.variable
         )}
       >
         <ThemeProvider
@@ -72,10 +73,11 @@ export default async function RootLayout({
           defaultTheme="light"
           enableSystem={false}
         >
+          <NextIntlClientProvider messages={messages}>
+            {children}
+          </NextIntlClientProvider>
+          <TailwindIndicator />
         </ThemeProvider>
-        <NextIntlClientProvider messages={messages}>
-          {children}
-        </NextIntlClientProvider>
       </body>
     </html>
   );
