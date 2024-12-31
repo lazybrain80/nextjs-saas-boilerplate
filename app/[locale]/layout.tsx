@@ -9,6 +9,7 @@ import { ThemeProvider } from '@/design/components/theme-provider'
 import { cn } from '@/utils/helpers'
 import { siteConfig } from '@/config/site'
 import { TailwindIndicator } from '@/design/components'
+import { Toaster } from '@/design/components/ui'
 
 const montserrat = Montserrat({
   variable: '--font-montserrat',
@@ -76,6 +77,7 @@ export default async function RootLayout({
           <NextIntlClientProvider messages={messages}>
             {children}
           </NextIntlClientProvider>
+          <Toaster />
           <TailwindIndicator />
         </ThemeProvider>
       </body>
