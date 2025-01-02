@@ -22,7 +22,7 @@ export const LeadMain = ({
         <div className="my-10 text-left text-5xl font-bold tracking-tight">
           {title}
         </div>
-        <div className="my-10 max-w-screen-md text-xl text-muted-foreground">
+        <div className="my-10 max-w-screen-md text-xl text-muted-foreground text-white">
           {description}
         </div>
         <div className="my-10 flex gap-x-5 max-sm:flex-col">

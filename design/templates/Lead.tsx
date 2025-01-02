@@ -11,7 +11,7 @@ export const Lead = () => {
   const locale = useLocale();
 
   return (
-    <Section className="h-max bg-gradient-to-r from-indigo-300 ">
+    <Section className="h-max animate-gradient bg-gradient-to-r from-[#2b9cf8] via-[#7902f8] to-[#f902bb] bg-300%">
       <LeadMain
         banner={(
           <Link href={`/${locale}/docs`}>
@@ -19,7 +19,7 @@ export const Lead = () => {
               🚀 <hr className="mx-2 h-4 w-[1px] shrink-0 bg-gray-300" />{" "}
               <span
                 className={cn(
-                  `animate-gradient inline bg-gradient-to-r from-[#ffaa40] via-[#9c40ff] to-[#ffaa40] bg-[length:var(--bg-size)_100%] bg-clip-text text-transparent`,
+                  `text-white`,
                 )}
               >
                 {t('introducing')}
@@ -30,7 +30,7 @@ export const Lead = () => {
         )}
         title={t.rich('title', {
           important: chunks => (
-            <span className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
+            <span className="animate-gradient bg-gradient-to-r from-[#f889da] via-[#b877fd] to-[#75bdf8] bg-clip-text text-transparent bg-300%">
               {chunks}
             </span>
           ),
