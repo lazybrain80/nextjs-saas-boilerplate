@@ -1,4 +1,10 @@
 {
+    "SignInPage": {
+        "leavePage": "Back",
+        "welcome_back": "Welcome back",
+        "signin_title": "Simply sign in with your existing account.",
+        "google_signin": "Continue with Google"
+    },
     "NavbarLinks": {
         "home": "Home",
         "homeTitle": "LaunchX",
