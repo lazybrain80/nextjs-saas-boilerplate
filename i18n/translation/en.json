@@ -118,6 +118,8 @@
         "next_renew_date": "Your subscription renews on {date}"
     },
     "FAQ": {
+        "section_title": "Frequently Asked Questions",
+        "section_description": "Find answers to common questions about Next.js Boilerplate and learn how to get started quickly.",
         "question1": "What does Next.js Boilerplate do?",
         "answer1": "Next.js Boilerplate provides basic Next.js setup, as well as routing, state management, API communication, styling, test setup, and more. This allows developers to get started quickly and easily add the features they need.",
         "question2": "How do I install this project?",

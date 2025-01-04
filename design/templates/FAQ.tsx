@@ -12,7 +12,10 @@ export const FAQ = () => {
   const t = useTranslations('FAQ');
 
   return (
-    <Section>
+    <Section
+      title={t('section_title')}
+      description={t('section_description')}
+    >
       <Accordion type="multiple" className="w-full">
         <AccordionItem value="item-1">
           <AccordionTrigger>{t('question1')}</AccordionTrigger>

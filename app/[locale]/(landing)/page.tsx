@@ -3,8 +3,6 @@ import { getMessages } from "next-intl/server";
 import {
   Lead,
   Features,
-  Pricing,
-  FAQ,
   CTA,
   FirstHero,
   SecondHero,
@@ -35,8 +33,6 @@ export default function Home() {
       <FirstHero />
       <SecondHero />
       <Process />
-      <Pricing />
-      <FAQ />
       <News />
       <CTA />
     </>
