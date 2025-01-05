@@ -1,8 +1,8 @@
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 
-import { Logo } from '@/design/components';
-import { CenteredFooter, Section } from '@/design/features/landing';
+import { Logo, Section } from '@/design/components';
+import { CenteredFooter } from '@/design/features/landing';
 import { AppConfig } from '@/utils/AppConfig';
 import {
   GitHub,

@@ -2,7 +2,8 @@ import { useLocale, useTranslations } from 'next-intl';
 import Link from 'next/link';
 
 import { buttonVariants, AnimatedGradientText, ReviewCard } from '@/design/components/ui';
-import { Section, LeadMain } from '@/design/features/landing';
+import { Section } from '@/design/components';
+import { LeadMain } from '@/design/features/landing';
 import { ChevronRight } from "@/design/icons";
 import { cn } from "@/utils/cn";
 

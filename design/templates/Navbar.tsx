@@ -12,7 +12,8 @@ import {
   NavigationMenuItem,
   NavigationMenuLink,
 } from '@/design/components/ui';
-import { CenteredMenu, MobileNavbar, Section } from '@/design/features/landing';
+import { Section } from '@/design/components';
+import { CenteredMenu, MobileNavbar } from '@/design/features/landing';
 import { cn } from "@/libs/utils"
 import { useScroll } from "@/hooks/use-scroll";
 import { MainNavItem } from "@/types";

@@ -1,5 +1,6 @@
 import { useTranslations } from 'next-intl';
-import { Section, HeroLeftImage } from '@/design/features/landing';
+import { HeroLeftImage } from '@/design/features/landing';
+import { Section } from '@/design/components';
 import { buttonVariants, ReviewCard } from '@/design/components/ui';
 
 export const FirstHero = () => {

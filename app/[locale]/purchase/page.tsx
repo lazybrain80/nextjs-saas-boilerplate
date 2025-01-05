@@ -1,11 +1,10 @@
 import { useTranslations } from "next-intl";
-import { getMessages } from "next-intl/server";
 import React from "react";
 import {
   Pricing,
   FAQ,
 } from '@/design/templates';
-import { Section } from '@/design/features/landing';
+import { Section } from '@/design/components';
 
 const PurchasePage = () => {
   const t = useTranslations("PurchasePage");

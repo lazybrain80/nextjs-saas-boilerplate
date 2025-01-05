@@ -1,7 +1,7 @@
 import { useTranslations } from 'next-intl';
 
 import { Card, CardHeader, CardTitle, CardContent } from '@/design/components/ui';
-import { Section } from '@/design/features/landing';
+import { Section } from '@/design/components';
 
 export const Process = () => {
     const t = useTranslations('Process');

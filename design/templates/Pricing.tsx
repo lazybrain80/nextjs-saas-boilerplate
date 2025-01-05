@@ -1,6 +1,6 @@
 import { useTranslations } from 'next-intl';
 import { PricingInformation } from '@/design/features/billing';
-import { Section } from '@/design/features/landing';
+import { Section } from '@/design/components';
 
 export const Pricing = () => {
   const t = useTranslations('Pricing');

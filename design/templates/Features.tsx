@@ -1,7 +1,7 @@
 import { useTranslations } from 'next-intl';
 
-import { Background } from '@/design/components';
-import { Section, FeatureCard } from '@/design/features/landing';
+import { Background, Section } from '@/design/components';
+import { FeatureCard } from '@/design/features/landing';
 import { Box, Circle, Nextjs, React, Tailwind, Typescript  } from '@/design/icons';
 
 export const Features = () => {

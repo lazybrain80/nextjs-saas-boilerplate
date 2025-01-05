@@ -1,8 +1,9 @@
 import { GitHubLogoIcon } from '@radix-ui/react-icons';
 import { useTranslations } from 'next-intl';
 
+import { Section } from '@/design/components'
 import { buttonVariants } from '@/design/components/ui';
-import { Section, CTABanner } from '@/design/features/landing';
+import { CTABanner } from '@/design/features/landing';
 
 export const CTA = () => {
   const t = useTranslations('CTA');
