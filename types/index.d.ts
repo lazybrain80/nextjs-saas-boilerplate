@@ -81,3 +81,7 @@ export type UserSubscriptionPlan = SubscriptionPlan &
     interval: string | null;
     isCanceled?: boolean;
   };
+
+export interface MdxDoc {
+    content: string
+}

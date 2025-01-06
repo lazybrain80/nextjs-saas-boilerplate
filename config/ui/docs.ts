@@ -1,15 +1,15 @@
 import type { DocsConfig } from "@/types";
 
-export const getDocsConfig = (_lang: string): DocsConfig => {
+export const getDocsConfig = (local: string): DocsConfig => {
   return {
     mainNav: [
       {
         title: "Documentation",
-        href: `/docs`,
+        href: `/${local}/docs`,
       },
       {
         title: "Guides",
-        href: `/guides`,
+        href: `/${local}/guides`,
       },
     ],
     sidebarNav: [
@@ -19,7 +19,7 @@ export const getDocsConfig = (_lang: string): DocsConfig => {
         items: [
           {
             title: "Introduction",
-            href: `/docs`,
+            href: `/${local}/docs`,
           },
         ],
       },
@@ -29,24 +29,24 @@ export const getDocsConfig = (_lang: string): DocsConfig => {
         items: [
           {
             title: "Introduction",
-            href: `/docs/documentation`,
+            href: `/${local}/docs/documentation`,
           },
           {
             title: "Contentlayer",
-            href: `/docs/in-progress`,
+            href: `/${local}/docs/in-progress`,
             disabled: true,
           },
           {
             title: "Components",
-            href: `/docs/documentation/components`,
+            href: `/${local}/docs/documentation/components`,
           },
           {
             title: "Code Blocks",
-            href: `/docs/documentation/code-blocks`,
+            href: `/${local}/docs/documentation/code-blocks`,
           },
           {
             title: "Style Guide",
-            href: `/docs/documentation/style-guide`,
+            href: `/${local}/docs/documentation/style-guide`,
           },
         ],
       },
@@ -56,7 +56,7 @@ export const getDocsConfig = (_lang: string): DocsConfig => {
         items: [
           {
             title: "Introduction",
-            href: `/docs/in-progress`,
+            href: `/${local}/docs/in-progress`,
             disabled: true,
           },
         ],
@@ -67,32 +67,32 @@ export const getDocsConfig = (_lang: string): DocsConfig => {
         items: [
           {
             title: "Introduction",
-            href: "/docs/in-progress",
+            href: `/${local}/docs/in-progress`,
             disabled: true,
           },
           {
             title: "Layouts",
-            href: "/docs/in-progress",
+            href: `/${local}/docs/in-progress`,
             disabled: true,
           },
           {
             title: "Server Components",
-            href: "/docs/in-progress",
+            href: `/${local}/docs/in-progress`,
             disabled: true,
           },
           {
             title: "Authentication",
-            href: "/docs/in-progress",
+            href: `/${local}/docs/in-progress`,
             disabled: true,
           },
           {
             title: "Database with Prisma",
-            href: "/docs/in-progress",
+            href: `/${local}/docs/in-progress`,
             disabled: true,
           },
           {
             title: "API Routes",
-            href: "/docs/in-progress",
+            href: `/${local}/docs/in-progress`,
             disabled: true,
           },
         ],

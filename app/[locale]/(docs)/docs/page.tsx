@@ -1,11 +1,18 @@
-import { useLocale, useTranslations } from "next-intl";
+import { Suspense } from "react";
+import { MdxDoc } from "@/types";
+import matter from "gray-matter";
+import { MDXRemote } from "next-mdx-remote/rsc";
 
-export default function DocumentsPage() {
-  const t = useTranslations("DocumentsPage");
-  const locale = useLocale();
+export default async function DocumentsPage() {
+
+  const mdx : MdxDoc = await fetch(`http://localhost:3000/api/docs/index`).then((res) => res.json());
+  const { content, data } = matter(mdx.content);
+
   return (
-        <div className="relative py-6 lg:gap-10 lg:py-10 xl:grid xl:grid-cols-[1fr_300px]">
-          {t("title")}
+        <div className="relative py-6 lg:gap-10 lg:py-10 prose lg:prose-xl">
+          <Suspense fallback={<>Loading...</>}>
+            <MDXRemote source={content} />
+          </Suspense>
         </div>
   );
 }
