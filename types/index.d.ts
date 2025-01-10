@@ -82,6 +82,6 @@ export type UserSubscriptionPlan = SubscriptionPlan &
     isCanceled?: boolean;
   };
 
-export interface MdxDoc {
+export interface MdxDocContent {
     content: string
 }
