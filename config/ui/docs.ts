@@ -21,32 +21,28 @@ export const getDocsConfig = (local: string): DocsConfig => {
             title: "Introduction",
             href: `/${local}/docs`,
           },
+          {
+            title: "Installation",
+            href: `/${local}/docs/installation`,
+          },
         ],
       },
       {
-        id: "documentation",
-        title: "Documentation",
+        id: "authentication",
+        title: "Authentication",
+        href: `/${local}/docs/authentication`,
         items: [
           {
-            title: "Introduction",
-            href: `/${local}/docs/documentation`,
+            title: "NextAuth Setup",
+            href: `/${local}/docs/authentication/nextAuth`,
           },
           {
-            title: "Contentlayer",
-            href: `/${local}/docs/in-progress`,
-            disabled: true,
+            title: "Google Login",
+            href: `/${local}/docs/authentication/googleLogin`,
           },
           {
-            title: "Components",
-            href: `/${local}/docs/documentation/components`,
-          },
-          {
-            title: "Code Blocks",
-            href: `/${local}/docs/documentation/code-blocks`,
-          },
-          {
-            title: "Style Guide",
-            href: `/${local}/docs/documentation/style-guide`,
+            title: "GitHub Login",
+            href: `/${local}/docs/authentication/githubLogin`,
           },
         ],
       },
