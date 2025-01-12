@@ -1,7 +1,30 @@
 ---
-title: Installation
-shortTitle: A shorter title
-description: Use some key words here to help users find this post
+title: Install and Deploy LaunchX project
+description: In this part of the documentation we will show you how to install Next.js Templates.
 ---
-## Secondary header
-Write regular MDX here.
+1. Download template and extract it. Then CD into that directory and run this command to install the dependencies:
+```
+npm install
+```
+2. After completing the installation run this command to start the developement server:
+```
+npm run dev
+```
+
+When this command runs successfully the template will open on localhost:3000. Now you will see all the changes you make on the browser.
+
+## Deploying to server
+
+To deploy the project on the server, you need to build the project first. Run this command to build the project:
+```
+npm run build
+```
+After the build is complete, run this command to start the server:
+```
+npm run start
+```
+Now the project will be live on the server. You can access it by entering the server's IP address in the browser.
+
+## Deploying to Vercel
+
+To deploy the project on Vercel, you need to connect your GitHub account with Vercel. After connecting the account, you can deploy the project by clicking on the deploy button.
