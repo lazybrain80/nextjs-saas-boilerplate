@@ -14,8 +14,8 @@ export interface MdxDocProps {
 }
 
 const addtionalComponents = {
-  blockquote: (props: any) => <blockquote className="border-l-4 border-gray-300 pl-4 italic my-4" {...props} />,
-  code: (props: any) => <code className="bg-gray-100 rounded p-1" {...props} />,
+  blockquote: (props: any) => <blockquote className="border-l-4 pl-4 italic my-4" {...props} />,
+  code: (props: any) => <code className='rounded p-1' {...props} />,
   Card: MdxCard
 };
 

@@ -1,7 +1,18 @@
 ---
-title: NextAuth
+title: NextJS Authentication
 shortTitle: A shorter title
 description: Use some key words here to help users find this post
 ---
-## Secondary header
-Write regular MDX here.
+## Authentication
+For authentication, we are using Supabase.
+
+Before integrating Github and Google authentication you have to set up Supabase.
+
+Then add NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY to the .env file.
+
+**Set up environment variables**:
+  - In your `.env.local` file, add the following environment variables:
+    ```env
+    NEXT_PUBLIC_SUPABASE_URL=your-supabase-url
+    NEXT_PUBLIC_SUPABASE_ANON_KEY=your-supabase-anon-key
+    ```
