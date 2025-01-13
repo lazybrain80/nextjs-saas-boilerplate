@@ -3,7 +3,8 @@
         "leavePage": "뒤로가기",
         "welcome_back": "다시 오신 것을 환영합니다.",
         "signin_title": "기존에 사용하시는 계정으로 간단하게 로그인하세요.",
-        "google_signin": "Google 계정으로 로그인하기"
+        "google_signin": "Google 계정으로 로그인하기",
+        "github_signin": "GitHub 계정으로 로그인하기"
     },
     "NavbarLinks": {
         "home": "홈",
@@ -38,7 +39,8 @@
         "purchase": "구매하기",
         "support": "기술지원",
         "sign_in": "로그인",
-        "sign_up": "가입하기"
+        "sign_up": "가입하기",
+        "sign_out": "로그아웃"
     },
     "Main": {
         "follow_twitter": "Follow @Ixartz on Twitter",

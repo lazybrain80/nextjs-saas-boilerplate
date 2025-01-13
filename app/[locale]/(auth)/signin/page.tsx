@@ -8,7 +8,7 @@ import { signInWithOAuth } from '../auth-actions';
 import { cn } from "@/libs/utils"
 import { buttonVariants } from "@/design/components/ui/button"
 import { ChevronLeft } from "@/design/icons"
-import { IoLogoGoogle } from 'react-icons/io5';
+import { IoLogoGoogle, IoLogoGithub } from 'react-icons/io5';
 import { toast } from '@/design/components/ui/use-toast'
 
 export default function LoginPage() {
@@ -63,12 +63,20 @@ export default function LoginPage() {
           </div>
           <div className='flex flex-col gap-4'>
             <button
-              className='flex items-center justify-center gap-2 rounded-md bg-cyan-500 py-4 font-medium text-black transition-all hover:bg-cyan-400 disabled:bg-neutral-700'
+              className='flex items-center justify-center gap-2 rounded-md bg-slate-300 py-4 font-medium text-black transition-all hover:bg-slate-100 disabled:text-slate-50'
               onClick={() => handleOAuthClick('google')}
               disabled={pending}
             >
               <IoLogoGoogle size={20} />
               {t("google_signin")}
+            </button>
+            <button
+              className='flex items-center justify-center gap-2 rounded-md bg-slate-300 py-4 font-medium text-black transition-all hover:bg-slate-100 disabled:text-slate-50'
+              onClick={() => handleOAuthClick('github')}
+              disabled={pending}
+            >
+              <IoLogoGithub size={20} />
+              {t("github_signin")}
             </button>
           </div>
         </div>

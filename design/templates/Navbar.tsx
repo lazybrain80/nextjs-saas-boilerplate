@@ -1,4 +1,4 @@
-"use client";
+'use client'
 
 import * as React from "react"
 import Link from 'next/link';
@@ -11,6 +11,7 @@ import {
   NavigationMenuList,
   NavigationMenuItem,
   NavigationMenuLink,
+  Button
 } from '@/design/components/ui';
 import { Section } from '@/design/components';
 import { CenteredMenu, MobileNavbar } from '@/design/features/landing';
@@ -18,6 +19,7 @@ import { cn } from "@/libs/utils"
 import { useScroll } from "@/hooks/use-scroll";
 import { MainNavItem } from "@/types";
 import { EyeClosedIcon } from '@radix-ui/react-icons';
+import { useSupabase } from "@/libs/supabase";
 
 const ListItem = React.forwardRef<
   React.ElementRef<"a">,
@@ -53,14 +55,64 @@ export const Navbar = ({
   const locale = useLocale();
   const t = useTranslations('Navbar');
   const scrolled = useScroll(50);
+  const supabase = useSupabase();
 
   const [showMobileMenu, setShowMobileMenu] = React.useState<boolean>(false);
+  const [isSignedIn, setIsSignedIn] = React.useState<boolean>(false);
+  const [user, setUser] = React.useState<any>(null);
   const toggleMenu = () => {
     setShowMobileMenu(!showMobileMenu);
   };
   const handleMenuItemClick = () => {
     toggleMenu();
   };
+
+  async function signOut() {
+    if (supabase) {
+      const { error } = await supabase.auth.signOut();
+    }
+  }
+
+  React.useEffect(() => {
+    const fetchUser = async () => {
+      if (supabase) {
+        const {data, error} = await supabase.auth.getUser();
+        if (error || !data?.user) {
+          setIsSignedIn(false);
+        }
+        else {
+          setIsSignedIn(true);
+          setUser(data.user);
+        }
+      }
+    };
+    fetchUser();
+  }, [supabase]);
+
+  const generateAuthForm = () => {
+    return isSignedIn
+      ? (
+        <li className="ml-1 mr-2.5" data-fade>
+          <Button onClick={signOut}>
+            {t('sign_out')}
+          </Button>
+        </li>
+      )
+      : (
+        <>
+          <li className="ml-1 mr-2.5" data-fade>
+            <Link href={`/${locale}/signin`}>
+              {t('sign_in')}
+            </Link>
+          </li>
+          <li>
+            <Link className={buttonVariants()} href={`/${locale}/signup`}>
+              {t('sign_up')}
+            </Link>
+          </li>
+        </>
+      );
+  }
   
   return (
     
@@ -77,16 +129,7 @@ export const Navbar = ({
               <li data-fade>
                 <LocaleSwitcher />
               </li>
-              <li className="ml-1 mr-2.5" data-fade>
-                <Link href={`/${locale}/signin`}>
-                  {t('sign_in')}
-                </Link>
-              </li>
-              <li>
-                <Link className={buttonVariants()} href={`/${locale}/signup`}>
-                  {t('sign_up')}
-                </Link>
-              </li>
+              {generateAuthForm()}
             </>
           )}
         >

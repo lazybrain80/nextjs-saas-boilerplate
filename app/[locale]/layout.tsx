@@ -10,6 +10,7 @@ import { cn } from '@/utils/helpers'
 import { siteConfig } from '@/config/site'
 import { TailwindIndicator } from '@/design/components'
 import { Toaster } from '@/design/components/ui'
+import { SupabaseInitializer } from '@/libs/supabase'
 
 const montserrat = Montserrat({
   variable: '--font-montserrat',
@@ -75,7 +76,9 @@ export default async function RootLayout({
           enableSystem={false}
         >
           <NextIntlClientProvider messages={messages}>
-            {children}
+            <SupabaseInitializer>
+              {children}
+            </SupabaseInitializer>
           </NextIntlClientProvider>
           <Toaster />
           <TailwindIndicator />
