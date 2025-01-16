@@ -1,9 +1,4 @@
 'use client';
-
-import Link from 'next/link';
-
-import { ToggleMenuButton } from '@/design/components';
-import { useMenu } from '@/hooks/use-menu';
 import { cn } from '@/utils/helpers';
 
 export const CenteredMenu = ({
@@ -16,15 +11,17 @@ export const CenteredMenu = ({
   rightMenu: React.ReactNode;
 }) => {
   return (
-    <div className="flex items-center justify-between">
+    <div className="relative flex items-center justify-between">
       <div className="hidden gap-6 md:flex">
         {logo}
       </div>
 
-      {children}
+      <div className="md:absolute md:left-1/2 md:transform md:-translate-x-1/2">
+        {children}
+      </div>
 
       <div
-        className={cn('flex items-center space-x-3')}
+        className={cn('flex items-center space-x-3 ml-auto')}
       >
         <ul className="flex flex-row items-center gap-x-1.5 text-lg font-medium [&_li[data-fade]:hover]:opacity-100 [&_li[data-fade]]:opacity-60">
           {rightMenu}

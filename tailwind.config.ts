@@ -10,6 +10,8 @@ export default {
   	extend: {
 			animation: {
         gradient: 'animatedgradient 6s ease infinite alternate',
+				fadein: "fadein 1s",
+      	fadeout: "fadeout 1.5s",
       },
 			backgroundSize: {
         '300%': '300%',
@@ -20,6 +22,22 @@ export default {
           '50%': { backgroundPosition: '100% 50%' },
           '100%': { backgroundPosition: '0% 50%' },
         },
+				fadein: {
+					"0%": {
+						opacity: "0",
+					},
+					"100%": {
+						opacity: "1",
+					},
+				},
+				fadeout: {
+					"0%": {
+						opacity: "1",
+					},
+					"100%": {
+						opacity: "0",
+					},
+				},
       },
   		colors: {
   			background: 'hsl(var(--background))',

@@ -58,7 +58,7 @@ export const Navbar = ({
   const supabase = useSupabase();
 
   const [showMobileMenu, setShowMobileMenu] = React.useState<boolean>(false);
-  const [isSignedIn, setIsSignedIn] = React.useState<boolean>(false);
+  const [isSignedIn, setIsSignedIn] = React.useState<'unknown' | 'signedIn' | 'signedOut'>('unknown');
   const [user, setUser] = React.useState<any>(null);
   const toggleMenu = () => {
     setShowMobileMenu(!showMobileMenu);
@@ -78,10 +78,10 @@ export const Navbar = ({
       if (supabase) {
         const {data, error} = await supabase.auth.getUser();
         if (error || !data?.user) {
-          setIsSignedIn(false);
+          setIsSignedIn('signedOut');
         }
         else {
-          setIsSignedIn(true);
+          setIsSignedIn('signedIn');
           setUser(data.user);
         }
       }
@@ -90,22 +90,37 @@ export const Navbar = ({
   }, [supabase]);
 
   const generateAuthForm = () => {
-    return isSignedIn
+    if (isSignedIn === 'unknown') {
+      return null;
+    }
+    return isSignedIn === 'signedIn'
       ? (
-        <li className="ml-1 mr-2.5" data-fade>
-          <Button onClick={signOut}>
-            {t('sign_out')}
-          </Button>
-        </li>
+        <>
+          <li className="animate-fadein">
+            <LocaleSwitcher />
+          </li>
+          <li className="ml-1 mr-2.5 animate-fadein">
+            <Link
+              className={buttonVariants()}
+              href={`/${locale}`}
+              onClick={signOut}
+            >
+              {t('sign_out')}
+            </Link>
+          </li>
+        </>
       )
       : (
         <>
-          <li className="ml-1 mr-2.5" data-fade>
+          <li className="animate-fadein">
+            <LocaleSwitcher />
+          </li>
+          <li className="ml-1 mr-2.5 animate-fadein">
             <Link href={`/${locale}/signin`}>
               {t('sign_in')}
             </Link>
           </li>
-          <li>
+          <li className="animate-fadein">
             <Link className={buttonVariants()} href={`/${locale}/signup`}>
               {t('sign_up')}
             </Link>
@@ -115,7 +130,6 @@ export const Navbar = ({
   }
   
   return (
-    
     <header
       className={`py-0 sticky top-0 z-40 flex w-full justify-center border-border bg-background/60 backdrop-blur-xl transition-all ${
         scrolled ? "border-b" : "bg-background/0"
@@ -126,9 +140,6 @@ export const Navbar = ({
           logo={<Logo />}
           rightMenu={(
             <>
-              <li data-fade>
-                <LocaleSwitcher />
-              </li>
               {generateAuthForm()}
             </>
           )}
