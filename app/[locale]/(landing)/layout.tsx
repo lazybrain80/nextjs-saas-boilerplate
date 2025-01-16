@@ -19,7 +19,7 @@ export default function LandingLayout({
 }>) {
 
   return (
-    <div className='m-auto flex h-full w-full flex-col'>
+    <>
       <Suspense fallback="...">
         <Navbar
           items={getLandingNavbarConfig().mainNav}
@@ -31,6 +31,6 @@ export default function LandingLayout({
           </div>
         </main>
       <Footer />
-    </div>
+    </>
   );
 }

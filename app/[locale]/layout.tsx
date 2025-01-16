@@ -67,7 +67,8 @@ export default async function RootLayout({
       <body className={cn(
           'font-sans antialiased',
           montserrat.variable,
-          montserratAlternates.variable
+          montserratAlternates.variable,
+          'm-auto flex h-full w-full flex-col'
         )}
       >
         <ThemeProvider

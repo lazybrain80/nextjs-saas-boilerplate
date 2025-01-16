@@ -17,18 +17,18 @@ export default function ProductLayout({
 }>) {
 
   return (
-    <div className='m-auto flex h-full w-full flex-col'>
+    <>
       <Suspense fallback="...">
         <Navbar
           items={getLandingNavbarConfig().mainNav}
         />
       </Suspense>
-        <main className='relative flex-1'>
-          <div className='relative h-full'>
-            {children}
-          </div>
-        </main>
+      <main className='relative flex-1'>
+        <div className='relative h-full'>
+          {children}
+        </div>
+      </main>
       <Footer />
-    </div>
+    </>
   );
 }
