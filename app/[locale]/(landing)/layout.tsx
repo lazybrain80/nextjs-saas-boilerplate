@@ -1,8 +1,6 @@
 import '@/styles/globals.css'
 import type { Metadata } from 'next'
 import { Suspense } from "react";
-import { notFound } from 'next/navigation'
-import { routing } from '@/i18n/routing'
 import { Navbar, Footer } from '@/design/templates'
 import { getLandingNavbarConfig } from "@/config/ui/landing";
 
@@ -25,11 +23,11 @@ export default function LandingLayout({
           items={getLandingNavbarConfig().mainNav}
         />
       </Suspense>
-        <main className='relative flex-1'>
-          <div className='relative h-full'>
-            {children}
-          </div>
-        </main>
+      <main className='relative flex-1'>
+        <div className='relative h-full'>
+          {children}
+        </div>
+      </main>
       <Footer />
     </>
   );

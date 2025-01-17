@@ -1,7 +1,5 @@
 import '@/styles/globals.css'
-import type { Metadata } from 'next'
 import { Suspense } from "react";
-
 import { Navbar, Footer } from '@/design/templates'
 import { getLandingNavbarConfig } from "@/config/ui/landing";
 
