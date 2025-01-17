@@ -1,6 +1,6 @@
 'use client'
 
-import * as React from "react"
+import React, { useState, useEffect, type ReactNode } from "react"
 import Link from 'next/link';
 import { useTranslations, useLocale } from 'next-intl';
 
@@ -57,9 +57,10 @@ export const Navbar = ({
   const scrolled = useScroll(50);
   const supabase = useSupabase();
 
-  const [showMobileMenu, setShowMobileMenu] = React.useState<boolean>(false);
-  const [isSignedIn, setIsSignedIn] = React.useState<'unknown' | 'signedIn' | 'signedOut'>('unknown');
-  const [user, setUser] = React.useState<any>(null);
+  const [showMobileMenu, setShowMobileMenu] = useState<boolean>(false);
+  const [user, setUser] = useState<any>(null);
+  const [signInOutForm, setSignInOutForm] = useState<ReactNode>(null);
+
   const toggleMenu = () => {
     setShowMobileMenu(!showMobileMenu);
   };
@@ -73,62 +74,53 @@ export const Navbar = ({
     }
   }
 
-  React.useEffect(() => {
+  useEffect(() => {
     const fetchUser = async () => {
       if (supabase) {
-        const {data, error} = await supabase.auth.getUser();
+        const {data, error} = await supabase.auth.getUser()
         if (error || !data?.user) {
-          setIsSignedIn('signedOut');
+          setSignInOutForm(
+              <>
+                <li className="animate-fadein">
+                  <LocaleSwitcher />
+                </li>
+                <li className="ml-1 mr-2.5 animate-fadein">
+                  <Link href={`/${locale}/signin`}>
+                    {t('sign_in')}
+                  </Link>
+                </li>
+                <li className="animate-fadein">
+                  <Link className={buttonVariants()} href={`/${locale}/signup`}>
+                    {t('sign_up')}
+                  </Link>
+                </li>
+              </>
+          )
         }
         else {
-          setIsSignedIn('signedIn');
-          setUser(data.user);
+          setSignInOutForm(
+            <>
+              <li className="animate-fadein">
+                <LocaleSwitcher />
+              </li>
+              <li className="ml-1 mr-2.5 animate-fadein">
+                <Link
+                  className={buttonVariants()}
+                  href={`/${locale}`}
+                  onClick={signOut}
+                >
+                  {t('sign_out')}
+                </Link>
+              </li>
+            </>
+          )
+          setUser(data.user)
         }
       }
     };
-    fetchUser();
-  }, [supabase]);
+    fetchUser()
+  }, [supabase])
 
-  const generateAuthForm = () => {
-    if (isSignedIn === 'unknown') {
-      return null;
-    }
-    return isSignedIn === 'signedIn'
-      ? (
-        <>
-          <li className="animate-fadein">
-            <LocaleSwitcher />
-          </li>
-          <li className="ml-1 mr-2.5 animate-fadein">
-            <Link
-              className={buttonVariants()}
-              href={`/${locale}`}
-              onClick={signOut}
-            >
-              {t('sign_out')}
-            </Link>
-          </li>
-        </>
-      )
-      : (
-        <>
-          <li className="animate-fadein">
-            <LocaleSwitcher />
-          </li>
-          <li className="ml-1 mr-2.5 animate-fadein">
-            <Link href={`/${locale}/signin`}>
-              {t('sign_in')}
-            </Link>
-          </li>
-          <li className="animate-fadein">
-            <Link className={buttonVariants()} href={`/${locale}/signup`}>
-              {t('sign_up')}
-            </Link>
-          </li>
-        </>
-      );
-  }
-  
   return (
     <header
       className={`py-0 sticky top-0 z-40 flex w-full justify-center border-border bg-background/60 backdrop-blur-xl transition-all ${
@@ -140,7 +132,7 @@ export const Navbar = ({
           logo={<Logo />}
           rightMenu={(
             <>
-              {generateAuthForm()}
+              {signInOutForm}
             </>
           )}
         >
@@ -156,11 +148,11 @@ export const Navbar = ({
                     key={index}
                     className='hover:text-blue-700'
                   >
-                    <NavigationMenuLink
+                    <Link
                       href={item.disabled ? "#" : `/${locale}${item.href}`}
                     >
                       {item.title}
-                    </NavigationMenuLink>
+                    </Link>
                   </NavigationMenuItem>
                 ))
               ) : null}

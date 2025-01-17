@@ -5,7 +5,6 @@ import { NextResponse } from 'next/server';
 export async function GET() {
   
   const filePath = path.join(process.cwd(), `contents/docs`, 'index.mdx');
-  console.log(filePath);
   try {
     const fileContents = await fs.readFile(filePath, 'utf8');
     return NextResponse.json({ content: fileContents });

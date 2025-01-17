@@ -10,7 +10,6 @@ export async function signInWithOAuth(
   locale: string,
   provider: 'github' | 'google'): Promise<ActionResponse> {
   const supabase = await createSupabaseServerClient();
-  console.log('requesting sign in with OAuth', provider);
   const { data, error } = await supabase.auth.signInWithOAuth({
     provider,
     options: {

@@ -10,7 +10,6 @@ export default async function DocumentsPage({
 }) {
   const slug = (await params).slug;
   let urlPath = path.join(`api/docs`, ...slug);
-  console.log('urlPath', urlPath);
   const mdx : MdxDocContent = await fetch(`http://localhost:3000/${urlPath}`).then((res) => res.json());
 
   return (
