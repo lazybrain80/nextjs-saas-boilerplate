@@ -1,6 +1,6 @@
 import '@/styles/globals.css'
 
-export default function SignupLayout({
+export default function SignInLayout({
   children
 }: Readonly<{
   children: React.ReactNode;
