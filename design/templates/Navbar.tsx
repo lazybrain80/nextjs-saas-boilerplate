@@ -19,6 +19,7 @@ import { cn } from "@/libs/utils"
 import { useScroll } from "@/hooks/use-scroll";
 import { MainNavItem } from "@/types";
 import { EyeClosedIcon } from '@radix-ui/react-icons';
+import { useSupabase } from "@/libs/supabase";
 
 const ListItem = React.forwardRef<
   React.ElementRef<"a">,
@@ -56,6 +57,7 @@ export const Navbar = ({
   const locale = useLocale();
   const t = useTranslations('Navbar');
   const scrolled = useScroll(50);
+  const supabase = useSupabase();
 
   const [showMobileMenu, setShowMobileMenu] = useState<boolean>(false);
   
@@ -83,7 +85,7 @@ export const Navbar = ({
       <Link
         className={buttonVariants()}
         href={`/${locale}`}
-        // onClick={signOut}
+        onClick={signOut}
       >
         {t('sign_out')}
       </Link>
@@ -97,13 +99,11 @@ export const Navbar = ({
     toggleMenu();
   };
 
-  // async function signOut() {
-  //   if (supabase) {
-  //     const { error } = await supabase.auth.signOut();
-  //   }
-  // }
-
-  
+  async function signOut() {
+    if (supabase) {
+      const { error } = await supabase.auth.signOut();
+    }
+  }
 
   return (
     <header
