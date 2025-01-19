@@ -1,7 +1,7 @@
 import '@/styles/globals.css'
 import type { Metadata } from 'next'
-import { NextIntlClientProvider } from "next-intl"
-import { getMessages } from "next-intl/server"
+import { NextIntlClientProvider } from 'next-intl'
+import { getMessages } from 'next-intl/server'
 import { notFound } from 'next/navigation'
 import { routing } from '@/i18n/routing'
 import { Montserrat, Montserrat_Alternates } from 'next/font/google'
@@ -10,7 +10,8 @@ import { cn } from '@/utils/helpers'
 import { siteConfig } from '@/config/site'
 import { TailwindIndicator } from '@/design/components'
 import { Toaster } from '@/design/components/ui'
-import { SupabaseInitializer } from '@/libs/supabase'
+import { createSupabaseServerClient } from '@/libs/supabase/serverClient'
+import { AuthProvider } from '@/auth/provider'
 
 const montserrat = Montserrat({
   variable: '--font-montserrat',
@@ -44,7 +45,7 @@ export const metadata: Metadata = {
   icons: {
     icon: "/icon_logo.svg",
   },
-};
+}
 
 
 export default async function RootLayout({
@@ -62,6 +63,8 @@ export default async function RootLayout({
   }
 
   const messages = await getMessages();
+  const supabase = createSupabaseServerClient()
+  const {data, error} = await (await supabase).auth.getUser()
 
   return (
     <html lang={locale} suppressHydrationWarning>
@@ -78,9 +81,9 @@ export default async function RootLayout({
           enableSystem={false}
         >
           <NextIntlClientProvider messages={messages}>
-            <SupabaseInitializer>
+            <AuthProvider supaUser={data.user}>
               {children}
-            </SupabaseInitializer>
+            </AuthProvider>
           </NextIntlClientProvider>
           <Toaster />
           <TailwindIndicator />

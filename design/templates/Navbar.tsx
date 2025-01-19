@@ -1,9 +1,9 @@
 'use client'
 
-import React, { useState, useLayoutEffect, useEffect, type ReactNode } from "react"
+import React, { useState } from "react"
 import Link from 'next/link';
 import { useTranslations, useLocale } from 'next-intl';
-
+import { useRouter } from "next/navigation";
 import { LocaleSwitcher, Logo } from '@/design/components';
 import {
   buttonVariants,
@@ -19,7 +19,7 @@ import { cn } from "@/libs/utils"
 import { useScroll } from "@/hooks/use-scroll";
 import { MainNavItem } from "@/types";
 import { EyeClosedIcon } from '@radix-ui/react-icons';
-import { useSupabase } from "@/libs/supabase";
+import { useAuthClient } from "@/auth/provider";
 
 const ListItem = React.forwardRef<
   React.ElementRef<"a">,
@@ -49,19 +49,20 @@ ListItem.displayName = "ListItem"
 
 export const Navbar = ({
     items,
-    userData,
   } : {
     items: MainNavItem[];
-    userData: any;
 }) => {
   const locale = useLocale();
+  const router = useRouter();
   const t = useTranslations('Navbar');
   const scrolled = useScroll(50);
-  const supabase = useSupabase();
+
+  const authClient = useAuthClient();
+  const supaClient = authClient?.supaClient;
+  const supaUser = authClient?.supaUser;
 
   const [showMobileMenu, setShowMobileMenu] = useState<boolean>(false);
-  
-  const userSingInOutForm = !userData.user
+  const userSingInOutForm = !supaUser
   ? (<>
     <li className="">
       <LocaleSwitcher />
@@ -100,8 +101,9 @@ export const Navbar = ({
   };
 
   async function signOut() {
-    if (supabase) {
-      const { error } = await supabase.auth.signOut();
+    if (supaClient) {
+      const { error } = await supaClient.auth.signOut();
+      router.refresh()
     }
   }
 
