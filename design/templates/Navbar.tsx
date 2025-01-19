@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useEffect, type ReactNode } from "react"
+import React, { useState, useLayoutEffect, useEffect, type ReactNode } from "react"
 import Link from 'next/link';
 import { useTranslations, useLocale } from 'next-intl';
 
@@ -19,7 +19,6 @@ import { cn } from "@/libs/utils"
 import { useScroll } from "@/hooks/use-scroll";
 import { MainNavItem } from "@/types";
 import { EyeClosedIcon } from '@radix-ui/react-icons';
-import { useSupabase } from "@/libs/supabase";
 
 const ListItem = React.forwardRef<
   React.ElementRef<"a">,
@@ -48,19 +47,49 @@ const ListItem = React.forwardRef<
 ListItem.displayName = "ListItem"
 
 export const Navbar = ({
-    items
+    items,
+    userData,
   } : {
     items: MainNavItem[];
+    userData: any;
 }) => {
   const locale = useLocale();
   const t = useTranslations('Navbar');
   const scrolled = useScroll(50);
-  const supabase = useSupabase();
 
   const [showMobileMenu, setShowMobileMenu] = useState<boolean>(false);
-  const [user, setUser] = useState<any>(null);
-  const [signInOutForm, setSignInOutForm] = useState<ReactNode>(null);
-
+  
+  const userSingInOutForm = !userData.user
+  ? (<>
+    <li className="">
+      <LocaleSwitcher />
+    </li>
+    <li className="ml-1 mr-2.5">
+      <Link href={`/${locale}/signin`}>
+        {t('sign_in')}
+      </Link>
+    </li>
+    <li className="">
+      <Link className={buttonVariants()} href={`/${locale}/signup`}>
+        {t('sign_up')}
+      </Link>
+    </li>
+  </>)
+  : (<>
+    <li className="">
+      <LocaleSwitcher />
+    </li>
+    <li className="ml-1 mr-2.5">
+      <Link
+        className={buttonVariants()}
+        href={`/${locale}`}
+        // onClick={signOut}
+      >
+        {t('sign_out')}
+      </Link>
+    </li>
+  </>)
+  
   const toggleMenu = () => {
     setShowMobileMenu(!showMobileMenu);
   };
@@ -68,58 +97,13 @@ export const Navbar = ({
     toggleMenu();
   };
 
-  async function signOut() {
-    if (supabase) {
-      const { error } = await supabase.auth.signOut();
-    }
-  }
+  // async function signOut() {
+  //   if (supabase) {
+  //     const { error } = await supabase.auth.signOut();
+  //   }
+  // }
 
-  useEffect(() => {
-    const fetchUser = async () => {
-      if (supabase) {
-        const {data, error} = await supabase.auth.getUser()
-        if (error || !data?.user) {
-          setSignInOutForm(
-              <>
-                <li className="animate-fadein">
-                  <LocaleSwitcher />
-                </li>
-                <li className="ml-1 mr-2.5 animate-fadein">
-                  <Link href={`/${locale}/signin`}>
-                    {t('sign_in')}
-                  </Link>
-                </li>
-                <li className="animate-fadein">
-                  <Link className={buttonVariants()} href={`/${locale}/signup`}>
-                    {t('sign_up')}
-                  </Link>
-                </li>
-              </>
-          )
-        }
-        else {
-          setSignInOutForm(
-            <>
-              <li className="animate-fadein">
-                <LocaleSwitcher />
-              </li>
-              <li className="ml-1 mr-2.5 animate-fadein">
-                <Link
-                  className={buttonVariants()}
-                  href={`/${locale}`}
-                  onClick={signOut}
-                >
-                  {t('sign_out')}
-                </Link>
-              </li>
-            </>
-          )
-          setUser(data.user)
-        }
-      }
-    };
-    fetchUser()
-  }, [supabase])
+  
 
   return (
     <header
@@ -132,7 +116,7 @@ export const Navbar = ({
           logo={<Logo />}
           rightMenu={(
             <>
-              {signInOutForm}
+              {userSingInOutForm}
             </>
           )}
         >

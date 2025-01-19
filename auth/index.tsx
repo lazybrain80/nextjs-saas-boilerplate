@@ -2,7 +2,7 @@
 
 import { redirect } from 'next/navigation';
 
-import { createSupabaseServerClient } from '@/libs/supabase/supabase-server-client';
+import { createSupabaseServerClient } from '@/libs/supabase/serverClient';
 import { ActionResponse } from '@/types/action-response';
 import { getURL } from '@/utils/get-url';
 

@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import { Suspense } from "react";
 import { Navbar, Footer } from '@/design/templates'
 import { getLandingNavbarConfig } from "@/config/ui/landing";
+import { createSupabaseServerClient } from "@/libs/supabase/serverClient";
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -10,17 +11,21 @@ export const metadata: Metadata = {
 };
 
 
-export default function ProductLayout({
+export default async function ProductLayout({
   children
 }: Readonly<{
   children: React.ReactNode;
 }>) {
 
+  const supabase = createSupabaseServerClient()
+  const {data, error} = await (await supabase).auth.getUser()
+
   return (
     <>
       <Suspense fallback="...">
         <Navbar
-          items={getLandingNavbarConfig().mainNav}
+          items={(await getLandingNavbarConfig()).mainNav}
+          userData={data}
         />
       </Suspense>
       <main className='relative flex-1'>

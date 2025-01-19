@@ -1,8 +1,8 @@
-import { useTranslations } from 'next-intl';
+import {getTranslations} from 'next-intl/server';
 import { LandingConfig } from '@/types';
 
-export const getLandingNavbarConfig = (): LandingConfig  => {
-  const t = useTranslations('Navbar');
+export const getLandingNavbarConfig = async (): Promise<LandingConfig>  => {
+  const t = await getTranslations('Navbar');
   return {
     mainNav: [
       {

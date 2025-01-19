@@ -1,3 +1,3 @@
-export { SupabaseInitializer } from './supabaseInitializer';
-export { useSupabase } from './supabaseContext';
+export { SupabaseInitializer } from './initializer';
+export { useSupabase } from './context';
 export { updateSession } from './middleware';
