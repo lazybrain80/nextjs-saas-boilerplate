@@ -1,0 +1,18 @@
+---
+title: Github Login
+description: How to implement Github login using Supabase.
+---
+
+## 1. GitHub OAuth 설정
+
+1. Supabase 프로젝트 대시보드에서 `Authentication` 탭으로 이동합니다.
+2. `Providers` 섹션에서 `GitHub`을 선택합니다.
+3. GitHub Developer Settings에서 OAuth 애플리케이션을 생성하고, 생성된 클라이언트 ID와 비밀 키를 Supabase에 입력합니다.
+
+## 2. GitHub Developer Settings에서 OAuth 애플리케이션 생성 방법
+
+1. [GitHub Developer Settings](https://github.com/settings/developers)로 이동합니다.
+2. `New OAuth App` 버튼을 클릭합니다.
+3. 애플리케이션 이름, 홈페이지 URL, 승인된 리디렉션 URI를 입력합니다.
+  - 승인된 리디렉션 URI: `https://your-supabase-url/auth/v1/callback`
+4. 애플리케이션을 생성하고 클라이언트 ID와 클라이언트 비밀 키를 복사하여 Supabase 대시보드에 입력합니다.

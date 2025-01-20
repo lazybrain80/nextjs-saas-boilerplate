@@ -1,10 +1,12 @@
 import { promises as fs } from 'fs';
 import path from 'path';
-import { NextResponse } from 'next/server';
+import { type NextRequest, NextResponse } from 'next/server';
 
-export async function GET() {
-  
-  const filePath = path.join(process.cwd(), `contents/docs`, 'index.mdx');
+export async function GET(req: NextRequest) {
+  const searchParams = req.nextUrl.searchParams
+  const locale = searchParams.get('locale') || 'en';
+  const filePath = path.join(process.cwd(), `contents/docs`, locale, 'index.mdx');
+
   try {
     const fileContents = await fs.readFile(filePath, 'utf8');
     return NextResponse.json({ content: fileContents });

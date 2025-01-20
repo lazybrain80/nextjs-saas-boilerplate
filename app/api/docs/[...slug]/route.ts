@@ -1,11 +1,13 @@
 import { promises as fs } from 'fs';
 import path from 'path';
-import { NextResponse } from 'next/server';
+import { type NextRequest, NextResponse } from 'next/server';
 
-export async function GET(req: Request, { params }: { params: { slug: string } }) {
-  
+export async function GET(req: NextRequest, { params }: { params: { slug: string } }) {
+  const searchParams = req.nextUrl.searchParams
+  const locale = searchParams.get('locale') || 'en';
+
   const { slug } = await params;
-  let filePath = path.join(process.cwd(), `contents/docs`, ...slug);
+  let filePath = path.join(process.cwd(), `contents/docs`, locale ,...slug);
   
   try {
     // Check if the slug is a directory
