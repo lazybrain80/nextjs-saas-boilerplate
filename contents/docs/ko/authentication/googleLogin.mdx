@@ -1,23 +1,60 @@
 ---
 title: Supabase를 이용한 Google 로그인
-description: Supabase를 이용하여 Google 로그인을 구현하는 방법을 설명합니다.
+description: Supabase를 이용하여 Google 로그인을 설정하는 방법을 설명합니다.
 ---
 
-## 1. Supabase 프로젝트 생성
+## 1. Google Cloud Console에서 OAuth 2.0 클라이언트 ID 생성 방법
+1. [Google Cloud Console](https://console.cloud.google.com/)에 접속하여 프로젝트를 생성하거나 기존 프로젝트를 선택합니다.
+2. `API 및 서비스` > `사용자 인증 정보`로 이동합니다.
+
+<Image
+  src="/images/mdx/google_user_auth_0.png"
+  alt="google_user_auth_0"
+  width={512}
+  height={384}
+  caption="google api - user auth"
+/>
+
+3. `사용자 인증 정보 만들기` 버튼을 클릭하고 `OAuth 클라이언트 ID`를 선택합니다.
+
+<Image
+  src="/images/mdx/google_user_auth_1.png"
+  alt="google_user_auth_1"
+  width={1024}
+  height={768}
+  caption="google api - user auth"
+/>
+
+4. `애플리케이션 유형`을 `웹 애플리케이션`으로 선택하고 필요한 정보를 입력합니다.
+5. `승인된 리디렉션 URI`에 `https://your-supabase-url/auth/v1/callback`을 추가합니다.
+
+<Image
+  src="/images/mdx/google_user_auth_2.png"
+  alt="google_user_auth_2"
+  width={1024}
+  height={768}
+  caption="google api - user auth"
+/>
+
+6. 생성된 클라이언트 ID와 클라이언트 비밀 키를 복사하여 Supabase 대시보드에 입력합니다.
+
+## 2. Supabase 프로젝트 생성
 
 먼저 [Supabase](https://supabase.io) 웹사이트에 접속하여 프로젝트를 생성합니다.
 
-## 2. Google OAuth 설정
-
+## 3. Google OAuth 설정
 1. Supabase 프로젝트 대시보드에서 `Authentication` 탭으로 이동합니다.
 2. `Providers` 섹션에서 `Google`을 선택합니다.
-3. Google Cloud Console에서 OAuth 2.0 클라이언트 ID를 생성하고, 생성된 클라이언트 ID와 비밀 키를 Supabase에 입력합니다.
-## 3. Google Cloud Console에서 OAuth 2.0 클라이언트 ID 생성 방법
 
-1. [Google Cloud Console](https://console.cloud.google.com/)에 접속하여 프로젝트를 생성하거나 기존 프로젝트를 선택합니다.
-2. `API 및 서비스` > `사용자 인증 정보`로 이동합니다.
-3. `사용자 인증 정보 만들기` 버튼을 클릭하고 `OAuth 클라이언트 ID`를 선택합니다.
-4. `애플리케이션 유형`을 `웹 애플리케이션`으로 선택하고 필요한 정보를 입력합니다.
-5. `승인된 리디렉션 URI`에 `https://your-supabase-url/auth/v1/callback`을 추가합니다.
-6. 생성된 클라이언트 ID와 클라이언트 비밀 키를 복사하여 Supabase 대시보드에 입력합니다.
+<Image
+  src="/images/mdx/google_user_auth_3.png"
+  alt="google_user_auth_3"
+  width={1024}
+  height={768}
+  caption="google api - user auth"
+/>
+
+3. Google Cloud Console에서 OAuth 2.0 클라이언트 ID를 생성하고, 생성된 클라이언트 ID와 비밀 키를 Supabase에 입력합니다.
+
+
 

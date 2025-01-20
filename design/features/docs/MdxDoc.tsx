@@ -2,7 +2,7 @@ import { Suspense } from "react";
 import matter from "gray-matter";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { MdxCard } from "./MdxCard"
-
+import Image from "next/image";
 interface frontMatter {
   title: string;
   shortTitle: string;
@@ -16,7 +16,8 @@ export interface MdxDocProps {
 const addtionalComponents = {
   blockquote: (props: any) => <blockquote className="border-l-4 pl-4 italic my-4" {...props} />,
   code: (props: any) => <code className='rounded p-1' {...props} />,
-  Card: MdxCard
+  Card: MdxCard,
+  Image: Image,
 };
 
 export default function MdxDoc({mdxContent}: MdxDocProps) {

@@ -1,18 +1,14 @@
 ---
-title: NextJS Authentication
-shortTitle: A shorter title
-description: Use some key words here to help users find this post
+title: LaunchX 인증
 ---
-## Authentication
-For authentication, we are using Supabase.
 
-Before integrating Github and Google authentication you have to set up Supabase.
+LaunchX 에서는 사용자 인증을 위해 Supabase social auth를 사용하고 있습니다.
+Github과 Google 인증을 통합하기 전에 Supabase를 설정해야 합니다.
+그런 다음 .env 파일에 NEXT_PUBLIC_SUPABASE_URL과 NEXT_PUBLIC_SUPABASE_ANON_KEY를 추가합니다.
 
-Then add NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY to the .env file.
-
-**Set up environment variables**:
-  - In your `.env.local` file, add the following environment variables:
-    ```env
-    NEXT_PUBLIC_SUPABASE_URL=your-supabase-url
-    NEXT_PUBLIC_SUPABASE_ANON_KEY=your-supabase-anon-key
-    ```
+**환경 변수 설정**:
+  - .env.local` 파일에 다음 환경 변수를 추가합니다:
+  ```env
+  NEXT_PUBLIC_SUPABASE_URL=your-supabase-url
+  NEXT_PUBLIC_SUPABASE_ANON_KEY=your-supabase-anon-key
+  ```

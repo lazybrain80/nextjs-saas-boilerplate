@@ -1,19 +1,24 @@
 ---
 title: Authentication
-shortTitle: A shorter title
-description: Use some key words here to help users find this post
+description: LaunchX's auth uses supabase's auth by default.
 ---
-## Authentication
+
 In this part of the documentation we are going to show you how to configure NextAuth and enable Authentication.
 
 ### Supabase Authentication
 
-To set up Supabase authentication, follow these steps:
+Supabase offers a range of authentication services to save developers the hassle of building custom authentication systems from scratch.
+Supabase authentication works with many popular authentication methods, including social authentication and phone authentication using third-party providers. 
+For a list of supported third-party providers, see the following [Supabase documentation](https://supabase.com/docs/guides/auth).
+
+<Image
+  src="/images/mdx/supabase_social_auth.png"
+  alt="supabase social auth"
+  width={1024}
+  height={768}
+  caption="supabase - social auth"
+/>
 
 **Create a Supabase project**:
   - Go to the [Supabase website](https://supabase.io/) and sign up for an account.
   - Create a new project and note down the `API URL` and `anon key`.
-
-
-Google Authentication
-Github Authentication

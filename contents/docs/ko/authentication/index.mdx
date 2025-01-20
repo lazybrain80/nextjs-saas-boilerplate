@@ -1,19 +1,24 @@
 ---
 title: Authentication
-shortTitle: A shorter title
-description: Use some key words here to help users find this post
+설명: LaunchX의 인증은 기본적으로 supabase의 인증을 사용합니다.
 ---
-## Authentication
-In this part of the documentation we are going to show you how to configure NextAuth and enable Authentication.
 
-### Supabase Authentication
+이 문서에서는 NextAuth를 구성하고 인증을 활성화하는 방법을 보여드리겠습니다.
 
-To set up Supabase authentication, follow these steps:
+### Supabase 인증
 
-**Create a Supabase project**:
-  - Go to the [Supabase website](https://supabase.io/) and sign up for an account.
-  - Create a new project and note down the `API URL` and `anon key`.
+Supabase는 개발자가 사용자 지정 인증 시스템을 처음부터 구축하는 번거로움을 덜어주는 다양한 인증 서비스를 제공합니다.
+Supabase 인증은 소셜 인증 및 타사 제공업체를 사용한 전화 인증 등 널리 사용되는 여러 인증 방법과 함께 작동합니다.
+지원되는 타사 제공업체 목록은 다음 [Supabase 문서](https://supabase.com/docs/guides/auth)를 참조하세요.
 
+<Image
+  src="/images/mdx/supabase_social_auth.png"
+  alt="supabase social auth"
+  width={1024}
+  height={768}
+  caption="supabase - social auth"
+/>
 
-Google Authentication
-Github Authentication
+**Supabase 프로젝트 만들기**:
+  - [Supabase 웹사이트](https://supabase.io/)로 이동하여 계정을 등록합니다.
+  - 새 프로젝트를 생성하고 'API URL'과 '아논 키'를 메모합니다.
