@@ -1,6 +1,6 @@
 export type ActionResponse =
   | {
-      data: any;
-      error: any;
+      data: any
+      error: any
     }
-  | undefined;
+  | undefined

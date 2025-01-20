@@ -1,1 +1,1 @@
-export { updateSession } from './middleware';
+export { updateSession } from './middleware'

@@ -1,58 +1,58 @@
-'use client';
+'use client'
 
-import { useMemo, useState } from 'react';
-import Link from 'next/link';
-import { IoCheckmark } from 'react-icons/io5';
+import { useMemo, useState } from 'react'
+import Link from 'next/link'
+import { IoCheckmark } from 'react-icons/io5'
 
-import { SexyBoarder } from '@/design/components/sexy-boarder';
-import { Button } from '@/design/components/ui/button';
-import { Tabs, TabsList, TabsTrigger } from '@/design/components/ui/tabs';
+import { SexyBoarder } from '@/design/components/sexy-boarder'
+import { Button } from '@/design/components/ui/button'
+import { Tabs, TabsList, TabsTrigger } from '@/design/components/ui/tabs'
 
-import { PriceCardVariant, productMetadataSchema } from '../models/product-metadata';
-import { BillingInterval, Price, ProductWithPrices } from '../types';
+import { PriceCardVariant, productMetadataSchema } from '../models/product-metadata'
+import { BillingInterval, Price, ProductWithPrices } from '../types'
 
 export function PricingCard({
   product,
   price,
   createCheckoutAction,
 }: {
-  product: ProductWithPrices;
-  price?: Price;
-  createCheckoutAction?: ({ price }: { price: Price }) => void;
+  product: ProductWithPrices
+  price?: Price
+  createCheckoutAction?: ({ price }: { price: Price }) => void
 }) {
   const [billingInterval, setBillingInterval] = useState<BillingInterval>(
     price ? (price.interval as BillingInterval) : 'month'
-  );
+  )
 
   // Determine the price to render
   const currentPrice = useMemo(() => {
     // If price is passed in we use that one. This is used on the account page when showing the user their current subscription.
-    if (price) return price;
+    if (price) return price
 
     // If no price provided we need to find the right one to render for the product.
     // First check if the product has a price - in the case of our enterprise product, no price is included.
     // We'll return null and handle that case when rendering.
-    if (product.prices.length === 0) return null;
+    if (product.prices.length === 0) return null
 
     // Next determine if the product is a one time purchase - in these cases it will only have a single price.
-    if (product.prices.length === 1) return product.prices[0];
+    if (product.prices.length === 1) return product.prices[0]
 
     // Lastly we can assume the product is a subscription one with a month and year price, so we get the price according to the select billingInterval
-    return product.prices.find((price) => price.interval === billingInterval);
-  }, [billingInterval, price, product.prices]);
+    return product.prices.find((price) => price.interval === billingInterval)
+  }, [billingInterval, price, product.prices])
 
-  const monthPrice = product.prices.find((price) => price.interval === 'month')?.unit_amount;
-  const yearPrice = product.prices.find((price) => price.interval === 'year')?.unit_amount;
-  const isBillingIntervalYearly = billingInterval === 'year';
-  const metadata = productMetadataSchema.parse(product.metadata);
+  const monthPrice = product.prices.find((price) => price.interval === 'month')?.unit_amount
+  const yearPrice = product.prices.find((price) => price.interval === 'year')?.unit_amount
+  const isBillingIntervalYearly = billingInterval === 'year'
+  const metadata = productMetadataSchema.parse(product.metadata)
   const buttonVariantMap = {
     basic: 'default',
     pro: 'sexy',
     enterprise: 'orange',
-  } as const;
+  } as const
 
   function handleBillingIntervalChange(billingInterval: BillingInterval) {
-    setBillingInterval(billingInterval);
+    setBillingInterval(billingInterval)
   }
 
   return (
@@ -103,7 +103,7 @@ export function PricingCard({
         )}
       </div>
     </WithSexyBorder>
-  );
+  )
 }
 
 function CheckItem({ text }: { text: string }) {
@@ -112,7 +112,7 @@ function CheckItem({ text }: { text: string }) {
       <IoCheckmark className='my-auto flex-shrink-0 text-slate-500' />
       <p className='text-sm font-medium text-white first-letter:capitalize'>{text}</p>
     </div>
-  );
+  )
 }
 
 export function WithSexyBorder({
@@ -125,9 +125,9 @@ export function WithSexyBorder({
       <SexyBoarder className={className} offset={100}>
         {children}
       </SexyBoarder>
-    );
+    )
   } else {
-    return <div className={className}>{children}</div>;
+    return <div className={className}>{children}</div>
   }
 }
 
@@ -143,5 +143,5 @@ function PricingSwitch({ onChange }: { onChange: (value: BillingInterval) => voi
         <TabsTrigger value='year'>Yearly</TabsTrigger>
       </TabsList>
     </Tabs>
-  );
+  )
 }

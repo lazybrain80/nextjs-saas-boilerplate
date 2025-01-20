@@ -1,12 +1,12 @@
-import Image from 'next/image';
-import Link from 'next/link';
+import Image from 'next/image'
+import Link from 'next/link'
 import {
     Card,
     CardHeader,
     CardTitle,
     CardContent,
     CardFooter
-} from '@/design/components/ui';
+} from '@/design/components/ui'
 
 export const NewsCard = ({
     date,
@@ -26,32 +26,32 @@ export const NewsCard = ({
             <CardHeader>
                 <div className={`rounded-xl`}>
                     <Image
-                        className="hidden gap-10 md:flex rounded-xl"
+                        className='hidden gap-10 md:flex rounded-xl'
                         src={imgSrc}
                         width={0}
                         height={0}
-                        sizes="100vw"
+                        sizes='100vw'
                         style={{ width: '100%', height: 'auto' }}
-                        alt="First Image"
+                        alt='First Image'
                     />
                 </div>
             </CardHeader>
             <CardTitle
-                className="p-5"
+                className='p-5'
             >
                 <div
-                    className="font-normal mb-5 text-purple-500"
+                    className='font-normal mb-5 text-purple-500'
                 >
                     {date}
                 </div>
                 <div
-                    className="text-3xl font-bold"
+                    className='text-3xl font-bold'
                 >
                     {title}
                 </div>
             </CardTitle>
             <CardContent
-                className="font-light"
+                className='font-light'
             >
                 {content}
             </CardContent>

@@ -1,14 +1,14 @@
-import Image from 'next/image';
+import Image from 'next/image'
 
-import { PricingCard } from '@/features/pricing/components/price-card';
-import { getProducts } from '@/features/pricing/controllers/get-products';
+import { PricingCard } from '@/features/pricing/components/price-card'
+import { getProducts } from '@/features/pricing/controllers/get-products'
 
-import { createCheckoutAction } from '../actions/create-checkout-action';
+import { createCheckoutAction } from '../actions/create-checkout-action'
 
 export async function PricingSection({ isPricingPage }: { isPricingPage?: boolean }) {
-  const products = await getProducts();
+  const products = await getProducts()
 
-  const HeadingLevel = isPricingPage ? 'h1' : 'h2';
+  const HeadingLevel = isPricingPage ? 'h1' : 'h2'
 
   return (
     <section className='relative rounded-lg bg-black py-8'>
@@ -21,7 +21,7 @@ export async function PricingSection({ isPricingPage }: { isPricingPage?: boolea
         </p>
         <div className='flex w-full flex-col items-center justify-center gap-2 lg:flex-row lg:gap-8'>
           {products.map((product) => {
-            return <PricingCard key={product.id} product={product} createCheckoutAction={createCheckoutAction} />;
+            return <PricingCard key={product.id} product={product} createCheckoutAction={createCheckoutAction} />
           })}
         </div>
       </div>
@@ -35,5 +35,5 @@ export async function PricingSection({ isPricingPage }: { isPricingPage?: boolea
         quality={100}
       />
     </section>
-  );
+  )
 }

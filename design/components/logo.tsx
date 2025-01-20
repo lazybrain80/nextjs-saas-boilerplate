@@ -1,6 +1,6 @@
-import Image from 'next/image';
-import Link from 'next/link';
-import { siteConfig } from '@/config/site';
+import Image from 'next/image'
+import Link from 'next/link'
+import { siteConfig } from '@/config/site'
 
 export function Logo() {
   return (
@@ -16,5 +16,5 @@ export function Logo() {
       />
       <span className='font-alt text-3xl text-black'>{siteConfig.name}</span>
     </Link>
-  );
+  )
 }

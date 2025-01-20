@@ -16,34 +16,34 @@ import { AuthProvider } from '@/auth/provider'
 const montserrat = Montserrat({
   variable: '--font-montserrat',
   subsets: ['latin'],
-});
+})
 
 const montserratAlternates = Montserrat_Alternates({
   variable: '--font-montserrat-alternates',
   weight: ['500', '600', '700'],
   subsets: ['latin'],
-});
+})
 
 export const metadata: Metadata = {
   title: siteConfig.name,
   description: siteConfig.description,
   keywords: [
-    "Next.js",
-    "Radix-ui",
-    "Sass",
-    "Fast",
-    "Simple",
-    "Easy",
-    "Cloud Native",
+    'Next.js',
+    'Radix-ui',
+    'Sass',
+    'Fast',
+    'Simple',
+    'Easy',
+    'Cloud Native',
   ],
   authors: [
     {
-      name: "lazybrain80",
+      name: 'lazybrain80',
     },
   ],
-  creator: "Lazybrain80",
+  creator: 'Lazybrain80',
   icons: {
-    icon: "/icon_logo.svg",
+    icon: '/icon_logo.svg',
   },
 }
 
@@ -52,17 +52,17 @@ export default async function RootLayout({
   children,
   params,
 }: Readonly<{
-  children: React.ReactNode;
-  params: { locale: string };
+  children: React.ReactNode
+  params: { locale: string }
 }>) {
-  const { locale } = await params;
+  const { locale } = await params
 
   // Ensure that the incoming `locale` is valid
   if (!routing.locales.includes(locale as any)) {
-    notFound();
+    notFound()
   }
 
-  const messages = await getMessages();
+  const messages = await getMessages()
   const supabase = createSupabaseServerClient()
   const {data, error} = await (await supabase).auth.getUser()
 
@@ -76,8 +76,8 @@ export default async function RootLayout({
         )}
       >
         <ThemeProvider
-          attribute="class"
-          defaultTheme="light"
+          attribute='class'
+          defaultTheme='light'
           enableSystem={false}
         >
           <NextIntlClientProvider messages={messages}>
@@ -90,5 +90,5 @@ export default async function RootLayout({
         </ThemeProvider>
       </body>
     </html>
-  );
+  )
 }

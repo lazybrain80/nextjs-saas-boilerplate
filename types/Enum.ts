@@ -1,1 +1,1 @@
-export type EnumValues<Type> = Type[keyof Type];
+export type EnumValues<Type> = Type[keyof Type]

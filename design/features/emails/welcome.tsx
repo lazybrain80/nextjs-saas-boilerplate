@@ -1,9 +1,9 @@
-import { Body, Button, Container, Head, Heading, Html, Link, Preview, Section, Text } from '@react-email/components';
-import { Tailwind } from '@react-email/tailwind';
+import { Body, Button, Container, Head, Heading, Html, Link, Preview, Section, Text } from '@react-email/components'
+import { Tailwind } from '@react-email/tailwind'
 
-import tailwindConfig from './tailwind.config';
+import tailwindConfig from './tailwind.config'
 
-const baseUrl = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000';
+const baseUrl = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000'
 
 export function WelcomeEmail() {
   return (
@@ -37,7 +37,7 @@ export function WelcomeEmail() {
         </Body>
       </Tailwind>
     </Html>
-  );
+  )
 }
 
-export default WelcomeEmail;
+export default WelcomeEmail

@@ -1,10 +1,10 @@
 'use client'
 
-import { createContext, useContext, useState, useMemo, useLayoutEffect } from "react"
+import { createContext, useContext, useState, useMemo, useLayoutEffect } from 'react'
 
-import type { SupabaseClient } from "@supabase/supabase-js"
+import type { SupabaseClient } from '@supabase/supabase-js'
 import { createBrowserClient } from '@supabase/ssr'
-import { User } from "@supabase/supabase-js"
+import { User } from '@supabase/supabase-js'
 
 interface AuthClient {
   supaClient: SupabaseClient | undefined
@@ -33,9 +33,9 @@ export const AuthProvider: React.FC<AuthProviderProviderProp & { supaUser: User 
 		return {
       supaClient,
 			supaUser,
-		};
+		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [supaClient, supaUser]);
+	}, [supaClient, supaUser])
 
   return (
     <>

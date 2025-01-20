@@ -1,12 +1,12 @@
-import { GitHubLogoIcon } from '@radix-ui/react-icons';
-import { useTranslations } from 'next-intl';
+import { GitHubLogoIcon } from '@radix-ui/react-icons'
+import { useTranslations } from 'next-intl'
 
 import { Section } from '@/design/components'
-import { buttonVariants } from '@/design/components/ui';
-import { CTABanner } from '@/design/features/landing';
+import { buttonVariants } from '@/design/components/ui'
+import { CTABanner } from '@/design/features/landing'
 
 export const CTA = () => {
-  const t = useTranslations('CTA');
+  const t = useTranslations('CTA')
 
   return (
     <Section>
@@ -16,12 +16,12 @@ export const CTA = () => {
         buttons={(
           <a
             className={buttonVariants({ variant: 'outline', size: 'lg' })}
-            href="/signup"
+            href='/signup'
           >
             {t('button_text')}
           </a>
         )}
       />
     </Section>
-  );
-};
+  )
+}

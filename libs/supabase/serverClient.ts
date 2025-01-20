@@ -1,12 +1,12 @@
 // ref: https://github.com/vercel/next.js/blob/canary/examples/with-supabase/utils/supabase/server.ts
 
-import { cookies } from 'next/headers';
+import { cookies } from 'next/headers'
 
-import { getEnvVar } from '@/utils/get-env-var';
-import { type CookieOptions, createServerClient } from '@supabase/ssr';
+import { getEnvVar } from '@/utils/get-env-var'
+import { type CookieOptions, createServerClient } from '@supabase/ssr'
 
 export async function createSupabaseServerClient() {
-  const cookieStore = await cookies();
+  const cookieStore = await cookies()
 
   return createServerClient(
     getEnvVar(process.env.NEXT_PUBLIC_SUPABASE_URL, 'NEXT_PUBLIC_SUPABASE_URL'),

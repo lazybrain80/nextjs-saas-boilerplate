@@ -6,12 +6,12 @@ import { getLandingNavbarConfig } from '@/config/ui/landing'
 export default async function DocumentsLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode
 }>) {
 
   return (
     <>
-      <Suspense fallback="...">
+      <Suspense fallback='...'>
         <Navbar
           items={(await getLandingNavbarConfig()).mainNav}
         />
@@ -23,5 +23,5 @@ export default async function DocumentsLayout({
       </main>
       <Footer />
     </>
-  );
+  )
 }

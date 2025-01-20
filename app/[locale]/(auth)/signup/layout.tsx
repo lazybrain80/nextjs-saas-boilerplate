@@ -3,7 +3,7 @@ import '@/styles/globals.css'
 export default function SignupLayout({
   children
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode
 }>) {
 
   return (

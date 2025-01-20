@@ -1,16 +1,16 @@
-import { useTranslations } from 'next-intl';
+import { useTranslations } from 'next-intl'
 
-import { PricingCard } from './PricingCard';
-import { PricingFeature } from './PricingFeature';
-import { PricingPlanList } from '@/config/ui/pricing';
+import { PricingCard } from './PricingCard'
+import { PricingFeature } from './PricingFeature'
+import { PricingPlanList } from '@/config/ui/pricing'
 
 export const PricingInformation = ({
 }: {
 }) => {
-  const t = useTranslations('PricingPlan');
+  const t = useTranslations('PricingPlan')
 
   return (
-    <div className="grid grid-cols-1 gap-x-6 gap-y-8 md:grid-cols-3">
+    <div className='grid grid-cols-1 gap-x-6 gap-y-8 md:grid-cols-3'>
       {Object.values(PricingPlanList).map(plan => (
         <PricingCard
           key={plan.id}
@@ -52,5 +52,5 @@ export const PricingInformation = ({
         </PricingCard>
       ))}
     </div>
-  );
-};
+  )
+}

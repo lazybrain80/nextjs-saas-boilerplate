@@ -1,31 +1,31 @@
-'use client';
+'use client'
 
-import { useLocale } from 'next-intl';
-import { Button } from '@/design/components/ui/button';
+import { useLocale } from 'next-intl'
+import { Button } from '@/design/components/ui/button'
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuRadioGroup,
   DropdownMenuRadioItem,
   DropdownMenuTrigger,
-} from '@/design/components/ui/dropdown-menu';
-import { usePathname, useRouter, allLocales } from '@/i18n/routing';
-import { Globe } from "@/design/icons";
+} from '@/design/components/ui/dropdown-menu'
+import { usePathname, useRouter, allLocales } from '@/i18n/routing'
+import { Globe } from '@/design/icons'
 
 export const LocaleSwitcher = () => {
-  const router = useRouter();
-  const pathname = usePathname();
-  const locale = useLocale();
+  const router = useRouter()
+  const pathname = usePathname()
+  const locale = useLocale()
 
   const handleChange = (value: string) => {
-    router.push(pathname, { locale: value });
-    router.refresh();
-  };
+    router.push(pathname, { locale: value })
+    router.refresh()
+  }
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button className="p-2 focus-visible:ring-offset-0" variant="ghost" size="icon" aria-label="lang-switcher">
+        <Button className='p-2 focus-visible:ring-offset-0' variant='ghost' size='icon' aria-label='lang-switcher'>
           <Globe />
         </Button>
       </DropdownMenuTrigger>
@@ -39,5 +39,5 @@ export const LocaleSwitcher = () => {
         </DropdownMenuRadioGroup>
       </DropdownMenuContent>
     </DropdownMenu>
-  );
-};
+  )
+}

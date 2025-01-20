@@ -1,8 +1,8 @@
-'use client';
+'use client'
 
-import Link from 'next/link';
-import { useRouter } from 'next/navigation';
-import { IoPersonCircleOutline } from 'react-icons/io5';
+import Link from 'next/link'
+import { useRouter } from 'next/navigation'
+import { IoPersonCircleOutline } from 'react-icons/io5'
 
 import {
   DropdownMenu,
@@ -10,29 +10,29 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from '@/design/components/ui/dropdown-menu';
-import { ActionResponse } from '@/types/action-response';
+} from '@/design/components/ui/dropdown-menu'
+import { ActionResponse } from '@/types/action-response'
 
-import { useToast } from './ui/use-toast';
+import { useToast } from './ui/use-toast'
 
 export function AccountMenu({ signOut }: { signOut: () => Promise<ActionResponse> }) {
-  const router = useRouter();
-  const { toast } = useToast();
+  const router = useRouter()
+  const { toast } = useToast()
 
   async function handleLogoutClick() {
-    const response = await signOut();
+    const response = await signOut()
 
     if (response?.error) {
       toast({
         variant: 'destructive',
         description: 'An error occurred while logging out. Please try again or contact support.',
-      });
+      })
     } else {
-      router.refresh();
+      router.refresh()
 
       toast({
         description: 'You have been logged out.',
-      });
+      })
     }
   }
 
@@ -49,5 +49,5 @@ export function AccountMenu({ signOut }: { signOut: () => Promise<ActionResponse
         <DropdownMenuArrow className='me-4 fill-white' />
       </DropdownMenuContent>
     </DropdownMenu>
-  );
+  )
 }

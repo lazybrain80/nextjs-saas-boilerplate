@@ -1,17 +1,17 @@
-import type { Config } from "tailwindcss";
+import type { Config } from 'tailwindcss'
 
 export default {
-    darkMode: ["class"],
+    darkMode: ['class'],
     content: [
-    "./app/**/*.{js,ts,jsx,tsx,mdx}",
-		"./design/**/*.{js,ts,jsx,tsx,mdx}",
+    './app/**/*.{js,ts,jsx,tsx,mdx}',
+		'./design/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
   	extend: {
 			animation: {
         gradient: 'animatedgradient 6s ease infinite alternate',
-				fadein: "fadein 1s",
-      	fadeout: "fadeout 1.5s",
+				fadein: 'fadein 1s',
+      	fadeout: 'fadeout 1.5s',
       },
 			backgroundSize: {
         '300%': '300%',
@@ -23,19 +23,19 @@ export default {
           '100%': { backgroundPosition: '0% 50%' },
         },
 				fadein: {
-					"0%": {
-						opacity: "0",
+					'0%': {
+						opacity: '0',
 					},
-					"100%": {
-						opacity: "1",
+					'100%': {
+						opacity: '1',
 					},
 				},
 				fadeout: {
-					"0%": {
-						opacity: "1",
+					'0%': {
+						opacity: '1',
 					},
-					"100%": {
-						opacity: "0",
+					'100%': {
+						opacity: '0',
 					},
 				},
       },
@@ -88,5 +88,5 @@ export default {
   		}
   	}
   },
-  plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
-} satisfies Config;
+  plugins: [require('tailwindcss-animate'), require('@tailwindcss/typography')],
+} satisfies Config

@@ -1,10 +1,10 @@
 'use client'
 
-import React, { useState } from "react"
-import Link from 'next/link';
-import { useTranslations, useLocale } from 'next-intl';
-import { useRouter } from "next/navigation";
-import { LocaleSwitcher, Logo } from '@/design/components';
+import React, { useState } from 'react'
+import Link from 'next/link'
+import { useTranslations, useLocale } from 'next-intl'
+import { useRouter } from 'next/navigation'
+import { LocaleSwitcher, Logo } from '@/design/components'
 import {
   buttonVariants,
   NavigationMenu,
@@ -12,18 +12,18 @@ import {
   NavigationMenuItem,
   NavigationMenuLink,
   Button
-} from '@/design/components/ui';
-import { Section } from '@/design/components';
-import { CenteredMenu, MobileNavbar } from '@/design/features/landing';
-import { cn } from "@/libs/utils"
-import { useScroll } from "@/hooks/use-scroll";
-import { MainNavItem } from "@/types";
-import { EyeClosedIcon } from '@radix-ui/react-icons';
-import { useAuthClient } from "@/auth/provider";
+} from '@/design/components/ui'
+import { Section } from '@/design/components'
+import { CenteredMenu, MobileNavbar } from '@/design/features/landing'
+import { cn } from '@/libs/utils'
+import { useScroll } from '@/hooks/use-scroll'
+import { MainNavItem } from '@/types'
+import { EyeClosedIcon } from '@radix-ui/react-icons'
+import { useAuthClient } from '@/auth/provider'
 
 const ListItem = React.forwardRef<
-  React.ElementRef<"a">,
-  React.ComponentPropsWithoutRef<"a">
+  React.ElementRef<'a'>,
+  React.ComponentPropsWithoutRef<'a'>
 >(({ className, title, children, ...props }, ref) => {
   return (
     <li>
@@ -31,13 +31,13 @@ const ListItem = React.forwardRef<
         <a
           ref={ref}
           className={cn(
-            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+            'block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground',
             className
           )}
           {...props}
         >
-          <div className="text-sm font-medium leading-none">{title}</div>
-          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+          <div className='text-sm font-medium leading-none'>{title}</div>
+          <p className='line-clamp-2 text-sm leading-snug text-muted-foreground'>
             {children}
           </p>
         </a>
@@ -45,44 +45,44 @@ const ListItem = React.forwardRef<
     </li>
   )
 })
-ListItem.displayName = "ListItem"
+ListItem.displayName = 'ListItem'
 
 export const Navbar = ({
     items,
   } : {
-    items: MainNavItem[];
+    items: MainNavItem[]
 }) => {
-  const locale = useLocale();
-  const router = useRouter();
-  const t = useTranslations('Navbar');
-  const scrolled = useScroll(50);
+  const locale = useLocale()
+  const router = useRouter()
+  const t = useTranslations('Navbar')
+  const scrolled = useScroll(50)
 
-  const authClient = useAuthClient();
-  const supaClient = authClient?.supaClient;
-  const supaUser = authClient?.supaUser;
+  const authClient = useAuthClient()
+  const supaClient = authClient?.supaClient
+  const supaUser = authClient?.supaUser
 
-  const [showMobileMenu, setShowMobileMenu] = useState<boolean>(false);
+  const [showMobileMenu, setShowMobileMenu] = useState<boolean>(false)
   const userSingInOutForm = !supaUser
   ? (<>
-    <li className="">
+    <li className=''>
       <LocaleSwitcher />
     </li>
-    <li className="ml-1 mr-2.5">
+    <li className='ml-1 mr-2.5'>
       <Link href={`/${locale}/signin`}>
         {t('sign_in')}
       </Link>
     </li>
-    <li className="">
+    <li className=''>
       <Link className={buttonVariants()} href={`/${locale}/signup`}>
         {t('sign_up')}
       </Link>
     </li>
   </>)
   : (<>
-    <li className="">
+    <li className=''>
       <LocaleSwitcher />
     </li>
-    <li className="ml-1 mr-2.5">
+    <li className='ml-1 mr-2.5'>
       <Link
         className={buttonVariants()}
         href={`/${locale}`}
@@ -94,15 +94,15 @@ export const Navbar = ({
   </>)
   
   const toggleMenu = () => {
-    setShowMobileMenu(!showMobileMenu);
-  };
+    setShowMobileMenu(!showMobileMenu)
+  }
   const handleMenuItemClick = () => {
-    toggleMenu();
-  };
+    toggleMenu()
+  }
 
   async function signOut() {
     if (supaClient) {
-      const { error } = await supaClient.auth.signOut();
+      const { error } = await supaClient.auth.signOut()
       router.refresh()
     }
   }
@@ -110,10 +110,10 @@ export const Navbar = ({
   return (
     <header
       className={`py-0 sticky top-0 z-40 flex w-full justify-center border-border bg-background/60 backdrop-blur-xl transition-all ${
-        scrolled ? "border-b" : "bg-background/0"
+        scrolled ? 'border-b' : 'bg-background/0'
       }`}
     >
-      <Section className="py-0 my-5 w-full">
+      <Section className='py-0 my-5 w-full'>
         <CenteredMenu
           logo={<Logo />}
           rightMenu={(
@@ -123,7 +123,7 @@ export const Navbar = ({
           )}
         >
           <NavigationMenu
-            className="hidden gap-10 md:flex"
+            className='hidden gap-10 md:flex'
           >
             <NavigationMenuList
               className='space-x-10 text-xl'
@@ -135,7 +135,7 @@ export const Navbar = ({
                     className='hover:text-blue-700'
                   >
                     <Link
-                      href={item.disabled ? "#" : `/${locale}${item.href}`}
+                      href={item.disabled ? '#' : `/${locale}${item.href}`}
                     >
                       {item.title}
                     </Link>
@@ -145,11 +145,11 @@ export const Navbar = ({
             </NavigationMenuList>
           </NavigationMenu>
           <button
-            className="flex items-center space-x-2 md:hidden ml-10"
+            className='flex items-center space-x-2 md:hidden ml-10'
             onClick={() => setShowMobileMenu(!showMobileMenu)}
           >
             {showMobileMenu ? <EyeClosedIcon /> : ''}
-            <span className="font-bold">Menu</span>
+            <span className='font-bold'>Menu</span>
           </button>
           {showMobileMenu && items && (
             <MobileNavbar items={items} menuItemClick={handleMenuItemClick} />
@@ -157,5 +157,5 @@ export const Navbar = ({
         </CenteredMenu>
       </Section>
     </header>
-  );
-};
+  )
+}

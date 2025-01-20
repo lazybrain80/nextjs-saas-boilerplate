@@ -1,9 +1,9 @@
-import { useTranslations } from 'next-intl';
-import { PricingInformation } from '@/design/features/billing';
-import { Section } from '@/design/components';
+import { useTranslations } from 'next-intl'
+import { PricingInformation } from '@/design/features/billing'
+import { Section } from '@/design/components'
 
 export const Pricing = () => {
-  const t = useTranslations('Pricing');
+  const t = useTranslations('Pricing')
 
   return (
     <Section
@@ -12,5 +12,5 @@ export const Pricing = () => {
     >
       <PricingInformation />
     </Section>
-  );
-};
+  )
+}

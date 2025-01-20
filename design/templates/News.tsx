@@ -1,7 +1,7 @@
 import { useTranslations } from 'next-intl'
-import Image from 'next/image';
-import { Section } from '@/design/components';
-import { NewsCard } from '@/design/features/landing/NewsCard';
+import Image from 'next/image'
+import { Section } from '@/design/components'
+import { NewsCard } from '@/design/features/landing/NewsCard'
 
 const NewsInfo = [
     {

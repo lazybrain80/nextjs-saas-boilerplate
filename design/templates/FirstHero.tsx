@@ -1,14 +1,14 @@
-import { useTranslations } from 'next-intl';
-import { HeroLeftImage } from '@/design/features/landing';
-import { Section } from '@/design/components';
-import { buttonVariants, ReviewCard } from '@/design/components/ui';
+import { useTranslations } from 'next-intl'
+import { HeroLeftImage } from '@/design/features/landing'
+import { Section } from '@/design/components'
+import { buttonVariants, ReviewCard } from '@/design/components/ui'
 
 export const FirstHero = () => {
-    const t = useTranslations('FirstHero');
+    const t = useTranslations('FirstHero')
     return (
         <Section>
             <HeroLeftImage
-                imgSrc="/images/landing/first-hero-image.png"
+                imgSrc='/images/landing/first-hero-image.png'
                 banner={(<></>)}
                 title={t('title')}
                 description={t('description')}
@@ -25,7 +25,7 @@ export const FirstHero = () => {
                 review={(
                     <>
                         <ReviewCard
-                            img="/images/avatars/avatar_2.jpg"
+                            img='/images/avatars/avatar_2.jpg'
                             name={t('reviewer_name')}
                             desc={t('reviewer_position')}
                             body={t('reviewer_opinion')}
@@ -34,5 +34,5 @@ export const FirstHero = () => {
                 )}
             />
         </Section>
-    );
-};
+    )
+}

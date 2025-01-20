@@ -1,7 +1,7 @@
-import { createSupabaseServerClient } from '@/libs/supabase/serverClient';
+import { createSupabaseServerClient } from '@/libs/supabase/serverClient'
 
 export async function getProducts() {
-  const supabase = await createSupabaseServerClient();
+  const supabase = await createSupabaseServerClient()
 
   const { data, error } = await supabase
     .from('products')
@@ -9,11 +9,11 @@ export async function getProducts() {
     .eq('active', true)
     .eq('prices.active', true)
     .order('metadata->index')
-    .order('unit_amount', { referencedTable: 'prices' });
+    .order('unit_amount', { referencedTable: 'prices' })
 
   if (error) {
-    console.error(error.message);
+    console.error(error.message)
   }
 
-  return data ?? [];
+  return data ?? []
 }
