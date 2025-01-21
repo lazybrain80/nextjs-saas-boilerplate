@@ -1,41 +1,22 @@
-import { Suspense } from 'react'
-import matter from 'gray-matter'
-import { MDXRemote } from 'next-mdx-remote/rsc'
-import { MdxCard } from './MdxCard'
-import Image from 'next/image'
-interface frontMatter {
-  title: string
-  shortTitle: string
-  description: string
-}
-
 export interface MdxDocProps {
-  mdxContent: string
+  locale: string
+  path: string
 }
 
-const addtionalComponents = {
-  blockquote: (props: any) => <blockquote className='border-l-4 pl-4 italic my-4' {...props} />,
-  code: (props: any) => <code className='rounded p-1' {...props} />,
-  Card: MdxCard,
-  Image: Image,
-}
-
-export default function MdxDoc({mdxContent}: MdxDocProps) {
-  const { content, data } = matter(mdxContent)
-  const frontmatter = data as frontMatter
+export default async function MdxDoc({locale, path}: MdxDocProps) {
+  const { default: MdxContent, metadata } = await import(`@/contents/docs/${locale}/${path}.mdx`)
+  
   return (
-    <Suspense fallback={<>Loading...</>}>
-      <div className='relative py-6 lg:gap-10 lg:py-10'>
-        <div className='space-y-4'>
-          <h1 className='font-heading inline-block text-4xl lg:text-5xl'>{frontmatter.title}</h1>
-          <h2>{frontmatter.shortTitle}</h2>
-          <p className='text-xl text-muted-foreground'>{frontmatter.description}</p>
-        </div>
-        <hr className='my-4'/>
-        <div className='prose lg:prose-xl'>
-          <MDXRemote source={content} components={addtionalComponents}/>
-        </div>
+    <div className='relative py-6 lg:gap-10 lg:py-10'>
+      <div className='space-y-4'>
+        <h1 className='font-heading inline-block text-4xl lg:text-5xl'>{metadata?.title}</h1>
+        <h2>{metadata?.shortTitle}</h2>
+        <p className='text-xl text-muted-foreground'>{metadata?.description}</p>
       </div>
-    </Suspense>
+      <hr className='my-4'/>
+      <div className='prose prose-headings:mt-8 prose-headings:font-semibold prose-headings:text-black prose-h1:text-5xl prose-h2:text-4xl prose-h3:text-3xl prose-h4:text-2xl prose-h5:text-xl prose-h6:text-lg dark:prose-headings:text-white'>
+        <MdxContent />
+      </div>
+    </div>
   )
 }

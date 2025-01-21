@@ -39,4 +39,5 @@ export {
 } from './navigation-menu'
 export { ReviewCard } from './reviewCard'
 export { Toaster } from './toaster'
+export { MdxCard } from './mdxCard'
 
