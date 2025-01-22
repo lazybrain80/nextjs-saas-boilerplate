@@ -8,6 +8,9 @@ export const siteMeta = {
   },
   description: appDesc,
   url: appUrl,
+  // Google doesn't use the"keywords"meta tag in our web search ranking.
+  // It's possible that Google could use this information in the future,
+  // but it's unlikely. Google has ignored the keywords meta tag for years and currently we see no need to change that policy.
   keywords: [
     "Next.js",
     "Radix-ui",
