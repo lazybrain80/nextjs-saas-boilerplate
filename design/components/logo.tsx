@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { siteConfig } from '@/config/site'
+import { appName } from '@/config/site'
 
 export function Logo() {
   return (
@@ -12,9 +12,9 @@ export function Logo() {
         height={40}
         priority
         quality={100}
-        alt={siteConfig.name}
+        alt={appName}
       />
-      <span className='font-alt text-3xl text-black'>{siteConfig.name}</span>
+      <span className='font-alt text-3xl text-black'>{appName}</span>
     </Link>
   )
 }

@@ -1,20 +1,5 @@
 import { useTranslations } from 'next-intl'
-import { getMessages } from 'next-intl/server'
 import React from 'react'
-
-export async function generateMetadata({
-  params,
-}: {
-  params: { locale: string }
-}) {
-  const { locale } = await params
-  const messages: any = await getMessages({ locale })
-  const title = messages.NavbarLinks.aboutTitle
-
-  return {
-    title,
-  }
-}
 
 const AboutPage = () => {
   const t = useTranslations('AboutPage')

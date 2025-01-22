@@ -25,7 +25,7 @@ const montserratAlternates = Montserrat_Alternates({
 })
 
 export const metadata: Metadata = {
-  title: siteConfig.name,
+  title: siteConfig.title,
   description: siteConfig.description,
   keywords: [
     'Next.js',

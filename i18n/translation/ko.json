@@ -6,35 +6,23 @@
         "google_signin": "Google 계정으로 로그인하기",
         "github_signin": "GitHub 계정으로 로그인하기"
     },
-    "NavbarLinks": {
-        "home": "홈",
-        "homeTitle": "LaunchX",
-        "about": "어바웃",
-        "aboutTitle": "어바웃 페이지",
-        "profile": "프로필",
-        "profileTitle": "프로필 페이지"
-    },
-    "HomePage": {
-        "title": "랜딩 페이지"
+    "LandingPage": {
+        "title": "Landing"
     },
     "AboutPage": {
-        "title": "어바웃"
-    },
-    "ProductPage": {
-        "title": "제품페이지"
+        "title": "About"
     },
     "DocumentsPage": {
-        "title": "문서"
+        "title": "Documents"
     },
     "PurchasePage": {
-        "title": "구매페이지"
+        "title": "Purchase"
     },
     "ProfilePage": {
         "title": "Profile"
     },
     "Navbar": {
-        "functions": "기능소개",
-        "product": "제품설명",
+        "about": "소개",
         "docs": "문서",
         "purchase": "구매하기",
         "support": "기술지원",

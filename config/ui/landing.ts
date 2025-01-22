@@ -6,12 +6,8 @@ export const getLandingNavbarConfig = async (): Promise<LandingConfig>  => {
   return {
     mainNav: [
       {
-        title: t("functions"),
-        href: `/functions`,
-      },
-      {
-        title: t("product"),
-        href: `/product`,
+        title: t("about"),
+        href: `/about`,
       },
       {
         title: t("docs"),

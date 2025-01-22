@@ -6,22 +6,11 @@
         "google_signin": "Continue with Google",
         "github_signin": "Continue with GitHub"
     },
-    "NavbarLinks": {
-        "home": "Home",
-        "homeTitle": "LaunchX",
-        "about": "About",
-        "aboutTitle": "About page",
-        "profile": "Profile",
-        "profileTitle": "Profile page"
-    },
-    "HomePage": {
+    "LandingPage": {
         "title": "Landing page"
     },
     "AboutPage": {
         "title": "About"
-    },
-    "ProductPage": {
-        "title": "Product"
     },
     "PurchasePage": {
         "title": "Purchase"
@@ -33,8 +22,7 @@
         "title": "Profile"
     },
     "Navbar": {
-        "functions": "Functions",
-        "product": "Product",
+        "about": "About",
         "docs": "Docs",
         "purchase": "Purchase",
         "support": "Support",
