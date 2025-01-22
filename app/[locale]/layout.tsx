@@ -7,7 +7,7 @@ import { routing } from '@/i18n/routing'
 import { Montserrat, Montserrat_Alternates } from 'next/font/google'
 import { ThemeProvider } from '@/design/components/theme-provider'
 import { cn } from '@/utils/helpers'
-import { siteConfig } from '@/config/site'
+import { siteMeta } from '@/config/site'
 import { TailwindIndicator } from '@/design/components'
 import { Toaster } from '@/design/components/ui'
 import { createSupabaseServerClient } from '@/libs/supabase/serverClient'
@@ -24,29 +24,7 @@ const montserratAlternates = Montserrat_Alternates({
   subsets: ['latin'],
 })
 
-export const metadata: Metadata = {
-  title: siteConfig.title,
-  description: siteConfig.description,
-  keywords: [
-    'Next.js',
-    'Radix-ui',
-    'Sass',
-    'Fast',
-    'Simple',
-    'Easy',
-    'Cloud Native',
-  ],
-  authors: [
-    {
-      name: 'lazybrain80',
-    },
-  ],
-  creator: 'Lazybrain80',
-  icons: {
-    icon: '/icon_logo.svg',
-  },
-}
-
+export const metadata: Metadata = siteMeta
 
 export default async function RootLayout({
   children,
