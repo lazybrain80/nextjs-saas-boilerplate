@@ -2,7 +2,9 @@ import { promises as fs } from 'fs'
 import path from 'path'
 import { type NextRequest, NextResponse } from 'next/server'
 
-export async function GET(req: NextRequest, { params }: { params: { slug: string } }) {
+type paramsType = Promise<{ slug: string }>
+
+export async function GET(req: NextRequest, { params }: { params: paramsType }) {
   const searchParams = req.nextUrl.searchParams
   const locale = searchParams.get('locale') || 'en'
 

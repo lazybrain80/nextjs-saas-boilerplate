@@ -4,11 +4,15 @@ import { Navbar, Footer } from '@/design/templates'
 import { getLandingNavbarConfig } from '@/config/ui/landing'
 import { getMessages } from 'next-intl/server'
 
+type MetaProps = Promise<{ locale: string }>
+type LandingLayoutProps = Readonly<{
+  children: React.ReactNode
+}>
 
 export async function generateMetadata({
   params,
 }: {
-  params: { locale: string }
+  params: MetaProps
 }) {
   const { locale } = await params
   const messages: any = await getMessages({ locale })
@@ -22,9 +26,7 @@ export async function generateMetadata({
 
 export default async function LandingLayout({
   children
-}: Readonly<{
-  children: React.ReactNode
-}>) {
+}: LandingLayoutProps) {
   
   return (
     <>

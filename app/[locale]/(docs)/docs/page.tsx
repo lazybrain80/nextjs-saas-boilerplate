@@ -1,11 +1,14 @@
 
 import { MdxDoc } from '@/design/features/docs'
 
+type DocparamsType = Promise<{ locale: string }>
+type DocPageProps = Readonly<{
+  params: DocparamsType
+}>
+
 export default async function DocumentsPage({
   params,
-}: Readonly<{
-  params: { locale: string }
-}>) {
+}: DocPageProps) {
   const { locale } = await params
   
   return (

@@ -1,14 +1,15 @@
-import { useLocale, useTranslations } from 'next-intl'
+import { useLocale } from 'next-intl'
 import { Section } from '@/design/components'
 import { DocsSidebarNav } from '@/design/features/docs'
 import { getDocsConfig } from '@/config/ui/docs'
 
+type DocsLayoutProps = Readonly<{
+  children: React.ReactNode
+}>
+
 export default function DocumentsLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode
-}>) {
-  const t = useTranslations('DocumentsPage')
+}: DocsLayoutProps) {
   const locale = useLocale()
   return (
     <Section className='py-0'>

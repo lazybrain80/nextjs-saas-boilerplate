@@ -13,6 +13,12 @@ import { Toaster } from '@/design/components/ui'
 import { createSupabaseServerClient } from '@/libs/supabase/serverClient'
 import { AuthProvider } from '@/auth/provider'
 
+type MetaProps = Promise<{ locale: string }>
+type RootLayoutProps = Readonly<{
+  children: React.ReactNode
+  params: MetaProps
+}>
+
 const montserrat = Montserrat({
   variable: '--font-montserrat',
   subsets: ['latin'],
@@ -29,10 +35,7 @@ export const metadata: Metadata = siteMeta
 export default async function RootLayout({
   children,
   params,
-}: Readonly<{
-  children: React.ReactNode
-  params: { locale: string }
-}>) {
+}: RootLayoutProps ) {
   const { locale } = await params
 
   // Ensure that the incoming `locale` is valid
@@ -42,7 +45,7 @@ export default async function RootLayout({
 
   const messages = await getMessages()
   const supabase = createSupabaseServerClient()
-  const {data, error} = await (await supabase).auth.getUser()
+  const { data } = await (await supabase).auth.getUser()
 
   return (
     <html lang={locale} suppressHydrationWarning>

@@ -60,7 +60,7 @@ export const NewsCard = ({
                     className='text-purple-500'
                     href={link}
                 >
-                    자세히 보기
+                    {title}에 대해 자세히 보기
                 </Link>
             </CardFooter>
         </Card>

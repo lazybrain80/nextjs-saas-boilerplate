@@ -4,10 +4,12 @@ import { Navbar, Footer } from '@/design/templates'
 import { getLandingNavbarConfig } from '@/config/ui/landing'
 import { getMessages } from 'next-intl/server'
 
+type paramsType = Promise<{ locale: string }>
+
 export async function generateMetadata({
   params,
 }: {
-  params: { locale: string }
+  params: paramsType
 }) {
   const { locale } = await params
   const messages: any = await getMessages({ locale })

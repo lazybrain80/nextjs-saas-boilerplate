@@ -1,4 +1,3 @@
-import { useTranslations } from 'next-intl'
 import React from 'react'
 import {
   Pricing,
@@ -7,7 +6,6 @@ import {
 import { Section } from '@/design/components'
 
 const PurchasePage = () => {
-  const t = useTranslations('PurchasePage')
   return (
     <>
       <Pricing />
