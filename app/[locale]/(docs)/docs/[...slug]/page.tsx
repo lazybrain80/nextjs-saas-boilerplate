@@ -9,6 +9,6 @@ export default async function DocumentsPage({
   const { slug, locale } = await params
 
   return (
-    <MdxDoc locale={locale} path={path.join(...slug)} />
+    <MdxDoc locale={locale} filePath={path.join(...slug)} />
   )
 }

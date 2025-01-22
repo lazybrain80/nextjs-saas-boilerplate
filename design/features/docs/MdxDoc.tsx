@@ -1,10 +1,25 @@
+import path from 'path'
+import { promises as fs } from 'fs'
 export interface MdxDocProps {
   locale: string
-  path: string
+  filePath: string
 }
 
-export default async function MdxDoc({locale, path}: MdxDocProps) {
-  const { default: MdxContent, metadata } = await import(`@/contents/docs/${locale}/${path}.mdx`)
+export default async function MdxDoc({locale, filePath}: MdxDocProps) {
+  let mdxPath = filePath
+  const checkPath = path.join(process.cwd(), `contents/docs`, locale , filePath)
+    
+  try {
+    // Check if mdxPath is a directory
+    const stat = await fs.stat(checkPath)
+    if (stat.isDirectory()) {
+      mdxPath = path.join(mdxPath, 'index')
+    }
+  } catch (error) {
+    mdxPath = filePath
+  }
+
+  const { default: MdxContent, metadata } = await import(`@/contents/docs/${locale}/${mdxPath}.mdx`)
   
   return (
     <div className='relative py-6 lg:gap-10 lg:py-10'>
