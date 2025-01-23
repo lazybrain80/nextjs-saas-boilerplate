@@ -37,6 +37,10 @@ export const getDocsConfig = (local: string): DocsConfig => {
             href: `/${local}/docs/authentication/nextAuth`,
           },
           {
+            title: "Email Login",
+            href: `/${local}/docs/authentication/magicLinkLogin`,
+          },
+          {
             title: "Google Login",
             href: `/${local}/docs/authentication/googleLogin`,
           },

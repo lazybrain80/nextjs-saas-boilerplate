@@ -12,6 +12,6 @@ export default async function DocumentsPage({
   const { locale } = await params
   
   return (
-    <MdxDoc locale={locale} path={'index'} />
+    <MdxDoc locale={locale} filePath={'index'} />
   )
 }

@@ -1,0 +1,23 @@
+export const metadata = {
+    title: 'Supabase Email 로그인 (MagicLink)',
+    description: 'Email 로그인 (MagicLink)을 위한 Supabase 설정하는 방법을 설명합니다.',
+}
+
+## Supabase에서 Email 로그인 (MagicLink) 설정하기
+
+1. Supabase 프로젝트 이동
+    - [Supabase](https://supabase.io) 웹사이트에 로그인합니다.
+    - 프로젝트를 선택하고 대시보드에서 `Authentication` 탭으로 이동합니다.
+
+2. 인증 설정
+    - `Settings` 탭에서 `Site URL`을 설정합니다. 이 URL은 사용자가 이메일 링크를 통해 로그인할 때 리디렉션될 URL입니다.
+    - `Provider - Email` 섹션에서 `Enable email provider` 옵션을 활성화합니다.
+
+<Image
+  src="/images/mdx/email_user_auth_0.png"
+  alt="email_user_auth_0"
+  width={1024}
+  height={768}
+  caption="supabase email - user auth"
+/>
+
