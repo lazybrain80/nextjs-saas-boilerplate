@@ -133,13 +133,12 @@
         "button_text": "Subscribe"
     },
     "Footer": {
-        "product": "Product",
+        "about": "About",
         "docs": "Docs",
         "blog": "Blog",
-        "community": "Community",
-        "company": "Company",
+        "purchase": "Purchase",
         "terms_of_service": "Terms Of Service",
         "privacy_policy": "Privacy Policy",
-        "designed_by": "Designed by <author></author>."
+        "inspired_by": "Inspired by <author></author>."
     }
 }

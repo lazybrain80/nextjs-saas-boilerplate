@@ -25,38 +25,32 @@ export const Footer = () => {
         iconList={(
           <>
             <li>
-              <Link href='/'>
+              <Link href={`/${locale}`}>
                 <GitHub />
               </Link>
             </li>
 
             <li>
-              <Link href='/'>
+              <Link href={`/${locale}`}>
                 <Meta />
               </Link>
             </li>
 
             <li>
-              <Link href='/'>
+              <Link href={`/${locale}`}>
                 <TwitterX />
               </Link>
             </li>
 
             <li>
-              <Link href='/'>
+              <Link href={`/${locale}`}>
                 <Youtube />
               </Link>
             </li>
 
             <li>
-              <Link href='/'>
+              <Link href={`/${locale}`}>
                 <LinkedIn />
-              </Link>
-            </li>
-
-            <li>
-              <Link href='/'>
-                <RSS />
               </Link>
             </li>
           </>
@@ -73,23 +67,16 @@ export const Footer = () => {
         )}
       >
         <li>
-          <Link href='/sign-up'>{t('product')}</Link>
+          <Link href='/sign-up'>{t('about')}</Link>
         </li>
-
         <li>
           <Link href='/sign-up'>{t('docs')}</Link>
         </li>
-
         <li>
           <Link href='/sign-up'>{t('blog')}</Link>
         </li>
-
         <li>
-          <Link href='/sign-up'>{t('community')}</Link>
-        </li>
-
-        <li>
-          <Link href='/sign-up'>{t('company')}</Link>
+          <Link href='/sign-up'>{t('purchase')}</Link>
         </li>
       </CenteredFooter>
     </Section>

@@ -31,7 +31,7 @@ export const CenteredFooter = ({
       <div className='mt-6 flex w-full items-center justify-between gap-y-2 border-t pt-3 text-sm text-muted-foreground max-md:flex-col'>
         <div>
           {`© Copyright ${new Date().getFullYear()} ${name}. `}
-          {t.rich('designed_by', {
+          {t.rich('inspired_by', {
             author: () => (
               <a
                 className='text-blue-500 hover:text-blue-600'
