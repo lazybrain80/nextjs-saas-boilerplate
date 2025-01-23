@@ -25,13 +25,13 @@ export async function signInWithOAuth(
   return redirect(data.url)
 }
 
-export async function signInWithEmail(email: string): Promise<ActionResponse> {
+export async function signInWithEmail(locale: string, email: string): Promise<ActionResponse> {
   const supabase = await createSupabaseServerClient()
 
   const { error } = await supabase.auth.signInWithOtp({
     email,
     options: {
-      emailRedirectTo: getURL('/auth/callback'),
+      emailRedirectTo: getURL(`/${locale}/auth/callback`),
     },
   })
 

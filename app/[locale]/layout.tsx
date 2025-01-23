@@ -19,17 +19,6 @@ type RootLayoutProps = Readonly<{
   params: MetaProps
 }>
 
-const montserrat = Montserrat({
-  variable: '--font-montserrat',
-  subsets: ['latin'],
-})
-
-const montserratAlternates = Montserrat_Alternates({
-  variable: '--font-montserrat-alternates',
-  weight: ['500', '600', '700'],
-  subsets: ['latin'],
-})
-
 export const metadata: Metadata = siteMeta
 
 export default async function RootLayout({
@@ -51,8 +40,6 @@ export default async function RootLayout({
     <html lang={locale} suppressHydrationWarning>
       <body className={cn(
           'font-sans antialiased',
-          montserrat.variable,
-          montserratAlternates.variable,
           'm-auto flex h-full w-full flex-col'
         )}
       >

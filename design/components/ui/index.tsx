@@ -22,9 +22,8 @@ export { Alert, AlertTitle, AlertDescription } from './alert'
 export { AnimatedGradientText } from './animated-gradient-text'
 export { AspectRatio } from './aspect-ratio'
 export { Avatar, AvatarImage, AvatarFallback } from './avatar'
-export { Button } from './button'
+export { Button, buttonVariants } from './button'
 export { badgeVariants } from './badgeVariants'
-export { buttonVariants } from './buttonVariants'
 export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent } from './card'
 export {
     navigationMenuTriggerStyle,
@@ -40,4 +39,6 @@ export {
 export { ReviewCard } from './reviewCard'
 export { Toaster } from './toaster'
 export { MdxCard } from './mdxCard'
-
+export { Label } from './label'
+export { Input } from './input'
+export { toast } from './use-toast'
