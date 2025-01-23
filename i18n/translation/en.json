@@ -21,6 +21,12 @@
     "ProfilePage": {
         "title": "Profile"
     },
+    "TermsOfServicePage": {
+        "title": "Terms of service"
+    },
+    "PrivacyPolicyPage": {
+        "title": "Privacy policy"
+    },
     "Navbar": {
         "about": "About",
         "docs": "Docs",

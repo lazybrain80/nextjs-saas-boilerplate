@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { useTranslations } from 'next-intl'
+import { useTranslations, useLocale } from 'next-intl'
 
 import { Logo, Section } from '@/design/components'
 import { CenteredFooter } from '@/design/features/landing'
@@ -15,6 +15,7 @@ import {
 
 export const Footer = () => {
   const t = useTranslations('Footer')
+  const locale = useLocale()
 
   return (
     <Section className='pb-16 pt-0'>
@@ -63,10 +64,10 @@ export const Footer = () => {
         legalLinks={(
           <>
             <li>
-              <Link href='/sign-up'>{t('terms_of_service')}</Link>
+              <Link href={`/${locale}/terms`}>{t('terms_of_service')}</Link>
             </li>
             <li>
-              <Link href='/sign-up'>{t('privacy_policy')}</Link>
+              <Link href={`/${locale}/privacy`}>{t('privacy_policy')}</Link>
             </li>
           </>
         )}
