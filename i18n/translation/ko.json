@@ -15,6 +15,9 @@
     "DocumentsPage": {
         "title": "Documents"
     },
+    "BlogPage": {
+        "title": "Blogs"
+    },
     "PurchasePage": {
         "title": "Purchase"
     },
@@ -30,6 +33,7 @@
     "Navbar": {
         "about": "소개",
         "docs": "문서",
+        "blog": "블로그",
         "purchase": "구매하기",
         "support": "기술지원",
         "sign_in": "로그인",

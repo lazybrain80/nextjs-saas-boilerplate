@@ -14,6 +14,10 @@ export const getLandingNavbarConfig = async (): Promise<LandingConfig>  => {
         href: `/docs`,
       },
       {
+        title: t("blog"),
+        href: `/blogs`,
+      },
+      {
         title: t("purchase"),
         href: `/purchase`,
       },

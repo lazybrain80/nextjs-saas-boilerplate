@@ -18,6 +18,9 @@
     "DocumentsPage": {
         "title": "Documents"
     },
+    "BlogPage": {
+        "title": "Blogs"
+    },
     "ProfilePage": {
         "title": "Profile"
     },
@@ -30,6 +33,7 @@
     "Navbar": {
         "about": "About",
         "docs": "Docs",
+        "blog": "Blog",
         "purchase": "Purchase",
         "support": "Support",
         "sign_in": "Sign In",
