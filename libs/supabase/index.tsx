@@ -1,1 +1,1 @@
-export { updateSession } from './middleware'
+export { updatePageSession, updateAPISession } from './middleware'
