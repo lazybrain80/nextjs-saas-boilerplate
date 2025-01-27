@@ -15,6 +15,10 @@ export interface DocsConfig {
   sidebarNav: SidebarNavItem[]
 }
 
+export interface UserMenuConfig {
+  sidebarNav: SidebarNavItem[]
+}
+
 export type SidebarNavItem = {
   id: string
   title: string

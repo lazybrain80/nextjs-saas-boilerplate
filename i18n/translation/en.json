@@ -24,6 +24,9 @@
     "ProfilePage": {
         "title": "Profile"
     },
+    "DashboardPage": {
+        "title": "Dashboard"
+    },
     "TermsOfServicePage": {
         "title": "Terms of service"
     },
@@ -38,6 +41,11 @@
         "support": "Support",
         "sign_in": "Sign In",
         "sign_up": "Sign Up",
+        "sign_out": "Sign Out"
+    },
+    "UserSideNav": {
+        "dashboard": "Dashboard",
+        "profile": "Profile",
         "sign_out": "Sign Out"
     },
     "Main": {

@@ -24,6 +24,9 @@
     "ProfilePage": {
         "title": "Profile"
     },
+    "DashboardPage": {
+        "title": "Dashboard"
+    },
     "TermsOfServicePage": {
         "title": "Terms of service"
     },
@@ -38,6 +41,11 @@
         "support": "기술지원",
         "sign_in": "로그인",
         "sign_up": "가입하기",
+        "sign_out": "로그아웃"
+    },
+    "UserSideNav": {
+        "dashboard": "대시보드",
+        "profile": "프로필",
         "sign_out": "로그아웃"
     },
     "Main": {

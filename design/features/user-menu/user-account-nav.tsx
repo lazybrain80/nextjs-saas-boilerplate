@@ -18,7 +18,7 @@ export function UserAccountNav() {
 
   const locale = useLocale()
   const router = useRouter()
-  const t = useTranslations('Navbar')
+  const t = useTranslations('UserSideNav')
 
   const authClient = useAuthClient()
   const supaClient = authClient?.supaClient
@@ -56,13 +56,10 @@ export function UserAccountNav() {
         </div>
         <DropdownMenuSeparator />
         <DropdownMenuItem asChild>
-          <Link href={`/${locale}/about`}>{t('about')}</Link>
+          <Link href={`/${locale}/dashboard`}>{t('dashboard')}</Link>
         </DropdownMenuItem>
         <DropdownMenuItem asChild>
-          <Link href={`/${locale}/purchase`}>{t('purchase')}</Link>
-        </DropdownMenuItem>
-        <DropdownMenuItem asChild>
-          <Link href={`/${locale}/docs`}>{t('docs')}</Link>
+          <Link href={`/${locale}/profile`}>{t('profile')}</Link>
         </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem

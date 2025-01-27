@@ -3,8 +3,7 @@
 import React, { useState } from 'react'
 import Link from 'next/link'
 import { useTranslations, useLocale } from 'next-intl'
-import { useRouter } from 'next/navigation'
-import { LocaleSwitcher, Logo, UserAccountNav } from '@/design/components'
+import { LocaleSwitcher, Logo } from '@/design/components'
 import {
   buttonVariants,
   NavigationMenu,
@@ -13,6 +12,7 @@ import {
   NavigationMenuLink
 } from '@/design/components/ui'
 import { Section } from '@/design/components'
+import { UserAccountNav } from '@/design/features/user-menu'
 import { CenteredMenu, MobileNavbar } from '@/design/features/landing'
 import { cn } from '@/libs/utils'
 import { useScroll } from '@/hooks/use-scroll'
@@ -52,12 +52,10 @@ export const Navbar = ({
     items: MainNavItem[]
 }) => {
   const locale = useLocale()
-  const router = useRouter()
   const t = useTranslations('Navbar')
   const scrolled = useScroll(50)
 
   const authClient = useAuthClient()
-  const supaClient = authClient?.supaClient
   const supaUser = authClient?.supaUser
 
   const [showMobileMenu, setShowMobileMenu] = useState<boolean>(false)
@@ -91,14 +89,6 @@ export const Navbar = ({
   }
   const handleMenuItemClick = () => {
     toggleMenu()
-  }
-
-  async function signOut() {
-    if (supaClient) {
-      const { error } = await supaClient.auth.signOut()
-      console.log('signOut error:', error)
-      router.refresh()
-    }
   }
 
   return (
