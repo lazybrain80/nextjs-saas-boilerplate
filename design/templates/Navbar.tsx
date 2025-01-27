@@ -4,14 +4,13 @@ import React, { useState } from 'react'
 import Link from 'next/link'
 import { useTranslations, useLocale } from 'next-intl'
 import { useRouter } from 'next/navigation'
-import { LocaleSwitcher, Logo } from '@/design/components'
+import { LocaleSwitcher, Logo, UserAccountNav } from '@/design/components'
 import {
   buttonVariants,
   NavigationMenu,
   NavigationMenuList,
   NavigationMenuItem,
-  NavigationMenuLink,
-  Button
+  NavigationMenuLink
 } from '@/design/components/ui'
 import { Section } from '@/design/components'
 import { CenteredMenu, MobileNavbar } from '@/design/features/landing'
@@ -83,13 +82,7 @@ export const Navbar = ({
       <LocaleSwitcher />
     </li>
     <li className='ml-1 mr-2.5'>
-      <Link
-        className={buttonVariants()}
-        href={`/${locale}`}
-        onClick={signOut}
-      >
-        {t('sign_out')}
-      </Link>
+      <UserAccountNav />
     </li>
   </>)
   
@@ -103,6 +96,7 @@ export const Navbar = ({
   async function signOut() {
     if (supaClient) {
       const { error } = await supaClient.auth.signOut()
+      console.log('signOut error:', error)
       router.refresh()
     }
   }
