@@ -4,18 +4,23 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { cn } from '@/utils/cn'
 import type { SidebarNavItem } from '@/types'
+import * as Icons from '@/design/icons'
 
-export interface DocsSidebarNavProps {
+export interface SidebarNavProps {
   items: SidebarNavItem[]
 }
 
-export function DocsSidebarNav({ items }: DocsSidebarNavProps) {
-  const pathname = usePathname()
+const iconMap = new Map([
+  ["home", Icons.Home],
+]);
 
+export function SidebarNav({ items }: SidebarNavProps) {
+  const pathname = usePathname()
   return items.length ? (
     <div className='w-full'>
-      {items.map((item) => (
-        <div key={item.href + item.title} className={cn('pb-8')}>
+      {items.map((item) => {
+        const Icon = item.icon ? iconMap.get(item.icon) ?? Icons.Home : Icons.ArrowRight
+        return (<div key={item.href + item.title} className={cn('mb-1')}>
           <Link
             key={item.title + item.href}
             href={item.href? item.href : ''}
@@ -26,28 +31,36 @@ export function DocsSidebarNav({ items }: DocsSidebarNavProps) {
               },
             )}
           >
-            <h4 className='mb-1 rounded-md px-2 py-1 text-sm font-bold '>
-              {item.title}
-            </h4>
+            <span
+              className={cn(
+                "group flex items-center rounded-md px-3 py-2 text-sm font-medium",
+                item.disabled && "cursor-not-allowed opacity-80",
+              )}
+            >
+              <Icon className='w-4 h-4 mr-2' />
+              <span className='rounded-md px-2 py-1 text-sm font-bold '>
+                {item.title}
+              </span>
+            </span>
           </Link>
           {item.items ? (
-            <DocsSidebarNavItems items={item.items} pathname={pathname} />
+            <SidebarNavItems items={item.items} pathname={pathname} />
           ) : null}
-        </div>
-      ))}
+        </div>)
+    })}
     </div>
   ) : null
 }
 
-interface DocsSidebarNavItemsProps {
+interface SidebarNavItemsProps {
   items: SidebarNavItem[]
   pathname: string | null
 }
 
-export function DocsSidebarNavItems({
+export function SidebarNavItems({
   items,
   pathname,
-}: DocsSidebarNavItemsProps) {
+}: SidebarNavItemsProps) {
   return items?.length ? (
     <div className='grid grid-flow-row auto-rows-max text-sm'>
       {items.map((item) =>

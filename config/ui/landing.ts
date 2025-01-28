@@ -1,7 +1,7 @@
 import {getTranslations} from 'next-intl/server';
-import { LandingConfig } from '@/types';
+import { PageNavConfig } from '@/types';
 
-export const getLandingNavbarConfig = async (): Promise<LandingConfig>  => {
+export const getLandingNavbarConfig = async (): Promise<PageNavConfig>  => {
   const t = await getTranslations('Navbar');
   return {
     mainNav: [
@@ -22,5 +22,6 @@ export const getLandingNavbarConfig = async (): Promise<LandingConfig>  => {
         href: `/purchase`,
       },
     ],
+    sidebarNav: [],
   };
 };

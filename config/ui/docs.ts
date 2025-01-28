@@ -1,6 +1,6 @@
-import type { DocsConfig } from "@/types";
+import type { PageNavConfig } from "@/types";
 
-export const getDocsConfig = (local: string): DocsConfig => {
+export const getDocsConfig = (local: string): PageNavConfig => {
   return {
     mainNav: [
       {

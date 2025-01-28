@@ -10,12 +10,8 @@ export interface NavItem {
 
 export type MainNavItem = NavItem
 
-export interface DocsConfig {
+export interface PageNavConfig {
   mainNav: MainNavItem[]
-  sidebarNav: SidebarNavItem[]
-}
-
-export interface UserMenuConfig {
   sidebarNav: SidebarNavItem[]
 }
 
@@ -24,7 +20,7 @@ export type SidebarNavItem = {
   title: string
   disabled?: boolean
   external?: boolean
-  icon?: Lucide.LucideIcon
+  icon?: string
 } & (
   | {
       href: string
@@ -35,21 +31,6 @@ export type SidebarNavItem = {
       items: NavLink[]
     }
 )
-
-
-export interface DocsConfig {
-  mainNav: MainNavItem[]
-  sidebarNav: SidebarNavItem[]
-}
-
-export interface LandingConfig {
-  mainNav: MainNavItem[]
-}
-
-export interface DashboardConfig {
-  mainNav: MainNavItem[]
-  sidebarNav: SidebarNavItem[]
-}
 
 export interface SubscriptionPlan {
   title?: string
