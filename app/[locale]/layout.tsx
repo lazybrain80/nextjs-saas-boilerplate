@@ -40,7 +40,7 @@ export default async function RootLayout({
     <html lang={locale} suppressHydrationWarning>
       <body className={cn(
           'font-sans antialiased',
-          'm-auto flex h-full w-full flex-col'
+          'm-auto flex h-full w-full flex-col no-scrollbar',
         )}
       >
         <ThemeProvider

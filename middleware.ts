@@ -19,14 +19,16 @@ const noRedirectRoute = [
 ]
 
 const publicRoute = [
+    '^/$',
+    '^/\\w{2}$', // root with locale
+    '/(\\w{2}/)?about(.*)',
+    '/(\\w{2}/)?docs(.*)',
+    '/(\\w{2}/)?blogs(.*)',
+    '/(\\w{2}/)?purchase(.*)',
     '/(\\w{2}/)?signin(.*)',
     '/(\\w{2}/)?signup(.*)',
     '/(\\w{2}/)?terms(.*)',
     '/(\\w{2}/)?privacy(.*)',
-    '/(\\w{2}/)?docs(.*)',
-    '/(\\w{2}/)?blogs(.*)',
-    '/(\\w{2}/)?purchase(.*)',
-    '^/\\w{2}$', // root with locale
 ]
 
 function isProtectedApi(request: NextRequest): boolean {
