@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useLayoutEffect, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
@@ -8,28 +8,36 @@ import { cn } from '@/utils/cn'
 import type { SidebarNavItem } from '@/types'
 import * as Icons from '@/design/icons'
 import { appName } from '@/config/site'
+import { useMediaQuery } from '@/hooks/use-media-query'
 
 export interface SidebarNavProps {
   items: SidebarNavItem[]
 }
 
 const iconMap = new Map([
-  ["home", Icons.Home],
-]);
+  ['home', Icons.Home],
+])
 
 export function SidebarNav({ items }: SidebarNavProps) {
   const pathname = usePathname()
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false)
+  const { isMobile } = useMediaQuery()
+
+  useLayoutEffect(() => {
+    if (isMobile) {
+      setIsSidebarOpen(false)
+    }
+  }, [isSidebarOpen, isMobile])
 
   return items.length ? (
-    <div className={`${isSidebarOpen ? "w-64" : "w-20"} h-full bg-slate-100 shadow-lg transition-all duration-300 px-3`}>
-      <div className="flex h-full flex-col">
+    <div className={`(${(isSidebarOpen && !isMobile) ? 'w-64' : 'w-20'} h-full bg-slate-100 shadow-lg transition-all duration-300 px-3`}>
+      <div className='flex h-full flex-col'>
         <div className={cn('flex items-center py-2 justify-between',
                             isSidebarOpen && 'px-2',
                             !isSidebarOpen && 'justify-center'
                           )}>
           {isSidebarOpen && (
-            <div className="flex items-center space-x-2">
+            <div className='flex items-center space-x-2'>
               <Image
                 className='mr-1'
                 src='/icon_logo.svg'
@@ -42,11 +50,11 @@ export function SidebarNav({ items }: SidebarNavProps) {
               <span className='font-alt text-xl text-black'>{appName}</span>
             </div>
           )}
-          <button className="px-2 py-2 rounded hover:bg-gray-100" onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
+          {!isMobile && (<button className='px-2 py-2 rounded hover:bg-gray-100' onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
             {isSidebarOpen? <Icons.ChevronLeft size={24} /> : <Icons.ChevronRight size={24} />}
-          </button>
+          </button>)}
         </div>
-        <nav className="flex-1 space-y-1 px-2 py-4">
+        <nav className='flex-1 space-y-1 px-2 py-4'>
           {items.map((item) => {
             const Icon = item.icon ? iconMap.get(item.icon) ?? Icons.Home : Icons.ArrowRight
             return (
@@ -63,8 +71,8 @@ export function SidebarNav({ items }: SidebarNavProps) {
               >
                 <span
                   className={cn(
-                    "group flex items-center  rounded-md py-2 text-sm font-medium",
-                    item.disabled && "cursor-not-allowed opacity-80",
+                    'group flex items-center  rounded-md py-2 text-sm font-medium',
+                    item.disabled && 'cursor-not-allowed opacity-80',
                     !isSidebarOpen && 'm-auto'
                   )}
                 >
@@ -79,9 +87,9 @@ export function SidebarNav({ items }: SidebarNavProps) {
           })}
         </nav>
         {/* Footer */}
-        <div className="border-t border-gray-700 p-4">
+        <div className='border-t border-gray-700 p-4'>
           {isSidebarOpen && (
-            <div className="text-xs text-gray-400">
+            <div className='text-xs text-gray-400'>
               <p>Version 0.0.0</p>
               <p>© 2025 LaunchX</p>
             </div>
