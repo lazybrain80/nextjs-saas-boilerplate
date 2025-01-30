@@ -30,6 +30,7 @@ import {
   CardContent
 } from '@/design/components/ui'
 import { ShowProperty } from './property-dialog'
+import { UserAccountNav } from '@/design/features/user-menu'
 
 const DashboardPage = () => {
   const t = useTranslations('DashboardPage')
@@ -71,6 +72,15 @@ const DashboardPage = () => {
 
   return (
     <div className='flex-1 overflow-auto'>
+      {/* Header */}
+      <header className="bg-white shadow-sm flex items-center justify-between p-4">
+        <div>
+          <h1 className="text-2xl font-semibold text-gray-800">Dashboard</h1>
+        </div>
+        <div className="flex items-center gap-4">
+          <UserAccountNav />
+        </div>
+      </header>
       <div className='p-8'>
         {/* Overview Cards */}
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8'>
