@@ -24,7 +24,14 @@ export { AspectRatio } from './aspect-ratio'
 export { Avatar, AvatarImage, AvatarFallback } from './avatar'
 export { Button, buttonVariants } from './button'
 export { badgeVariants } from './badgeVariants'
-export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent } from './card'
+export {
+    Card,
+    CardHeader,
+    CardFooter,
+    CardTitle,
+    CardDescription,
+    CardContent
+} from './card'
 export {
     navigationMenuTriggerStyle,
     NavigationMenu,
@@ -42,4 +49,34 @@ export { MdxCard } from './mdxCard'
 export { Label } from './label'
 export { Input } from './input'
 export { toast } from './use-toast'
-export { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from './dropdown-menu'
+export {
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuItem,
+    DropdownMenuSeparator,
+    DropdownMenuTrigger
+} from './dropdown-menu'
+export {
+    Table,
+    TableHeader,
+    TableBody,
+    TableFooter,
+    TableHead,
+    TableRow,
+    TableCell,
+    TableCaption,
+} from './table'
+export {
+    Dialog,
+    DialogPortal,
+    DialogOverlay,
+    DialogClose,
+    DialogTrigger,
+    DialogContent,
+    DialogHeader,
+    DialogFooter,
+    DialogTitle,
+    DialogDescription,
+} from './dialog'
+
+

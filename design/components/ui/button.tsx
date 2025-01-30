@@ -21,7 +21,7 @@ const buttonVariants = cva(
           'border border-input bg-transparent text-neutral-600 cursor-not-allowed',
       },
       size: {
-        default: 'h-10 py-2 px-4',
+        default: 'h-10 py-2 px-2',
         sm: 'h-9 px-3',
         lg: 'h-11 px-8',
         icon: 'size-10',
