@@ -22,7 +22,7 @@ export function SidebarNav({ items }: SidebarNavProps) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
   return items.length ? (
-    <div className={`${isSidebarOpen ? "w-full" : "w-20"} h-full bg-white shadow-lg transition-all duration-300 px-3`}>
+    <div className={`${isSidebarOpen ? "w-64" : "w-20"} h-full bg-white shadow-lg transition-all duration-300 px-3`}>
       <div className="flex h-full flex-col">
         <div className={cn('flex items-center py-2 justify-between',
                             isSidebarOpen && 'px-2',

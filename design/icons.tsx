@@ -58,7 +58,13 @@ export const Eye = Lucide.Eye
 export const Edit = Lucide.Edit
 export const Edit2 = Lucide.Edit2
 export const Trash2 = Lucide.Trash2
-
+export const Building = Lucide.Building
+export const Building2 = Lucide.Building2
+export const BuildingIcon = Lucide.BuildingIcon
+export const Building2Icon = Lucide.Building2Icon
+export const DollarSign = Lucide.DollarSign
+export const PieChart = Lucide.PieChart
+export const Users = Lucide.Users
 
 export const System: Icon = (props) => (
   <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' {...props}>

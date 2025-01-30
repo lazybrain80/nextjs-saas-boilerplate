@@ -24,6 +24,10 @@ import {
   TableRow,
   TableCell,
   Button,
+  Card,
+  CardHeader,
+  CardTitle,
+  CardContent
 } from '@/design/components/ui'
 import { ShowProperty } from './property-dialog'
 
@@ -68,10 +72,33 @@ const DashboardPage = () => {
   return (
     <div className='flex-1 overflow-auto'>
       <div className='p-8'>
+        {/* Overview Cards */}
+        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8'>
+          {[
+            { title: t('total_properties'), value: '156', icon: Icons.Building },
+            { title: t('properties_sold'), value: '43', icon: Icons.DollarSign },
+            { title: t('total_revenue'), value: '$2.4M', icon: Icons.PieChart },
+            { title: t('conversion_rate'), value: '68%', icon: Icons.Users }
+          ].map((card, index) => (
+            <Card key={index}>
+              <CardHeader>
+                <CardTitle>{card.title}</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className='flex items-center justify-between'>
+                  <div>
+                    <p className='text-2xl font-bold mt-2'>{card.value}</p>
+                  </div>
+                  <card.icon size={24} className='text-blue-600' />
+                </div>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
         {/* Charts Section */}
         <div className='grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8'>
           <div className='bg-white p-6 rounded-lg shadow'>
-            <h3 className='text-lg font-semibold mb-4'>Sales Performance</h3>
+            <h3 className='text-lg font-semibold mb-4'>{t('sales_performance')}</h3>
             <ResponsiveContainer width='100%' height={300}>
               <LineChart data={mockSalesData}>
                 <CartesianGrid strokeDasharray='3 3' />
@@ -85,7 +112,7 @@ const DashboardPage = () => {
           </div>
 
           <div className='bg-white p-6 rounded-lg shadow'>
-            <h3 className='text-lg font-semibold mb-4'>Property Types</h3>
+            <h3 className='text-lg font-semibold mb-4'>{t('property_types')}</h3>
             <ResponsiveContainer width='100%' height={300}>
               <PieChart>
                 <Pie
@@ -108,7 +135,7 @@ const DashboardPage = () => {
         <div className='bg-white rounded-lg shadow'>
           <div className='p-6 border-b'>
             <div className='flex justify-between items-center'>
-              <h3 className='text-lg font-semibold'>Property Listings</h3>
+              <h3 className='text-lg font-semibold'>{t('property_listings')}</h3>
               <button
                 onClick={() => setShowAddPropertyModal(true)}
                 className='bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700'
@@ -121,11 +148,11 @@ const DashboardPage = () => {
             <Table className='w-full'>
               <TableHeader className='bg-gray-50'>
                 <TableRow>
-                  <TableHead className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase'>Property</TableHead>
-                  <TableHead className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase'>Location</TableHead>
-                  <TableHead className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase'>Price</TableHead>
-                  <TableHead className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase'>Status</TableHead>
-                  <TableHead className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase'>Actions</TableHead>
+                  <TableHead className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase'>{t('property')}</TableHead>
+                  <TableHead className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase'>{t('location')}</TableHead>
+                  <TableHead className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase'>{t('price')}</TableHead>
+                  <TableHead className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase'>{t('status')}</TableHead>
+                  <TableHead className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase'>{t('actions')}</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody className='divide-y divide-gray-200'>

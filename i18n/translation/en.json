@@ -25,7 +25,19 @@
         "title": "Profile"
     },
     "DashboardPage": {
-        "title": "Dashboard"
+        "title": "Dashboard",
+        "total_properties": "Total Properties",
+        "properties_sold": "Properties Sold",
+        "total_revenue": "Total Revenue",
+        "conversion_rate": "Conversion Rate",
+        "sales_performance": "Sales Performance",
+        "property_types": "Property Types",
+        "property_listings": "Property Listings",
+        "property": "Property",
+        "location": "Location",
+        "price": "Price",
+        "status": "Status",
+        "actions": "Actions"
     },
     "TermsOfServicePage": {
         "title": "Terms of service"
