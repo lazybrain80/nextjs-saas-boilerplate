@@ -30,10 +30,10 @@ export function SidebarNav({ items }: SidebarNavProps) {
   }, [isSidebarOpen, isMobile])
 
   return items.length ? (
-    <div className={`(${(isSidebarOpen && !isMobile) ? 'w-64' : 'w-20'} h-full bg-slate-100 shadow-lg transition-all duration-300 px-3`}>
-      <div className='flex h-full flex-col'>
-        <div className={cn('flex items-center py-2 justify-between',
-                            isSidebarOpen && 'px-2',
+    <div className={`${(isSidebarOpen && !isMobile) ? 'w-64' : 'w-24'} bg-slate-100 transition-all duration-300 px-3 py-8`}>
+      <div className='flex flex-col h-full bg-white rounded-2xl shadow-lg'>
+        <div className={cn('flex items-center py-4 justify-between',
+                            isSidebarOpen && 'px-4',
                             !isSidebarOpen && 'justify-center'
                           )}>
           {isSidebarOpen && (

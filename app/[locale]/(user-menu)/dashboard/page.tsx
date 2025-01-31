@@ -71,17 +71,19 @@ const DashboardPage = () => {
   ]
 
   return (
-    <div className='flex-1 overflow-auto'>
-      {/* Header */}
-      <header className="bg-white shadow-sm flex items-center justify-between p-4">
-        <div>
-          <h1 className="text-2xl font-semibold text-gray-800">Dashboard</h1>
-        </div>
-        <div className="flex items-center gap-4">
-          <UserAccountNav />
-        </div>
-      </header>
+    <div className='flex-1 overflow-auto bg-slate-100'>
       <div className='p-8'>
+        {/* Header */}
+        <Card key={'dashboard-header'} className='rounded-2xl shadow-sm  mb-8'>
+          <CardContent className="bg-white flex items-center justify-between p-4">
+            <div>
+              <h1 className="text-2xl font-semibold text-gray-800">Dashboard</h1>
+            </div>
+            <div className="flex items-center gap-4">
+              <UserAccountNav />
+            </div>
+          </CardContent>
+        </Card>
         {/* Overview Cards */}
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8'>
           {[
@@ -90,7 +92,7 @@ const DashboardPage = () => {
             { title: t('total_revenue'), value: '$2.4M', icon: Icons.PieChart },
             { title: t('conversion_rate'), value: '68%', icon: Icons.Users }
           ].map((card, index) => (
-            <Card key={index}>
+            <Card key={index} className='rounded-2xl shadow-sm'>
               <CardHeader>
                 <CardTitle>{card.title}</CardTitle>
               </CardHeader>
@@ -107,7 +109,7 @@ const DashboardPage = () => {
         </div>
         {/* Charts Section */}
         <div className='grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8'>
-          <div className='bg-white p-6 rounded-lg shadow'>
+          <div className='bg-white p-6 rounded-2xl shadow-sm'>
             <h3 className='text-lg font-semibold mb-4'>{t('sales_performance')}</h3>
             <ResponsiveContainer width='100%' height={300}>
               <LineChart data={mockSalesData}>
@@ -121,7 +123,7 @@ const DashboardPage = () => {
             </ResponsiveContainer>
           </div>
 
-          <div className='bg-white p-6 rounded-lg shadow'>
+          <div className='bg-white p-6 rounded-2xl shadow-sm'>
             <h3 className='text-lg font-semibold mb-4'>{t('property_types')}</h3>
             <ResponsiveContainer width='100%' height={300}>
               <PieChart>
@@ -142,7 +144,7 @@ const DashboardPage = () => {
         </div>
 
         {/* Properties Table */}
-        <div className='bg-white rounded-lg shadow'>
+        <div className='bg-white rounded-2xl shadow-sm'>
           <div className='p-6 border-b'>
             <div className='flex justify-between items-center'>
               <h3 className='text-lg font-semibold'>{t('property_listings')}</h3>
