@@ -29,6 +29,7 @@ import {
   CardTitle,
   CardContent
 } from '@/design/components/ui'
+import { LocaleSwitcher } from '@/design/components'
 import { ShowProperty } from './property-dialog'
 import { UserAccountNav } from '@/design/features/user-menu'
 
@@ -77,9 +78,10 @@ const DashboardPage = () => {
         <Card key={'dashboard-header'} className='rounded-2xl shadow-sm  mb-8'>
           <CardContent className="bg-white flex items-center justify-between p-4">
             <div>
-              <h1 className="text-2xl font-semibold text-gray-800">Dashboard</h1>
+              <h1 className="ml-4 text-2xl font-semibold text-gray-800">Dashboard</h1>
             </div>
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-4 mr-4">
+              <LocaleSwitcher />
               <UserAccountNav />
             </div>
           </CardContent>
