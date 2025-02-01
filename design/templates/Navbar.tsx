@@ -12,7 +12,7 @@ import {
   NavigationMenuLink
 } from '@/design/components/ui'
 import { Section } from '@/design/components'
-import { UserAccountNav } from '@/design/features/user-menu'
+import { UserAccountNav } from '@/design/features/user-board'
 import { CenteredMenu, MobileNavbar } from '@/design/features/landing'
 import { cn } from '@/libs/utils'
 import { useScroll } from '@/hooks/use-scroll'

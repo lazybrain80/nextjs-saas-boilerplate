@@ -1,7 +1,7 @@
 import { getTranslations, getLocale } from 'next-intl/server';
 import type { PageNavConfig } from "@/types";
 
-export const getUserMenuConfig = async (): Promise<PageNavConfig> => {
+export const getUserBoardConfig = async (): Promise<PageNavConfig> => {
   const t = await getTranslations('UserSideNav');
   const locale = await getLocale()
   return {

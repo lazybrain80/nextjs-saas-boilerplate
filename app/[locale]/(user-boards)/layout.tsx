@@ -1,6 +1,6 @@
 import '@/styles/globals.css'
-import { SidebarNav } from '@/design/features/user-menu'
-import { getUserMenuConfig } from '@/config/ui/user-menu'
+import { SidebarNav } from '@/design/features/user-board'
+import { getUserBoardConfig } from '@/config/ui/user-board'
 
 type DashboardLayoutProps = Readonly<{
   children: React.ReactNode
@@ -9,7 +9,7 @@ type DashboardLayoutProps = Readonly<{
 export default async function DashboardLayout({
   children
 }: DashboardLayoutProps ) {
-  const navMenu = await getUserMenuConfig()
+  const navMenu = await getUserBoardConfig()
   return (
     <>
       <main className='flex h-screen'>

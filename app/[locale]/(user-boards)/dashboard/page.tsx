@@ -31,7 +31,7 @@ import {
 } from '@/design/components/ui'
 import { LocaleSwitcher } from '@/design/components'
 import { ShowProperty } from './property-dialog'
-import { UserAccountNav } from '@/design/features/user-menu'
+import { UserAccountNav } from '@/design/features/user-board'
 
 const DashboardPage = () => {
   const t = useTranslations('DashboardPage')
