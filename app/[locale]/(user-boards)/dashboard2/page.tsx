@@ -92,7 +92,7 @@ const DashboardPage = () => {
     <div className='flex-1 overflow-auto bg-slate-100'>
       <div className='p-8'>
         {/* Header */}
-        <Card key={'dashboard-header'} className='rounded-2xl shadow-sm  mb-8'>
+        <Card key={'dashboard-header'} className='rounded-2xl shadow-lg  mb-8'>
           <CardContent className="bg-white flex items-center justify-between p-4">
             <div>
               <h1 className="ml-4 text-2xl font-semibold text-gray-800">Dashboard</h1>
@@ -105,61 +105,61 @@ const DashboardPage = () => {
         </Card>
         {/* Overview Cards */}
         <div className='grid grid-cols-6 gap-6 mb-6'>
-          <Card key={0} className='col-span-1 rounded-2xl shadow-sm'>
+          <Card key={0} className='col-span-1 rounded-2xl shadow-lg bg-[url(/images/dashboard/blue-wave.png)]'>
             <CardHeader>
               <CardTitle
                 className='m-2'
               >
                 <Icons.DollarSignCircle
-                  className='h-8 w-8'
+                  className='h-8 w-8 text-white'
                 />
               </CardTitle>
             </CardHeader>
             <CardContent>
               <div className='ml-2'>
-                <span className='text-xl font-bold mr-1'>34534</span>
-                <span className='text-sm text-gray-500'>+12%</span>
+                <span className='text-xl text-white font-bold mr-1'>34534</span>
+                <span className='text-sm text-white'>+12%</span>
               </div>
-              <div className='ml-2'>Sales</div>
+              <div className='ml-2 text-white'>Sales</div>
             </CardContent>
           </Card>
-          <Card key={1} className='col-span-1 rounded-2xl shadow-sm'>
+          <Card key={1} className='col-span-1 rounded-2xl shadow-lg bg-[url(/images/dashboard/blue-wave.png)]'>
             <CardHeader>
               <CardTitle
                 className='m-2'
               >
                 <Icons.CircleCheckBig
-                  className='h-8 w-8'
+                  className='h-8 w-8 text-white'
                 />
               </CardTitle>
             </CardHeader>
             <CardContent>
               <div className='ml-2'>
-                <span className='text-xl font-bold mr-1'>2341</span>
-                <span className='text-sm text-gray-500'>+23%</span>
+                <span className='text-xl text-white font-bold mr-1'>2341</span>
+                <span className='text-sm text-white'>+23%</span>
               </div>
-              <div className='ml-2'>Refunds</div>
+              <div className='ml-2 text-white'>Refunds</div>
             </CardContent>
           </Card>
-          <Card key={2} className='col-span-1 rounded-2xl shadow-sm'>
+          <Card key={2} className='col-span-1 rounded-2xl shadow-lg bg-[url(/images/dashboard/blue-wave.png)]'>
             <CardHeader>
               <CardTitle
                 className='m-2'
               >
                 <Icons.Crown
-                  className='h-8 w-8'
+                  className='h-8 w-8 text-white'
                 />
               </CardTitle>
             </CardHeader>
             <CardContent>
               <div className='ml-2'>
-                <span className='text-xl font-bold mr-1'>445.8</span>
-                <span className='text-sm text-gray-500'>-2%</span>
+                <span className='text-xl text-white font-bold mr-1'>445.8</span>
+                <span className='text-sm text-white'>-2%</span>
               </div>
-              <div className='ml-2'>Earnings</div>
+              <div className='ml-2 text-white'>Earnings</div>
             </CardContent>
           </Card>
-          <Card key={3} className='col-span-3 rounded-2xl shadow-sm'>
+          <Card key={3} className='col-span-3 rounded-2xl shadow-lg bg-[url(/images/dashboard/work-user.png)] bg-cover bg-right bg-no-repeat'>
             <CardHeader
               className='mt-2 ml-6'
             >
@@ -182,7 +182,7 @@ const DashboardPage = () => {
           </Card>
         </div>
         <div className='grid grid-flow-col grid-rows-6 grid-cols-4 gap-6'>
-          <Card key={0} className='row-span-3 col-span-1 rounded-2xl shadow-sm'>
+          <Card key={0} className='row-span-3 col-span-1 rounded-2xl shadow-lg'>
             <CardHeader>
               <div className='flex items-center justify-between'>
                 <div>
@@ -256,7 +256,7 @@ const DashboardPage = () => {
               </div>
             </CardContent>
           </Card>
-          <Card key={1} className='row-span-3 rounded-2xl shadow-sm'>
+          <Card key={1} className='row-span-3 rounded-2xl shadow-lg'>
             <CardHeader>
               <CardTitle>{'1'}</CardTitle>
             </CardHeader>
@@ -269,7 +269,7 @@ const DashboardPage = () => {
               </div>
             </CardContent>
           </Card>
-          <Card key={2} className='row-span-6 col-span-2 rounded-2xl shadow-sm'>
+          <Card key={2} className='row-span-6 col-span-2 rounded-2xl shadow-lg'>
             <CardHeader>
               <CardTitle>{'2'}</CardTitle>
             </CardHeader>
@@ -297,7 +297,7 @@ const DashboardPage = () => {
               </ResponsiveContainer>
             </CardContent>
           </Card>
-          <Card key={3} className='row-span-3 col-span-1 rounded-2xl shadow-sm'>
+          <Card key={3} className='row-span-3 col-span-1 rounded-2xl shadow-lg'>
             <CardHeader>
               <CardTitle>{'3'}</CardTitle>
             </CardHeader>
@@ -310,7 +310,7 @@ const DashboardPage = () => {
               </div>
             </CardContent>
           </Card>
-          <Card key={4} className='row-span-3 col-span-1 rounded-2xl shadow-sm'>
+          <Card key={4} className='row-span-3 col-span-1 rounded-2xl shadow-lg'>
             <CardHeader>
               <CardTitle>{'4'}</CardTitle>
             </CardHeader>
