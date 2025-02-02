@@ -9,6 +9,12 @@ import type { SidebarNavItem } from '@/types'
 import * as Icons from '@/design/icons'
 import { appName } from '@/config/site'
 import { useMediaQuery } from '@/hooks/use-media-query'
+import {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent
+} from '@/design/components/ui'
 
 export interface SidebarNavProps {
   items: SidebarNavItem[]
@@ -16,6 +22,14 @@ export interface SidebarNavProps {
 
 const iconMap = new Map([
   ['home', Icons.Home],
+  ['dashboard', Icons.LineChart ],
+  ['dashboard2', Icons.PieChart ],
+  ['page', Icons.Page ],
+  ['post', Icons.Post ],
+  ['laptop', Icons.Laptop ],
+  ['user', Icons.UserCircle ],
+  ['book', Icons.BookOpen],
+  ['cart', Icons.ShoppingCart],
 ])
 
 export function SidebarNav({ items }: SidebarNavProps) {
@@ -54,35 +68,33 @@ export function SidebarNav({ items }: SidebarNavProps) {
             {isSidebarOpen? <Icons.ChevronLeft size={24} /> : <Icons.ChevronRight size={24} />}
           </button>)}
         </div>
-        <nav className='flex-1 space-y-1 px-2 py-4'>
-          {items.map((item) => {
-            const Icon = item.icon ? iconMap.get(item.icon) ?? Icons.Home : Icons.ArrowRight
+        <nav className='flex-1 space-y-1 py-4'>
+          {items.map((item, index) => {
             return (
-            <div key={item.href + item.title} className={cn('mb-2')}>
-              <Link
-                key={item.title + item.href}
-                href={item.href? item.href : ''}
+            <div key={item.id} className={cn('mb-2')}>
+              <div
                 className={cn(
-                  'flex items-center w-full rounded-md hover:bg-slate-200',
-                  {
-                    'bg-muted': pathname === item.href,
-                  },
+                  'flex items-center',
+                  !isSidebarOpen && 'm-auto'
                 )}
               >
-                <span
-                  className={cn(
-                    'group flex items-center  rounded-md py-2 text-sm font-medium',
-                    item.disabled && 'cursor-not-allowed opacity-80',
-                    !isSidebarOpen && 'm-auto'
-                  )}
-                >
-                  <Icon className={cn(isSidebarOpen && 'mr-2')} />
-                  {isSidebarOpen &&
-                    <span className='rounded-md px-2 py-1 text-sm font-bold '>
-                      {item.title}
-                    </span>}
-                </span>
-              </Link>
+                {!isSidebarOpen && (
+                  <Icons.Ellipsis className='m-auto text-gray-700' />
+                )}
+                {isSidebarOpen &&
+                  <span className='px-6 py-2 text-sm text-gray-700'>
+                    {item.title}
+                  </span>}
+              </div>
+              
+              {item.items ? (
+                <SidebarNavItems
+                  id={item.title + index}
+                  items={item.items}
+                  pathname={pathname}
+                  sideExtended={isSidebarOpen}
+                />
+              ) : null}
             </div>)
           })}
         </nav>
@@ -100,3 +112,166 @@ export function SidebarNav({ items }: SidebarNavProps) {
     </div>
   ) : null
 }
+
+interface SidebarNavItemsProps {
+  id: string
+  items: SidebarNavItem[]
+  pathname: string | null
+  sideExtended: boolean
+}
+
+function SidebarNavItems({
+  id,
+  items,
+  pathname,
+  sideExtended
+}: SidebarNavItemsProps) {
+  return items?.length ? (
+    <div
+      key={id}
+      className='grid grid-flow-row auto-rows-max text-sm'
+    >
+      {items.map((item, index) =>
+        !item.disabled
+        ? (
+          item.items?.length
+          ? (
+            <SidebarMultiItems
+              key={item.title + index}
+              item={item}
+              pathname={pathname}
+              sideExtended={sideExtended}
+            />
+          )
+          : (
+            <SidebarSingleItem
+              key={item.title + index}
+              item={item}
+              pathname={pathname}
+              sideExtended={sideExtended}
+            />
+          )
+        )
+        : (
+          <span
+            key={item.title + item.href}
+            className='flex w-full cursor-not-allowed items-center rounded-md p-2 opacity-60'
+          >
+            {item.title}
+          </span>
+        ),
+      )}
+    </div>
+  ) : null
+}
+
+interface SidebarMultiItemsProps {
+  item: SidebarNavItem
+  pathname: string | null
+  sideExtended: boolean
+}
+
+function SidebarMultiItems({item, pathname, sideExtended}: SidebarMultiItemsProps) {
+  const Icon = item.icon ? iconMap.get(item.icon) ?? Icons.Home : Icons.ArrowRight
+  return item.items?.length
+  ?(
+    <Accordion
+      type="single"
+      defaultValue="item-1"
+      collapsible
+    >
+      <AccordionItem
+          key={item.id}
+          className="AccordionItem" value="item-1"
+        >
+          {sideExtended
+            ?(
+              <AccordionTrigger
+                className={cn(
+                  'flex items-center rounded-r-3xl hover:bg-slate-200 mb-2',
+                  sideExtended && 'w-[95%]',
+                )}
+              >
+                <div
+                  className={cn(
+                    'flex items-center px-4 py-2 text-sm font-medium',
+                    item.disabled && 'cursor-not-allowed opacity-80',
+                    !sideExtended && 'm-auto'
+                  )}
+                >
+                  <Icon className={cn(sideExtended && 'mr-2')} />
+                  {sideExtended &&
+                    <span className='text-lg'>
+                      {item.title}
+                    </span>}
+              </div>
+              </AccordionTrigger>
+            )
+            :(
+              <Icons.GripHorizontal className='m-auto text-gray-700' />
+            )
+          }
+          {item.items.map((item, index) =>(
+              <AccordionContent
+                key={item.title + index}
+              >
+                <SidebarSingleItem
+                  asSub
+                  item={item}
+                  pathname={pathname}
+                  sideExtended={sideExtended}
+                />
+              </AccordionContent>
+          ))}
+      </AccordionItem>
+    </Accordion>
+  )
+  : null
+}
+
+interface SidebarSingleItemProps {
+  item: SidebarNavItem
+  pathname: string | null
+  sideExtended: boolean
+  asSub?: boolean
+}
+
+function SidebarSingleItem({
+  item,
+  pathname,
+  sideExtended,
+  asSub = false
+}: SidebarSingleItemProps) {
+  const Icon = item.icon ? iconMap.get(item.icon) ?? Icons.Home : Icons.ArrowRight
+  return (
+    <div className={cn('mb-2')}>
+      <Link
+        key={item.title + item.href}
+        href={item.href? item.href : ''}
+        className={cn(
+          'flex items-center w-[95%] rounded-r-3xl hover:bg-slate-200',
+          {
+            'bg-muted': pathname === item.href,
+          },
+        )}
+      >
+        <div
+          className={cn(
+            'group flex items-center px-4 py-2 text-sm font-medium',
+            item.disabled && 'cursor-not-allowed opacity-80',
+            !sideExtended && 'm-auto',
+            (sideExtended && asSub) && ('ml-5 text-gray-500')
+          )}
+        >
+          <Icon className={cn(sideExtended && 'mr-2')} />
+          {sideExtended &&
+            <span className='px-2 py-1 text-lg'>
+              {item.title}
+            </span>}
+        </div>
+      </Link>
+    </div>
+)
+}
+
+

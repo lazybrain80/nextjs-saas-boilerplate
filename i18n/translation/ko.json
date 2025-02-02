@@ -57,6 +57,7 @@
     },
     "UserSideNav": {
         "dashboard": "대시보드",
+        "dashboard2": "대시보드2",
         "profile": "내 프로필",
         "sign_out": "로그아웃"
     },

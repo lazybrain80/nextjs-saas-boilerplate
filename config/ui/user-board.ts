@@ -8,15 +8,71 @@ export const getUserBoardConfig = async (): Promise<PageNavConfig> => {
     mainNav: [],
     sidebarNav: [
       {
-        id: "dashboard",
-        title: t('dashboard'),
-        href: `/${locale}/dashboard`,
-        icon: 'home',
+        id: 'home',
+        title: 'HOME',
+        items: [
+          {
+            id: 'dashboard1',
+            title: t('dashboard'),
+            href: `/${locale}/dashboard`,
+            icon: 'dashboard',
+          },
+          {
+            id: 'dashboard2',
+            title: t('dashboard2'),
+            href: `/${locale}/dashboard2`,
+            icon: 'dashboard2',
+          },
+          {
+            id: 'front-page',
+            title: 'Front pages',
+            icon: 'laptop',
+            items: [
+              {
+                id: 'home',
+                title: 'Home',
+                href: `/${locale}`,
+                icon: 'home',
+              },
+              {
+                id: 'about',
+                title: 'About',
+                href: `/${locale}/about`,
+                icon: 'page',
+              },
+              {
+                id: 'docs',
+                title: 'Docs',
+                href: `/${locale}/docs`,
+                icon: 'book',
+              },
+              {
+                id: 'blogs',
+                title: 'Blog',
+                href: `/${locale}/blogs`,
+                icon: 'post',
+              },
+              {
+                id: 'purchase',
+                title: 'Purchase',
+                href: `/${locale}/purchase`,
+                icon: 'cart',
+              }
+            ]
+          }
+        ]
       },
       {
-        id: "profile",
-        title: t('profile'),
-        href: `/${locale}/profile`,
+        id: 'apps',
+        title: 'APPS',
+        items: [
+          {
+            id: 'users',
+            title: 'Users',
+            href: `/${locale}/profile`,
+            icon: 'user',
+          }
+        ]
       },
     ],
   };

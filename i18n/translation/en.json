@@ -57,6 +57,7 @@
     },
     "UserSideNav": {
         "dashboard": "Dashboard",
+        "dashboard2": "Dashboard2",
         "profile": "My Profile",
         "sign_out": "Sign Out"
     },

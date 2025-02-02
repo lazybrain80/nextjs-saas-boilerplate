@@ -12,12 +12,16 @@ export const ChevronLeft = Lucide.ChevronLeft
 export const ChevronRight = Lucide.ChevronRight
 export const ChevronDown = Lucide.ChevronDown
 export const ChevronUp = Lucide.ChevronUp
+export const ChevronUpSquare = Lucide.ChevronUpSquare
+export const ChevronDownSquare = Lucide.ChevronDownSquare
+export const GripHorizontal = Lucide.GripHorizontal
 export const Trash = Lucide.Trash
 export const Post = Lucide.FileText
 export const Page = Lucide.File
 export const Settings = Lucide.Settings
 export const Billing = Lucide.CreditCard
-export const Ellipsis = Lucide.MoreVertical
+export const EllipsisVertical = Lucide.MoreVertical
+export const Ellipsis = Lucide.Ellipsis
 export const Organization = Lucide.Building
 export const Add = Lucide.Plus
 export const Warning = Lucide.AlertTriangle
@@ -29,6 +33,7 @@ export const FileText = Lucide.FileText
 export const Info = Lucide.Info
 export const Lightbulb = Lucide.Lightbulb
 export const User = Lucide.User
+export const UserCircle = Lucide.UserCircle
 export const ArrowRight = Lucide.ArrowRight
 export const ArrowUpRight = Lucide.ArrowUpRight
 export const Help = Lucide.HelpCircle
@@ -65,6 +70,8 @@ export const Building2Icon = Lucide.Building2Icon
 export const DollarSign = Lucide.DollarSign
 export const PieChart = Lucide.PieChart
 export const Users = Lucide.Users
+export const Minus = Lucide.Minus
+export const ShoppingCart = Lucide.ShoppingCart
 
 export const System: Icon = (props) => (
   <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' {...props}>
