@@ -18,7 +18,6 @@ import {
   PieChart,
   Pie,
   Cell,
-  Sector
 } from 'recharts'
 import * as Icons from '@/design/icons'
 import {
@@ -39,25 +38,6 @@ import { LocaleSwitcher } from '@/design/components'
 import { UserAccountNav } from '@/design/features/user-board'
 import { UserMetaData } from '@/types'
 
-const renderActiveShape = (props: any) => {
-  const { cx, cy, midAngle, innerRadius, outerRadius, startAngle, endAngle,
-    fill, payload, percent, value } = props;
-
-  return (
-    <g>
-      <Sector
-        cx={cx}
-        cy={cy}
-        innerRadius={innerRadius}
-        outerRadius={outerRadius+10}
-        startAngle={startAngle}
-        endAngle={endAngle}
-        fill={fill}
-      />
-    </g>
-  );
-};
-
 type CustomLabelProps = {
   cx: number;
   cy: number;
@@ -77,7 +57,6 @@ function calculateLuminance(color: string) {
   return 0.299 * r + 0.587 * g + 0.114 * b;
 }
 
-/** BONUS: Label with inverted color */
 function renderLabel(props: CustomLabelProps) {
   let { cx, cy, midAngle, innerRadius, outerRadius, percent, fill } = props;
 
@@ -105,7 +84,7 @@ function renderLabel(props: CustomLabelProps) {
   );
 }
 
-const DashboardPage = () => {
+const DashboardPage2 = () => {
   const t = useTranslations('DashboardPage')
 
   const paymentData = [
@@ -181,7 +160,7 @@ const DashboardPage = () => {
         </Card>
         {/* Overview Cards */}
         <div className='grid grid-cols-6 gap-6 mb-6'>
-          <Card key={0} className='col-span-1 rounded-2xl shadow-lg bg-[url(/images/dashboard/blue-wave.png)]'>
+          <Card className='col-span-1 rounded-2xl shadow-lg bg-[url(/images/dashboard/blue-wave.png)]'>
             <CardHeader>
               <CardTitle
                 className='m-2'
@@ -199,7 +178,7 @@ const DashboardPage = () => {
               <div className='ml-2 text-white'>Sales</div>
             </CardContent>
           </Card>
-          <Card key={1} className='col-span-1 rounded-2xl shadow-lg bg-[url(/images/dashboard/blue-wave.png)]'>
+          <Card className='col-span-1 rounded-2xl shadow-lg bg-[url(/images/dashboard/blue-wave.png)]'>
             <CardHeader>
               <CardTitle
                 className='m-2'
@@ -217,7 +196,7 @@ const DashboardPage = () => {
               <div className='ml-2 text-white'>Refunds</div>
             </CardContent>
           </Card>
-          <Card key={2} className='col-span-1 rounded-2xl shadow-lg bg-[url(/images/dashboard/blue-wave.png)]'>
+          <Card className='col-span-1 rounded-2xl shadow-lg bg-[url(/images/dashboard/blue-wave.png)]'>
             <CardHeader>
               <CardTitle
                 className='m-2'
@@ -235,7 +214,7 @@ const DashboardPage = () => {
               <div className='ml-2 text-white'>Earnings</div>
             </CardContent>
           </Card>
-          <Card key={3} className='col-span-3 rounded-2xl shadow-lg bg-[url(/images/dashboard/work-user.png)] bg-cover bg-right bg-no-repeat'>
+          <Card className='col-span-3 rounded-2xl shadow-lg bg-[url(/images/dashboard/work-user.png)] bg-cover bg-right bg-no-repeat'>
             <CardHeader
               className='mt-2 ml-6'
             >
@@ -258,7 +237,7 @@ const DashboardPage = () => {
           </Card>
         </div>
         <div className='grid grid-flow-col grid-rows-6 grid-cols-4 gap-6'>
-          <Card key={0} className='row-span-3 col-span-1 rounded-2xl shadow-lg'>
+          <Card className='row-span-3 col-span-1 rounded-2xl shadow-lg'>
             <CardHeader>
               <div className='flex items-center justify-between'>
                 <div>
@@ -332,7 +311,7 @@ const DashboardPage = () => {
               </div>
             </CardContent>
           </Card>
-          <Card key={1} className='row-span-3 rounded-2xl shadow-lg'>
+          <Card className='row-span-3 rounded-2xl shadow-lg'>
             <CardHeader>
               <div className='flex items-center justify-between'>
                 <div>
@@ -373,7 +352,7 @@ const DashboardPage = () => {
                       <Cell
                         key={`cell-${index}`}
                         fill={entry.color}
-                        className='origin-center transition-transform duration-200 ease-out hover:scale-105 focus:outline-none outline-none'
+                        className='origin-center transition-transform duration-200 ease-out hover:scale-110 focus:outline-none outline-none'
                       />
                     ))}
                   </Pie>
@@ -439,10 +418,9 @@ const DashboardPage = () => {
             </CardContent>
           </Card>
         </div>
-      
       </div>
     </div>
   )
 }
 
-export default DashboardPage
+export default DashboardPage2
