@@ -16,7 +16,9 @@ import {
   Legend,
   ResponsiveContainer,
   PieChart,
-  Pie
+  Pie,
+  Cell,
+  Sector
 } from 'recharts'
 import * as Icons from '@/design/icons'
 import {
@@ -37,9 +39,76 @@ import { LocaleSwitcher } from '@/design/components'
 import { UserAccountNav } from '@/design/features/user-board'
 import { UserMetaData } from '@/types'
 
+const renderActiveShape = (props: any) => {
+  const { cx, cy, midAngle, innerRadius, outerRadius, startAngle, endAngle,
+    fill, payload, percent, value } = props;
+
+  return (
+    <g>
+      <Sector
+        cx={cx}
+        cy={cy}
+        innerRadius={innerRadius}
+        outerRadius={outerRadius+10}
+        startAngle={startAngle}
+        endAngle={endAngle}
+        fill={fill}
+      />
+    </g>
+  );
+};
+
+type CustomLabelProps = {
+  cx: number;
+  cy: number;
+  midAngle: number;
+  innerRadius: number;
+  outerRadius: number;
+  percent: number;
+  fill: string;
+};
+
+function calculateLuminance(color: string) {
+  const rgb = parseInt(color.substring(1), 16);
+  const r = (rgb >> 16) & 0xff;
+  const g = (rgb >> 8) & 0xff;
+  const b = (rgb >> 0) & 0xff;
+
+  return 0.299 * r + 0.587 * g + 0.114 * b;
+}
+
+/** BONUS: Label with inverted color */
+function renderLabel(props: CustomLabelProps) {
+  let { cx, cy, midAngle, innerRadius, outerRadius, percent, fill } = props;
+
+  // Avoid rendering label on thin slices (< 5%);
+  if (percent * 100 < 5) return null;
+
+  const RADIAN = Math.PI / 180;
+  const radius = innerRadius + (outerRadius - innerRadius) / 2;
+  const x = cx + radius * Math.cos(-midAngle * RADIAN);
+  const y = cy + radius * Math.sin(-midAngle * RADIAN);
+
+  const textColor = calculateLuminance(fill) > 128 ? "#000" : "#FFF";
+
+  return (
+    <text
+      x={x}
+      y={y}
+      fill={textColor}
+      className="pointer-events-none select-none text-sm font-medium"
+      textAnchor="middle"
+      dominantBaseline="central"
+    >
+      {`${(percent * 100).toFixed(0)}%`}
+    </text>
+  );
+}
+
 const DashboardPage = () => {
   const t = useTranslations('DashboardPage')
-  const data = [
+
+  const paymentData = [
     {
       name: 'M',
       paypal: 4000,
@@ -84,7 +153,14 @@ const DashboardPage = () => {
     },
   ]
 
-  const authClient = useAuthClient()  
+  const pieData = [
+    { name: "Group A", value: 600, color: "#1E90FF" }, // DodgerBlue
+    { name: "Group B", value: 300, color: "#00BFFF" }, // DeepSkyBlue
+    { name: "Group C", value: 300, color: "#87CEFA" }, // LightSkyBlue
+    { name: "Group D", value: 100, color: "#4682B4" }, // SteelBlue
+  ]
+
+  const authClient = useAuthClient()
   const { user_metadata } = authClient?.supaUser || {}
   const user = user_metadata as UserMetaData
 
@@ -206,7 +282,7 @@ const DashboardPage = () => {
                   height={300}
                   barGap={10}
                   barCategoryGap={5}
-                  data={data}
+                  data={paymentData}
                   margin={{
                     top: 20,
                     right: 30,
@@ -258,14 +334,53 @@ const DashboardPage = () => {
           </Card>
           <Card key={1} className='row-span-3 rounded-2xl shadow-lg'>
             <CardHeader>
-              <CardTitle>{'1'}</CardTitle>
-            </CardHeader>
-            <CardContent>
               <div className='flex items-center justify-between'>
                 <div>
-                  <p className='text-2xl font-bold mt-2'>{'ddddd'}</p>
+                  <CardTitle>{'Products'}</CardTitle>
+                  <CardDescription>{'Last 15 days'}</CardDescription>
                 </div>
-                <Icons.Add size={24} className='text-blue-600' />
+                <div>
+                  <div>
+                    <span className='px-4 font-bold'>{'4,545'}</span>
+                  </div>
+                  <div className='rounded-full border border-blue-500 bg-blue-100'>
+                    <span className='px-4 text-blue-700'>{'+5.78%'}</span>
+                  </div>
+                </div>
+              </div>
+            </CardHeader>
+            <CardContent>
+              <ResponsiveContainer className='mb-4' width='100%' height={250}>
+                <PieChart width={800} height={200}>
+                  <Pie
+                    data={pieData}
+                    dataKey="value"
+                    blendStroke
+                    className="focus:outline-none"
+                    startAngle={90}
+                    animationDuration={600}
+                    animationBegin={0}
+                    animationEasing="ease-out"
+                    label={renderLabel}
+                    endAngle={-270}
+                    labelLine={false}
+                    innerRadius={70}
+                    outerRadius={100}
+                    fill="#8884d8"
+                    paddingAngle={5}
+                  >
+                    {pieData.map((entry, index) => (
+                      <Cell
+                        key={`cell-${index}`}
+                        fill={entry.color}
+                        className='origin-center transition-transform duration-200 ease-out hover:scale-105 focus:outline-none outline-none'
+                      />
+                    ))}
+                  </Pie>
+                </PieChart>
+              </ResponsiveContainer>
+              <div className='flex items-center mx-2 my-1'>
+                <span className='m-auto'>$18k Profit more than month</span>
               </div>
             </CardContent>
           </Card>
@@ -278,7 +393,7 @@ const DashboardPage = () => {
                 <BarChart
                   width={200}
                   height={300}
-                  data={data}
+                  data={paymentData}
                   margin={{
                     top: 20,
                     right: 30,
