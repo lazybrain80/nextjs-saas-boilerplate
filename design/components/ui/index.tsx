@@ -78,5 +78,5 @@ export {
     DialogTitle,
     DialogDescription,
 } from './dialog'
-
+export { Progress } from './progress'
 

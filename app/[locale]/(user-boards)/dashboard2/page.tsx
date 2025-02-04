@@ -35,7 +35,10 @@ import {
 import { LocaleSwitcher } from '@/design/components'
 import { UserAccountNav } from '@/design/features/user-board'
 import { UserMetaData } from '@/types'
-import { ProductRadarChart } from './product-radar-chart'
+import {
+  ProductRadarChart,
+  BestSellingChart
+} from './cards'
 
 type CustomLabelProps = {
   cx: number;
@@ -494,20 +497,7 @@ const DashboardPage2 = () => {
           </Card>
           
           <ProductRadarChart className='row-span-3 col-span-1 rounded-2xl shadow-lg'/>
-            
-          <Card key={4} className='row-span-3 col-span-1 rounded-2xl shadow-lg'>
-            <CardHeader>
-              <CardTitle>{'4'}</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className='flex items-center justify-between'>
-                <div>
-                  <p className='text-2xl font-bold mt-2'>{'ddddd'}</p>
-                </div>
-                <Icons.Add size={24} className='text-blue-600' />
-              </div>
-            </CardContent>
-          </Card>
+          <BestSellingChart className='row-span-3 col-span-1 rounded-2xl shadow-lg' />
         </div>
       </div>
     </div>

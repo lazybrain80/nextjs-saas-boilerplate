@@ -1,6 +1,7 @@
 'use client'
 
 import React from 'react'
+import { cn } from '@/libs/utils'
 import {
   Card,
   CardHeader,
@@ -58,7 +59,7 @@ const data = [
 
 export const ProductRadarChart = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => {
   return (
-    <Card className={className}>
+    <Card className={cn(className)}>
       <CardHeader>
         <CardTitle>{'Product category'}</CardTitle>
         <CardDescription>{'Visual comparison of product categories based on various subjects.'}</CardDescription>
