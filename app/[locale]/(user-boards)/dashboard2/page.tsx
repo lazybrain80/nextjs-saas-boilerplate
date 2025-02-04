@@ -1,7 +1,5 @@
 'use client'
 
-import { useState } from 'react'
-import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 import { useAuthClient } from '@/auth/provider'
 import {
@@ -37,6 +35,7 @@ import {
 import { LocaleSwitcher } from '@/design/components'
 import { UserAccountNav } from '@/design/features/user-board'
 import { UserMetaData } from '@/types'
+import { ProductRadarChart } from './product-radar-chart'
 
 type CustomLabelProps = {
   cx: number;
@@ -412,7 +411,7 @@ const DashboardPage2 = () => {
             <CardContent>
               <div className='mx-4 mt-10 border-b border-gray-200 bg-[url(/images/dashboard/work-user2.png)] bg-cover bg-no-repeat bg-right-top'>
                 <div className=''>
-                  <CardTitle>{'Congratulations Mike'}</CardTitle>
+                  <CardTitle>{`Congratulations " ${user.preferred_username} "`}</CardTitle>
                   <CardDescription>{'You have done 38% more sales'}</CardDescription>
                 </div>
                 <div className='flex items-center mt-6'>
@@ -493,19 +492,9 @@ const DashboardPage2 = () => {
               
             </CardContent>
           </Card>
-          <Card key={3} className='row-span-3 col-span-1 rounded-2xl shadow-lg'>
-            <CardHeader>
-              <CardTitle>{'3'}</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className='flex items-center justify-between'>
-                <div>
-                  <p className='text-2xl font-bold mt-2'>{'ddddd'}</p>
-                </div>
-                <Icons.Add size={24} className='text-blue-600' />
-              </div>
-            </CardContent>
-          </Card>
+          
+          <ProductRadarChart className='row-span-3 col-span-1 rounded-2xl shadow-lg'/>
+            
           <Card key={4} className='row-span-3 col-span-1 rounded-2xl shadow-lg'>
             <CardHeader>
               <CardTitle>{'4'}</CardTitle>
