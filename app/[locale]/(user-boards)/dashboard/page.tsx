@@ -31,7 +31,7 @@ import {
 } from '@/design/components/ui'
 import { LocaleSwitcher } from '@/design/components'
 import { ShowProperty } from './property-dialog'
-import { UserAccountNav } from '@/design/features/user-board'
+import { UserAccountNav, BoardHeader } from '@/design/features/user-board'
 
 const DashboardPage = () => {
   const t = useTranslations('DashboardPage')
@@ -75,17 +75,7 @@ const DashboardPage = () => {
     <div className='flex-1 overflow-auto bg-slate-100'>
       <div className='p-8'>
         {/* Header */}
-        <Card key={'dashboard-header'} className='rounded-2xl shadow-sm  mb-8'>
-          <CardContent className="bg-white flex items-center justify-between p-4">
-            <div>
-              <h1 className="ml-4 text-2xl font-semibold text-gray-800">Dashboard</h1>
-            </div>
-            <div className="flex items-center gap-4 mr-4">
-              <LocaleSwitcher />
-              <UserAccountNav />
-            </div>
-          </CardContent>
-        </Card>
+        <BoardHeader title={'Dashboard'} />
         {/* Overview Cards */}
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8'>
           {[
