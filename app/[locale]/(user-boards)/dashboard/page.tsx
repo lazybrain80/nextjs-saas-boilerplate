@@ -4,13 +4,7 @@ import { useState } from 'react'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 import {
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  CartesianGrid,
   Tooltip,
-  Legend,
   ResponsiveContainer,
   PieChart,
   Pie
@@ -29,22 +23,16 @@ import {
   CardTitle,
   CardContent
 } from '@/design/components/ui'
-import { LocaleSwitcher } from '@/design/components'
 import { ShowProperty } from './property-dialog'
-import { UserAccountNav, BoardHeader } from '@/design/features/user-board'
+import { BoardHeader } from '@/design/features/user-board'
+import {
+  SalesPerformanceChart
+} from './chart-cards'
 
 const DashboardPage = () => {
   const t = useTranslations('DashboardPage')
   const [showAddPropertyModal, setShowAddPropertyModal] = useState(false)
   
-  const mockSalesData = [
-    { month: 'Jan', sales: 65 },
-    { month: 'Feb', sales: 59 },
-    { month: 'Mar', sales: 80 },
-    { month: 'Apr', sales: 81 },
-    { month: 'May', sales: 56 },
-    { month: 'Jun', sales: 55 }
-  ]
   const propertyTypeData = [
     { name: 'Residential', value: 45 },
     { name: 'Commercial', value: 25 },
@@ -101,19 +89,7 @@ const DashboardPage = () => {
         </div>
         {/* Charts Section */}
         <div className='grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8'>
-          <div className='bg-white p-6 rounded-2xl shadow-sm'>
-            <h3 className='text-lg font-semibold mb-4'>{t('sales_performance')}</h3>
-            <ResponsiveContainer width='100%' height={300}>
-              <LineChart data={mockSalesData}>
-                <CartesianGrid strokeDasharray='3 3' />
-                <XAxis dataKey='month' />
-                <YAxis />
-                <Tooltip />
-                <Legend />
-                <Line type='monotone' dataKey='sales' stroke='#3B82F6' />
-              </LineChart>
-            </ResponsiveContainer>
-          </div>
+          <SalesPerformanceChart className='bg-white p-6 rounded-2xl shadow-sm' />
 
           <div className='bg-white p-6 rounded-2xl shadow-sm'>
             <h3 className='text-lg font-semibold mb-4'>{t('property_types')}</h3>
