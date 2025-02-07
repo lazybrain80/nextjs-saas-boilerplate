@@ -31,6 +31,7 @@
         "total_revenue": "Total Revenue",
         "conversion_rate": "Conversion Rate",
         "sales_performance": "Sales Performance",
+        "sales_performance_description": "Check your sales performance over the last 6 months.",
         "property_types": "Property Types",
         "property_listings": "Property Listings",
         "property": "Property",

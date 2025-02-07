@@ -18,8 +18,8 @@ const DashboardPage = () => {
         <OverviewCards />
         {/* Charts Section */}
         <div className='grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8'>
-          <SalesPerformanceChart className='bg-white p-6 rounded-2xl shadow-lg' />
-          <PropertyTypesChart className='bg-white p-6 rounded-2xl shadow-lg' />
+          <SalesPerformanceChart className='bg-white p-2 rounded-2xl shadow-lg' />
+          <PropertyTypesChart className='bg-white p-2 rounded-2xl shadow-lg' />
         </div>
 
         {/* Properties Table */}
