@@ -33,6 +33,7 @@
         "sales_performance": "판매 성과",
         "sales_performance_description": "최근 6개월 동안의 판매 성과를 확인하세요.",
         "property_types": "부동산 유형",
+        "property_types_description": "부동산 유형별 판매 현황을 확인하세요.",
         "property_listings": "부동산 목록",
         "property": "부동산",
         "location": "위치",
