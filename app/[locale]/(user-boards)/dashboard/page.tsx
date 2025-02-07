@@ -1,64 +1,24 @@
 'use client'
 
-import { useState } from 'react'
-import Image from 'next/image'
 import { useTranslations } from 'next-intl'
-import {
-  Tooltip,
-  ResponsiveContainer,
-  PieChart,
-  Pie
-} from 'recharts'
 import * as Icons from '@/design/icons'
 import {
-  Table,
-  TableHeader,
-  TableBody,
-  TableHead,
-  TableRow,
-  TableCell,
-  Button,
   Card,
   CardHeader,
   CardTitle,
   CardContent
 } from '@/design/components/ui'
-import { ShowProperty } from './property-dialog'
+
 import { BoardHeader } from '@/design/features/user-board'
 import {
-  SalesPerformanceChart
+  SalesPerformanceChart,
+  PropertyTypesChart
 } from './chart-cards'
+import { PropertyTable } from './property-table'
 
 const DashboardPage = () => {
   const t = useTranslations('DashboardPage')
-  const [showAddPropertyModal, setShowAddPropertyModal] = useState(false)
   
-  const propertyTypeData = [
-    { name: 'Residential', value: 45 },
-    { name: 'Commercial', value: 25 },
-    { name: 'Industrial', value: 15 },
-    { name: 'Land', value: 15 }
-  ]
-
-  const properties = [
-    {
-      id: 1,
-      name: 'Luxury Villa',
-      location: 'Beverly Hills',
-      price: '$2,500,000',
-      status: 'Listed',
-      image: '/images/dashboard/photo_0.jpeg'
-    },
-    {
-      id: 2,
-      name: 'Modern Apartment',
-      location: 'Manhattan',
-      price: '$1,200,000',
-      status: 'Pending',
-      image: '/images/dashboard/photo_1.jpeg'
-    }
-  ]
-
   return (
     <div className='flex-1 overflow-auto bg-slate-100'>
       <div className='p-8'>
@@ -72,7 +32,7 @@ const DashboardPage = () => {
             { title: t('total_revenue'), value: '$2.4M', icon: Icons.PieChart },
             { title: t('conversion_rate'), value: '68%', icon: Icons.Users }
           ].map((card, index) => (
-            <Card key={index} className='rounded-2xl shadow-sm'>
+            <Card key={index} className='rounded-2xl shadow-lg'>
               <CardHeader>
                 <CardTitle>{card.title}</CardTitle>
               </CardHeader>
@@ -89,91 +49,13 @@ const DashboardPage = () => {
         </div>
         {/* Charts Section */}
         <div className='grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8'>
-          <SalesPerformanceChart className='bg-white p-6 rounded-2xl shadow-sm' />
-
-          <div className='bg-white p-6 rounded-2xl shadow-sm'>
-            <h3 className='text-lg font-semibold mb-4'>{t('property_types')}</h3>
-            <ResponsiveContainer width='100%' height={300}>
-              <PieChart>
-                <Pie
-                  data={propertyTypeData}
-                  dataKey='value'
-                  nameKey='name'
-                  cx='50%'
-                  cy='50%'
-                  outerRadius={100}
-                  fill='#3B82F6'
-                  label
-                />
-                <Tooltip />
-              </PieChart>
-            </ResponsiveContainer>
-          </div>
+          <SalesPerformanceChart className='bg-white p-6 rounded-2xl shadow-lg' />
+          <PropertyTypesChart className='bg-white p-6 rounded-2xl shadow-lg' />
         </div>
 
         {/* Properties Table */}
-        <div className='bg-white rounded-2xl shadow-sm'>
-          <div className='p-6 border-b'>
-            <div className='flex justify-between items-center'>
-              <h3 className='text-lg font-semibold'>{t('property_listings')}</h3>
-              <button
-                onClick={() => setShowAddPropertyModal(true)}
-                className='bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700'
-              >
-                Add Property
-              </button>
-            </div>
-          </div>
-          <div className='overflow-x-auto'>
-            <Table className='w-full'>
-              <TableHeader className='bg-gray-50'>
-                <TableRow>
-                  <TableHead className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase'>{t('property')}</TableHead>
-                  <TableHead className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase'>{t('location')}</TableHead>
-                  <TableHead className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase'>{t('price')}</TableHead>
-                  <TableHead className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase'>{t('status')}</TableHead>
-                  <TableHead className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase'>{t('actions')}</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody className='divide-y divide-gray-200'>
-                {properties.map((property) => (
-                  <TableRow key={property.id}>
-                    <TableCell className='px-6 py-4'>
-                      <div className='flex items-center'>
-                        <Image
-                          src={property.image}
-                          alt={property.name}
-                          width={24}
-                          height={24}
-                          className='h-10 w-10 rounded-full object-cover'
-                        />
-                        <span className='ml-3'>{property.name}</span>
-                      </div>
-                    </TableCell>
-                    <TableCell className='px-6 py-4'>{property.location}</TableCell>
-                    <TableCell className='px-6 py-4'>{property.price}</TableCell>
-                    <TableCell className='px-6 py-4'>
-                      <span className={`px-2 py-1 rounded-full text-xs ${property.status === 'Listed' ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800'}`}>
-                        {property.status}
-                      </span>
-                    </TableCell>
-                    <TableCell className='px-6 py-4'>
-                      <div className='flex space-x-3'>
-                        <ShowProperty property={property} />
-                        <Button className='bg-white text-gray-600 hover:text-gray-800 hover:bg-slate-300'>
-                          <Icons.Edit2 size={18} />
-                        </Button>
-                        <Button className='bg-white text-red-600 hover:text-red-800 hover:bg-slate-300'>
-                          <Icons.Trash2 size={18} />
-                        </Button>
-                      </div>
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </div>
-        </div>
+        <PropertyTable className='bg-white rounded-2xl shadow-lg' />
+
       </div>
     </div>
   )
