@@ -30,6 +30,8 @@ const iconMap = new Map([
   ['user', Icons.UserCircle ],
   ['book', Icons.BookOpen],
   ['cart', Icons.ShoppingCart],
+  ['settings', Icons.Settings],
+  ['profile', Icons.UserCog],
 ])
 
 export function SidebarNav({ items }: SidebarNavProps) {

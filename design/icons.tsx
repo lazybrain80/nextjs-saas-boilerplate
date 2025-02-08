@@ -74,6 +74,7 @@ export const Minus = Lucide.Minus
 export const ShoppingCart = Lucide.ShoppingCart
 export const DollarSignCircle = Lucide.CircleDollarSignIcon
 export const Crown = Lucide.CrownIcon
+export const UserCog = Lucide.UserCog
 
 export const System: Icon = (props) => (
   <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' {...props}>
