@@ -1,5 +1,2 @@
-export { ProductRadarChart } from './product-radar-chart'
-export { BestSellingChart } from './best-selling-chart'
-export { PaymentsChart } from './payments-chart'
-export { ProductsChart } from './products-chart'
-export { TotalOrdersChart } from './total-orders-chart'
+export { SalesPerformanceChart } from './sales-performance-chart'
+export { PropertyTypesChart } from './property-types-chart'
