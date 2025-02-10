@@ -9,7 +9,8 @@ import {
   Card
 } from '@/design/components/ui'
 import {
-  IntroductionCard
+  IntroductionCard,
+  TeamsCard
 } from './cards'
 
 const ProfilePage = () => {
@@ -27,11 +28,7 @@ const ProfilePage = () => {
         <div className='col-span-1'>
           <div className='grid grid-flow-row gap-6'>
             <IntroductionCard className='bg-white rounded-2xl shadow-lg p-4' />
-            
-            <Card className='bg-white rounded-2xl shadow-lg p-4'>
-              <h2 className='text-lg font-semibold mb-4'>{'introduction'}</h2>
-              <p>{'2'}</p>
-            </Card>
+            <TeamsCard className='bg-white rounded-2xl shadow-lg p-4' />
           </div>
         </div>
         <div className='col-span-2'>

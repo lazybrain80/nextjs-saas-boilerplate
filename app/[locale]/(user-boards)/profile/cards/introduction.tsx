@@ -7,8 +7,7 @@ import {
   Card,
   CardHeader,
   CardTitle,
-  CardDescription,
-  CardContent,
+  CardDescription
 } from '@/design/components/ui'
 import * as Icons from '@/design/icons'
 

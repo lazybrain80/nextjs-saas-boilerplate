@@ -81,6 +81,9 @@ export const Mail = Lucide.Mail
 export const Phone = Lucide.Phone
 export const MapPin = Lucide.MapPin
 export const GraduationCap = Lucide.GraduationCap
+export const Shield = Lucide.Shield
+export const Swords = Lucide.Swords
+
 
 export const System: Icon = (props) => (
   <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' {...props}>
