@@ -83,6 +83,9 @@ export const MapPin = Lucide.MapPin
 export const GraduationCap = Lucide.GraduationCap
 export const Shield = Lucide.Shield
 export const Swords = Lucide.Swords
+export const ListTodo = Lucide.ListTodo
+export const Skull = Lucide.Skull
+export const BookCheck = Lucide.BookCheck
 
 
 export const System: Icon = (props) => (

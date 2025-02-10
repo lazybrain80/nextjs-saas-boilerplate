@@ -12,6 +12,7 @@ import {
   IntroductionCard,
   TeamsCard
 } from './cards'
+import * as Icons from '@/design/icons'
 
 const ProfilePage = () => {
   const t = useTranslations('ProfilePage')
@@ -34,16 +35,37 @@ const ProfilePage = () => {
         <div className='col-span-2'>
           <div className='grid grid-flow-col grid-cols-3 gap-6 mb-6'>
             <Card className='bg-white rounded-2xl shadow-lg p-4'>
-              <h2 className='text-lg font-semibold mb-4'>{'introduction'}</h2>
-              <p>{'4'}</p>
+              <div className='flex items-center py-2'>
+                <div className='bg-blue-100 rounded-2xl h-12 w-12 flex items-center justify-center'>
+                  <Icons.ListTodo className='text-blue-300' />
+                </div>
+                <div className='ml-4'>
+                  <div className='text-xl font-bold'>{'3737'}</div>
+                  <div className='text-slate-500'>{'Tasks Done'}</div>
+                </div>
+              </div>
             </Card>
             <Card className='bg-white rounded-2xl shadow-lg p-4'>
-              <h2 className='text-lg font-semibold mb-4'>{'introduction'}</h2>
-              <p>{'5'}</p>
+              <div className='flex items-center py-2'>
+                <div className='bg-green-100 rounded-2xl h-12 w-12 flex items-center justify-center'>
+                  <Icons.BookCheck className='text-green-300' />
+                </div>
+                <div className='ml-4'>
+                  <div className='text-xl font-bold'>{'342'}</div>
+                  <div className='text-slate-500'>{'Projects'}</div>
+                </div>
+              </div>
             </Card>
             <Card className='bg-white rounded-2xl shadow-lg p-4'>
-              <h2 className='text-lg font-semibold mb-4'>{'introduction'}</h2>
-              <p>{'6'}</p>
+              <div className='flex items-center py-2'>
+                <div className='bg-red-100 rounded-2xl h-12 w-12 flex items-center justify-center'>
+                  <Icons.Skull className='text-red-300' />
+                </div>
+                <div className='ml-4'>
+                  <div className='text-xl font-bold'>{'487,423'}</div>
+                  <div className='text-slate-500'>{'Kills'}</div>
+                </div>
+              </div>
             </Card>
           </div>
           <Card className='bg-white rounded-2xl shadow-lg p-4'>
