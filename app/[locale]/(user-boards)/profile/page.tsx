@@ -6,13 +6,17 @@ import React from 'react'
 import { BoardHeader } from '@/design/features/user-board'
 import { ProfileHeader } from './profile-header'
 import {
-  Card
+  Card,
+  CardContent,
+  CardHeader
 } from '@/design/components/ui'
 import {
   IntroductionCard,
-  TeamsCard
+  TeamsCard,
+  InputCard
 } from './cards'
 import * as Icons from '@/design/icons'
+
 
 const ProfilePage = () => {
   const t = useTranslations('ProfilePage')
@@ -68,10 +72,7 @@ const ProfilePage = () => {
               </div>
             </Card>
           </div>
-          <Card className='bg-white rounded-2xl shadow-lg p-4'>
-            <h2 className='text-lg font-semibold mb-4'>{'introduction'}</h2>
-            <p>{'3'}</p>
-          </Card>
+          <InputCard className='bg-white rounded-2xl shadow-lg p-4' />
         </div>
       </div>
 

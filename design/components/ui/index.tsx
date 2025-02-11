@@ -92,3 +92,6 @@ export {
     SelectScrollDownButton,
 } from './select'
 
+export { TextEditor } from './text-editor'
+export { Textarea } from './textarea'
+

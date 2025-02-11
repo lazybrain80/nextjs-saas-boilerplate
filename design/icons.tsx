@@ -86,6 +86,26 @@ export const Swords = Lucide.Swords
 export const ListTodo = Lucide.ListTodo
 export const Skull = Lucide.Skull
 export const BookCheck = Lucide.BookCheck
+export const Bold = Lucide.Bold
+export const Italic = Lucide.Italic
+export const Strike = Lucide.Strikethrough
+export const Code = Lucide.Code
+export const Clear = Lucide.Eraser
+export const Heading1 = Lucide.Heading1
+export const Heading2 = Lucide.Heading2
+export const Heading3 = Lucide.Heading3
+export const Heading4 = Lucide.Heading4
+export const Heading5 = Lucide.Heading5
+export const Heading6 = Lucide.Heading6
+export const Bullet = Lucide.List
+export const OrderList = Lucide.ListOrdered
+export const CodeBlock = Lucide.FileJson2
+export const Quote = Lucide.Quote
+export const HorizontalRule = Lucide.SquareMinus
+export const Undo = Lucide.Undo2
+export const Redo = Lucide.Redo2
+export const Eraser = Lucide.Eraser
+export const ClearFormatting = Lucide.RemoveFormatting
 
 
 export const System: Icon = (props) => (
