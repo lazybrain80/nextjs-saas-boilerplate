@@ -7,8 +7,6 @@ import { BoardHeader } from '@/design/features/user-board'
 import { ProfileHeader } from './profile-header'
 import {
   Card,
-  CardContent,
-  CardHeader
 } from '@/design/components/ui'
 import {
   IntroductionCard,

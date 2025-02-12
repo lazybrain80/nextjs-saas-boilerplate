@@ -1,11 +1,11 @@
 'use client'
 
-import React, { useEffect } from "react";
+import React from "react";
 import { cn } from '@/libs/utils'
 import { Color } from "@tiptap/extension-color";
 import ListItem from "@tiptap/extension-list-item";
 import TextStyle from "@tiptap/extension-text-style";
-import { EditorProvider, useCurrentEditor, Editor, useEditor, EditorContent } from "@tiptap/react";
+import { EditorProvider, useCurrentEditor, Editor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import * as Icons from '@/design/icons'
 import { Button } from '@/design/components/ui'
@@ -152,26 +152,25 @@ const extensions = [
     StarterKit.configure({
         bulletList: {
         keepMarks: true,
-        keepAttributes: false, // TODO : Making this as `false` becase marks are not preserved when I try to preserve attrs, awaiting a bit of help
+        keepAttributes: false,
         },
         orderedList: {
         keepMarks: true,
-        keepAttributes: false, // TODO : Making this as `false` becase marks are not preserved when I try to preserve attrs, awaiting a bit of help
+        keepAttributes: false,
         },
     }),
 ];
 
-export const TextEditor = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => {
-    const [editor, setEditor] = React.useState<Editor | null>(null);
-    const [totalText, setTotalText] = React.useState<number>(0);
+export const TextEditor = ({ className, onCreate, onTextCountChange, ...props
+}: React.HTMLAttributes<HTMLDivElement> & { onCreate?: (editor: Editor) => void, onTextCountChange?: (count: number) => void }) => {
 
     const onEditorCreate = ({ editor }: { editor: Editor }) => {
-        setEditor(editor)
-        setTotalText(editor.getText().length)
+        onTextCountChange?.(editor.getText().length)
+        onCreate?.(editor)
     }
 
     const onEditorUpdate = ({ editor }: { editor: Editor }) => {
-        setTotalText(editor.getText().length)
+        onTextCountChange?.(editor.getText().length)
     }
     
     return (
@@ -179,15 +178,15 @@ export const TextEditor = ({ className, ...props }: React.HTMLAttributes<HTMLDiv
             <EditorProvider
                 editorProps={{
                     attributes: {
-                        class: "prose prose-sm sm:prose lg:prose-lg xl:prose-2xl mt-6 min-h-[12.5rem] rounded-lg border border-gray-200 dark:border-gray-700 focus:outline-none",
+                        class: "prose prose-sm sm:prose lg:prose-lg xl:prose-2xl mt-6 p-4 min-h-[12.5rem] rounded-lg border border-gray-200 dark:border-gray-700 focus:outline-none",
                     }
                 }}
+                immediatelyRender={false}
                 slotBefore={<MenuBar />}
                 extensions={extensions}
                 onCreate={onEditorCreate}
                 onUpdate={onEditorUpdate}
             />
-            <div>{totalText }</div>
         </div>
     )
 }
