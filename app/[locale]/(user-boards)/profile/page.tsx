@@ -11,7 +11,8 @@ import {
 import {
   IntroductionCard,
   TeamsCard,
-  InputCard
+  InputCard,
+  ThreadCard
 } from './cards'
 import * as Icons from '@/design/icons'
 
@@ -71,6 +72,7 @@ const ProfilePage = () => {
             </Card>
           </div>
           <InputCard className='bg-white rounded-2xl shadow-lg p-4' />
+          <ThreadCard className='bg-white rounded-2xl shadow-lg p-4 mt-6' />
         </div>
       </div>
 
