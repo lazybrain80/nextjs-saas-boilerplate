@@ -106,6 +106,9 @@ export const Undo = Lucide.Undo2
 export const Redo = Lucide.Redo2
 export const Eraser = Lucide.Eraser
 export const ClearFormatting = Lucide.RemoveFormatting
+export const ThumbsUp = Lucide.ThumbsUp
+export const ThumbsDown = Lucide.ThumbsDown
+
 
 
 export const System: Icon = (props) => (
