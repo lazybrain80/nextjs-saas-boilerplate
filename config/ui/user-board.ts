@@ -84,6 +84,12 @@ export const getUserBoardConfig = async (): Promise<PageNavConfig> => {
                 icon: 'users',
               },
               {
+                id: 'projects',
+                title: 'Projects',
+                href: `/${locale}/projects`,
+                icon: 'projects',
+              },
+              {
                 id: 'settings',
                 title: 'Settings',
                 href: `/${locale}/settings`,

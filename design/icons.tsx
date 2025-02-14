@@ -108,6 +108,7 @@ export const Eraser = Lucide.Eraser
 export const ClearFormatting = Lucide.RemoveFormatting
 export const ThumbsUp = Lucide.ThumbsUp
 export const ThumbsDown = Lucide.ThumbsDown
+export const Projects = Lucide.ListTodo
 
 
 
