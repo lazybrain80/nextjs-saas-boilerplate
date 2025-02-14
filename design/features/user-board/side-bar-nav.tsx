@@ -73,7 +73,7 @@ export function SidebarNav({ items }: SidebarNavProps) {
             {isSidebarOpen? <Icons.ChevronLeft size={24} /> : <Icons.ChevronRight size={24} />}
           </button>)}
         </div>
-        <nav className='flex-1 space-y-1 py-4'>
+        <nav className='flex-1 space-y-1 py-4 overflow-y-auto scrollbar-hide'>
           {items.map((item, index) => {
             return (
             <div key={item.id} className={cn('mb-2')}>
