@@ -2,9 +2,10 @@
 
 import { useTranslations } from 'next-intl'
 import React from 'react'
-
-import { BoardHeader } from '@/design/features/user-board'
-import { ProfileHeader } from './profile-header'
+import {
+  BoardHeader,
+  ProfileHeader
+} from '@/design/features/user-board'
 import {
   Card,
 } from '@/design/components/ui'
