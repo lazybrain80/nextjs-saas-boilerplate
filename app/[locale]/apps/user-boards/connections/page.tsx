@@ -12,6 +12,60 @@ import {
   Button
 } from '@/design/components/ui'
 import * as Icons from '@/design/icons'
+import { ConnectionCard } from './connection-card'
+
+const ConnectionList = [
+  {
+    imageUrl: '/images/connections/image_0.jpg',
+    title: 'John Doe',
+    createdAt: 'Joined 2 days ago'
+  },
+  {
+    imageUrl: '/images/connections/image_0.jpg',
+    title: 'Jane Doe',
+    createdAt: 'Joined 2 days ago'
+  },
+  {
+    imageUrl: '/images/connections/image_0.jpg',
+    title: 'John Doe',
+    createdAt: 'Joined 2 days ago'
+  },
+  {
+    imageUrl: '/images/connections/image_0.jpg',
+    title: 'Jane Doe',
+    createdAt: 'Joined 2 days ago'
+  },
+  {
+    imageUrl: '/images/connections/image_0.jpg',
+    title: 'John Doe',
+    createdAt: 'Joined 2 days ago'
+  },
+  {
+    imageUrl: '/images/connections/image_0.jpg',
+    title: 'Jane Doe',
+    createdAt: 'Joined 2 days ago'
+  },
+  {
+    imageUrl: '/images/connections/image_0.jpg',
+    title: 'John Doe',
+    createdAt: 'Joined 2 days ago'
+  },
+  {
+    imageUrl: '/images/connections/image_0.jpg',
+    title: 'Jane Doe',
+    createdAt: 'Joined 2 days ago'
+  },
+  {
+    imageUrl: '/images/connections/image_0.jpg',
+    title: 'John Doe',
+    createdAt: 'Joined 2 days ago'
+  },
+  {
+    imageUrl: '/images/connections/image_0.jpg',
+    title: 'Jane Doe',
+    createdAt: 'Joined 2 days ago'
+  }
+]
 
 const TeamsPage = () => {
   const t = useTranslations('ProfilePage')
@@ -48,8 +102,14 @@ const TeamsPage = () => {
         </div>
       </div>
       {/* Profile Content */}
-      <div className='grid grid-flow-col grid-cols-4 grid-rows-2 gap-3 my-6'>
-        
+      <div className='grid grid-flow-col grid-cols-4 grid-rows-2 gap-6 my-6'>
+        {ConnectionList.map((connection, index) => (
+          <ConnectionCard
+            key={index}
+            className='col-span-1 rouunded-3xl shadow-xl'
+            info={connection}
+          />
+        ))}
       </div>
 
     </div>
