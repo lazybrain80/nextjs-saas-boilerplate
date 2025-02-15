@@ -1,6 +1,7 @@
 'use client'
 
 import Image from 'next/image'
+import { useLocale } from 'next-intl'
 import { usePathname } from 'next/navigation'
 import { cn } from '@/libs/utils'
 import { useAuthClient } from '@/auth/provider'
@@ -16,16 +17,17 @@ import {
 import * as Icons from '@/design/icons'
 
 export const ProfileHeader = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => {
+  const locale = useLocale()
   const pathname = usePathname()
   const authClient = useAuthClient()
   const { user_metadata } = authClient?.supaUser || {}
   const user = user_metadata as UserMetaData
 
   const profileTabs = [
-    { id: 'profile', label: 'My Profile', href: '/ko/profile', icon: Icons.UserCircle },
-    { id: 'teams', label: 'Teams', href: '/ko/teams',icon: Icons.Users },
-    { id: 'projects', label: 'Projects', href: '/ko/projects',icon: Icons.Layers },
-    { id: 'connections', label: 'Connections', href: '/ko/connections',icon: Icons.Share },
+    { id: 'profile', label: 'My Profile', href: `/${locale}/apps/user-boards/profile`, icon: Icons.UserCircle },
+    { id: 'teams', label: 'Teams', href: `/${locale}/apps/user-boards/teams`,icon: Icons.Users },
+    { id: 'projects', label: 'Projects', href: `/${locale}/apps/user-boards/projects`,icon: Icons.Layers },
+    { id: 'connections', label: 'Connections', href: `/${locale}/apps/user-boards/connections`,icon: Icons.Share },
   ]
 
   return (

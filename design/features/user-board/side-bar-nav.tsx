@@ -35,6 +35,7 @@ const iconMap = new Map([
   ['users', Icons.Users],
   ['projects', Icons.Projects],
   ['connections', Icons.Connections],
+  ['notes', Icons.NotebookPen],
 ])
 
 export function SidebarNav({ items }: SidebarNavProps) {

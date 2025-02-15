@@ -14,13 +14,13 @@ export const getUserBoardConfig = async (): Promise<PageNavConfig> => {
           {
             id: 'dashboard1',
             title: t('dashboard'),
-            href: `/${locale}/dashboard`,
+            href: `/${locale}/apps/dashboard`,
             icon: 'dashboard',
           },
           {
             id: 'dashboard2',
             title: t('dashboard2'),
-            href: `/${locale}/dashboard2`,
+            href: `/${locale}/apps/dashboard2`,
             icon: 'dashboard2',
           },
           {
@@ -74,35 +74,41 @@ export const getUserBoardConfig = async (): Promise<PageNavConfig> => {
               {
                 id: 'profile',
                 title: 'Profile',
-                href: `/${locale}/profile`,
+                href: `/${locale}/apps/user-boards/profile`,
                 icon: 'profile',
               },
               {
                 id: 'teams',
                 title: 'Teams',
-                href: `/${locale}/teams`,
+                href: `/${locale}/apps/user-boards/teams`,
                 icon: 'users',
               },
               {
                 id: 'projects',
                 title: 'Projects',
-                href: `/${locale}/projects`,
+                href: `/${locale}/apps/user-boards/projects`,
                 icon: 'projects',
               },
               {
                 id: 'connections',
                 title: 'Connections',
-                href: `/${locale}/connections`,
+                href: `/${locale}/apps/user-boards/connections`,
                 icon: 'connections',
-              },
-              {
-                id: 'settings',
-                title: 'Settings',
-                href: `/${locale}/settings`,
-                icon: 'settings',
-              },
+              }
             ]
-          }
+          },
+          {
+            id: 'notes',
+            title: 'Notes',
+            href: `/${locale}/apps/notes`,
+            icon: 'notes',
+          },
+          {
+            id: 'settings',
+            title: 'Settings',
+            href: `/${locale}/apps/settings`,
+            icon: 'settings',
+          },
         ]
       },
     ],
