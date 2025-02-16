@@ -4,7 +4,6 @@ import { useState } from 'react'
 import { cn } from '@/libs/utils'
 import { useTranslations } from 'next-intl'
 import React from 'react'
-
 import {
   BoardHeader,
 } from '@/design/features/user-board'
@@ -14,7 +13,10 @@ import {
 } from '@/design/components/ui'
 import * as Icons from '@/design/icons'
 import { Folder, Note } from './common'
-import { NewNoteDialog } from './dialogs'
+import {
+  NewNoteDialog,
+  EditNoteDialog,
+} from './dialogs'
 
 const NotesAppPage = () => {
   const t = useTranslations('ProfilePage')
@@ -70,6 +72,29 @@ const NotesAppPage = () => {
     setFolders(updatedFolders)
   }
 
+  const updateNote = (updatedNote: Note) => {
+    const updatedFolders = folders.map(folder => {
+      if (folder.id === activeFolder) {
+        return {
+          ...folder,
+          notes: folder.notes.map(n => (n.id === updatedNote.id ? updatedNote : n))
+        }
+      }
+      return folder
+    })
+    setFolders(updatedFolders)
+  }
+
+  const updateFolderTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const updatedFolders = folders.map((folder: Folder) => {
+      if (folder.id === activeFolder) {
+        return { ...folder, name: e.target.value }
+      }
+      return folder
+    })
+    setFolders(updatedFolders)
+  }
+
   const filteredFolders = folders.filter(folder =>
     folder.name.toLowerCase().includes(searchTerm.toLowerCase())
   )
@@ -118,6 +143,7 @@ const NotesAppPage = () => {
         {/* Note Content */}
         <div className='flex-1 p-10'>
           <div className='flex justify-between items-center mb-6'>
+            {/* Note title Content */}
             <div className='flex items-center relative'>
               {titleEditable
                 ?(
@@ -126,15 +152,7 @@ const NotesAppPage = () => {
                       type='text'
                       className='text-3xl font-bold text-gray-800 focus:outline-none border border-slate-500 p-1'
                       value={folders.find(f => f.id === activeFolder)?.name || ''}
-                      onChange={(e) => {
-                        const updatedFolders = folders.map(folder => {
-                          if (folder.id === activeFolder) {
-                          return { ...folder, name: e.target.value }
-                          }
-                          return folder
-                        })
-                        setFolders(updatedFolders)
-                      }}
+                      onChange={updateFolderTitle}
                       onBlur={() => setTitleEditable(false)}
                       style={{ width: `${(folders.find(f => f.id === activeFolder)?.name.length || 1) + 1}ch` }}
                     />
@@ -149,7 +167,6 @@ const NotesAppPage = () => {
                 :(
                   <></>
               )}
-
               <span
                 className={cn(
                     'text-3xl font-bold text-gray-800',
@@ -172,6 +189,7 @@ const NotesAppPage = () => {
             </Button>
           </div>
 
+          {/* Note Content */}
           <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
             {folders
               .find(f => f.id === activeFolder)
@@ -181,10 +199,12 @@ const NotesAppPage = () => {
                   <p className='text-gray-600 mb-4'>{note.content.substring(0, 100)}...</p>
                   <div className='flex justify-between items-center text-sm text-gray-500'>
                     <span>{note.lastModified}</span>
-                    <div>
-                      <Button className='bg-slate-100 hover:bg-slate-300 text-sky-500 hover:text-sky-600 mr-2'>
-                        <Icons.Edit />
-                      </Button>
+                    <div className='flex items-center'>
+                      <EditNoteDialog
+                        className='mr-2'
+                        note={note}
+                        updateNoteAction={updateNote}
+                      />
                       <Button
                         className='bg-slate-100 hover:bg-slate-300 text-red-500 hover:text-red-600'
                         onClick={() => deleteNote(activeFolder, note.id)}

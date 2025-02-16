@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { cn } from '@/libs/utils'
 import {
   Dialog,
@@ -17,13 +17,19 @@ import * as Icons from '@/design/icons'
 import { Note } from '../common'
 
 
-interface newNoteDialogProps extends React.HTMLAttributes<HTMLDivElement> {
-  appendNoteAction: (newNote: Note) => void
+interface editNoteDialogProps extends React.HTMLAttributes<HTMLDivElement> {
+  note: Note
+  updateNoteAction: (newNote: Note) => void
 }
 
-export const NewNoteDialog = ({ className, appendNoteAction, ...props }: newNoteDialogProps) => {
+export const EditNoteDialog = ({ className, note, updateNoteAction, ...props }: editNoteDialogProps) => {
   const [title, setTitle] = useState('')
   const [content, setContent] = useState('')
+
+  useEffect(() => {
+    setTitle(note.title)
+    setContent(note.content)
+  }, [note])
 
   const resetDialog = () => {
     setTitle('')
@@ -32,21 +38,21 @@ export const NewNoteDialog = ({ className, appendNoteAction, ...props }: newNote
 
   const handleSave = () => {
     const newNote: Note = {
-      id: Math.floor(Math.random() * 1000),
+      id: note.id,
       title,
       content,
       lastModified: new Date().toLocaleString()
     }
     resetDialog()
-    appendNoteAction(newNote)
+    updateNoteAction(newNote)
   }
 
   return (
     <div className={cn(className)}>
       <Dialog {...props}>
         <DialogTrigger asChild>
-          <Button className='text-white bg-sky-500 hover:bg-sky-600 font-bold py-2 px-4 rounded-lg shadow-lg'>
-            <Icons.Add className='mr-2' size={18} /> Add Note
+          <Button className='bg-slate-100 hover:bg-slate-300 text-sky-500 hover:text-sky-600 font-bold rounded-lg'>
+            <Icons.Edit2 />
           </Button>
         </DialogTrigger>
         <DialogContent>
