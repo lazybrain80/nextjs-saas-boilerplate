@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react'
 import { cn } from '@/libs/utils'
+import { useTranslations } from 'next-intl'
 import {
   Dialog,
   DialogClose,
@@ -24,6 +25,8 @@ interface editNoteDialogProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 export const EditNoteDialog = ({ className, note, updateNoteAction, ...props }: editNoteDialogProps) => {
+  const t = useTranslations('NoteApp')
+
   const [title, setTitle] = useState('')
   const [content, setContent] = useState('')
 
@@ -58,25 +61,25 @@ export const EditNoteDialog = ({ className, note, updateNoteAction, ...props }: 
         </DialogTrigger>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>{'Edit'}</DialogTitle>
+            <DialogTitle>{t('edit_note')}</DialogTitle>
             <DialogClose />
           </DialogHeader>
           <Input
             className='w-full'
-            placeholder='Title'
+            placeholder={t('note_title')}
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
           <Textarea
             className='w-full'
-            placeholder='Content'
+            placeholder={t('note_content')}
             value={content}
             onChange={(e) => setContent(e.target.value)}
           />
           <DialogFooter>
             <DialogClose asChild>
               <Button onClick={handleSave} className='text-white bg-sky-500 hover:bg-sky-600 font-bold py-2 px-4 rounded-lg'>
-                <Icons.Save className='mr-2' /> {'Save'}
+                <Icons.Save className='mr-2' /> {t('save_note_confirm')}
               </Button>
             </DialogClose>
           </DialogFooter>

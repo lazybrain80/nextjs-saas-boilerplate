@@ -2,6 +2,7 @@
 
 import React from 'react'
 import { cn } from '@/libs/utils'
+import { useTranslations } from 'next-intl'
 import {
   Dialog,
   DialogClose,
@@ -22,7 +23,8 @@ interface deleteNoteDialogProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 export const DeleteNoteDialog = ({ className, folderId, noteId, deleteNoteAction, ...props }: deleteNoteDialogProps) => {
-
+  const t = useTranslations('NoteApp')
+  
   const handleDelete = () => {
     deleteNoteAction(folderId, noteId)
   }
@@ -37,11 +39,11 @@ export const DeleteNoteDialog = ({ className, folderId, noteId, deleteNoteAction
         </DialogTrigger>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>{'New'}</DialogTitle>
+            <DialogTitle>{t('delete_note')}</DialogTitle>
             <DialogClose />
           </DialogHeader>
           <div className='py-4'>
-            <p>Are you sure you want to delete this note?</p>
+            <p>{t('delete_note_message')}</p>
           </div>
           <DialogFooter>
             <DialogClose asChild>
@@ -49,7 +51,7 @@ export const DeleteNoteDialog = ({ className, folderId, noteId, deleteNoteAction
                 className='bg-slate-100 hover:bg-slate-300 text-red-500 hover:text-red-600 font-bold py-2 px-4 rounded-lg'
                 onClick={handleDelete}
               >
-                <Icons.Save className='mr-2' /> {'Delete'}
+                <Icons.Save className='mr-2' /> {t('delete_note_confirm')}
               </Button>
             </DialogClose>
           </DialogFooter>

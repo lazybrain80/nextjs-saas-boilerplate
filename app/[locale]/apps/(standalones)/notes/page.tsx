@@ -20,10 +20,11 @@ import {
 } from './dialogs'
 
 const NotesAppPage = () => {
-  const t = useTranslations('ProfilePage')
+  const t = useTranslations('NoteApp')
 
   const [folders, setFolders] = useState<Folder[]>([
-    { id: 1,
+    {
+      id: 1,
       name: 'Personal',
       notes: [
         {
@@ -103,12 +104,12 @@ const NotesAppPage = () => {
   return (
     <div className='flex-1 overflow-auto bg-slate-100 p-8'>
       {/* Page Header */}
-      <BoardHeader title={'Note App'} />
+      <BoardHeader title={t('title')} />
       {/* Profile Header */}
       <Card className='rounded-2xl shadow-lg h-[90%] bg-gray-100 flex'>
         {/* Note Sidebar */}
         <div className='w-64 bg-sky-500 p-6 text-white'>
-          <h1 className='text-2xl font-bold mb-6'>Note App</h1>
+          <h1 className='text-2xl font-bold mb-6'>{t('title')}</h1>
           <div className='mb-4'>
             <div className='flex items-center bg-sky-600 rounded-lg p-2'>
               <Icons.Search className='text-sky-300 mr-2' />

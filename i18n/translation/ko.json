@@ -167,5 +167,17 @@
         "terms_of_service": "Terms Of Service",
         "privacy_policy": "Privacy Policy",
         "inspired_by": "Inspired by <author></author>."
+    },
+    "NoteApp": {
+        "title": "노트 앱",
+        "add_note": "노트 추가",
+        "new_note": "새로운 노트",
+        "edit_note": "노트 편집",
+        "delete_note": "노트 삭제",
+        "save_note_confirm": "저장 하기",
+        "delete_note_confirm": "삭제 하기",
+        "delete_note_message": "노트를 정말로 삭제하시겠습니까?",
+        "note_title": "노트 제목",
+        "note_content": "노트 내용"
     }
 }

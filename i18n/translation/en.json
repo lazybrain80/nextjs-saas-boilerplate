@@ -167,5 +167,17 @@
         "terms_of_service": "Terms Of Service",
         "privacy_policy": "Privacy Policy",
         "inspired_by": "Inspired by <author></author>."
+    },
+    "NoteApp": {
+        "title": "Note App",
+        "add_note": "Add Note",
+        "new_note": "New Note",
+        "edit_note": "Edit Note",
+        "save_note_confirm": "Save",
+        "delete_note_confirm": "Delete",
+        "delete_note_message": "Are you sure you want to delete this note?",
+        "note_list": "Note List",
+        "note_title": "Note Title",
+        "note_content": "Note Content"
     }
 }
