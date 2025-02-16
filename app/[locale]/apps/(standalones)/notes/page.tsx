@@ -211,12 +211,6 @@ const NotesAppPage = () => {
                         noteId={note.id}
                         deleteNoteAction={deleteNote}
                       />
-                      {/* <Button
-                        className='bg-slate-100 hover:bg-slate-300 text-red-500 hover:text-red-600'
-                        onClick={() => deleteNote(activeFolder, note.id)}
-                      >
-                        <Icons.Trash />
-                      </Button> */}
                     </div>
                   </div>
                 </div>

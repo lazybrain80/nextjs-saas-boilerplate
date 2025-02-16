@@ -12,6 +12,7 @@ import {
   DialogTitle,
   Button,
   Input,
+  Textarea,
 } from '@/design/components/ui'
 import * as Icons from '@/design/icons'
 import { Note } from '../common'
@@ -57,7 +58,7 @@ export const EditNoteDialog = ({ className, note, updateNoteAction, ...props }: 
         </DialogTrigger>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>{'New'}</DialogTitle>
+            <DialogTitle>{'Edit'}</DialogTitle>
             <DialogClose />
           </DialogHeader>
           <Input
@@ -66,7 +67,7 @@ export const EditNoteDialog = ({ className, note, updateNoteAction, ...props }: 
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
-          <Input
+          <Textarea
             className='w-full'
             placeholder='Content'
             value={content}

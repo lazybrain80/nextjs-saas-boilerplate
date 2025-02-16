@@ -12,6 +12,7 @@ import {
   DialogTitle,
   Button,
   Input,
+  Textarea,
 } from '@/design/components/ui'
 import * as Icons from '@/design/icons'
 import { Note } from '../common'
@@ -60,7 +61,7 @@ export const NewNoteDialog = ({ className, appendNoteAction, ...props }: newNote
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
-          <Input
+          <Textarea
             className='w-full'
             placeholder='Content'
             value={content}

@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { cn } from '@/libs/utils'
 import {
   Dialog,
@@ -11,10 +11,8 @@ import {
   DialogFooter,
   DialogTitle,
   Button,
-  Input,
 } from '@/design/components/ui'
 import * as Icons from '@/design/icons'
-import { Note } from '../common'
 
 
 interface deleteNoteDialogProps extends React.HTMLAttributes<HTMLDivElement> {
