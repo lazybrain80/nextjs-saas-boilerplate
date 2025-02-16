@@ -16,6 +16,7 @@ import { Folder, Note } from './common'
 import {
   NewNoteDialog,
   EditNoteDialog,
+  DeleteNoteDialog,
 } from './dialogs'
 
 const NotesAppPage = () => {
@@ -104,7 +105,7 @@ const NotesAppPage = () => {
       {/* Page Header */}
       <BoardHeader title={'Note App'} />
       {/* Profile Header */}
-      <Card className='rounded-2xl shadow-lg h-5/6 bg-gray-100 flex'>
+      <Card className='rounded-2xl shadow-lg h-[90%] bg-gray-100 flex'>
         {/* Note Sidebar */}
         <div className='w-64 bg-sky-500 p-6 text-white'>
           <h1 className='text-2xl font-bold mb-6'>Note App</h1>
@@ -194,7 +195,7 @@ const NotesAppPage = () => {
             {folders
               .find(f => f.id === activeFolder)
               ?.notes.map(note => (
-                <div key={note.id} className='bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow duration-300'>
+                <div key={note.id} className='bg-white rounded-2xl shadow-lg p-6 hover:shadow-lg transition-shadow duration-300'>
                   <h3 className='text-xl font-semibold mb-2'>{note.title}</h3>
                   <p className='text-gray-600 mb-4'>{note.content.substring(0, 100)}...</p>
                   <div className='flex justify-between items-center text-sm text-gray-500'>
@@ -205,12 +206,17 @@ const NotesAppPage = () => {
                         note={note}
                         updateNoteAction={updateNote}
                       />
-                      <Button
+                      <DeleteNoteDialog
+                        folderId={activeFolder}
+                        noteId={note.id}
+                        deleteNoteAction={deleteNote}
+                      />
+                      {/* <Button
                         className='bg-slate-100 hover:bg-slate-300 text-red-500 hover:text-red-600'
                         onClick={() => deleteNote(activeFolder, note.id)}
                       >
                         <Icons.Trash />
-                      </Button>
+                      </Button> */}
                     </div>
                   </div>
                 </div>
