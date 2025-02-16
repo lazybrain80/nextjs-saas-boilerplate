@@ -121,6 +121,8 @@ const NotesAppPage = () => {
               />
             </div>
           </div>
+
+          <div className='h-[87%] overflow-y-auto scrollbar-hide'>
           <ul>
             {filteredFolders.map((folder) => (
               <li
@@ -139,6 +141,7 @@ const NotesAppPage = () => {
           >
             <Icons.Add className='mr-2' /> New Folder
           </Button>
+          </div>
         </div>
 
         {/* Note Content */}
