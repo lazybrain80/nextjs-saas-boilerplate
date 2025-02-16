@@ -111,6 +111,8 @@ export const ThumbsDown = Lucide.ThumbsDown
 export const Projects = Lucide.ListTodo
 export const Connections = Lucide.GalleryThumbnails
 export const NotebookPen = Lucide.NotebookPen
+export const Save = Lucide.Save
+
 
 
 export const System: Icon = (props) => (
