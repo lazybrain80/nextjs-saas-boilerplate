@@ -179,5 +179,9 @@
         "note_list": "Note List",
         "note_title": "Note Title",
         "note_content": "Note Content"
+    },
+    "CalendarApp": {
+        "title": "Calendar App",
+        "add_event": "Add Event"
     }
 }

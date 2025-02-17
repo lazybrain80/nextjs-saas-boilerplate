@@ -112,6 +112,7 @@ export const Projects = Lucide.ListTodo
 export const Connections = Lucide.GalleryThumbnails
 export const NotebookPen = Lucide.NotebookPen
 export const Save = Lucide.Save
+export const Calendar = Lucide.CalendarDays
 
 
 
