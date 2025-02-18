@@ -15,6 +15,7 @@ import {
   Card,
 } from '@/design/components/ui'
 import * as Icons from '@/design/icons'
+import { NewEventDialog } from './dialogs'
 
 interface FormEvent extends React.FormEvent<HTMLFormElement> {}
 interface Event {
@@ -58,15 +59,15 @@ const CalendarPage = () => {
     const mockEvents = [
       {
         title: "Team Meeting",
-        start: "2024-01-10T10:00:00",
-        end: "2024-01-10T11:30:00",
+        start: "2025-02-10T10:00:00",
+        end: "2025-02-10T11:30:00",
         description: "Weekly team sync",
         backgroundColor: "#4F46E5"
       },
       {
         title: "Project Review",
-        start: "2024-01-15T14:00:00",
-        end: "2024-01-15T16:00:00",
+        start: "2025-02-15T14:00:00",
+        end: "2025-02-15T16:00:00",
         description: "Q1 Project Review",
         backgroundColor: "#10B981"
       }
@@ -167,6 +168,13 @@ const CalendarPage = () => {
           eventClick={handleEventClick}
           eventDrop={handleEventDrop}
           height="auto"
+        />
+
+        <NewEventDialog
+          open={showModal}
+          onCloseAction={()=> {
+            setShowModal(false)
+          }}
         />
 
         {showModal && (
