@@ -1,5 +1,6 @@
 'use client'
 
+import '@/styles/fullcalendar.css'
 import React, { useState, useEffect } from "react";
 
 import { useTranslations } from 'next-intl'
@@ -149,7 +150,7 @@ const CalendarPage = () => {
       
       {/* Calendar */}
       <Card className='rounded-2xl shadow-lg h-[90%] bg-gray-100 flex'>
-      <div className="max-w-7xl mx-auto bg-white rounded-lg shadow-lg p-4 md:p-6">
+      <div className="bg-white rounded-lg shadow-lg p-4 md:p-6 h-full">
         <FullCalendar
           plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
           headerToolbar={{
@@ -168,6 +169,9 @@ const CalendarPage = () => {
           eventClick={handleEventClick}
           eventDrop={handleEventDrop}
           height="auto"
+          eventClassNames={
+            "bg-transparent hover:bg-slate-800/60 p-1 text-xs border-none"
+          }
         />
 
         <NewEventDialog
