@@ -23,11 +23,12 @@ import {
 } from '@/design/components/ui'
 import { useForm } from 'react-hook-form'
 import * as Icons from '@/design/icons'
+import { Event } from '../common'
 
 interface newEventDialogProps extends React.HTMLAttributes<HTMLDivElement> {
   open: boolean
   onCloseAction: () => void
-  onSubmitAction: (data: Record<string, any>) => void
+  onSubmitAction: (data: Event) => void
 }
 
 const predefinedColors = [
@@ -64,7 +65,7 @@ export const NewEventDialog = ({ className, open, onSubmitAction, onCloseAction,
       description: '',
       start: '',
       end: '',
-      color: predefinedColors[0].hex
+      backgroundColor: predefinedColors[0].hex
     }
   })
   const { control } = eventForm
@@ -73,13 +74,15 @@ export const NewEventDialog = ({ className, open, onSubmitAction, onCloseAction,
     if (open) {
       eventForm.reset()
       
-      eventForm.setValue('start', new Date().toISOString().split('T')[0])
-      eventForm.setValue('end', new Date().toISOString().split('T')[0])
+      const localDatetime = new Date(new Date().getTime() - new Date().getTimezoneOffset() * 60000).toISOString().slice(0, 16);
+      eventForm.setValue('start', localDatetime);
+      eventForm.setValue('end', localDatetime);
     }
   }, [open, eventForm])
 
-  const onSubmit = async (data: any) => {
-    console.log('onSubmit:', data)
+  const onSubmit = async (data: Event) => {
+    onSubmitAction(data)
+    onCloseAction()
   };
 
   return (
@@ -134,7 +137,7 @@ export const NewEventDialog = ({ className, open, onSubmitAction, onCloseAction,
                   <FormItem>
                     <FormLabel>Start Date</FormLabel>
                     <FormControl>
-                      <Input {...field} type="date" />
+                      <Input {...field} type="datetime-local" />
                     </FormControl>
                     <FormDescription>
                       Enter the start date of the event
@@ -152,7 +155,7 @@ export const NewEventDialog = ({ className, open, onSubmitAction, onCloseAction,
                   <FormItem>
                     <FormLabel>Start Date</FormLabel>
                     <FormControl>
-                      <Input {...field} type="date" />
+                      <Input {...field} type="datetime-local" />
                     </FormControl>
                     <FormDescription>
                       Enter the start date of the event
@@ -164,7 +167,7 @@ export const NewEventDialog = ({ className, open, onSubmitAction, onCloseAction,
               {/* event color field */}
               <FormField
                 control={control}
-                name="color"
+                name="backgroundColor"
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Event Color</FormLabel>

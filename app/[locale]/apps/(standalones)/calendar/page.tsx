@@ -16,16 +16,10 @@ import {
   Card,
 } from '@/design/components/ui'
 import * as Icons from '@/design/icons'
+import { Event } from './common'
 import { NewEventDialog } from './dialogs'
 
 interface FormEvent extends React.FormEvent<HTMLFormElement> {}
-interface Event {
-  title: string;
-  start: string;
-  end: string;
-  description: string;
-  backgroundColor: string;
-}
 
 interface SelectInfo {
   startStr: string;
@@ -60,15 +54,15 @@ const CalendarPage = () => {
     const mockEvents = [
       {
         title: "Team Meeting",
-        start: "2025-02-10T10:00:00",
-        end: "2025-02-20T11:30:00",
+        start: "2025-02-10T10:00",
+        end: "2025-02-20T11:30",
         description: "Weekly team sync",
         backgroundColor: "#4F46E5"
       },
       {
         title: "Project Review",
-        start: "2025-02-15T14:00:00",
-        end: "2025-02-15T16:00:00",
+        start: "2025-02-15T14:00",
+        end: "2025-02-17T16:00",
         description: "Q1 Project Review",
         backgroundColor: "#10B981"
       }
@@ -143,8 +137,8 @@ const CalendarPage = () => {
     }
   };
 
-  const submitNewEvent = (event: Record<string, any>) => {
-    console.log(event)
+  const submitNewEvent = (newEvent: Event) => {
+    setEvents([...events, newEvent])
   }
 
   return (
