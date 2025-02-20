@@ -23,15 +23,17 @@ import {
 } from '@/design/components/ui'
 import { useForm } from 'react-hook-form'
 import * as Icons from '@/design/icons'
-import { Event, EventColorSelector, predefinedColors, generateId } from '../common'
+import { Event, EventColorSelector } from '../common'
 
-interface newEventDialogProps extends React.HTMLAttributes<HTMLDivElement> {
+interface editEventDialogProps extends React.HTMLAttributes<HTMLDivElement> {
   open: boolean
+  event: Event
   onCloseAction: () => void
   onSubmitAction: (data: Event) => void
 }
 
-export const NewEventDialog = ({ className, open, onSubmitAction, onCloseAction, ...props }: newEventDialogProps) => {
+export const EditEventDialog = ({ className, open, event, onSubmitAction, onCloseAction, ...props }: editEventDialogProps) => {
+
   const eventForm = useForm({
     defaultValues: {
       id: '',
@@ -39,23 +41,23 @@ export const NewEventDialog = ({ className, open, onSubmitAction, onCloseAction,
       description: '',
       start: '',
       end: '',
-      backgroundColor: predefinedColors[0].hex
+      backgroundColor: ''
     }
   })
   const { control } = eventForm
 
   useEffect(() => {
     if (open) {
-      eventForm.reset()
-      
-      const localDatetime = new Date(new Date().getTime() - new Date().getTimezoneOffset() * 60000).toISOString().slice(0, 16)
-      eventForm.setValue('start', localDatetime)
-      eventForm.setValue('end', localDatetime)
+      eventForm.setValue('id', event.id)
+      eventForm.setValue('title', event.title)
+      eventForm.setValue('description', event.description)
+      eventForm.setValue('start', new Date(event.start).toISOString().slice(0, 16))
+      eventForm.setValue('end', new Date(event.end).toISOString().slice(0, 16))
+      eventForm.setValue('backgroundColor', event.backgroundColor)
     }
-  }, [open, eventForm])
+  }, [open, event, eventForm])
 
   const onSubmit = async (data: Event) => {
-    data.id = generateId()
     onSubmitAction(data)
     onCloseAction()
   }
@@ -66,7 +68,7 @@ export const NewEventDialog = ({ className, open, onSubmitAction, onCloseAction,
         <DialogContent enableClose={false}>
           <DialogHeader>
             <div className='flex items-center justify-between'>
-              <DialogTitle>New Event</DialogTitle>
+              <DialogTitle>Edit Event</DialogTitle>
               <DialogClose onClick={() => onCloseAction()}>
                 <Icons.Close />
               </DialogClose>
