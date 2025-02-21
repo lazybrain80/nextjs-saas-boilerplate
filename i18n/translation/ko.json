@@ -192,5 +192,22 @@
         "event_start": "시작 시간",
         "event_end": "종료 시간",
         "event_color": "이벤트 색상"
+    },
+    "InvoiceApp": {
+        "page_title": "인보이스 앱",
+        "add_invoice": "인보이스 추가",
+        "new_invoice": "새로운 인보이스",
+        "edit_invoice": "인보이스 편집",
+        "delete_invoice": "인보이스 삭제",
+        "save": "저장",
+        "invoice_name": "인보이스 이름",
+        "invoice_desc": "인보이스 설명",
+        "invoice_date": "인보이스 날짜",
+        "invoice_due_date": "납기일",
+        "invoice_status": "인보이스 상태",
+        "invoice_total": "총액",
+        "status_paid": "지불 완료",
+        "status_pending": "보류 중",
+        "status_draft": "임시"
     }
 }

@@ -192,5 +192,22 @@
         "event_start": "Start Time",
         "event_end": "End Time",
         "event_color": "Event Color"
+    },
+    "InvoiceApp": {
+        "page_title": "Invoice App",
+        "add_invoice": "Add Invoice",
+        "new_invoice": "New Invoice",
+        "edit_invoice": "Edit Invoice",
+        "delete_invoice": "Delete Invoice",
+        "save": "Save",
+        "invoice_name": "Invoice Name",
+        "invoice_desc": "Invoice Description",
+        "invoice_date": "Invoice Date",
+        "invoice_due_date": "Due Date",
+        "invoice_amount": "Invoice Amount",
+        "invoice_status": "Invoice Status",
+        "invoice_status_paid": "Paid",
+        "invoice_status_pending": "Pending",
+        "invoice_status_draft": "Draft"
     }
 }
