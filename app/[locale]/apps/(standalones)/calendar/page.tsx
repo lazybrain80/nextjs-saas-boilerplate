@@ -105,17 +105,6 @@ const CalendarPage = () => {
     setEvents(updatedEvents)
   }
 
-  const handleDelete = () => {
-    if (selectedEvent) {
-      const updatedEvents = events.filter(
-        event => event.title !== selectedEvent.title
-      )
-      setEvents(updatedEvents)
-      setShowNewModal(false)
-      setSelectedEvent(null)
-    }
-  }
-
   const submitNewEvent = (newEvent: Event) => {
     setEvents([...events, newEvent])
   }
@@ -140,7 +129,7 @@ const CalendarPage = () => {
   return (
     <div className='flex-1 overflow-auto bg-slate-100 p-8'>
       {/* Page Header */}
-      <BoardHeader title={t('title')} />
+      <BoardHeader title={t('page_title')} />
       
       {/* Calendar */}
       <Card className='rounded-2xl shadow-lg h-[90%] bg-gray-100 flex'>

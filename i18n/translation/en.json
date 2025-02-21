@@ -181,7 +181,16 @@
         "note_content": "Note Content"
     },
     "CalendarApp": {
-        "title": "Calendar App",
-        "add_event": "Add Event"
+        "page_title": "Calendar App",
+        "add_event": "Add Event",
+        "new_event": "New Event",
+        "edit_event": "Edit Event",
+        "delete_event": "Delete Event",
+        "save": "Save",
+        "event_name": "Event Name",
+        "event_desc": "Event Description",
+        "event_start": "Start Time",
+        "event_end": "End Time",
+        "event_color": "Event Color"
     }
 }

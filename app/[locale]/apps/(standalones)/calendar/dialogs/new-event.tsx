@@ -32,6 +32,8 @@ interface newEventDialogProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 export const NewEventDialog = ({ className, open, onSubmitAction, onCloseAction, ...props }: newEventDialogProps) => {
+  const t = useTranslations('CalendarApp')
+
   const eventForm = useForm({
     defaultValues: {
       id: '',
@@ -55,7 +57,6 @@ export const NewEventDialog = ({ className, open, onSubmitAction, onCloseAction,
   }, [open, eventForm])
 
   const onSubmit = async (data: Event) => {
-    console.log('submit>?',data)
     data.id = generateId()
     onSubmitAction(data)
     onCloseAction()
@@ -67,7 +68,7 @@ export const NewEventDialog = ({ className, open, onSubmitAction, onCloseAction,
         <DialogContent enableClose={false}>
           <DialogHeader>
             <div className='flex items-center justify-between'>
-              <DialogTitle>New Event</DialogTitle>
+              <DialogTitle>{t('new_event')}</DialogTitle>
               <DialogClose onClick={() => onCloseAction()}>
                 <Icons.Close />
               </DialogClose>
@@ -82,7 +83,7 @@ export const NewEventDialog = ({ className, open, onSubmitAction, onCloseAction,
                 rules={{ required: 'Event name is required' }}
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Event Name</FormLabel>
+                    <FormLabel>{t('event_name')}</FormLabel>
                     <FormControl>
                       <Input {...field} placeholder='Event Name' />
                     </FormControl>
@@ -96,7 +97,7 @@ export const NewEventDialog = ({ className, open, onSubmitAction, onCloseAction,
                 name='description'
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Description</FormLabel>
+                    <FormLabel>{t('event_desc')}</FormLabel>
                     <FormControl>
                       <Textarea {...field} placeholder='Event Description' />
                     </FormControl>
@@ -111,7 +112,7 @@ export const NewEventDialog = ({ className, open, onSubmitAction, onCloseAction,
                 rules={{ required: true  }}
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Start Date</FormLabel>
+                    <FormLabel>{t('event_start')}</FormLabel>
                     <FormControl>
                       <Input {...field} type='datetime-local' />
                     </FormControl>
@@ -129,7 +130,7 @@ export const NewEventDialog = ({ className, open, onSubmitAction, onCloseAction,
                 rules={{ required: true  }}
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>End Date</FormLabel>
+                    <FormLabel>{t('event_end')}</FormLabel>
                     <FormControl>
                       <Input {...field} type='datetime-local' />
                     </FormControl>
@@ -146,7 +147,7 @@ export const NewEventDialog = ({ className, open, onSubmitAction, onCloseAction,
                 name='backgroundColor'
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Event Color</FormLabel>
+                    <FormLabel>{t('event_color')}</FormLabel>
                     <FormControl>
                       <EventColorSelector field={field} />
                     </FormControl>
@@ -156,8 +157,12 @@ export const NewEventDialog = ({ className, open, onSubmitAction, onCloseAction,
               />
 
             <DialogFooter>
-              <Button type={'submit'}>Save</Button>
-              <Button type={'button'} onClick={() => onCloseAction()}>Cancel</Button>
+              <Button
+                className='w-32 rounded-2xl'
+                type={'submit'}
+              >
+                {t('save')}
+              </Button>
             </DialogFooter>
             </form>
           </Form>

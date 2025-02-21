@@ -34,6 +34,7 @@ interface editEventDialogProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 export const EditEventDialog = ({ className, open, event, onSubmitAction, onCloseAction, onDeleteAction, ...props }: editEventDialogProps) => {
+  const t = useTranslations('CalendarApp')
 
   const eventForm = useForm({
     defaultValues: {
@@ -79,7 +80,7 @@ export const EditEventDialog = ({ className, open, event, onSubmitAction, onClos
         <DialogContent enableClose={false}>
           <DialogHeader>
             <div className='flex items-center justify-between'>
-              <DialogTitle>Edit Event</DialogTitle>
+              <DialogTitle>{t('edit_event')}</DialogTitle>
               <div className='flex items-center space-x-2'>
                 <Button variant={'ghost'} onClick={() => onDelete(event.id)}>
                   <Icons.Trash />
@@ -101,7 +102,7 @@ export const EditEventDialog = ({ className, open, event, onSubmitAction, onClos
                 rules={{ required: 'Event name is required' }}
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Event Name</FormLabel>
+                    <FormLabel>{t('event_name')}</FormLabel>
                     <FormControl>
                       <Input {...field} placeholder='Event Name' />
                     </FormControl>
@@ -115,7 +116,7 @@ export const EditEventDialog = ({ className, open, event, onSubmitAction, onClos
                 name='description'
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Description</FormLabel>
+                    <FormLabel>{t('event_desc')}</FormLabel>
                     <FormControl>
                       <Textarea {...field} placeholder='Event Description' />
                     </FormControl>
@@ -130,7 +131,7 @@ export const EditEventDialog = ({ className, open, event, onSubmitAction, onClos
                 rules={{ required: true  }}
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Start Date</FormLabel>
+                    <FormLabel>{t('event_start')}</FormLabel>
                     <FormControl>
                       <Input {...field} type='datetime-local' />
                     </FormControl>
@@ -148,7 +149,7 @@ export const EditEventDialog = ({ className, open, event, onSubmitAction, onClos
                 rules={{ required: true  }}
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>End Date</FormLabel>
+                    <FormLabel>{t('event_end')}</FormLabel>
                     <FormControl>
                       <Input {...field} type='datetime-local' />
                     </FormControl>
@@ -165,7 +166,7 @@ export const EditEventDialog = ({ className, open, event, onSubmitAction, onClos
                 name='backgroundColor'
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Event Color</FormLabel>
+                    <FormLabel>{t('event_color')}</FormLabel>
                     <FormControl>
                       <EventColorSelector field={field} />
                     </FormControl>
@@ -175,8 +176,12 @@ export const EditEventDialog = ({ className, open, event, onSubmitAction, onClos
               />
 
             <DialogFooter>
-              <Button type={'submit'}>Save</Button>
-              <Button onClick={() => onCloseAction()}>Cancel</Button>
+              <Button
+                className='w-32 rounded-2xl'
+                type={'submit'}
+              >
+                {t('save')}
+              </Button>
             </DialogFooter>
             </form>
           </Form>
