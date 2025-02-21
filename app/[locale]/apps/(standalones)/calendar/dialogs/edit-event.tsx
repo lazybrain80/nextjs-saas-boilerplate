@@ -29,10 +29,11 @@ interface editEventDialogProps extends React.HTMLAttributes<HTMLDivElement> {
   open: boolean
   event: Event
   onCloseAction: () => void
+  onDeleteAction: (id: string) => void
   onSubmitAction: (data: Event) => void
 }
 
-export const EditEventDialog = ({ className, open, event, onSubmitAction, onCloseAction, ...props }: editEventDialogProps) => {
+export const EditEventDialog = ({ className, open, event, onSubmitAction, onCloseAction, onDeleteAction, ...props }: editEventDialogProps) => {
 
   const eventForm = useForm({
     defaultValues: {
@@ -48,17 +49,27 @@ export const EditEventDialog = ({ className, open, event, onSubmitAction, onClos
 
   useEffect(() => {
     if (open) {
+      const startDate = new Date(new Date(event.start).getTime() - new Date().getTimezoneOffset() * 60000).toISOString().slice(0, 16)
       eventForm.setValue('id', event.id)
       eventForm.setValue('title', event.title)
       eventForm.setValue('description', event.description)
-      eventForm.setValue('start', new Date(event.start).toISOString().slice(0, 16))
-      eventForm.setValue('end', new Date(event.end).toISOString().slice(0, 16))
+      eventForm.setValue('start', startDate)
+      if (event.end) {
+        eventForm.setValue('end', new Date(new Date(event.end).getTime() - new Date().getTimezoneOffset() * 60000).toISOString().slice(0, 16))
+      } else {
+        eventForm.setValue('end', startDate)
+      }
       eventForm.setValue('backgroundColor', event.backgroundColor)
     }
   }, [open, event, eventForm])
 
   const onSubmit = async (data: Event) => {
     onSubmitAction(data)
+    onCloseAction()
+  }
+
+  const onDelete = (id: string) => {
+    onDeleteAction(id)
     onCloseAction()
   }
 
@@ -69,13 +80,20 @@ export const EditEventDialog = ({ className, open, event, onSubmitAction, onClos
           <DialogHeader>
             <div className='flex items-center justify-between'>
               <DialogTitle>Edit Event</DialogTitle>
-              <DialogClose onClick={() => onCloseAction()}>
-                <Icons.Close />
-              </DialogClose>
+              <div className='flex items-center space-x-2'>
+                <Button variant={'ghost'} onClick={() => onDelete(event.id)}>
+                  <Icons.Trash />
+                </Button>
+                <DialogClose onClick={() => onCloseAction()}>
+                  <Icons.Close />
+                </DialogClose>
+              </div>
             </div>
           </DialogHeader>
           <Form {...eventForm}>
-            <form onSubmit={eventForm.handleSubmit(onSubmit)} className='space-y-4'>
+            <form
+              className='space-y-4'
+              onSubmit={eventForm.handleSubmit(onSubmit)}>
               {/* event name field */}
               <FormField
                 control={control}
@@ -130,12 +148,12 @@ export const EditEventDialog = ({ className, open, event, onSubmitAction, onClos
                 rules={{ required: true  }}
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Start Date</FormLabel>
+                    <FormLabel>End Date</FormLabel>
                     <FormControl>
                       <Input {...field} type='datetime-local' />
                     </FormControl>
                     <FormDescription>
-                      Enter the start date of the event
+                      Enter the end date of the event
                     </FormDescription>
                     <FormMessage />
                   </FormItem>

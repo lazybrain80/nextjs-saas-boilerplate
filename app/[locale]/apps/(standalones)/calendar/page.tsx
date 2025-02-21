@@ -15,11 +15,8 @@ import {
 import {
   Card,
 } from '@/design/components/ui'
-import * as Icons from '@/design/icons'
-import { Event, generateId } from './common'
+import { Event, generateId, predefinedColors } from './common'
 import { EditEventDialog, NewEventDialog } from './dialogs'
-
-interface FormEvent extends React.FormEvent<HTMLFormElement> {}
 
 interface SelectInfo {
   startStr: string
@@ -34,12 +31,11 @@ interface DropInfo {
   }
 }
 
-
 const CalendarPage = () => {
   const t = useTranslations('CalendarApp')
 
   const [events, setEvents] = useState<Event[]>([])
-  const [showModal, setShowModal] = useState(false)
+  const [showNewModal, setShowNewModal] = useState(false)
   const [showEditModal, setShowEditModal] = useState(false)
   const [selectedEvent, setSelectedEvent] = useState<Event | null>(null)
   const [newEvent, setNewEvent] = useState({
@@ -48,12 +44,11 @@ const CalendarPage = () => {
     start: '',
     end: '',
     description: '',
-    backgroundColor: '#4F46E5'
+    backgroundColor: predefinedColors[0].hex
   })
 
   useEffect(() => {
     // Mock data
-  
     const mockEvents = [
       {
         id: generateId(),
@@ -61,7 +56,7 @@ const CalendarPage = () => {
         start: '2025-02-10T10:00',
         end: '2025-02-20T11:30',
         description: 'Weekly team sync',
-        backgroundColor: '#4F46E5'
+        backgroundColor: predefinedColors[3].hex
       },
       {
         id: generateId(),
@@ -69,12 +64,11 @@ const CalendarPage = () => {
         start: '2025-02-15T14:00',
         end: '2025-02-17T16:00',
         description: 'Q1 Project Review',
-        backgroundColor: '#10B981'
+        backgroundColor: predefinedColors[4].hex
       }
     ]
     setEvents(mockEvents)
   }, [])
-
 
   const handleDateSelect = (selectInfo: SelectInfo) => {
     setNewEvent({
@@ -82,7 +76,7 @@ const CalendarPage = () => {
       start: selectInfo.startStr,
       end: selectInfo.endStr
     })
-    setShowModal(true)
+    setShowNewModal(true)
   }
 
   const handleEventClick = (clickInfo: EventClickArg) => {
@@ -117,7 +111,7 @@ const CalendarPage = () => {
         event => event.title !== selectedEvent.title
       )
       setEvents(updatedEvents)
-      setShowModal(false)
+      setShowNewModal(false)
       setSelectedEvent(null)
     }
   }
@@ -138,6 +132,11 @@ const CalendarPage = () => {
     setEvents(updatedEvents)
   }
 
+  const submitDeleteEvent = (id: string) => {
+    const updatedEvents = events.filter(event => event.id !== id)
+    setEvents(updatedEvents)
+  }
+
   return (
     <div className='flex-1 overflow-auto bg-slate-100 p-8'>
       {/* Page Header */}
@@ -145,50 +144,50 @@ const CalendarPage = () => {
       
       {/* Calendar */}
       <Card className='rounded-2xl shadow-lg h-[90%] bg-gray-100 flex'>
-      <div className='bg-white rounded-lg shadow-lg p-4 md:p-6 h-full'>
-        <FullCalendar
-          plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
-          headerToolbar={{
-            left: 'prev,next today',
-            center: 'title',
-            right: 'dayGridMonth,timeGridWeek,timeGridDay'
-          }}
-          initialView='dayGridMonth'
-          editable={true}
-          selectable={true}
-          selectMirror={true}
-          dayMaxEvents={true}
-          weekends={true}
-          events={events}
-          select={handleDateSelect}
-          eventClick={handleEventClick}
-          eventDrop={handleEventDrop}
-          height='auto'
-          eventClassNames={
-            'bg-transparent hover:bg-slate-800/60 p-1 text-xs border-none'
-          }
-        />
-
-        <NewEventDialog
-          open={showModal}
-          onCloseAction={()=> {
-            setShowModal(false)
-          }}
-          onSubmitAction={submitNewEvent}
-        />
-
-        {selectedEvent && (
-          <EditEventDialog
-            open={showEditModal}
-            event={selectedEvent}
-            onCloseAction={()=> {
-              setShowEditModal(false)
+        <div className='bg-white rounded-lg shadow-lg p-4 md:p-6 h-full'>
+          <FullCalendar
+            plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
+            headerToolbar={{
+              left: 'prev,next today',
+              center: 'title',
+              right: 'dayGridMonth,timeGridWeek,timeGridDay'
             }}
-            onSubmitAction={submitEditEvent}
+            initialView='dayGridMonth'
+            editable={true}
+            selectable={true}
+            selectMirror={true}
+            dayMaxEvents={true}
+            weekends={true}
+            events={events}
+            select={handleDateSelect}
+            eventClick={handleEventClick}
+            eventDrop={handleEventDrop}
+            height='auto'
+            eventClassNames={
+              'bg-transparent hover:bg-slate-800/60 p-1 text-xs border-none'
+            }
           />
-        )}
 
-      </div>
+          <NewEventDialog
+            open={showNewModal}
+            onCloseAction={()=> {
+              setShowNewModal(false)
+            }}
+            onSubmitAction={submitNewEvent}
+          />
+
+          {selectedEvent && (
+            <EditEventDialog
+              open={showEditModal}
+              event={selectedEvent}
+              onCloseAction={()=> {
+                setShowEditModal(false)
+              }}
+              onDeleteAction={submitDeleteEvent}
+              onSubmitAction={submitEditEvent}
+            />
+          )}
+        </div>
       </Card>
     </div>
   )

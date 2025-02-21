@@ -55,6 +55,7 @@ export const NewEventDialog = ({ className, open, onSubmitAction, onCloseAction,
   }, [open, eventForm])
 
   const onSubmit = async (data: Event) => {
+    console.log('submit>?',data)
     data.id = generateId()
     onSubmitAction(data)
     onCloseAction()
@@ -128,12 +129,12 @@ export const NewEventDialog = ({ className, open, onSubmitAction, onCloseAction,
                 rules={{ required: true  }}
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Start Date</FormLabel>
+                    <FormLabel>End Date</FormLabel>
                     <FormControl>
                       <Input {...field} type='datetime-local' />
                     </FormControl>
                     <FormDescription>
-                      Enter the start date of the event
+                      Enter the end date of the event
                     </FormDescription>
                     <FormMessage />
                   </FormItem>
@@ -156,7 +157,7 @@ export const NewEventDialog = ({ className, open, onSubmitAction, onCloseAction,
 
             <DialogFooter>
               <Button type={'submit'}>Save</Button>
-              <Button onClick={() => onCloseAction()}>Cancel</Button>
+              <Button type={'button'} onClick={() => onCloseAction()}>Cancel</Button>
             </DialogFooter>
             </form>
           </Form>
