@@ -1,4 +1,5 @@
 import { generateId } from '@/utils/id-generator'
+import { cn } from '@/libs/utils'
 
 export const orderStatus = {
   Pending: 'Pending',
@@ -186,3 +187,25 @@ export const invoiceMockData = [
     ]
   }
 ]
+
+
+export const InvoiceStatus = ({ status }: { status: string }) => {
+  return (
+    <span
+      className={cn(
+        'px-4 py-1 text-sm leading-5 font-semibold rounded-2xl',
+        {
+          'bg-green-100 text-green-800': status === orderStatus.Pending,
+          'bg-yellow-100 text-yellow-800': status === orderStatus.Shipped,
+          'bg-blue-100 text-blue-800': status === orderStatus.Completed,
+          'bg-purple-100 text-purple-800': status === orderStatus.Delivered,
+          'bg-red-100 text-red-800': status === orderStatus.Canceled,
+          'bg-orange-100 text-orange-800': status === orderStatus.Refunded,
+          'bg-teal-100 text-teal-800': status === orderStatus.Paid,
+        }
+      )}
+    >
+      {status}
+    </span>
+  )
+}

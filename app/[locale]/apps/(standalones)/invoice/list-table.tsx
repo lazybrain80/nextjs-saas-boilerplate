@@ -1,8 +1,6 @@
 'use client'
 
 import { cn } from '@/libs/utils'
-import { useState } from 'react'
-import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 import {
   Table,
@@ -16,33 +14,12 @@ import {
 } from '@/design/components/ui'
 
 import * as Icons from '@/design/icons'
-import { Invoice, orderStatus } from './common'
+import { Invoice, InvoiceStatus } from './common'
 import { ViewInvoiceDialog } from './dialogs'
 
 interface InvoiceListTableProps extends React.HTMLAttributes<HTMLDivElement> {
   className?: string
   invoices: Invoice[]
-}
-
-const InvoiceStatus = ({ status }: { status: string }) => {
-  return (
-    <span
-      className={cn(
-        'px-4 py-1 text-sm leading-5 font-semibold rounded-2xl',
-        {
-          'bg-green-100 text-green-800': status === orderStatus.Pending,
-          'bg-yellow-100 text-yellow-800': status === orderStatus.Shipped,
-          'bg-blue-100 text-blue-800': status === orderStatus.Completed,
-          'bg-purple-100 text-purple-800': status === orderStatus.Delivered,
-          'bg-red-100 text-red-800': status === orderStatus.Canceled,
-          'bg-orange-100 text-orange-800': status === orderStatus.Refunded,
-          'bg-teal-100 text-teal-800': status === orderStatus.Paid,
-        }
-      )}
-    >
-      {status}
-    </span>
-  )
 }
 
 export const InvoiceListTable = ({ className, invoices, ...props }: InvoiceListTableProps) => {
