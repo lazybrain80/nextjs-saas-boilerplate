@@ -18,13 +18,48 @@ import {
   TableHead,
   TableRow,
   TableCell,
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectValue,
+  SelectTrigger,
 } from '@/design/components/ui'
 import * as Icons from '@/design/icons'
-import { Invoice, InvoiceStatus } from '../common'
+import { Invoice, orderStatus } from '../common'
 
 const taxRate = 0.15
 
-export const ViewInvoiceDialog = ( {invoice} : {invoice: Invoice}) => {
+interface SelectInvoiceStatusProps {
+  className?: string
+  status: string
+}
+
+const SelectInvoiceStatus = ({ className, status }: SelectInvoiceStatusProps) => {
+  const [currentStatus, setCurrentStatus] = useState('')
+  
+  useEffect(() => {
+    setCurrentStatus(status)
+  }, [status])
+
+  return (
+    <div className={className}>
+      <Select value={currentStatus} onValueChange={setCurrentStatus}>
+        <SelectTrigger>
+            <SelectValue aria-label={currentStatus}>{currentStatus}</SelectValue>
+        </SelectTrigger>
+        <SelectContent>
+          {Object.values(orderStatus).map((status) => (
+            <SelectItem key={status} value={status}>
+              {(status)}
+            </SelectItem>
+          ))}
+        </SelectContent>
+      </Select>
+    </div>
+  )
+}
+
+export const EditInvoiceDialog = ( {invoice} : {invoice: Invoice}) => {
   const locale = useLocale()
   const [tax, setTax] = useState(0)
   const [totalCost, setTotalCost] = useState(0)
@@ -38,8 +73,8 @@ export const ViewInvoiceDialog = ( {invoice} : {invoice: Invoice}) => {
   return(
     <Dialog>
       <DialogTrigger asChild>
-        <Button className="bg-white text-blue-600 hover:text-blue-800 hover:bg-slate-300">
-          <Icons.Eye size={18} />
+        <Button className="bg-white text-gray-600 hover:text-gray-800 hover:bg-slate-300">
+          <Icons.Edit2 size={18} />
         </Button>
       </DialogTrigger>
       <DialogContent className='max-w-4xl'>
@@ -51,10 +86,10 @@ export const ViewInvoiceDialog = ( {invoice} : {invoice: Invoice}) => {
           <div
             className='flex items-center justify-between'
           >
-            <div>
+            <div className='space-y-2'>
               <div>{`#ID: ${invoice.id}`}</div>
               <div
-                className='text-xs text-slate-500 border border-slate-700 rounded-3xl p-1 px-4 mt-2'
+                className='text-xs text-slate-500 border border-slate-700 rounded-3xl p-1 px-4'
               >
                     {new Date(invoice.orderDate).toLocaleDateString(locale, {
                       weekday: 'long',
@@ -66,7 +101,15 @@ export const ViewInvoiceDialog = ( {invoice} : {invoice: Invoice}) => {
                     })}
               </div>
             </div>
-            <InvoiceStatus status={invoice.orderStatus} />
+            <div className='w-1/3 space-y-2'>
+              <div>{'Order Status'}</div>
+              <SelectInvoiceStatus
+                className=''
+                status={invoice.orderStatus}
+              />
+            </div>
+              
+            
           </div>
         <Separator />
 

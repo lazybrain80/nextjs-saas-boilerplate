@@ -15,7 +15,10 @@ import {
 
 import * as Icons from '@/design/icons'
 import { Invoice, InvoiceStatus } from './common'
-import { ViewInvoiceDialog } from './dialogs'
+import {
+  ViewInvoiceDialog,
+  EditInvoiceDialog
+} from './dialogs'
 
 interface InvoiceListTableProps extends React.HTMLAttributes<HTMLDivElement> {
   className?: string
@@ -72,10 +75,7 @@ export const InvoiceListTable = ({ className, invoices, ...props }: InvoiceListT
                 </TableCell>
                 <TableCell className='px-6 py-4'>
                   <ViewInvoiceDialog invoice={invoice} />
-                  
-                  <Button className='bg-white text-gray-600 hover:text-gray-800 hover:bg-slate-300'>
-                    <Icons.Edit2 size={18} />
-                  </Button>
+                  <EditInvoiceDialog invoice={invoice} />
                   <Button className='bg-white text-red-600 hover:text-red-800 hover:bg-slate-300'>
                     <Icons.Trash2 size={18} />
                   </Button>
