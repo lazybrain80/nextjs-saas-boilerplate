@@ -10,7 +10,7 @@ import {
   Card,
 } from '@/design/components/ui'
 import * as Icons from '@/design/icons'
-import { invoiceMockData, orderStatus } from './common'
+import { invoiceMockData, orderStatus, Invoice } from './common'
 import { InvoiceListTable } from './list-table'
 
 const InvoiceAppPage = () => {
@@ -19,10 +19,15 @@ const InvoiceAppPage = () => {
   const [pendingInvoices, setPendingInvoices] = useState(0)
   const [shippedInvoices, setShippedInvoices] = useState(0)
   const [completedInvoices, setCompletedInvoices] = useState(0)
+  const [invoices, setInvoices] = useState(invoiceMockData)
+
+  const handleSetInvoices: React.Dispatch<React.SetStateAction<Invoice[]>> = (newInvoices) => {
+    setInvoices(newInvoices)
+  }
 
   useEffect(() => {
     let pending = 0, shipped = 0, completed = 0
-    invoiceMockData.forEach((invoice) => {
+    invoices.forEach((invoice) => {
       switch (invoice.orderStatus) {
         case orderStatus.Pending:
           pending++
@@ -35,11 +40,11 @@ const InvoiceAppPage = () => {
           break
       }
     })
-    setTotalInvoices(invoiceMockData.length)
+    setTotalInvoices(invoices.length)
     setPendingInvoices(pending)
     setShippedInvoices(shipped)
     setCompletedInvoices(completed)
-  }, [])
+  }, [invoices])
 
   return (
     <div className='flex-1 overflow-auto bg-slate-100 p-8 space-y-6'>
@@ -81,7 +86,8 @@ const InvoiceAppPage = () => {
       {/* Invoice list table */}
       <InvoiceListTable
         className='bg-white rounded-2xl shadow-lg'
-        invoices={invoiceMockData}
+        invoices={invoices}
+        setInvoices={handleSetInvoices}
       />
     </div>
   )

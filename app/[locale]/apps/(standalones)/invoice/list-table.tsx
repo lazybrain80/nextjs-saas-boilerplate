@@ -25,9 +25,10 @@ import {
 interface InvoiceListTableProps extends React.HTMLAttributes<HTMLDivElement> {
   className?: string
   invoices: Invoice[]
+  setInvoices: React.Dispatch<React.SetStateAction<Invoice[]>>
 }
 
-export const InvoiceListTable = ({ className, invoices, ...props }: InvoiceListTableProps) => {
+export const InvoiceListTable = ({ className, invoices, setInvoices, ...props }: InvoiceListTableProps) => {
   const t = useTranslations('InvoiceApp')
   const [listOfInvoices, setListOfInvoices] = useState<Invoice[]>([])
   const [selectedInvoices, setSelectedInvoices] = useState<string[]>([])
@@ -36,16 +37,9 @@ export const InvoiceListTable = ({ className, invoices, ...props }: InvoiceListT
     setListOfInvoices(invoices)
   }, [invoices])
 
-  const updateInvoice = (invoice: Invoice) => {
-    setListOfInvoices(
-      listOfInvoices.map((inv) => inv.id === invoice.id ? invoice : inv)
-    )
-  }
 
   const deleteInvoice = (invoice: Invoice) => {
-    setListOfInvoices(
-      listOfInvoices.filter((inv) => inv.id !== invoice.id)
-    )
+    setInvoices((prevInvoices) => prevInvoices.filter((inv) => inv.id !== invoice.id))
   }
 
   const handleCheckboxChange = (invoiceId: string, checked: Boolean) => {
@@ -57,9 +51,7 @@ export const InvoiceListTable = ({ className, invoices, ...props }: InvoiceListT
   }
 
   const deleteSelectedInvoices = () => {
-    setListOfInvoices(
-      listOfInvoices.filter((inv) => !selectedInvoices.includes(inv.id))
-    )
+    setInvoices((prevInvoices) => prevInvoices.filter((inv) => !selectedInvoices.includes(inv.id)))
     setSelectedInvoices([])
   }
 
@@ -71,6 +63,19 @@ export const InvoiceListTable = ({ className, invoices, ...props }: InvoiceListT
     }
   }
 
+  const handleUpdateInvoice = (updatedInvoice: Invoice) => {
+    setInvoices((prevInvoices) =>
+      prevInvoices.map((invoice) =>
+        invoice.id === updatedInvoice.id ? updatedInvoice : invoice
+      )
+    )
+  }
+
+  const handleNewInvoice = (newInvoice: Invoice) => {
+    const newInvoices = [...listOfInvoices, newInvoice]
+    setListOfInvoices(newInvoices)
+    setInvoices(newInvoices)
+  }
 
   return (
     <div className={cn(className)}>
@@ -87,7 +92,7 @@ export const InvoiceListTable = ({ className, invoices, ...props }: InvoiceListT
               </Button>
             )}
             <NewInvoiceDialog
-              onInvoiceChange={(invoice) => setListOfInvoices([invoice, ...listOfInvoices])}
+              onInvoiceChange={(invoice) => handleNewInvoice(invoice)}
             />
           </div>
         </div>
@@ -135,7 +140,7 @@ export const InvoiceListTable = ({ className, invoices, ...props }: InvoiceListT
                 </TableCell>
                 <TableCell className='px-6 py-4'>
                   <ViewInvoiceDialog invoice={invoice} />
-                  <EditInvoiceDialog invoice={invoice} onInvoiceChange={updateInvoice}/>
+                  <EditInvoiceDialog invoice={invoice} onInvoiceChange={handleUpdateInvoice}/>
                   
                   {/* Delete invoice */}
                   <Button
