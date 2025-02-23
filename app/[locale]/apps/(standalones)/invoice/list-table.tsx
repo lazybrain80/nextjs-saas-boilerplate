@@ -18,7 +18,8 @@ import * as Icons from '@/design/icons'
 import { Invoice, InvoiceStatus } from './common'
 import {
   ViewInvoiceDialog,
-  EditInvoiceDialog
+  EditInvoiceDialog,
+  NewInvoiceDialog,
 } from './dialogs'
 
 interface InvoiceListTableProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -85,12 +86,9 @@ export const InvoiceListTable = ({ className, invoices, ...props }: InvoiceListT
                 Delete Selected
               </Button>
             )}
-            <Button
-              className='bg-blue-600 text-white px-4 py-2 hover:bg-blue-700 rounded-3xl'
-              onClick={() => console.log('Add invoice')}
-            >
-              Add Invoice
-            </Button>
+            <NewInvoiceDialog
+              onInvoiceChange={(invoice) => setListOfInvoices([invoice, ...listOfInvoices])}
+            />
           </div>
         </div>
       </div>

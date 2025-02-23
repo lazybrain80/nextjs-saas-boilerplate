@@ -209,3 +209,5 @@ export const InvoiceStatus = ({ status }: { status: string }) => {
     </span>
   )
 }
+
+export { SelectInvoiceStatus } from './components'

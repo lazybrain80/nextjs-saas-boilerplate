@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, use } from 'react'
+import { useState, useEffect } from 'react'
 import { useLocale } from 'next-intl'
 import {
   Dialog,
@@ -19,58 +19,16 @@ import {
   TableHead,
   TableRow,
   TableCell,
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectValue,
-  SelectTrigger,
   Input,
 } from '@/design/components/ui'
 import * as Icons from '@/design/icons'
-import { Invoice, orderStatus } from '../common'
-import { set } from 'react-hook-form'
+import { Invoice, SelectInvoiceStatus } from '../common'
 
 const taxRate = 0.15
 
 interface EditInvoiceDialogProps {
   invoice: Invoice
   onInvoiceChange?: (invoice: Invoice) => void
-}
-
-interface SelectInvoiceStatusProps {
-  className?: string
-  status: string
-  onStatusChange?: (status: string) => void
-}
-
-const SelectInvoiceStatus = ({ className, status, onStatusChange }: SelectInvoiceStatusProps) => {
-  const [currentStatus, setCurrentStatus] = useState('')
-  
-  useEffect(() => {
-    setCurrentStatus(status)
-  }, [status])
-
-  const handleStatusChange = (status: string) => {
-    setCurrentStatus(status)
-    onStatusChange?.(status)
-  }
-
-  return (
-    <div className={className}>
-      <Select value={currentStatus} onValueChange={handleStatusChange}>
-        <SelectTrigger>
-            <SelectValue aria-label={currentStatus}>{currentStatus}</SelectValue>
-        </SelectTrigger>
-        <SelectContent>
-          {Object.values(orderStatus).map((status) => (
-            <SelectItem key={status} value={status}>
-              {(status)}
-            </SelectItem>
-          ))}
-        </SelectContent>
-      </Select>
-    </div>
-  )
 }
 
 export const EditInvoiceDialog = ({ invoice, onInvoiceChange } : EditInvoiceDialogProps) => {
@@ -110,7 +68,7 @@ export const EditInvoiceDialog = ({ invoice, onInvoiceChange } : EditInvoiceDial
           <Icons.Edit2 size={18} />
         </Button>
       </DialogTrigger>
-      <DialogContent className='max-w-4xl'>
+      <DialogContent className='max-w-4xl h-[90%] overflow-y-auto scrollbar-hide'>
         {isLoading ? (
           <div className="flex justify-center items-center h-full">
             <span>Loading...</span>
@@ -152,9 +110,9 @@ export const EditInvoiceDialog = ({ invoice, onInvoiceChange } : EditInvoiceDial
             {/** Bill info */}
             <div className='flex items-center justify-between'>
               {/** Bill from */}
-              <div className='p-4 w-1/2 mr-2'>
+              <div className='w-1/2 mr-2'>
                 <div className='text-lg font-bold my-2'>{'Bill from'}</div>
-                <div className='my-2'>
+                <div className='space-y-4'>
                   <label className='block text-sm font-medium text-gray-700'>{'Name'}</label>
                   <Input
                     className='rounded-xl'
@@ -168,7 +126,7 @@ export const EditInvoiceDialog = ({ invoice, onInvoiceChange } : EditInvoiceDial
                     })}
                   />
                 </div>
-                <div className='my-2'>
+                <div className='mt-4 space-y-4'>
                   <label className='block text-sm font-medium text-gray-700'>{'Address'}</label>
                   <Input
                     className='rounded-xl'
@@ -184,9 +142,9 @@ export const EditInvoiceDialog = ({ invoice, onInvoiceChange } : EditInvoiceDial
                 </div>
               </div>
               {/** Bill to */}
-              <div className='p-4 w-1/2 ml-2'>
+              <div className='w-1/2 ml-2'>
                 <div className='text-lg font-bold my-2'>{'Bill to'}</div>
-                <div className='my-2'>
+                <div className='space-y-4'>
                   <label className='block text-sm font-medium text-gray-700'>{'Name'}</label>
                   <Input
                     className='rounded-xl'
@@ -200,7 +158,7 @@ export const EditInvoiceDialog = ({ invoice, onInvoiceChange } : EditInvoiceDial
                     })}
                   />
                 </div>
-                <div className='my-2'>
+                <div className='mt-4 space-y-4'>
                   <label className='block text-sm font-medium text-gray-700'>{'Address'}</label>
                   <Input
                     className='rounded-xl'

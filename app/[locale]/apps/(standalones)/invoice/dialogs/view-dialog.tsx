@@ -42,7 +42,7 @@ export const ViewInvoiceDialog = ( {invoice} : {invoice: Invoice}) => {
           <Icons.Eye size={18} />
         </Button>
       </DialogTrigger>
-      <DialogContent className='max-w-4xl'>
+      <DialogContent className='max-w-4xl h-[90%] overflow-y-auto scrollbar-hide'>
         <DialogHeader>
             <DialogTitle>{'Invoice detail'}</DialogTitle>
             <DialogDescription>{'Check invoice detail'}</DialogDescription>
