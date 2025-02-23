@@ -41,6 +41,12 @@ export const InvoiceListTable = ({ className, invoices, ...props }: InvoiceListT
     )
   }
 
+  const deleteInvoice = (invoice: Invoice) => {
+    setListOfInvoices(
+      invoices.filter((inv) => inv.id !== invoice.id)
+    )
+  }
+
   return (
     <div className={cn(className)}>
       <div className='p-6 border-b'>
@@ -89,7 +95,12 @@ export const InvoiceListTable = ({ className, invoices, ...props }: InvoiceListT
                 <TableCell className='px-6 py-4'>
                   <ViewInvoiceDialog invoice={invoice} />
                   <EditInvoiceDialog invoice={invoice} onInvoiceChange={updateInvoice}/>
-                  <Button className='bg-white text-red-600 hover:text-red-800 hover:bg-slate-300'>
+                  
+                  {/* Delete invoice */}
+                  <Button
+                    className='bg-white text-red-600 hover:text-red-800 hover:bg-slate-300'
+                    onClick={() => deleteInvoice(invoice)}
+                  >
                     <Icons.Trash2 size={18} />
                   </Button>
                 </TableCell>
