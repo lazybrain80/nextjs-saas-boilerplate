@@ -11,7 +11,7 @@ interface AuthClient {
   supaUser: User | null
 }
 
-interface AuthProviderProviderProp {
+interface AuthProviderProp {
   children: React.ReactNode
 }
 
@@ -19,7 +19,7 @@ const AuthContext = createContext<AuthClient | undefined>(
   undefined,
 )
 
-export const AuthProvider: React.FC<AuthProviderProviderProp & { supaUser: User | null }> = ({ supaUser, children }) => {
+export const AuthProvider: React.FC<AuthProviderProp & { supaUser: User | null }> = ({ supaUser, children }) => {
   const [supaClient, setSupaClient] = useState<SupabaseClient | undefined>(undefined)
 
   useLayoutEffect(() => {

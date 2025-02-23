@@ -211,3 +211,5 @@ export const InvoiceStatus = ({ status }: { status: string }) => {
 }
 
 export { SelectInvoiceStatus } from './components'
+export { InvoiceProvider, useInvoices } from './provider'
+

@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { cn } from '@/libs/utils'
 import { useTranslations } from 'next-intl'
 import {
@@ -15,7 +15,7 @@ import {
 } from '@/design/components/ui'
 
 import * as Icons from '@/design/icons'
-import { Invoice, InvoiceStatus } from './common'
+import { Invoice, InvoiceStatus, useInvoices } from './common'
 import {
   ViewInvoiceDialog,
   EditInvoiceDialog,
@@ -24,23 +24,13 @@ import {
 
 interface InvoiceListTableProps extends React.HTMLAttributes<HTMLDivElement> {
   className?: string
-  invoices: Invoice[]
-  setInvoices: React.Dispatch<React.SetStateAction<Invoice[]>>
 }
 
-export const InvoiceListTable = ({ className, invoices, setInvoices, ...props }: InvoiceListTableProps) => {
+export const InvoiceListTable = ({ className, ...props }: InvoiceListTableProps) => {
   const t = useTranslations('InvoiceApp')
-  const [listOfInvoices, setListOfInvoices] = useState<Invoice[]>([])
+  const { invoices, setInvoices, addInvoice, updateInvoice, deleteInvoice } = useInvoices()
+
   const [selectedInvoices, setSelectedInvoices] = useState<string[]>([])
-
-  useEffect(() => {
-    setListOfInvoices(invoices)
-  }, [invoices])
-
-
-  const deleteInvoice = (invoice: Invoice) => {
-    setInvoices((prevInvoices) => prevInvoices.filter((inv) => inv.id !== invoice.id))
-  }
 
   const handleCheckboxChange = (invoiceId: string, checked: Boolean) => {
     if (checked) {
@@ -51,30 +41,24 @@ export const InvoiceListTable = ({ className, invoices, setInvoices, ...props }:
   }
 
   const deleteSelectedInvoices = () => {
-    setInvoices((prevInvoices) => prevInvoices.filter((inv) => !selectedInvoices.includes(inv.id)))
+    setInvoices(invoices.filter((invoice) => !selectedInvoices.includes(invoice.id)))
     setSelectedInvoices([])
   }
 
   const handleAllCheckboxChange = (checked: Boolean) => {
     if (checked) {
-      setSelectedInvoices(listOfInvoices.map((inv) => inv.id))
+      setSelectedInvoices(invoices.map((inv) => inv.id))
     } else {
       setSelectedInvoices([])
     }
   }
 
   const handleUpdateInvoice = (updatedInvoice: Invoice) => {
-    setInvoices((prevInvoices) =>
-      prevInvoices.map((invoice) =>
-        invoice.id === updatedInvoice.id ? updatedInvoice : invoice
-      )
-    )
+    updateInvoice(updatedInvoice)
   }
 
   const handleNewInvoice = (newInvoice: Invoice) => {
-    const newInvoices = [...listOfInvoices, newInvoice]
-    setListOfInvoices(newInvoices)
-    setInvoices(newInvoices)
+    addInvoice(newInvoice)
   }
 
   return (
@@ -116,7 +100,7 @@ export const InvoiceListTable = ({ className, invoices, setInvoices, ...props }:
             </TableRow>
           </TableHeader>
           <TableBody className='divide-y divide-gray-200'>
-            {listOfInvoices.map((invoice) => (
+            {invoices.map((invoice) => (
               <TableRow key={invoice.id}>
                 <TableCell className='px-6 py-4'>
                   <Input
@@ -145,7 +129,7 @@ export const InvoiceListTable = ({ className, invoices, setInvoices, ...props }:
                   {/* Delete invoice */}
                   <Button
                     className='bg-white text-red-600 hover:text-red-800 hover:bg-slate-300'
-                    onClick={() => deleteInvoice(invoice)}
+                    onClick={() => deleteInvoice(invoice.id)}
                   >
                     <Icons.Trash2 size={18} />
                   </Button>
