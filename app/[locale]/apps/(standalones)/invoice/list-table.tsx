@@ -29,35 +29,69 @@ interface InvoiceListTableProps extends React.HTMLAttributes<HTMLDivElement> {
 export const InvoiceListTable = ({ className, invoices, ...props }: InvoiceListTableProps) => {
   const t = useTranslations('InvoiceApp')
   const [listOfInvoices, setListOfInvoices] = useState<Invoice[]>([])
+  const [selectedInvoices, setSelectedInvoices] = useState<string[]>([])
 
   useEffect(() => {
     setListOfInvoices(invoices)
   }, [invoices])
 
-
   const updateInvoice = (invoice: Invoice) => {
     setListOfInvoices(
-      invoices.map((inv) => inv.id === invoice.id ? invoice : inv)
+      listOfInvoices.map((inv) => inv.id === invoice.id ? invoice : inv)
     )
   }
 
   const deleteInvoice = (invoice: Invoice) => {
     setListOfInvoices(
-      invoices.filter((inv) => inv.id !== invoice.id)
+      listOfInvoices.filter((inv) => inv.id !== invoice.id)
     )
   }
+
+  const handleCheckboxChange = (invoiceId: string, checked: Boolean) => {
+    if (checked) {
+      setSelectedInvoices([...selectedInvoices, invoiceId])
+    } else {
+      setSelectedInvoices(selectedInvoices.filter((id) => id !== invoiceId))
+    }
+  }
+
+  const deleteSelectedInvoices = () => {
+    setListOfInvoices(
+      listOfInvoices.filter((inv) => !selectedInvoices.includes(inv.id))
+    )
+    setSelectedInvoices([])
+  }
+
+  const handleAllCheckboxChange = (checked: Boolean) => {
+    if (checked) {
+      setSelectedInvoices(listOfInvoices.map((inv) => inv.id))
+    } else {
+      setSelectedInvoices([])
+    }
+  }
+
 
   return (
     <div className={cn(className)}>
       <div className='p-6 border-b'>
         <div className='flex justify-between items-center'>
           <h3 className='text-lg font-semibold'>{('Invoice list')}</h3>
-          <Button
-            className='bg-blue-600 text-white px-4 py-2 hover:bg-blue-700 rounded-3xl'
-            onClick={() => console.log('Add invoice')}
-          >
-            Add Invoice
-          </Button>
+          <div className='flex items-center'>
+            {selectedInvoices.length > 0 && (
+              <Button
+                className='bg-red-600 text-white px-4 py-2 hover:bg-red-700 rounded-3xl mr-4'
+                onClick={deleteSelectedInvoices}
+              >
+                Delete Selected
+              </Button>
+            )}
+            <Button
+              className='bg-blue-600 text-white px-4 py-2 hover:bg-blue-700 rounded-3xl'
+              onClick={() => console.log('Add invoice')}
+            >
+              Add Invoice
+            </Button>
+          </div>
         </div>
       </div>
       <div className='overflow-x-auto'>
@@ -65,7 +99,11 @@ export const InvoiceListTable = ({ className, invoices, ...props }: InvoiceListT
           <TableHeader className='bg-gray-50'>
             <TableRow>
               <TableHead className='px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase'>
-                <Input className='w-6 h-6' type='checkbox' />
+                <Input
+                  className='w-6 h-6'
+                  type='checkbox'
+                  onChange={e => handleAllCheckboxChange(e.target.checked)}
+                />
               </TableHead>
               <TableHead className='px-6 py-3 text-left text-sm font-bold text-gray-500 uppercase'>{('Bill from')}</TableHead>
               <TableHead className='px-6 py-3 text-left text-sm font-bold text-gray-500 uppercase'>{('Bill to')}</TableHead>
@@ -78,7 +116,12 @@ export const InvoiceListTable = ({ className, invoices, ...props }: InvoiceListT
             {listOfInvoices.map((invoice) => (
               <TableRow key={invoice.id}>
                 <TableCell className='px-6 py-4'>
-                  <Input className='w-6 h-6' type='checkbox' />
+                  <Input
+                    className='w-6 h-6'
+                    type='checkbox'
+                    checked={selectedInvoices.includes(invoice.id)}
+                    onChange={(e) => handleCheckboxChange(invoice.id, e.target.checked)}
+                  />
                 </TableCell>
                 <TableCell className='px-6 py-4'>
                   {invoice.billFrom?.name}
