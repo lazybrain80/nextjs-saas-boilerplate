@@ -1,5 +1,6 @@
 'use client'
 
+import { useState, useEffect } from 'react'
 import { cn } from '@/libs/utils'
 import { useTranslations } from 'next-intl'
 import {
@@ -27,6 +28,18 @@ interface InvoiceListTableProps extends React.HTMLAttributes<HTMLDivElement> {
 
 export const InvoiceListTable = ({ className, invoices, ...props }: InvoiceListTableProps) => {
   const t = useTranslations('InvoiceApp')
+  const [listOfInvoices, setListOfInvoices] = useState<Invoice[]>([])
+
+  useEffect(() => {
+    setListOfInvoices(invoices)
+  }, [invoices])
+
+
+  const updateInvoice = (invoice: Invoice) => {
+    setListOfInvoices(
+      invoices.map((inv) => inv.id === invoice.id ? invoice : inv)
+    )
+  }
 
   return (
     <div className={cn(className)}>
@@ -56,7 +69,7 @@ export const InvoiceListTable = ({ className, invoices, ...props }: InvoiceListT
             </TableRow>
           </TableHeader>
           <TableBody className='divide-y divide-gray-200'>
-            {invoices.map((invoice) => (
+            {listOfInvoices.map((invoice) => (
               <TableRow key={invoice.id}>
                 <TableCell className='px-6 py-4'>
                   <Input className='w-6 h-6' type='checkbox' />
@@ -75,7 +88,7 @@ export const InvoiceListTable = ({ className, invoices, ...props }: InvoiceListT
                 </TableCell>
                 <TableCell className='px-6 py-4'>
                   <ViewInvoiceDialog invoice={invoice} />
-                  <EditInvoiceDialog invoice={invoice} />
+                  <EditInvoiceDialog invoice={invoice} onInvoiceChange={updateInvoice}/>
                   <Button className='bg-white text-red-600 hover:text-red-800 hover:bg-slate-300'>
                     <Icons.Trash2 size={18} />
                   </Button>
