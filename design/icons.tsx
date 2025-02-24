@@ -114,6 +114,7 @@ export const NotebookPen = Lucide.NotebookPen
 export const Save = Lucide.Save
 export const Calendar = Lucide.CalendarDays
 export const Ship = Lucide.Ship
+export const ShoppingBag = Lucide.ShoppingBag
 
 
 

@@ -38,6 +38,7 @@ const iconMap = new Map([
   ['notes', Icons.NotebookPen],
   ['calendar', Icons.Calendar],
   ['invoice', Icons.ListTodo],
+  ['ecommerce', Icons.ShoppingBag],
 ])
 
 export function SidebarNav({ items }: SidebarNavProps) {

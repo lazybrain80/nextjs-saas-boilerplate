@@ -116,6 +116,12 @@ export const getUserBoardConfig = async (): Promise<PageNavConfig> => {
             icon: 'invoice',
           },
           {
+            id: 'ecommerce',
+            title: 'Ecommerce',
+            href: `/${locale}/apps/ecommerce`,
+            icon: 'ecommerce',
+          },
+          {
             id: 'settings',
             title: 'Settings',
             href: `/${locale}/apps/settings`,
