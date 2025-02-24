@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { useLocale } from 'next-intl'
+import { useTranslations } from 'next-intl'
 import {
   Dialog,
   DialogClose,
@@ -46,7 +46,7 @@ interface NewInvoiceDialogProps {
 }
 
 export const NewInvoiceDialog = ({ onInvoiceChange } : NewInvoiceDialogProps) => {
-  const locale = useLocale()
+  const t = useTranslations('InvoiceApp')
   const [tax, setTax] = useState(0)
   const [totalCost, setTotalCost] = useState(0)
   const [newInvoice, setNewInvoice] = useState<Invoice>(emptyInvoice)
@@ -81,7 +81,7 @@ export const NewInvoiceDialog = ({ onInvoiceChange } : NewInvoiceDialogProps) =>
       <DialogTrigger asChild>
         <Button
           className='bg-blue-600 text-white px-4 py-2 hover:bg-blue-700 rounded-3xl'>
-          New Invoice
+          {t('new_invoice')}
         </Button>
       </DialogTrigger>
       <DialogContent className='max-w-4xl h-[90%] overflow-y-auto scrollbar-hide'>

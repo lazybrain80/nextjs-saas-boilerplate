@@ -65,14 +65,14 @@ export const InvoiceListTable = ({ className, ...props }: InvoiceListTableProps)
     <div className={cn(className)}>
       <div className='p-6 border-b'>
         <div className='flex justify-between items-center'>
-          <h3 className='text-lg font-semibold'>{('Invoice list')}</h3>
+          <h3 className='text-lg font-semibold'>{t('invoice_list')}</h3>
           <div className='flex items-center'>
             {selectedInvoices.length > 0 && (
               <Button
                 className='bg-red-600 text-white px-4 py-2 hover:bg-red-700 rounded-3xl mr-4'
                 onClick={deleteSelectedInvoices}
               >
-                Delete Selected
+                {t('delete_selected')}
               </Button>
             )}
             <NewInvoiceDialog
