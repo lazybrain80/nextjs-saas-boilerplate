@@ -14,6 +14,8 @@ import {
 import * as Icons from '@/design/icons'
 import { CachedItemProvider } from '@/hooks/client-cache'
 import { FilterHeader } from './filter-header'
+import { DisplayProduct } from './display-product'
+import { ecommerceProductMockData } from './common'
 
 const InvoiceAppPage = () => {
   const t = useTranslations('EcommerceApp')
@@ -23,15 +25,12 @@ const InvoiceAppPage = () => {
       {/* Page Header */}
       <BoardHeader title={t('page_title')} />
       
-      <CachedItemProvider items={[]}>
+      <CachedItemProvider items={ecommerceProductMockData}>
         <FilterHeader />
-
-        <Card className='rounded-2xl shadow-lg h-[90%] bg-gray-100 flex'>
-        </Card>
-
+        <DisplayProduct
+          className='rounded-2xl shadow-lg bg-gray-100'
+        />
       </CachedItemProvider>
-      
-
     </div>
   )
 }

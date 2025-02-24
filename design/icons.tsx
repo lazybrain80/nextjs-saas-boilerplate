@@ -115,6 +115,8 @@ export const Save = Lucide.Save
 export const Calendar = Lucide.CalendarDays
 export const Ship = Lucide.Ship
 export const ShoppingBag = Lucide.ShoppingBag
+export const Heart = Lucide.Heart
+export const Star = Lucide.Star
 
 
 
