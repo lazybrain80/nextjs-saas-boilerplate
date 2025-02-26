@@ -14,7 +14,7 @@ import {
 import * as Icons from '@/design/icons'
 import { CachedItemProvider } from '@/hooks/client-cache'
 import { FilterHeader } from './filter-header'
-import { DisplayProduct } from './display-product'
+import { DisplayProducts } from './display-products'
 import { ecommerceProductMockData } from './common'
 
 const InvoiceAppPage = () => {
@@ -27,7 +27,7 @@ const InvoiceAppPage = () => {
       
       <CachedItemProvider items={ecommerceProductMockData}>
         <FilterHeader />
-        <DisplayProduct
+        <DisplayProducts
           className='rounded-2xl shadow-lg bg-gray-100'
         />
       </CachedItemProvider>

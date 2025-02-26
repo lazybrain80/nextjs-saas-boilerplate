@@ -11,13 +11,13 @@ import {
 } from '@/design/components/ui'
 import { BaseEcommerceProduct } from './common'
 import * as Icons from '@/design/icons'
+import { DetailProductDialog } from './dialogs'
 
-
-interface DisplayProductProps extends React.HTMLAttributes<HTMLDivElement> {
+interface DisplayProductsProps extends React.HTMLAttributes<HTMLDivElement> {
   className?: string
 }
 
-export const DisplayProduct = ({ className }: DisplayProductProps) => {
+export const DisplayProducts = ({ className }: DisplayProductsProps) => {
   const { items } = useCachedItems()
 
   const [cart, setCart] = useState<BaseEcommerceProduct[]>([]);
@@ -26,6 +26,9 @@ export const DisplayProduct = ({ className }: DisplayProductProps) => {
   const [priceRange, setPriceRange] = useState([0, 1000]);
   const [sortBy, setSortBy] = useState("newest");
   const [searchQuery, setSearchQuery] = useState("");
+  const [detailProduct, setDetailProduct] = useState<boolean>(false)
+  const [selectedProduct, setSelectedProduct] = useState<BaseEcommerceProduct | undefined>(undefined)
+
 
   const filteredProducts = useMemo(() => {
     return (items as BaseEcommerceProduct[])
@@ -61,12 +64,26 @@ export const DisplayProduct = ({ className }: DisplayProductProps) => {
     });
   };
 
+  const openDetailProduct = (product: BaseEcommerceProduct) => {
+    setSelectedProduct(product)
+    setDetailProduct(true)
+  }
+
+  const closeDetailProduct = () => {
+    setDetailProduct(false)
+  }
+
   return (
     <Card className={cn('', className)}>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         {filteredProducts.map(product => (
           <div key={product.id}
-            className="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200"
+            className={cn('bg-white rounded-lg',
+              'shadow-sm hover:shadow-lg transition-shadow duration-200',
+              'hover:scale-105 transition-transform duration-200',
+              'hover:cursor-pointer'
+            )}
+            onClick={() => openDetailProduct(product)}
           >
             <div className="relative pb-[100%] group">
               <Image
@@ -106,6 +123,11 @@ export const DisplayProduct = ({ className }: DisplayProductProps) => {
           </div>
         ))}
       </div>
+      <DetailProductDialog
+        open={detailProduct}
+        product={selectedProduct}
+        closeAction={closeDetailProduct}
+      />
     </Card>
   )
 }
