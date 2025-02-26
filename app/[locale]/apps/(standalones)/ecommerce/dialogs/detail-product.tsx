@@ -13,6 +13,8 @@ import {
   DialogTitle,
   Button,
   Separator,
+  Carousel,
+  CarouselItem,
 } from '@/design/components/ui'
 import * as Icons from '@/design/icons'
 import { BaseEcommerceProduct } from '../common'
@@ -72,24 +74,29 @@ export const DetailProductDialog = ({ open, closeAction, product }: DetailProduc
                 onError={handleImageError}
               />
             </div>
-            <div className="grid grid-cols-4 gap-2">
-              {product?.images.map((image, index) => (
-                <Image
-                key={index}
-                onClick={() => setSelectedImage(index)}
-                className={cn(
-                  'w-full h-24 object-cover',
-                  `rounded-lg overflow-hidden ${selectedImage === index ? "ring-2 ring-blue-500" : ""}`,
-                  'hover:cursor-pointer'
-                )}
-                  src={image}
-                  alt={`${product?.title} view ${index + 1}`}
-                  width={256}
-                  height={256}
-                  onError={handleImageError}
-                />
-              ))}
-            </div>
+            <Carousel
+              items={product?.images as string[] || []}
+              renderItemAction={({ index, item, isSnapPoint }) => (
+                <CarouselItem
+                  key={`carousel-item-${index}`}
+                  isSnapPoint={isSnapPoint}
+                >
+                  <Image
+                    src={item as string}
+                    alt={`${product?.title} view ${index + 1}`}
+                    width={256}
+                    height={256}
+                    className={cn(
+                      'w-24 h-24 object-cover',
+                      `rounded-lg overflow-hidden ${selectedImage === index ? "ring-2 ring-blue-500" : ""}`,
+                      'hover:cursor-pointer'
+                    )}
+                    onClick={() => setSelectedImage(index)}
+                    onError={handleImageError}
+                  />
+                </CarouselItem>
+              )}
+            />
           </div>
         </div>
       </DialogContent>

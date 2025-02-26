@@ -106,3 +106,4 @@ export {
     FormField,
 } from './form'
 export { Separator } from './separator'
+export { Carousel, CarouselItem } from './carousel'
