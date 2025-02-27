@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { cn } from '@/utils/cn'
 import {
   Button,
@@ -24,7 +24,7 @@ const OptionColor = () => {
             onClick={() => setSelectedColor(color)}
             className={cn(
               'w-8 h-8 rounded-full',
-              `bg-${color}-500 ${selectedColor === color ? 'ring-2 ring-blue-500' : ''}`
+              `bg-${color}-300 ${selectedColor === color ? 'ring-2 ring-blue-500' : ''}`
             )}
           />
         ))}
@@ -59,12 +59,34 @@ const OptionSize = () => {
 
 
 export const OptionsFactory = ({ category }: OptionsFactoryProps) => {
-
+  const renderAddtionalOptions = () => {
+    switch (category) {
+      case ProductCategory.Clothing:
+        return(
+          <>
+            <OptionColor />
+            <OptionSize />
+          </>
+        )
+      case ProductCategory.Electronics:
+        return(
+          <OptionColor />
+        )
+      case ProductCategory.Furniture:
+        return(
+          <>
+            <OptionColor />
+            <OptionSize />
+          </>
+        )
+      default:
+        return null;
+    }
+  }
 
   return (
     <>
-      <OptionColor />
-      <OptionSize />
+      {renderAddtionalOptions()}
     </>
   )
 }
