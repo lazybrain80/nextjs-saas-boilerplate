@@ -23,6 +23,7 @@ import {
 import * as Icons from '@/design/icons'
 import { BaseEcommerceProduct, ProductCategory } from '../common'
 import { OptionsFactory } from './option-factory'
+import { MoreDetailProduct } from './more-detail-product'
 
 interface DetailProductDialogProps {
   open: boolean
@@ -117,6 +118,8 @@ export const DetailProductDialog = ({ open, closeAction, product }: DetailProduc
             </div>
             <p className='text-gray-600'>{product?.description}</p>
             <p className='text-2xl font-bold'>${product?.price}</p>
+            {/* more info */}
+            {product && <MoreDetailProduct product={product} />}
             <Separator />
             {/* Quantity */}
             <div className='flex items-center'>
