@@ -1,6 +1,6 @@
 'use client'
 
-import { ProductCategory, BaseEcommerceProduct, BookProduct, FunitureProduct, ElectronicsProduct, ClothingProduct, BeautyProduct, ToyProduct, SportsProduct } from '../common'
+import { ProductCategory, BaseEcommerceProduct, BookProduct, FunitureProduct, ElectronicsProduct, ClothingProduct, BeautyProduct, ToyProduct, SportsProduct } from '.'
 
 interface MoreDetailProductProps {
   product: BaseEcommerceProduct

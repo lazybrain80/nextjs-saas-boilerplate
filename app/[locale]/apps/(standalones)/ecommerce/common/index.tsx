@@ -1,5 +1,7 @@
-import { generateId } from "@/utils/id-generator"
 import { CacheItemBase } from '@/hooks/client-cache'
+
+export { MoreDetailProduct } from './more-detail-product'
+export { OptionsFactory } from './option-factory'
 
 export interface ProductReview {
   id: string
@@ -22,7 +24,6 @@ export enum ProductCategory {
 export interface BaseEcommerceProduct extends CacheItemBase {
   category: ProductCategory,
   title: string
-  overview: string
   description: string
   price: number
   images: string []
@@ -91,7 +92,7 @@ export const parseProductData = (data: any): BaseEcommerceProduct => {
 
 export const ecommerceProductMockData = [
   {
-    id: generateId(),
+    id: '_xku36dzkp',
     category: ProductCategory.Book,
     title: 'Dashboard',
     description: 'View your sales, orders, and more',
@@ -106,31 +107,31 @@ export const ecommerceProductMockData = [
     avgRating: 0,
     reviews: [
       {
-        id: generateId(),
+        id: '_ruf6zkrwx',
         rating: 5,
         user: 'User1',
         comment: 'Great book!'
       },
       {
-        id: generateId(),
+        id: '_5ka15xscv',
         rating: 4,
         user: 'User2',
         comment: 'Very informative.'
       },
       {
-        id: generateId(),
+        id: '_zd7q450g9',
         rating: 3,
         user: 'User14',
         comment: 'Good but could be better.'
       },
       {
-        id: generateId(),
+        id: '_cgxwqg05i',
         rating: 5,
         user: 'User15',
         comment: 'Loved it!'
       },
       {
-        id: generateId(),
+        id: '_8on2bhqmg',
         rating: 4,
         user: 'User16',
         comment: 'Well written.'
@@ -140,7 +141,7 @@ export const ecommerceProductMockData = [
     publicationDate: '2023-01-01',
   },
   {
-    id: generateId(),
+    id: '_q9ztrgkva',
     category: ProductCategory.Book,
     title: 'Learning TypeScript',
     description: 'A comprehensive guide to TypeScript',
@@ -155,31 +156,31 @@ export const ecommerceProductMockData = [
     avgRating: 4.5,
     reviews: [
       {
-        id: generateId(),
+        id: '_s34gfss2c',
         rating: 5,
         user: 'User3',
         comment: 'Excellent guide for TypeScript.'
       },
       {
-        id: generateId(),
+        id: '_y0qvk1eht',
         rating: 4,
         user: 'User17',
         comment: 'Very helpful.'
       },
       {
-        id: generateId(),
+        id: '_svw3mvm3u',
         rating: 5,
         user: 'User18',
         comment: 'Highly recommend.'
       },
       {
-        id: generateId(),
+        id: '_halm4ll4a',
         rating: 3,
         user: 'User19',
         comment: 'Good but some parts are confusing.'
       },
       {
-        id: generateId(),
+        id: '_gkbmm3vgi',
         rating: 4,
         user: 'User20',
         comment: 'Great for beginners.'
@@ -189,7 +190,7 @@ export const ecommerceProductMockData = [
     publicationDate: '2022-05-15',
   },
   {
-    id: generateId(),
+    id: '_qtk34edef',
     category: ProductCategory.Furniture,
     title: 'Modern Sofa',
     description: 'A comfortable modern sofa',
@@ -203,31 +204,31 @@ export const ecommerceProductMockData = [
     avgRating: 4.0,
     reviews: [
       {
-        id: generateId(),
+        id: '_t1kpjv1d3',
         rating: 4,
         user: 'User4',
         comment: 'Comfortable and stylish.'
       },
       {
-        id: generateId(),
+        id: '_3t798grih',
         rating: 5,
         user: 'User21',
         comment: 'Perfect for my living room.'
       },
       {
-        id: generateId(),
+        id: '_8covbc8yc',
         rating: 4,
         user: 'User22',
         comment: 'Good quality.'
       },
       {
-        id: generateId(),
+        id: '_65ifll397',
         rating: 3,
         user: 'User23',
         comment: 'Could be more comfortable.'
       },
       {
-        id: generateId(),
+        id: '_j2gaxbuok',
         rating: 5,
         user: 'User24',
         comment: 'Excellent product.'
@@ -237,7 +238,7 @@ export const ecommerceProductMockData = [
     color: 'Black',
   },
   {
-    id: generateId(),
+    id: '_rnmm7x8cw',
     category: ProductCategory.Electronics,
     title: 'Smartphone',
     description: 'Latest model smartphone',
@@ -246,31 +247,31 @@ export const ecommerceProductMockData = [
     avgRating: 4.7,
     reviews: [
       {
-        id: generateId(),
+        id: '_grq1iqpgt',
         rating: 5,
         user: 'User5',
         comment: 'Best smartphone I have ever used.'
       },
       {
-        id: generateId(),
+        id: '_m0358guv3',
         rating: 4,
         user: 'User25',
         comment: 'Great features.'
       },
       {
-        id: generateId(),
+        id: '_nq2ngdf0v',
         rating: 5,
         user: 'User26',
         comment: 'Very fast and responsive.'
       },
       {
-        id: generateId(),
+        id: '_31erycyhl',
         rating: 3,
         user: 'User27',
         comment: 'Battery life could be better.'
       },
       {
-        id: generateId(),
+        id: '_vc03b7nut',
         rating: 4,
         user: 'User28',
         comment: 'Good value for money.'
@@ -281,7 +282,7 @@ export const ecommerceProductMockData = [
     warranty: '2 years',
   },
   {
-    id: generateId(),
+    id: '_aox5yezz1',
     category: ProductCategory.Clothing,
     title: 'T-Shirt',
     description: 'Comfortable cotton t-shirt',
@@ -290,31 +291,31 @@ export const ecommerceProductMockData = [
     avgRating: 4.3,
     reviews: [
       {
-        id: generateId(),
+        id: '_p79k7aacr',
         rating: 4,
         user: 'User6',
         comment: 'Good quality t-shirt.'
       },
       {
-        id: generateId(),
+        id: '_eahokf1ib',
         rating: 5,
         user: 'User29',
         comment: 'Very comfortable.'
       },
       {
-        id: generateId(),
+        id: '_41hq880ha',
         rating: 4,
         user: 'User30',
         comment: 'Nice fit.'
       },
       {
-        id: generateId(),
+        id: '_q9hwm2yt6',
         rating: 3,
         user: 'User31',
         comment: 'Color fades after washing.'
       },
       {
-        id: generateId(),
+        id: '_fsx8z8uy7',
         rating: 5,
         user: 'User32',
         comment: 'Great for everyday wear.'
@@ -325,7 +326,7 @@ export const ecommerceProductMockData = [
     gender: 'unisex',
   },
   {
-    id: generateId(),
+    id: '_hzig11d8m',
     category: ProductCategory.Beauty,
     title: 'Face Cream',
     description: 'Moisturizing face cream',
@@ -334,31 +335,31 @@ export const ecommerceProductMockData = [
     avgRating: 4.5,
     reviews: [
       {
-        id: generateId(),
+        id: '_xg3b8d30m',
         rating: 5,
         user: 'User7',
         comment: 'Very moisturizing.'
       },
       {
-        id: generateId(),
+        id: '_47i5rqur1',
         rating: 4,
         user: 'User33',
         comment: 'Good for dry skin.'
       },
       {
-        id: generateId(),
+        id: '_dbx4g6lm4',
         rating: 5,
         user: 'User34',
         comment: 'Love the texture.'
       },
       {
-        id: generateId(),
+        id: '_beteilipf',
         rating: 3,
         user: 'User35',
         comment: 'A bit greasy.'
       },
       {
-        id: generateId(),
+        id: '_4kxlq3kuf',
         rating: 4,
         user: 'User36',
         comment: 'Nice scent.'
@@ -369,7 +370,7 @@ export const ecommerceProductMockData = [
     expirationDate: '2024-12-31',
   },
   {
-    id: generateId(),
+    id: '_o8ohe7cy8',
     category: ProductCategory.Toy,
     title: 'Building Blocks',
     description: 'Colorful building blocks for kids',
@@ -378,31 +379,31 @@ export const ecommerceProductMockData = [
     avgRating: 4.8,
     reviews: [
       {
-        id: generateId(),
+        id: '_pq7qbicvh',
         rating: 5,
         user: 'User8',
         comment: 'My kids love these blocks.'
       },
       {
-        id: generateId(),
+        id: '_xt5qqnayd',
         rating: 4,
         user: 'User37',
         comment: 'Very colorful.'
       },
       {
-        id: generateId(),
+        id: '_ey386c06l',
         rating: 5,
         user: 'User38',
         comment: 'Great for learning.'
       },
       {
-        id: generateId(),
+        id: '_3ad3wsjxn',
         rating: 3,
         user: 'User39',
         comment: 'Some pieces are too small.'
       },
       {
-        id: generateId(),
+        id: '_erff8y5k8',
         rating: 4,
         user: 'User40',
         comment: 'Good quality plastic.'
@@ -413,7 +414,7 @@ export const ecommerceProductMockData = [
     safetyStandards: ['EN71', 'ASTM F963'],
   },
   {
-    id: generateId(),
+    id: '_xym7g0g21',
     category: ProductCategory.Sports,
     title: 'Basketball',
     description: 'Official size basketball',
@@ -422,31 +423,31 @@ export const ecommerceProductMockData = [
     avgRating: 4.6,
     reviews: [
       {
-        id: generateId(),
+        id: '_zkreejuee',
         rating: 4,
         user: 'User9',
         comment: 'Great basketball.'
       },
       {
-        id: generateId(),
+        id: '_q0l66f8px',
         rating: 5,
         user: 'User41',
         comment: 'Perfect size.'
       },
       {
-        id: generateId(),
+        id: '_oyr2x7s4c',
         rating: 4,
         user: 'User42',
         comment: 'Good grip.'
       },
       {
-        id: generateId(),
+        id: '_1gks97wlg',
         rating: 3,
         user: 'User43',
         comment: 'A bit heavy.'
       },
       {
-        id: generateId(),
+        id: '_gs6z4kqfn',
         rating: 5,
         user: 'User44',
         comment: 'Excellent for games.'
@@ -457,7 +458,7 @@ export const ecommerceProductMockData = [
     size: '7',
   },
   {
-    id: generateId(),
+    id: '_7kik00ogu',
     category: ProductCategory.Book,
     title: 'React for Beginners',
     description: 'An introduction to React',
@@ -466,31 +467,31 @@ export const ecommerceProductMockData = [
     avgRating: 4.8,
     reviews: [
       {
-        id: generateId(),
+        id: '_klp9q98e9',
         rating: 5,
         user: 'User10',
         comment: 'Perfect for beginners.'
       },
       {
-        id: generateId(),
+        id: '_xrlyk5k25',
         rating: 4,
         user: 'User45',
         comment: 'Very easy to understand.'
       },
       {
-        id: generateId(),
+        id: '_pf03upn0g',
         rating: 5,
         user: 'User46',
         comment: 'Highly recommend for new learners.'
       },
       {
-        id: generateId(),
+        id: '_ocuyihmn7',
         rating: 3,
         user: 'User47',
         comment: 'Some parts are too basic.'
       },
       {
-        id: generateId(),
+        id: '_itcff07s5',
         rating: 4,
         user: 'User48',
         comment: 'Good introduction to React.'
@@ -500,7 +501,7 @@ export const ecommerceProductMockData = [
     publicationDate: '2021-11-20',
   },
   {
-    id: generateId(),
+    id: '_j7dlj576u',
     category: ProductCategory.Furniture,
     title: 'Wooden Dining Table',
     description: 'A sturdy wooden dining table',
@@ -509,31 +510,31 @@ export const ecommerceProductMockData = [
     avgRating: 4.2,
     reviews: [
       {
-        id: generateId(),
+        id: '_w9470nni8',
         rating: 4,
         user: 'User11',
         comment: 'Sturdy and well-made.'
       },
       {
-        id: generateId(),
+        id: '_5dph08wbp',
         rating: 5,
         user: 'User49',
         comment: 'Perfect for family dinners.'
       },
       {
-        id: generateId(),
+        id: '_5h7t99irj',
         rating: 4,
         user: 'User50',
         comment: 'Good quality wood.'
       },
       {
-        id: generateId(),
+        id: '_5iu8a40gv',
         rating: 3,
         user: 'User51',
         comment: 'A bit difficult to assemble.'
       },
       {
-        id: generateId(),
+        id: '_l0smcf5mc',
         rating: 5,
         user: 'User52',
         comment: 'Looks great in my dining room.'
@@ -543,7 +544,7 @@ export const ecommerceProductMockData = [
     color: 'Brown',
   },
   {
-    id: generateId(),
+    id: '_lwlfvi8jp',
     category: ProductCategory.Book,
     title: 'Advanced JavaScript',
     description: 'Deep dive into JavaScript',
@@ -552,31 +553,31 @@ export const ecommerceProductMockData = [
     avgRating: 4.7,
     reviews: [
       {
-        id: generateId(),
+        id: '_equlv86op',
         rating: 5,
         user: 'User12',
         comment: 'Very detailed and informative.'
       },
       {
-        id: generateId(),
+        id: '_frz4j17zs',
         rating: 4,
         user: 'User53',
         comment: 'Great for advanced learners.'
       },
       {
-        id: generateId(),
+        id: '_wbefrv9v2',
         rating: 5,
         user: 'User54',
         comment: 'Highly recommend for experienced developers.'
       },
       {
-        id: generateId(),
+        id: '_y4vprr3wv',
         rating: 3,
         user: 'User55',
         comment: 'Some parts are too complex.'
       },
       {
-        id: generateId(),
+        id: '_4nhmgswdq',
         rating: 4,
         user: 'User56',
         comment: 'Good reference book.'
@@ -586,7 +587,7 @@ export const ecommerceProductMockData = [
     publicationDate: '2020-08-10',
   },
   {
-    id: generateId(),
+    id: '_8shtm57dt',
     category: ProductCategory.Furniture,
     title: 'Office Chair',
     description: 'Ergonomic office chair',
@@ -595,31 +596,31 @@ export const ecommerceProductMockData = [
     avgRating: 4.3,
     reviews: [
       {
-        id: generateId(),
+        id: '_zrjdeo0k9',
         rating: 4,
         user: 'User13',
         comment: 'Comfortable for long hours.'
       },
       {
-        id: generateId(),
+        id: '_7wt03p2lb',
         rating: 5,
         user: 'User57',
         comment: 'Great support for the back.'
       },
       {
-        id: generateId(),
+        id: '_yct2bd7e8',
         rating: 4,
         user: 'User58',
         comment: 'Good quality material.'
       },
       {
-        id: generateId(),
+        id: '_p0n6smxpk',
         rating: 3,
         user: 'User59',
         comment: 'Armrests could be better.'
       },
       {
-        id: generateId(),
+        id: '_ffrbstdy9',
         rating: 5,
         user: 'User60',
         comment: 'Perfect for my home office.'

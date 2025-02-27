@@ -213,6 +213,7 @@
         "invoice_status_draft": "Draft"
     },
     "EcommerceApp": {
-        "page_title": "Ecommerce App"
+        "page_title": "Ecommerce App",
+        "page_detail_title": "Ecommerce - Product Detail Page"
     }
 }

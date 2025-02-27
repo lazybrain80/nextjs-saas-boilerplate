@@ -5,7 +5,7 @@ import { cn } from '@/utils/cn'
 import {
   Button,
 } from '@/design/components/ui'
-import { ProductCategory } from '../common'
+import { ProductCategory } from '.'
 
 interface OptionsFactoryProps {
   category: ProductCategory

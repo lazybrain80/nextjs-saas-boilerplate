@@ -50,7 +50,7 @@ export const Carousel = <T extends any>({
       >
         <Icons.ChevronLeft />
       </Button>
-      <ul className="flex overflow-auto scroll-snap-x-mandatory scrollbar-hide" ref={scrollRef}>
+      <ul className="flex overflow-auto scroll-snap-x-mandatory scrollbar-hide p-2" ref={scrollRef}>
         {items.map((item, index) =>
           renderItemAction({
             index,
@@ -89,14 +89,16 @@ export const Carousel = <T extends any>({
 }
 
 interface CarouselItemProps {
+  readonly className?: string
   readonly isSnapPoint: boolean
   readonly children?: React.ReactNode
 }
 
-export const CarouselItem = ({ isSnapPoint, children }: CarouselItemProps) => (
+export const CarouselItem = ({ className, isSnapPoint, children }: CarouselItemProps) => (
   <li className={cn(
     `flex-shrink-0 ${isSnapPoint ? 'scroll-snap-align-start' : ''}`,
-    'p-1'
+    'p-1',
+    className
   )}>
     {children}
   </li>

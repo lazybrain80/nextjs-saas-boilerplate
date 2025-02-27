@@ -213,6 +213,7 @@
         "status_draft": "임시"
     },
     "EcommerceApp": {
-        "page_title": "전자상거래 앱"
+        "page_title": "전자상거래 앱",
+        "page_detail_title": "전자상거래 - 상품 상세 페이지"
     }
 }

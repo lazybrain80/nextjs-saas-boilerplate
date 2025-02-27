@@ -17,7 +17,7 @@ import { FilterHeader } from './filter-header'
 import { DisplayProducts } from './display-products'
 import { ecommerceProductMockData } from './common'
 
-const InvoiceAppPage = () => {
+const EcommerceAppPage = () => {
   const t = useTranslations('EcommerceApp')
 
   return (
@@ -35,4 +35,4 @@ const InvoiceAppPage = () => {
   )
 }
 
-export default InvoiceAppPage
+export default EcommerceAppPage

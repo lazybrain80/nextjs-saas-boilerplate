@@ -1,13 +1,13 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import Image from 'next/image'
 import { useLocale } from 'next-intl'
 import { cn } from '@/utils/cn'
 import { VisuallyHidden } from '@radix-ui/react-visually-hidden'
 import {
   Dialog,
-  DialogClose,
+  DialogTrigger,
   DialogContent,
   DialogHeader,
   DialogTitle,
@@ -21,48 +21,30 @@ import {
   AccordionContent
 } from '@/design/components/ui'
 import * as Icons from '@/design/icons'
-import { BaseEcommerceProduct, ProductCategory } from '../common'
-import { OptionsFactory } from './option-factory'
-import { MoreDetailProduct } from './more-detail-product'
+import {
+  BaseEcommerceProduct,
+  OptionsFactory,
+  MoreDetailProduct
+} from '../common'
 
 interface DetailProductDialogProps {
-  open: boolean
   product?: BaseEcommerceProduct
-  closeAction: () => void
 }
 
-export const DetailProductDialog = ({ open, closeAction, product }: DetailProductDialogProps) => {
-  const [selectedImage, setSelectedImage] = useState(0);
-  const [selectedColor, setSelectedColor] = useState('blue');
-  const [selectedSize, setSelectedSize] = useState('M');
-  const [quantity, setQuantity] = useState(1);
-
-  interface ImageErrorEvent extends React.SyntheticEvent<HTMLImageElement, Event> {
-    target: HTMLImageElement;
-  }
-
-  const handleImageError = (e: ImageErrorEvent) => {
-    e.target.src = 'https://images.unsplash.com/photo-1542291026-7eec264c27ff';
-  };
-
-  const dialogOpenChange = (isOpen: boolean) => {
-    if (!isOpen) {
-      setSelectedImage(0)
-    }
-  }
+export const DetailProductDialog = ({ product }: DetailProductDialogProps) => {
+  const [selectedImage, setSelectedImage] = useState(0)
+  const [quantity, setQuantity] = useState(1)
 
   return(
-    <Dialog open={open} onOpenChange={dialogOpenChange}>
+    <Dialog>
+      <DialogTrigger asChild>
+        <Button className='rounded-2xl bg-blue-500 text-white'>
+          <Icons.ShoppingCart className='h-6 w-6' />
+        </Button>
+      </DialogTrigger>
       <DialogContent
-        enableClose={false}
-        className='max-w-4xl h-[90%] overflow-y-auto scrollbar-hide'
+        className='max-w-4xl h-[70%] overflow-y-auto scrollbar-hide'
       >
-        <DialogClose
-          className='absolute right-4 top-4 rounded-sm opacity-70 transition-opacity hover:opacity-100'
-          onClick={closeAction}
-        >
-          <Icons.Close />
-        </DialogClose>
         <VisuallyHidden>
           <DialogHeader />
           <DialogTitle />
@@ -72,18 +54,18 @@ export const DetailProductDialog = ({ open, closeAction, product }: DetailProduc
           <div className='space-y-4'>
             <div className='relative overflow-hidden rounded-lg'>
               <Image
-                src={product?.images[selectedImage] || 'https://images.unsplash.com/photo-1542291026-7eec264c27ff'}
+                src={product?.images[selectedImage] || ''}
                 alt={product?.title || 'Product image'}
                 width={256}
                 height={256}
                 className='w-full h-[500px] object-cover transform transition-transform duration-300 hover:scale-105'
-                onError={handleImageError}
               />
             </div>
             <Carousel
               items={product?.images as string[] || []}
               renderItemAction={({ index, item, isSnapPoint }) => (
                 <CarouselItem
+                  className='w-24 h-24'
                   key={`carousel-item-${index}`}
                   isSnapPoint={isSnapPoint}
                 >
@@ -98,7 +80,6 @@ export const DetailProductDialog = ({ open, closeAction, product }: DetailProduc
                       'hover:cursor-pointer'
                     )}
                     onClick={() => setSelectedImage(index)}
-                    onError={handleImageError}
                   />
                 </CarouselItem>
               )}
@@ -161,13 +142,11 @@ export const DetailProductDialog = ({ open, closeAction, product }: DetailProduc
             <div className='flex items-center space-x-4'>
               <Button
                 className='w-full rounded-2xl bg-white text-blue-500 border border-blue-500'
-                onClick={closeAction}
               >
                 Add to Wishlist
               </Button>
               <Button
                 className='w-full rounded-2xl bg-blue-500 text-white'
-                onClick={closeAction}
               >
                 Add to cart
               </Button>
@@ -213,7 +192,6 @@ export const DetailProductDialog = ({ open, closeAction, product }: DetailProduc
             }
           </div>
         </div>
-        <Separator />
       </DialogContent>
     </Dialog>
   )
