@@ -107,7 +107,14 @@ export const DisplayProducts = ({ className }: DisplayProductsProps) => {
                 </div>
               </Link>
               <div className="flex items-center justify-between">
-                <span className="text-lg font-bold">${product.price}</span>
+                {product?.discount && product.discount > 0 ? (
+                  <div>
+                    <span className="text-lg font-bold">${(product.price * (1 - product.discount)).toFixed(2)}</span>
+                    <span className="ml-1 text-sm text-gray-500 line-through">${product.price}</span>
+                  </div>
+                ) : (
+                  <span className="text-lg font-bold">${product.price}</span>
+                )}
                 <DetailProductDialog product={product} />
               </div>
             </div>

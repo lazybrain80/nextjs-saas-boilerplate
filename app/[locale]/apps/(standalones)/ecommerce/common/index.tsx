@@ -26,6 +26,7 @@ export interface BaseEcommerceProduct extends CacheItemBase {
   title: string
   description: string
   price: number
+  discount?: number
   images: string []
   avgRating: number
   reviews: ProductReview[]
@@ -96,7 +97,8 @@ export const ecommerceProductMockData = [
     category: ProductCategory.Book,
     title: 'Dashboard',
     description: 'View your sales, orders, and more',
-    price: 0,
+    price: 13.23,
+    discount: 0.3,
     images: [
       '/images/ecommerce/book.jpg',
       '/images/ecommerce/sofa.jpg',
@@ -104,7 +106,7 @@ export const ecommerceProductMockData = [
       '/images/ecommerce/tshirt.jpg',
       '/images/ecommerce/face_cream.jpg',
     ],
-    avgRating: 0,
+    avgRating: 4.2,
     reviews: [
       {
         id: '_ruf6zkrwx',
@@ -194,6 +196,7 @@ export const ecommerceProductMockData = [
     category: ProductCategory.Furniture,
     title: 'Modern Sofa',
     description: 'A comfortable modern sofa',
+    discount: 0.3,
     price: 499.99,
     images: [
       '/images/ecommerce/sofa.jpg',
@@ -286,6 +289,7 @@ export const ecommerceProductMockData = [
     category: ProductCategory.Clothing,
     title: 'T-Shirt',
     description: 'Comfortable cotton t-shirt',
+    discount: 0.3,
     price: 19.99,
     images: ['/images/ecommerce/tshirt.jpg'],
     avgRating: 4.3,
@@ -375,6 +379,7 @@ export const ecommerceProductMockData = [
     title: 'Building Blocks',
     description: 'Colorful building blocks for kids',
     price: 29.99,
+    discount: 0.3,
     images: ['/images/ecommerce/building_blocks.jpg'],
     avgRating: 4.8,
     reviews: [

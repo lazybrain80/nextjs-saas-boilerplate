@@ -97,7 +97,14 @@ export const DetailBody = ({ className, product_id }: DetailBodyProps) => {
             </div>
           </div>
           <p className='text-gray-600'>{product?.description}</p>
-          <p className='text-2xl font-bold'>${product?.price}</p>
+          {product?.discount && product.discount > 0
+            ? (<div>
+                <span className="text-2xl font-bold">${(product.price * (1 - product.discount)).toFixed(2)}</span>
+                <span className="ml-1 text-sm text-gray-500 line-through">${product.price}</span>
+              </div>)
+            : (
+              <span className="text-2xl font-bold">${product?.price}</span>
+          )}
           {/* more info */}
           {product && <MoreDetailProduct product={product} />}
           <Separator />
