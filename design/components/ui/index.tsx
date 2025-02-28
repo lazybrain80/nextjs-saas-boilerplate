@@ -108,4 +108,5 @@ export {
 export { Separator } from './separator'
 export { Carousel, CarouselItem } from './carousel'
 export { Drawer } from './drawer'
+export { Transition } from './transition'
 
