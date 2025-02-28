@@ -2,7 +2,6 @@
 
 import { useState } from 'react'
 import Image from 'next/image'
-import { useLocale } from 'next-intl'
 import { cn } from '@/utils/cn'
 import { VisuallyHidden } from '@radix-ui/react-visually-hidden'
 import {
@@ -28,18 +27,28 @@ import {
 } from '../common'
 
 interface DetailProductDialogProps {
-  product?: BaseEcommerceProduct
+  product: BaseEcommerceProduct
 }
 
 export const DetailProductDialog = ({ product }: DetailProductDialogProps) => {
   const [selectedImage, setSelectedImage] = useState(0)
   const [quantity, setQuantity] = useState(1)
 
+  const handleAddToCart = () => {
+    const cart = JSON.parse(localStorage.getItem('shoppingCart') || '[]');
+    const newItem = {
+      id: product.id,
+      quantity: quantity
+    }
+    cart.push(newItem);
+    localStorage.setItem('shoppingCart', JSON.stringify(cart));
+  }
+
   return(
     <Dialog>
       <DialogTrigger asChild>
         <Button className='rounded-2xl bg-blue-500 text-white'>
-          <Icons.ShoppingCart className='h-6 w-6' />
+          <Icons.PackagePlus className='h-6 w-6' />
         </Button>
       </DialogTrigger>
       <DialogContent
@@ -141,9 +150,7 @@ export const DetailProductDialog = ({ product }: DetailProductDialogProps) => {
             </div>
             {/* Options */}
             {product?.category && (
-              <OptionsFactory
-                category={product.category}
-              />
+              <OptionsFactory category={product.category} />
             )}
             {/* Actions */}
             <div className='flex items-center space-x-4'>
@@ -154,6 +161,7 @@ export const DetailProductDialog = ({ product }: DetailProductDialogProps) => {
               </Button>
               <Button
                 className='w-full rounded-2xl bg-blue-500 text-white'
+                onClick={handleAddToCart}
               >
                 Add to cart
               </Button>

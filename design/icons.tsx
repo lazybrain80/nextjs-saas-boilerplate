@@ -54,6 +54,7 @@ export const LayoutPanelLeft = Lucide.LayoutPanelLeft
 export const LineChart = Lucide.LineChart
 export const MessagesSquare = Lucide.MessagesSquare
 export const Package = Lucide.Package
+export const PackagePlus = Lucide.PackagePlus
 export const Puzzle = Lucide.Puzzle
 export const Box = Lucide.Box
 export const Globe = Lucide.Globe
