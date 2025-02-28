@@ -42,9 +42,7 @@ export const Drawer: React.FC<DrawerProps> = ({ open, closeAction, side = 'right
       <div
         className={clsx(
           'fixed inset-0 bg-gray-500 bg-opacity-75 transition-all',
-          {
-            'opacity-100 duration-500 ease-in-out visible': open
-          },
+          { 'opacity-100 duration-500 ease-in-out visible': open },
           { 'opacity-0 duration-500 ease-in-out invisible': !open }
         )}
       ></div>
@@ -69,7 +67,7 @@ export const Drawer: React.FC<DrawerProps> = ({ open, closeAction, side = 'right
             >
               <div
                 className={clsx(
-                  'flex flex-col h-full overflow-y-scroll bg-white p-20 shadow-xl rounded-lg'
+                  'flex flex-col h-full overflow-y-scroll bg-white p-4 shadow-xl rounded-lg'
                 )}
               >
                 {children}
@@ -81,5 +79,3 @@ export const Drawer: React.FC<DrawerProps> = ({ open, closeAction, side = 'right
     </div>
   )
 }
-
-export default Drawer

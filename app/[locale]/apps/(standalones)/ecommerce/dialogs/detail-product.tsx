@@ -47,6 +47,11 @@ export const DetailProductDialog = ({ product }: DetailProductDialogProps) => {
     const cart = JSON.parse(localStorage.getItem('shoppingCart') || '[]');
     const newItem = {
       id: product.id,
+      title: product.title,
+      category: product.category,
+      discount: product?.discount || 0,
+      image: product.images[0],
+      price: product.price,
       quantity: quantity
     }
     cart.push(newItem);

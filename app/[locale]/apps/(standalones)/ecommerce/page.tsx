@@ -30,8 +30,8 @@ const EcommerceAppPage = () => {
         <DisplayProducts
           className='rounded-2xl shadow-lg bg-gray-100'
         />
+        <ShoppingCart />
       </CachedItemProvider>
-      <ShoppingCart />
     </div>
   )
 }

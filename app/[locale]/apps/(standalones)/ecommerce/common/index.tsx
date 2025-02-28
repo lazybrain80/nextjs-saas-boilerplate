@@ -72,6 +72,16 @@ export interface SportsProduct extends BaseEcommerceProduct {
   size: string
 }
 
+export interface ShoppingCartItem {
+  id: string
+  title: string
+  category: ProductCategory
+  discount: number
+  image: string
+  price: number
+  quantity: number
+}
+
 export const parseProductData = (data: any): BaseEcommerceProduct => {
   switch (data.type) {
     case ProductCategory.Book:
