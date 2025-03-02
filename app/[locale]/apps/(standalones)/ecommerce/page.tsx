@@ -10,7 +10,7 @@ import { CachedItemProvider } from '@/hooks/client-cache'
 import { FilterHeader } from './filter-header'
 import { DisplayProducts } from './display-products'
 import { ecommerceProductMockData } from './common'
-import { ShoppingCart } from './shopping-cart'
+import { ShoppingCart, CartProvider } from './cart'
 
 const EcommerceAppPage = () => {
   const t = useTranslations('EcommerceApp')
@@ -27,10 +27,12 @@ const EcommerceAppPage = () => {
       
       <CachedItemProvider items={ecommerceProductMockData}>
         <FilterHeader />
-        <DisplayProducts
-          className='rounded-2xl shadow-lg bg-gray-100'
-        />
-        <ShoppingCart />
+        <CartProvider>
+          <DisplayProducts
+            className='rounded-2xl shadow-lg bg-gray-100'
+          />
+          <ShoppingCart />
+        </CartProvider>
       </CachedItemProvider>
     </div>
   )

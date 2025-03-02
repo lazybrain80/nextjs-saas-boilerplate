@@ -26,22 +26,16 @@ import {
   OptionsFactory,
   MoreDetailProduct
 } from '../common'
+import { useCart } from '../cart'
 
 interface DetailProductDialogProps {
   product: BaseEcommerceProduct
 }
 
 export const DetailProductDialog = ({ product }: DetailProductDialogProps) => {
+  const { cartItems, updateItems } = useCart()
   const [selectedImage, setSelectedImage] = useState(0)
   const [quantity, setQuantity] = useState(1)
-  const [cartItems, setCartItems] = useState<any[]>([])
-
-  const handleOpenChange = (open: boolean) => {
-    if(open) {
-      const storedCart = JSON.parse(localStorage.getItem('shoppingCart') || '[]')
-      setCartItems(storedCart)
-    }
-  }
 
   const handleAddToCart = () => {
     const cart = JSON.parse(localStorage.getItem('shoppingCart') || '[]');
@@ -56,11 +50,11 @@ export const DetailProductDialog = ({ product }: DetailProductDialogProps) => {
     }
     cart.push(newItem);
     localStorage.setItem('shoppingCart', JSON.stringify(cart));
-    setCartItems(cart)
+    updateItems(cart)
   }
 
   return(
-    <Dialog onOpenChange={handleOpenChange}>
+    <Dialog>
       <DialogTrigger asChild>
         <Button className='rounded-2xl bg-blue-500 text-white'>
           <Icons.PackagePlus className='h-6 w-6' />

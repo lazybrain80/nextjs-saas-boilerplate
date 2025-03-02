@@ -9,21 +9,20 @@ import {
   Button,
   Separator
 } from '@/design/components/ui'
-import { ShoppingCartItem } from './common'
+import { ShoppingCartItem } from '../common'
+import { useCart, CartProvider } from './provider'
 
 interface ShoppingCartHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
-  clearCart: () => void
 }
 
 interface ShoppingCartBodyProps extends React.HTMLAttributes<HTMLDivElement> {
-  cartItems: any[]
 }
 
 interface ShoppingCartFooterProps extends React.HTMLAttributes<HTMLDivElement> {
-  totalPrice: number
 }
 
-const ShoppingCartHeader = ({ clearCart }: ShoppingCartHeaderProps) => {
+const ShoppingCartHeader = (props: ShoppingCartHeaderProps) => {
+  const { clearCart } = useCart()
   return (
     <div className={cn(
       'flex items-center justify-between p-2 space-x-4',
@@ -45,7 +44,41 @@ const ShoppingCartHeader = ({ clearCart }: ShoppingCartHeaderProps) => {
   )
 }
 
-const ShoppingCartBody = ({ cartItems }: ShoppingCartBodyProps) => {
+const ShoppingCartBody = (props: ShoppingCartBodyProps) => {
+  const { cartItems, updateItems } = useCart()
+
+  const updateCart = (newCart: ShoppingCartItem[] ) => {
+    updateItems(newCart)
+  }
+
+  const plusProduct = (id: string) => {
+    const newCart = cartItems.map((item) => {
+      if (item.id === id) {
+        return {
+          ...item,
+          quantity: item.quantity + 1
+        }
+      }
+      return item
+    })
+    updateCart(newCart)
+  }
+
+  const minusProduct = (id: string) => {
+    const newCart = cartItems.map((item) => {
+      if (item.quantity - 1 === 0) {
+        return item
+      }
+      if (item.id === id) {
+        return {
+          ...item,
+          quantity: item.quantity - 1
+        }
+      }
+      return item
+    })
+    updateCart(newCart)
+  }
   
   return (
     <div className={cn(
@@ -81,11 +114,17 @@ const ShoppingCartBody = ({ cartItems }: ShoppingCartBodyProps) => {
                     )
                   }
                   <div className='flex items-center space-x-2'>
-                    <Button className='w-6 h-6'>
+                    <Button
+                      className='w-6 h-6'
+                      onClick={() => minusProduct(item.id)}
+                    >
                       -
                     </Button>
                     <span> {item.quantity} </span>
-                    <Button className='w-6 h-6'>
+                    <Button
+                      className='w-6 h-6'
+                      onClick={() => plusProduct(item.id)}
+                    >
                       +
                     </Button>
                   </div>
@@ -112,7 +151,8 @@ const ShoppingCartBody = ({ cartItems }: ShoppingCartBodyProps) => {
   )
 }
 
-const ShoppingCartFooter = ( { totalPrice }: ShoppingCartFooterProps) => {
+const ShoppingCartFooter = ( props: ShoppingCartFooterProps) => {
+  const { totalPrice } = useCart()
   return (
     <div className={cn(
       'flex items-center justify-between p-4'
@@ -126,28 +166,10 @@ const ShoppingCartFooter = ( { totalPrice }: ShoppingCartFooterProps) => {
 
 export const ShoppingCart = () => {
   const [showCart, setShowCart] = useState<boolean>(false)
-  const [shoppingList, setShoppingList] = useState<ShoppingCartItem[]>([])
-  const [totalPrice, setTotalPrice] = useState<number>(0)
   const closeCart = () => {
     setShowCart(false)
   }
-
-  const openCart = () => {
-    const storedCart = JSON.parse(localStorage.getItem('shoppingCart')|| '[]')
-    setShoppingList(storedCart)
-    const totalPrice: number = storedCart.reduce((acc: number, item: ShoppingCartItem): number => {
-      return acc + (item.price * item.quantity) - (item.price * item.quantity * item.discount)
-    }, 0)
-    setTotalPrice(parseFloat(totalPrice.toFixed(2)))
-    setShowCart(true)
-  }
-
-  const clearCart = () => {
-    localStorage.setItem('shoppingCart', JSON.stringify([]))
-    setTotalPrice(0)
-    setShoppingList([])
-  }
-
+  
   return (
   <>
     <Button
@@ -158,15 +180,15 @@ export const ShoppingCart = () => {
         'transition-all active:scale-95 duration-300 hover:scale-110  hover:shadow-xl',
         'focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-offset-2'
       )}
-      onClick={openCart}
+      onClick={() => setShowCart(true)}
     >
-      <Icons.ShoppingCart className="h-6 w-6" />
+      <Icons.ShoppingCart className='h-6 w-6' />
     </Button>
     <Drawer open={showCart} side='right' closeAction={closeCart}>
-      <ShoppingCartHeader clearCart={clearCart} />
-      <ShoppingCartBody cartItems={shoppingList} />
-      <Separator />
-      <ShoppingCartFooter totalPrice={totalPrice} />
+        <ShoppingCartHeader />
+        <ShoppingCartBody />
+        <Separator />
+        <ShoppingCartFooter />
     </Drawer>
   </>
 )}
