@@ -1,4 +1,5 @@
 import { EcommerceAppDetailPage } from './detail-page'
+import { CartProvider } from '@/design/features/ecommerce/cart'
 
 const EcommerceAppDetail = async ({
   params,
@@ -7,8 +8,10 @@ const EcommerceAppDetail = async ({
 }) => {
   const { slug } = await params
   return (
+    <CartProvider>
       <EcommerceAppDetailPage product={slug}  />
-    )
+    </CartProvider>
+  )
 }
 
 export default EcommerceAppDetail

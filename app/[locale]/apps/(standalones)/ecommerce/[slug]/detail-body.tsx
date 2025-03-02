@@ -12,7 +12,8 @@ import {
   Accordion,
   AccordionItem,
   AccordionTrigger,
-  AccordionContent
+  AccordionContent,
+  Transition
 } from '@/design/components/ui'
 import * as Icons from '@/design/icons'
 import {
@@ -21,6 +22,7 @@ import {
   MoreDetailProduct,
   ecommerceProductMockData
 } from '@/design/features/ecommerce'
+import { useCart } from '@/design/features/ecommerce/cart'
 
 interface DetailBodyProps extends React.HTMLAttributes<HTMLDivElement> {
   className?: string
@@ -28,6 +30,8 @@ interface DetailBodyProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 export const DetailBody = ({ className, product_id }: DetailBodyProps) => {
+  const { cartItems, addItem } = useCart()
+
   const [product, setProduct] = useState<BaseEcommerceProduct>()
   const [selectedImage, setSelectedImage] = useState(0)
   const [quantity, setQuantity] = useState(1)
@@ -41,6 +45,23 @@ export const DetailBody = ({ className, product_id }: DetailBodyProps) => {
       }
     });
   } , [product_id])
+
+  const handleAddToCart = () => {
+    if (product?.id && product?.title && product?.category && product?.images[0] && product?.price) {
+      const newItem = {
+        id: product.id,
+        title: product.title,
+        category: product.category,
+        discount: product.discount || 0,
+        image: product.images[0],
+        price: product.price,
+        quantity: quantity
+      }
+      addItem(newItem)
+    } else {
+      console.error('Product details are incomplete')
+    }
+  }
 
   return (
     <Card className={cn(
@@ -151,11 +172,26 @@ export const DetailBody = ({ className, product_id }: DetailBodyProps) => {
             >
               Add to Wishlist
             </Button>
-            <Button
-              className='w-full rounded-2xl bg-blue-500 text-white'
-            >
-              Add to cart
-            </Button>
+            {product && cartItems.find((item) => item.id === product.id)
+              ? (
+                <Transition className='w-full flex items-center space-x-2'>
+                  <Button
+                    disabled
+                    className='w-full rounded-2xl bg-white text-lime-600 border border-lime-600 hover:bg-lime-100'
+                    onClick={handleAddToCart}
+                  >
+                    Added
+                    <Icons.Check />
+                  </Button>
+                </Transition>)
+              : (
+                <Button
+                  className='w-full rounded-2xl bg-blue-500 text-white hover:bg-blue-700'
+                  onClick={handleAddToCart}
+                >
+                  Add to cart
+                </Button>
+              )}
           </div>
           {/* Reviews */}
           {product?.reviews && product.reviews.length > 0

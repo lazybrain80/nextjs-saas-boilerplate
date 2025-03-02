@@ -7,6 +7,7 @@ import { ShoppingCartItem } from '../common'
 interface CartContextType {
   cartItems: ShoppingCartItem[]
   totalPrice: number
+  addItem: (newItem: ShoppingCartItem) => void
   updateItems: (newCartItems: ShoppingCartItem[]) => void
   deleteItem: (cartItemId: string) => void
   clearCart: () => void
@@ -42,6 +43,12 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
     setCartItems((prevItems) => prevItems.filter((item) => item.id !== cartItemId))
   }
 
+  const addItem = (newItem: ShoppingCartItem) => {
+    const cart = JSON.parse(localStorage.getItem('shoppingCart')|| '[]')
+    localStorage.setItem('shoppingCart', JSON.stringify([...cart, newItem]))
+    setCartItems((prevItems) => [...prevItems, newItem])
+  }
+
   const clearCart = () => {
     localStorage.setItem('shoppingCart', JSON.stringify([]))
     setCartItems([])
@@ -50,6 +57,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const contextValue = useMemo(() => ({
     cartItems,
     totalPrice,
+    addItem,
     updateItems,
     deleteItem,
     clearCart

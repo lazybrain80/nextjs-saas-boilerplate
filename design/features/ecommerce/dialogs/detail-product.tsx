@@ -33,12 +33,11 @@ interface DetailProductDialogProps {
 }
 
 export const DetailProductDialog = ({ product }: DetailProductDialogProps) => {
-  const { cartItems, updateItems } = useCart()
+  const { cartItems, addItem } = useCart()
   const [selectedImage, setSelectedImage] = useState(0)
   const [quantity, setQuantity] = useState(1)
 
   const handleAddToCart = () => {
-    const cart = JSON.parse(localStorage.getItem('shoppingCart') || '[]');
     const newItem = {
       id: product.id,
       title: product.title,
@@ -48,9 +47,7 @@ export const DetailProductDialog = ({ product }: DetailProductDialogProps) => {
       price: product.price,
       quantity: quantity
     }
-    cart.push(newItem);
-    localStorage.setItem('shoppingCart', JSON.stringify(cart));
-    updateItems(cart)
+    addItem(newItem)
   }
 
   return(

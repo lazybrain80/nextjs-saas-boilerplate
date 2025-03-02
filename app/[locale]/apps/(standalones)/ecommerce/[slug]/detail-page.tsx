@@ -1,20 +1,12 @@
 'use client'
 
-import { useState } from 'react'
-import { cn } from '@/libs/utils'
 import { useTranslations } from 'next-intl'
 import React from 'react'
 import {
   BoardHeader,
 } from '@/design/features/user-board'
-import {
-  Card,
-  Button,
-} from '@/design/components/ui'
-
 import { DetailBody } from './detail-body'
 import { DetailFooter } from './detail-footer'
-
 
 interface EcommerceAppDetailPageProps {
   product: string
