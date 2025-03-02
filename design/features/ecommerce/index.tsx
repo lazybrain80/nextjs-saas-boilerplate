@@ -1,4 +1,9 @@
-export { ecommerceProductMockData } from './common'
+export {
+  ecommerceProductMockData,
+  type BaseEcommerceProduct,
+  OptionsFactory,
+  MoreDetailProduct,
+} from './common'
 export { ShoppingCart, CartProvider } from './cart'
 export { FilterHeader } from './filter-header'
 export { DisplayProducts } from './display-products'

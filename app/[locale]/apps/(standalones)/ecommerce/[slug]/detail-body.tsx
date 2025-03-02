@@ -20,7 +20,7 @@ import {
   OptionsFactory,
   MoreDetailProduct,
   ecommerceProductMockData
-} from '../common'
+} from '@/design/features/ecommerce'
 
 interface DetailBodyProps extends React.HTMLAttributes<HTMLDivElement> {
   className?: string
