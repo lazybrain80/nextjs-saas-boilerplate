@@ -7,10 +7,14 @@ import {
   BoardHeader,
 } from '@/design/features/user-board'
 import { CachedItemProvider } from '@/hooks/client-cache'
-import { FilterHeader } from './filter-header'
-import { DisplayProducts } from './display-products'
-import { ecommerceProductMockData } from './common'
-import { ShoppingCart, CartProvider } from './cart'
+import {
+  ecommerceProductMockData,
+  FilterHeader,
+  DisplayProducts,
+  ShoppingCart,
+  CartProvider
+} from '@/design/features/ecommerce'
+
 
 const EcommerceAppPage = () => {
   const t = useTranslations('EcommerceApp')

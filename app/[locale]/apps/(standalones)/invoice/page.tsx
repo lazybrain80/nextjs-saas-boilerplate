@@ -5,10 +5,12 @@ import React from 'react'
 import {
   BoardHeader,
 } from '@/design/features/user-board'
-
-import { invoiceMockData, InvoiceProvider } from './common'
-import { InvoiceListTable } from './list-table'
-import { InvoiceOverviewHeader } from './overview-header'
+import {
+  invoiceMockData,
+  InvoiceProvider,
+  InvoiceOverviewHeader,
+  InvoiceListTable
+} from '@/design/features/invoice'
 
 const InvoiceAppPage = () => {
   const t = useTranslations('InvoiceApp')
