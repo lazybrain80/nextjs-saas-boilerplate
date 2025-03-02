@@ -27,11 +27,12 @@ export const CachedItemProvider: React.FC<CacheItemProviderProp> = ({ children, 
   const [cachedItems, setCachedItems] = useState<CacheItemBase[]>([])
 
   useEffect(() => {
-    setCachedItems(items)
+    setCachedItems(items.sort((a, b) => {
+      return new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
+    }))
   }, [items])
 
   const setCacheItems = (items: CacheItemBase[]) => {
-    console.log('setCacheItems', items)
     setCachedItems(items)
   }
 

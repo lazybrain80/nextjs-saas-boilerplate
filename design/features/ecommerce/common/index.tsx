@@ -11,14 +11,14 @@ export interface ProductReview {
 }
 
 export enum ProductCategory {
+  All = 'all',
   Book = 'book',
   Furniture = 'furniture',
   Electronics = 'electronics',
   Clothing = 'clothing',
   Beauty = 'beauty',
   Toy = 'toy',
-  Sports = 'sports',
-  // 필요한 경우 다른 타입을 추가할 수 있습니다.
+  Sports = 'sports'
 }
 
 export interface BaseEcommerceProduct extends CacheItemBase {
