@@ -7,3 +7,4 @@ export {
 export { ShoppingCart, CartProvider } from './cart'
 export { FilterHeader } from './filter-header'
 export { DisplayProducts } from './display-products'
+export { FilterProvider, useFilter } from './filter'

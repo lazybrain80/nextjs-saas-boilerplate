@@ -12,9 +12,9 @@ import {
   FilterHeader,
   DisplayProducts,
   ShoppingCart,
-  CartProvider
+  CartProvider,
+  FilterProvider
 } from '@/design/features/ecommerce'
-
 
 const EcommerceAppPage = () => {
   const t = useTranslations('EcommerceApp')
@@ -30,7 +30,9 @@ const EcommerceAppPage = () => {
       <BoardHeader title={t('page_title')} />
       
       <CachedItemProvider items={ecommerceProductMockData}>
-        <FilterHeader />
+        <FilterProvider>
+          <FilterHeader />
+        </FilterProvider>
         <CartProvider>
           <DisplayProducts
             className='rounded-2xl shadow-lg bg-gray-100'
