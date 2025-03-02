@@ -1,9 +1,10 @@
 'use client'
 
-import { createContext, useContext, useState, useMemo, useLayoutEffect } from 'react'
+import { createContext, useContext, useState, useMemo, useEffect } from 'react'
 
 export interface CacheItemBase {
   id: string
+  createdAt: Date
 }
 
 interface CacheItemProviderProp {
@@ -12,7 +13,7 @@ interface CacheItemProviderProp {
 }
 
 interface CacheItemContextType {
-  items: CacheItemBase[];
+  cachedItems: CacheItemBase[];
   setCacheItems: (items: CacheItemBase[]) => void
   addCacheItem: (newItem: CacheItemBase) => void
   addCacheItems: (items: CacheItemBase[]) => void
@@ -25,11 +26,12 @@ const CacheItemContext = createContext<CacheItemContextType | undefined>(undefin
 export const CachedItemProvider: React.FC<CacheItemProviderProp> = ({ children, items }) => {
   const [cachedItems, setCachedItems] = useState<CacheItemBase[]>([])
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     setCachedItems(items)
   }, [items])
 
   const setCacheItems = (items: CacheItemBase[]) => {
+    console.log('setCacheItems', items)
     setCachedItems(items)
   }
 
@@ -50,7 +52,7 @@ export const CachedItemProvider: React.FC<CacheItemProviderProp> = ({ children, 
   }
 
   const contextValue = useMemo(() => ({
-    items: cachedItems,
+    cachedItems,
     setCacheItems,
     addCacheItem,
     addCacheItems,

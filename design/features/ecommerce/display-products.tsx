@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useMemo } from 'react'
+import { useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { cn } from '@/libs/utils'
@@ -19,56 +19,12 @@ interface DisplayProductsProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 export const DisplayProducts = ({ className }: DisplayProductsProps) => {
-  const { items } = useCachedItems()
-
-  const [cart, setCart] = useState<BaseEcommerceProduct[]>([])
-  const [showCart, setShowCart] = useState(false)
-  const [selectedCategory, setSelectedCategory] = useState("all")
-  const [priceRange, setPriceRange] = useState([0, 1000])
-  const [sortBy, setSortBy] = useState("newest")
-  const [searchQuery, setSearchQuery] = useState("")
-  const [detailProduct, setDetailProduct] = useState<boolean>(false)
-  const [selectedProduct, setSelectedProduct] = useState<BaseEcommerceProduct | undefined>(undefined)
-
-
-  const filteredProducts = useMemo(() => {
-    return (items as BaseEcommerceProduct[])
-      .filter((product: BaseEcommerceProduct) => {
-      const matchesCategory = selectedCategory === "all" || product.category === selectedCategory
-      const matchesPrice = product.price >= priceRange[0] && product.price <= priceRange[1]
-      const matchesSearch = product.title.toLowerCase().includes(searchQuery.toLowerCase())
-      return matchesCategory && matchesPrice && matchesSearch
-      })
-      .sort((a: BaseEcommerceProduct, b: BaseEcommerceProduct) => {
-      switch (sortBy) {
-        case "price-low":
-        return a.price - b.price
-        case "price-high":
-        return b.price - a.price
-        case "rating":
-        return b.avgRating - a.avgRating
-        default:
-        return 0
-      }
-      })
-  }, [items, selectedCategory, priceRange, sortBy, searchQuery])
-
-  const addToCart = (product: BaseEcommerceProduct) => {
-    setCart(prev => {
-      const existing = prev.find(item => item.id === product.id)
-      if (existing) {
-        return prev.map(item =>
-          item.id === product.id ? { ...item } : item
-        )
-      }
-      return [...prev, { ...product, quantity: 1 }]
-    })
-  }
+  const { cachedItems } = useCachedItems()
 
   return (
     <Card className={cn('', className)}>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 p-2">
-        {filteredProducts.map(product => (
+        {(cachedItems as BaseEcommerceProduct[]).map(product => (
           <div
             key={product.id}
             className={cn('bg-white rounded-lg',

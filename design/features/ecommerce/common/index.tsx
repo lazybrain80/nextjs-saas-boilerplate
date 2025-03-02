@@ -89,21 +89,22 @@ export const parseProductData = (data: any): BaseEcommerceProduct => {
         ...data,
         author: data.author,
         publicationDate: data.publicationDate,
-      } as BookProduct;
+      } as BookProduct
     case ProductCategory.Furniture:
       return {
         ...data,
         material: data.material,
         color: data.color,
-      } as FunitureProduct;
+      } as FunitureProduct
     default:
-      return data as BaseEcommerceProduct;
+      return data as BaseEcommerceProduct
   }
-};
+}
 
 export const ecommerceProductMockData = [
   {
     id: '_xku36dzkp',
+    createdAt: new Date('2021-01-01'),
     category: ProductCategory.Book,
     title: 'Dashboard',
     description: 'View your sales, orders, and more',
@@ -154,6 +155,7 @@ export const ecommerceProductMockData = [
   },
   {
     id: '_q9ztrgkva',
+    createdAt: new Date('2022-01-01'),
     category: ProductCategory.Book,
     title: 'Learning TypeScript',
     description: 'A comprehensive guide to TypeScript',
@@ -203,6 +205,7 @@ export const ecommerceProductMockData = [
   },
   {
     id: '_qtk34edef',
+    createdAt: new Date('2023-01-01'),
     category: ProductCategory.Furniture,
     title: 'Modern Sofa',
     description: 'A comfortable modern sofa',
@@ -252,6 +255,7 @@ export const ecommerceProductMockData = [
   },
   {
     id: '_rnmm7x8cw',
+    createdAt: new Date('2024-01-01'),
     category: ProductCategory.Electronics,
     title: 'Smartphone',
     description: 'Latest model smartphone',
@@ -296,6 +300,7 @@ export const ecommerceProductMockData = [
   },
   {
     id: '_aox5yezz1',
+    createdAt: new Date('2024-01-02'),
     category: ProductCategory.Clothing,
     title: 'T-Shirt',
     description: 'Comfortable cotton t-shirt',
@@ -341,6 +346,7 @@ export const ecommerceProductMockData = [
   },
   {
     id: '_hzig11d8m',
+    createdAt: new Date('2024-01-03'),
     category: ProductCategory.Beauty,
     title: 'Face Cream',
     description: 'Moisturizing face cream',
@@ -385,6 +391,7 @@ export const ecommerceProductMockData = [
   },
   {
     id: '_o8ohe7cy8',
+    createdAt: new Date('2024-01-02'),
     category: ProductCategory.Toy,
     title: 'Building Blocks',
     description: 'Colorful building blocks for kids',
@@ -430,6 +437,7 @@ export const ecommerceProductMockData = [
   },
   {
     id: '_xym7g0g21',
+    createdAt: new Date('2024-01-04'),
     category: ProductCategory.Sports,
     title: 'Basketball',
     description: 'Official size basketball',
@@ -474,6 +482,7 @@ export const ecommerceProductMockData = [
   },
   {
     id: '_7kik00ogu',
+    createdAt: new Date('2024-01-04'),
     category: ProductCategory.Book,
     title: 'React for Beginners',
     description: 'An introduction to React',
@@ -517,6 +526,7 @@ export const ecommerceProductMockData = [
   },
   {
     id: '_j7dlj576u',
+    createdAt: new Date('2024-01-04'),
     category: ProductCategory.Furniture,
     title: 'Wooden Dining Table',
     description: 'A sturdy wooden dining table',
@@ -560,6 +570,7 @@ export const ecommerceProductMockData = [
   },
   {
     id: '_lwlfvi8jp',
+    createdAt: new Date('2024-02-04'),
     category: ProductCategory.Book,
     title: 'Advanced JavaScript',
     description: 'Deep dive into JavaScript',
@@ -603,6 +614,7 @@ export const ecommerceProductMockData = [
   },
   {
     id: '_8shtm57dt',
+    createdAt: new Date('2024-02-04'),
     category: ProductCategory.Furniture,
     title: 'Office Chair',
     description: 'Ergonomic office chair',
@@ -644,4 +656,4 @@ export const ecommerceProductMockData = [
     material: 'Mesh',
     color: 'Gray',
   }
-];
+]
