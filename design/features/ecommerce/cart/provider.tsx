@@ -45,13 +45,19 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const addItem = (newItem: ShoppingCartItem) => {
     const cart = JSON.parse(localStorage.getItem('shoppingCart')|| '[]')
-    localStorage.setItem('shoppingCart', JSON.stringify([...cart, newItem]))
+    const newCart = [...cart, newItem]
+    localStorage.setItem('shoppingCart', JSON.stringify(newCart))
     setCartItems((prevItems) => [...prevItems, newItem])
+    const totalPrice: number = newCart.reduce((acc: number, item: ShoppingCartItem): number => {
+      return acc + (item.price * item.quantity) - (item.price * item.quantity * item.discount)
+    }, 0)
+    setTotalPrice(parseFloat(totalPrice.toFixed(2)))
   }
 
   const clearCart = () => {
     localStorage.setItem('shoppingCart', JSON.stringify([]))
     setCartItems([])
+    setTotalPrice(0)
   }
 
   const contextValue = useMemo(() => ({
