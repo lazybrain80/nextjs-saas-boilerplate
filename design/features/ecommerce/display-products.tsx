@@ -24,17 +24,19 @@ export const DisplayProducts = ({ className }: DisplayProductsProps) => {
     <Card className={cn('', className)}>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 p-2">
         {(cachedItems as BaseEcommerceProduct[]).map(product => (
-          <Transition
+          <div
             key={product.id}
             className={cn('bg-white rounded-lg',
               'shadow-sm hover:shadow-lg transition-shadow duration-200',
               'hover:scale-105 transition-transform duration-200',
               'hover:cursor-pointer'
             )}
-            durationIn={Math.random() * 5}
           >
             <Link href={`/apps/ecommerce/${product.id}`}>
-              <div className="relative pb-[100%] group">
+              <Transition
+                className="relative pb-[100%] group"
+                durationIn={Math.random() * 5}
+              >
                 <Image
                   src={product.images[0]}
                   alt={product.title}
@@ -48,7 +50,7 @@ export const DisplayProducts = ({ className }: DisplayProductsProps) => {
                 >
                   <Icons.Heart className="h-5 w-5 text-gray-600" />
                 </Button>
-              </div>
+              </Transition>
             </Link>
             <div className="p-4">
               <Link href={`/apps/ecommerce/${product.id}`}>
@@ -74,7 +76,7 @@ export const DisplayProducts = ({ className }: DisplayProductsProps) => {
                 <DetailProductDialog product={product} />
               </div>
             </div>
-          </Transition>
+          </div>
         ))}
       </div>
     </Card>
