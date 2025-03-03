@@ -7,21 +7,14 @@ import * as Icons from '@/design/icons'
 import {
   Drawer,
   Button,
-  Separator
+  Separator,
+  Transition
 } from '@/design/components/ui'
 import { ShoppingCartItem } from '../common'
-import { useCart, CartProvider } from './provider'
+import { useCart } from './provider'
 
-interface ShoppingCartHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
-}
 
-interface ShoppingCartBodyProps extends React.HTMLAttributes<HTMLDivElement> {
-}
-
-interface ShoppingCartFooterProps extends React.HTMLAttributes<HTMLDivElement> {
-}
-
-const ShoppingCartHeader = (props: ShoppingCartHeaderProps) => {
+const ShoppingCartHeader = () => {
   const { clearCart } = useCart()
   return (
     <div className={cn(
@@ -44,7 +37,7 @@ const ShoppingCartHeader = (props: ShoppingCartHeaderProps) => {
   )
 }
 
-const ShoppingCartBody = (props: ShoppingCartBodyProps) => {
+const ShoppingCartBody = () => {
   const { cartItems, updateItems } = useCart()
 
   const updateCart = (newCart: ShoppingCartItem[] ) => {
@@ -88,10 +81,12 @@ const ShoppingCartBody = (props: ShoppingCartBodyProps) => {
       {cartItems.length > 0
         ?(<>
           {cartItems.map((item, index) => (
-            <div key={index}
+            <div
+              key={index}
               className={cn(
                 'flex items-center my-2'
-              )}>
+              )}
+            >
               <Image
                 className='w-24 h-24 rounded-xl'
                 src={item.image}
@@ -134,7 +129,10 @@ const ShoppingCartBody = (props: ShoppingCartBodyProps) => {
           ))}
         </>)
         :(
-        <div className='flex-col items-center justify-center p-4 space-y-4'>
+        <Transition
+          className='flex-col items-center justify-center p-4 space-y-4'
+          direction='down'
+        >
           <Image
             className='w-full'
             src='/images/ecommerce/shopping-cart.png'
@@ -145,13 +143,13 @@ const ShoppingCartBody = (props: ShoppingCartBodyProps) => {
           <div className='w-full text-gray-500 text-2xl text-center font-bold'>
             Your cart is empty
           </div>
-        </div>)
+        </Transition>)
       }
     </div>
   )
 }
 
-const ShoppingCartFooter = ( props: ShoppingCartFooterProps) => {
+const ShoppingCartFooter = () => {
   const { totalPrice } = useCart()
   return (
     <div className={cn(

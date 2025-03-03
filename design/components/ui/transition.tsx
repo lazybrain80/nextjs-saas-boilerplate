@@ -17,7 +17,7 @@ export const Transition = (props: TransitionProps) => {
     className,
     direction = 'none',
     distance = 50,
-    durationIn,
+    durationIn = 0.5,
     durationOut,
   } = props
   const directions = {
@@ -26,10 +26,6 @@ export const Transition = (props: TransitionProps) => {
     up: { y: -distance },
     down: { y: distance },
     none: { x: 0, y: 0 },
-  }
-  const transitionIn = {
-    type: 'spring',
-    duration: durationIn,
   }
   const animationConfig = {
     in: {
@@ -40,8 +36,8 @@ export const Transition = (props: TransitionProps) => {
       opacity: 1,
       ...directions.none,
       transition: {
-        x: transitionIn,
-        y: transitionIn,
+        type: 'spring',
+        duration: durationIn,
       },
     },
     out: {
