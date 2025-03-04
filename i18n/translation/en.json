@@ -214,6 +214,7 @@
     },
     "EcommerceApp": {
         "page_title": "Ecommerce App",
+        "page_inventory_title": "Ecommerce - Inventory Management",
         "page_detail_title": "Ecommerce - Product Detail Page"
     }
 }

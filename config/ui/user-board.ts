@@ -118,8 +118,21 @@ export const getUserBoardConfig = async (): Promise<PageNavConfig> => {
           {
             id: 'ecommerce',
             title: 'Ecommerce',
-            href: `/${locale}/apps/ecommerce`,
             icon: 'ecommerce',
+            items: [
+              {
+                id: 'shopping',
+                title: 'Shopping',
+                href: `/${locale}/apps/ecommerce`,
+                icon: 'shopping',
+              },
+              {
+                id: 'inventory',
+                title: 'Inventory',
+                href: `/${locale}/apps/ecommerce/inventory`,
+                icon: 'items-search',
+              },
+            ]
           },
           {
             id: 'settings',

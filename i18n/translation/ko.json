@@ -214,6 +214,7 @@
     },
     "EcommerceApp": {
         "page_title": "전자상거래 앱",
+        "page_inventory_title": "전자상거래 - 재고 관리",
         "page_detail_title": "전자상거래 - 상품 상세 페이지"
     }
 }

@@ -55,6 +55,7 @@ export const LineChart = Lucide.LineChart
 export const MessagesSquare = Lucide.MessagesSquare
 export const Package = Lucide.Package
 export const PackagePlus = Lucide.PackagePlus
+export const PackageSearch = Lucide.PackageSearch
 export const Puzzle = Lucide.Puzzle
 export const Box = Lucide.Box
 export const Globe = Lucide.Globe
@@ -116,6 +117,7 @@ export const Save = Lucide.Save
 export const Calendar = Lucide.CalendarDays
 export const Ship = Lucide.Ship
 export const ShoppingBag = Lucide.ShoppingBag
+export const ShoppingBasket = Lucide.ShoppingBasket
 export const Heart = Lucide.Heart
 export const Star = Lucide.Star
 
