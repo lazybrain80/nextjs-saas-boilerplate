@@ -110,7 +110,7 @@ export const InventoryTable = ({ className }: InventoryTableProps) => {
   return (
     <Card className={cn('p-4', className)}>
       <div className='flex items-center space-x-2 px-2 mb-4'>
-        <div className='flex items-center w-96 border border-slate-500 rounded-full space-x-2 py-2 px-4 bg-white'>
+        <div className='flex items-center w-96 border border-slate-300 rounded-full space-x-2 py-2 px-4 bg-white'>
           <Icons.Search className='w-6 h-6 text-slate-600' />
           <input
             className='w-80 border-none pl-2 outline-none flex-1'
@@ -176,7 +176,19 @@ export const InventoryTable = ({ className }: InventoryTableProps) => {
                   {product.createdAt.toLocaleDateString()}
                 </TableHead>
                 <TableHead className='px-6 py-3 text-left text-sm font-medium text-gray-900'>
-                  {product.stockCount}
+                  {product.stockCount > 0
+                    ?(
+                      <div className='flex items-center space-x-2'>
+                        <Icons.Circle fill='lightgreen' className='w-4 h-4 text-green-300' />
+                        <span className='text-green-500'>{`In Stock(${product.stockCount})`}</span>
+                      </div>
+                    )
+                    :(
+                      <div className='flex items-center space-x-2'>
+                        <Icons.Circle fill='red' className='w-4 h-4 text-red-300' />
+                        <span className='text-red-500'>Out of Stock</span>
+                      </div>
+                  )}
                 </TableHead>
                 <TableHead className='px-6 py-3 text-left text-sm font-medium text-gray-900'>
                   {product.price}
