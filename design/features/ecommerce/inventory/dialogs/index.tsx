@@ -1,0 +1,1 @@
+export { NewInventoryProductDialog } from './new-product'

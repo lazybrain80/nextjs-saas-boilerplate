@@ -178,7 +178,7 @@ export const TextEditor = ({ className, onCreate, onTextCountChange, ...props
             <EditorProvider
                 editorProps={{
                     attributes: {
-                        class: "prose sm:prose-sm lg:prose-lg xl:prose-2xl mt-6 p-4 max-w-full min-h-[12.5rem] rounded-lg border border-gray-200 dark:border-gray-700 focus:outline-none",
+                        class: "prose sm:prose-sm lg:prose-lg xl:prose-2xl mt-2 p-4 max-w-full min-h-[12.5rem] rounded-lg border border-gray-200 dark:border-gray-700 focus:outline-none",
                     }
                 }}
                 immediatelyRender={false}

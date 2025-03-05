@@ -19,7 +19,8 @@ import {
 } from '@/design/components/ui'
 import * as Icons from '@/design/icons'
 import { InventoryProduct } from './mock-data'
-import { use, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
+import { NewInventoryProductDialog } from './dialogs'
 
 interface InventoryTableProps extends React.HTMLAttributes<HTMLDivElement> {
   className?: string
@@ -109,7 +110,7 @@ export const InventoryTable = ({ className }: InventoryTableProps) => {
 
   return (
     <Card className={cn('p-4', className)}>
-      <div className='flex items-center space-x-2 px-2 mb-4'>
+      <div className='flex items-center justify-between space-x-2 px-2 mb-4'>
         <div className='flex items-center w-96 border border-slate-300 rounded-full space-x-2 py-2 px-4 bg-white'>
           <Icons.Search className='w-6 h-6 text-slate-600' />
           <input
@@ -120,6 +121,7 @@ export const InventoryTable = ({ className }: InventoryTableProps) => {
             onChange={(e) => setSearchQuery(e.target.value)}
           />
         </div>
+        <NewInventoryProductDialog />
       </div>
       <div className='overflow-x-auto'>
         <Table className='w-full'>
