@@ -5,7 +5,6 @@ import Image from 'next/image'
 import { useCachedItems } from '@/hooks/client-cache'
 import {
   Card,
-  CardFooter,
   Input,
   Table,
   TableHeader,
@@ -20,7 +19,7 @@ import {
 } from '@/design/components/ui'
 import * as Icons from '@/design/icons'
 import { InventoryProduct } from './mock-data'
-import { useEffect, useState } from 'react'
+import { use, useEffect, useState } from 'react'
 
 interface InventoryTableProps extends React.HTMLAttributes<HTMLDivElement> {
   className?: string
@@ -31,11 +30,27 @@ export const InventoryTable = ({ className }: InventoryTableProps) => {
   const [currentPage, setCurrentPage] = useState(1)
   const [itemsPerPage, setItemsPerPage] = useState(5)
   const [totalPages, setTotalPages] = useState(0)
+  const [searchQuery, setSearchQuery] = useState('')
+  const [filteredItems, setFilteredItems] = useState<InventoryProduct[]>([])
 
   useEffect(() => {
-    const totalPages = Math.ceil((cachedItems?.length || 0) / itemsPerPage)
+    if (!searchQuery) {
+      setFilteredItems(cachedItems as InventoryProduct[])
+      const totalPages = Math.ceil((cachedItems?.length || 0) / itemsPerPage)
+      setTotalPages(totalPages)
+      return
+    }
+
+    const filteredItems = (cachedItems as InventoryProduct[])?.filter((item) =>
+      item.title.toLowerCase().includes(searchQuery.toLowerCase())
+    )
+
+    const totalPages = Math.ceil((filteredItems?.length || 0) / itemsPerPage)
     setTotalPages(totalPages)
-  }, [cachedItems, itemsPerPage])
+
+    setFilteredItems(filteredItems)
+    setCurrentPage(1)
+  }, [cachedItems, searchQuery, itemsPerPage])
 
   const handlePageChange = (newPage: number) => {
     setCurrentPage(newPage)
@@ -47,7 +62,7 @@ export const InventoryTable = ({ className }: InventoryTableProps) => {
     setCurrentPage(1)
   }
 
-  const paginatedItems = cachedItems?.slice(
+  const paginatedItems = filteredItems?.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
   )
@@ -95,14 +110,16 @@ export const InventoryTable = ({ className }: InventoryTableProps) => {
   return (
     <Card className={cn('p-4', className)}>
       <div className='flex items-center space-x-2 px-2 mb-4'>
-        <div className='w-96 border border-slate-500 rounded-full flex items-center space-x-2 px-2'>
+        <div className='flex items-center w-96 border border-slate-500 rounded-full space-x-2 py-2 px-4 bg-white'>
           <Icons.Search className='w-6 h-6 text-slate-600' />
-          <Input
-            className='w-80 border-none'
+          <input
+            className='w-80 border-none pl-2 outline-none flex-1'
+            type='search'
             placeholder='Search product'
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
           />
         </div>
-        
       </div>
       <div className='overflow-x-auto'>
         <Table className='w-full'>
