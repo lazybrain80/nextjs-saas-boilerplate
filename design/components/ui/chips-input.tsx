@@ -93,9 +93,9 @@ export const ChipsInput: React.FC<ChipsInputProps> = ({
   }
 
   return (
-    <div className={cn('w-full max-w-2xl', className)}>
+    <div className={cn('w-full', className)}>
       <div
-        className='min-h-[56px] w-full border-2 border-gray-300 rounded-lg px-3 py-2 focus-within:border-blue-500 transition-colors'
+        className='w-full border border-gray-200 rounded-lg px-3 py-2 focus-within:border-blue-500 transition-colors'
         onClick={() => inputRef.current?.focus()}
       >
         <div className='flex flex-wrap gap-2'>
@@ -135,7 +135,7 @@ export const ChipsInput: React.FC<ChipsInputProps> = ({
           <span>{error}</span>
         </div>
       )}
-      <div className='mt-2 text-sm text-gray-500'>
+      <div className='mt-2 text-xs text-slate-400'>
         Press enter or paste comma-separated values to add tags. {maxChips - chips.length} tags remaining.
       </div>
     </div>

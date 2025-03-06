@@ -56,7 +56,7 @@ export const NewInventoryProductDialog = () => {
           <span>{'New Product'}</span>
         </Button>
       </DialogTrigger>
-      <DialogContent className='max-w-7xl bg-slate-100 overflow-y-auto scrollbar-hide'>
+      <DialogContent className='max-w-7xl h-[90%] bg-slate-100 overflow-y-auto scrollbar-hide'>
         <DialogHeader>
           <DialogTitle>{'New Product'}</DialogTitle>
         </DialogHeader>
@@ -95,7 +95,24 @@ export const NewInventoryProductDialog = () => {
                   {/* Variation */}
                   {variations.map((variation) => (
                     <div key={variation.id} className='space-y-2'>
-                      <div className='text-sm font-bold'>{variation.name}</div>
+                      <span className='text-sm text-slate-700'>{'Name'}</span>
+                      <Input
+                        className='text-sm font-bold'
+                        value={variation.name}
+                        onChange={(e) => {
+                          const newName = e.target.value;
+                          setVariations((prev) => prev.map((v) => {
+                            if (v.id === variation.id) {
+                              return {
+                                ...v,
+                                name: newName
+                              }
+                            }
+                            return v
+                          }))
+                        }}
+                      />
+                      <span className='text-sm text-slate-700'>{'Options'}</span>
                       <div className='space-x-2'>
                         <ChipsInput
                           initialChips={variation.vars}
@@ -125,7 +142,19 @@ export const NewInventoryProductDialog = () => {
                       </div>
                     </div>
                   ))}
-                  <Button className='bg-blue-500 text-white hover:bg-blue-700 rounded-3xl'>
+                  <Button
+                    className='bg-blue-500 text-white hover:bg-blue-700 rounded-3xl'
+                    onClick={() => {
+                      setVariations((prev) => [
+                        ...prev,
+                        {
+                          id: String(prev.length + 1),
+                          name: '',
+                          vars: []
+                        }
+                      ])
+                    }}
+                  >
                     <Icons.Add className='h-6 w-6' />
                     {'Add another variation'}
                   </Button>
