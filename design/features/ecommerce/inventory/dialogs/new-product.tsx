@@ -117,12 +117,22 @@ export const NewInventoryProductDialog = () => {
                   {/* Variation */}
                   {variations.map((variation) => (
                     <div key={variation.id} className='space-y-2'>
-                      <span className='text-sm text-slate-700'>{'Name'}</span>
+                      <div className='flex items-center justify-between'> 
+                        <span className='text-sm text-slate-700'>{'Name'}</span>
+                        <Button
+                          className='w-4 h-4 p-0 bg-red-400 text-white hover:bg-red-700 rounded-3xl'
+                          onClick={() => {
+                            setVariations((prev) => prev.filter((v) => v.id !== variation.id))
+                          }}
+                        >
+                          <Icons.Close />
+                        </Button>
+                      </div>
                       <Input
                         className='text-sm font-bold'
                         value={variation.name}
                         onChange={(e) => {
-                          const newName = e.target.value;
+                          const newName = e.target.value
                           setVariations((prev) => prev.map((v) => {
                             if (v.id === variation.id) {
                               return {
