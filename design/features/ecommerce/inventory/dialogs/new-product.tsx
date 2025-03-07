@@ -3,7 +3,7 @@
 import { useState, useEffect, use } from 'react'
 import Image from 'next/image'
 import { cn } from '@/utils/cn'
-import { VisuallyHidden } from '@radix-ui/react-visually-hidden'
+import { Editor } from '@tiptap/react'
 import {
   Dialog,
   DialogTrigger,
@@ -26,11 +26,12 @@ import {
   SelectTrigger,
   SelectValue,
   SelectContent,
-  SelectItem
+  SelectItem,
+  FileImporter
 } from '@/design/components/ui'
 import * as Icons from '@/design/icons'
+import { ProductCategory } from '../../common'
 import { InventoryProduct } from '../mock-data'
-import { Editor } from '@tiptap/react'
 
 
 interface ProductVariation {
@@ -48,6 +49,23 @@ const discountTypes = {
 
 type DiscountType = keyof typeof discountTypes
 
+const inventoryStatus = {
+  PUBLISHED: 'PUBLISHED',
+  DRAFT: 'DRAFT',
+  ARCHIVED: 'ARCHIVED',
+  SCHEDULED: 'SCHEDULED',
+  INACTIVE: 'INACTIVE'
+}
+
+const statusColors = {
+  PUBLISHED: 'text-green-500',
+  DRAFT: 'text-blue-500',
+  ARCHIVED: 'text-red-500',
+  SCHEDULED: 'text-yellow-500',
+  INACTIVE: 'text-gray-500'
+}
+
+type InventoryStatus = keyof typeof inventoryStatus
 
 export const NewInventoryProductDialog = () => {
   const [editor, setEditor] = useState<Editor | null>(null)
@@ -69,6 +87,10 @@ export const NewInventoryProductDialog = () => {
   const [discountValue, setDiscountValue] = useState<number>(0)
   const [taxType, setTaxType] = useState<number>(0)
   const [taxRate, setTaxRate] = useState<number>(0)
+  const [iventoryStatus, setInventoryStatus] = useState<InventoryStatus>('DRAFT')
+  const [category, setCategory] = useState<ProductCategory | null>(null)
+  const [tags, setTags] = useState<string[]>([])
+  const [thumbnails, setThumbnails] = useState<string[]>([])
 
   return (
     <Dialog>
@@ -339,21 +361,28 @@ export const NewInventoryProductDialog = () => {
             <Card className='rounded-3xl'>
               <CardHeader>
                 <CardTitle className='flex items-center justify-between'>
-                  {'Status'}
+                  <span>{'Status'}</span>
+                  <Icons.Circle className={cn(
+                    'h-4 w-4',
+                    statusColors[iventoryStatus]
+                  )} />
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <div>{'Body'}</div>
-              </CardContent>
-            </Card>
-            <Card className='rounded-3xl'>
-              <CardHeader>
-                <CardTitle className='flex items-center justify-between'>
-                  {'Thumbnail'}
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div>{'Body'}</div>
+                <Select
+                  defaultValue={iventoryStatus}
+                  onValueChange={(value) => setInventoryStatus(value as InventoryStatus)}>
+                  <SelectTrigger className='rounded-2xl'>
+                    <SelectValue placeholder='Select year...' />
+                  </SelectTrigger>
+                  <SelectContent className='rounded-2xl'>
+                    <SelectItem value={inventoryStatus.ARCHIVED}> {'Archived'} </SelectItem>
+                    <SelectItem value={inventoryStatus.DRAFT}> {'Draft'} </SelectItem>
+                    <SelectItem value={inventoryStatus.INACTIVE}> {'Inactive'} </SelectItem>
+                    <SelectItem value={inventoryStatus.PUBLISHED}> {'Published'} </SelectItem>
+                    <SelectItem value={inventoryStatus.SCHEDULED}> {'Scheduled'} </SelectItem>
+                  </SelectContent>
+                </Select>
               </CardContent>
             </Card>
             <Card className='rounded-3xl'>
@@ -363,7 +392,62 @@ export const NewInventoryProductDialog = () => {
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <div>{'Body'}</div>
+                <div className='flex items-center space-x-4'>
+                  <span className='text-sm text-slate-700'>{'Category'}</span>
+                  <Select
+                    defaultValue={category ? (category as any).id : undefined}
+                    onValueChange={(value) => {
+                      setCategory(Object.values(ProductCategory).find((c) => c === value) || null)
+                    }}
+                  >
+                    <SelectTrigger className='rounded-2xl'>
+                      <SelectValue placeholder='Select year...' />
+                    </SelectTrigger>
+                    <SelectContent className='rounded-2xl'>
+                      {Object.values(ProductCategory).map((c) => (
+                        <SelectItem key={c} value={c}> {c} </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div className='space-y-2'>
+                  <span className='text-sm text-slate-700'>{'Tags'}</span>
+                  <ChipsInput
+                    initialChips={tags}
+                    onChipAdd={(chip) => {
+                      setTags((prev) => [...prev, chip])
+                    }}
+                    onChipRemove={(chip) => {
+                      setTags((prev) => prev.filter((t) => t !== chip))
+                    }}
+                  />
+                </div>
+              </CardContent>
+            </Card>
+            <Card className='rounded-3xl'>
+              <CardHeader>
+                <CardTitle className='flex items-center justify-between'>
+                  {'Thumbnail'}
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <FileImporter onFileDropedAction={(file) => {
+                  setThumbnails((prev) => [...prev, file.name])
+                }
+                } />
+                <div className='space-y-2'> 
+                  {thumbnails.map((thumb) => (
+                    <div key={thumb} className='flex items-center space-x-2'>
+                      <Image
+                        src='/images/ecommerce/file_icon.svg'
+                        alt='thumbnail'
+                        width={24}
+                        height={24}
+                      />
+                      <span>{thumb}</span>
+                    </div>
+                  ))}
+                </div>
               </CardContent>
             </Card>
 
