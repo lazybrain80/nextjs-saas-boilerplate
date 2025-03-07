@@ -120,6 +120,7 @@ export const ShoppingBag = Lucide.ShoppingBag
 export const ShoppingBasket = Lucide.ShoppingBasket
 export const Heart = Lucide.Heart
 export const Star = Lucide.Star
+export const Asterisk = Lucide.Asterisk
 
 
 

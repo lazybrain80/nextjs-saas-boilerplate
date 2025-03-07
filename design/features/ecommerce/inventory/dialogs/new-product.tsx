@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect, use } from 'react'
 import Image from 'next/image'
 import { cn } from '@/utils/cn'
 import { VisuallyHidden } from '@radix-ui/react-visually-hidden'
@@ -19,6 +19,14 @@ import {
   CardContent,
   TextEditor,
   ChipsInput,
+  RadioGroup,
+  RadioGroupItem,
+  Slider,
+  Select,
+  SelectTrigger,
+  SelectValue,
+  SelectContent,
+  SelectItem
 } from '@/design/components/ui'
 import * as Icons from '@/design/icons'
 import { InventoryProduct } from '../mock-data'
@@ -30,6 +38,15 @@ interface ProductVariation {
   name: string
   vars: string[]
 }
+
+
+const discountTypes = {
+  NO_DISCOUNT: 'NO_DISCOUNT',
+  PERCENTAGE: 'PERCENTAGE',
+  FIXED: 'FIXED'
+}
+
+type DiscountType = keyof typeof discountTypes
 
 
 export const NewInventoryProductDialog = () => {
@@ -47,6 +64,11 @@ export const NewInventoryProductDialog = () => {
       vars: ['S', 'M', 'L']
     }
   ])
+  const [basicPrice, setBasicPrice] = useState<number>(0)
+  const [discountType, setDiscountType] = useState<DiscountType>('NO_DISCOUNT')
+  const [discountValue, setDiscountValue] = useState<number>(0)
+  const [taxType, setTaxType] = useState<number>(0)
+  const [taxRate, setTaxRate] = useState<number>(0)
 
   return (
     <Dialog>
@@ -168,7 +190,137 @@ export const NewInventoryProductDialog = () => {
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <div>{'Body'}</div>
+                <div className='space-y-2 mb-4'>
+                  {/** Basic Price */}
+                  <div className='flex items-center'> 
+                    <span className='text-sm text-slate-700'>{'Basic Price'}</span>
+                    <Icons.Asterisk className='h-4 w-4 text-red-500' />
+                  </div>
+                  
+                  <Input
+                    type='number'
+                    className='text-sm'
+                    value={basicPrice}
+                    onChange={(e) => {
+                      setBasicPrice(Number(e.target.value))
+                    }}
+                  />
+                </div>
+                {/** Discount */}
+                <div className='space-y-2 mb-4'>
+                  <div className='flex items-center'> 
+                    <span className='text-sm text-slate-700'>{'Discount Type'}</span>
+                    <Icons.Asterisk className='h-4 w-4 text-red-500' />
+                  </div>
+                  <RadioGroup
+                    defaultValue={discountTypes.NO_DISCOUNT}
+                    onValueChange={(value) => {
+                      setDiscountType(value as DiscountType)
+                    }}
+                    aria-label="View density"
+                  >
+                    <div className='flex items-center space-x-6'>
+                      <div className='flex items-center space-x-2'>
+                        <RadioGroupItem value={discountTypes.NO_DISCOUNT} />
+                        <span>{'No Discount'}</span>
+                      </div>
+                      <div className='flex items-center space-x-2'>
+                        <RadioGroupItem value={discountTypes.PERCENTAGE} />
+                        <span>{'Percentage'}</span>
+                      </div>
+                      <div className='flex items-center space-x-2'>
+                        <RadioGroupItem value={discountTypes.FIXED} />
+                        <span>{'Fixed'}</span>
+                      </div>
+                    </div>
+                  </RadioGroup>
+                  {/** Discount by Percentage */}
+                  {discountType === 'PERCENTAGE' && (
+                    <div className='space-y-2'>
+                      <div className='flex items-center'> 
+                        <span className='text-sm text-slate-700'>{'Percentage'}</span>
+                        <Icons.Asterisk className='h-4 w-4 text-red-500' />
+                      </div>
+                      <div className='flex items-center space-x-4'>
+                        <Input
+                          type='number'
+                          className='text-sm'
+                          value={discountValue}
+                          onChange={(e) => {
+                            setDiscountValue(Number(e.target.value))
+                          }}
+                        />
+                        <span className='text-sm text-slate-700'>{'%'}</span>
+                        <Slider
+                          defaultValue={[0]}
+                          min={0}
+                          max={100}
+                          step={1}
+                          className='text-sm'
+                          value={[discountValue]}
+                          onValueChange={(value) => {
+                            setDiscountValue(value[0])
+                          }}
+                        />
+                      </div>
+                      
+                    </div>
+                  )}
+                  {/** Discount by fixed price */}
+                  {discountType === 'FIXED' && (
+                    <div className='space-y-2'>
+                      <div className='flex items-center'> 
+                        <span className='text-sm text-slate-700'>{'Fixed Amount'}</span>
+                        <Icons.Asterisk className='h-4 w-4 text-red-500' />
+                      </div>
+                      <Input
+                        type='number'
+                        className='text-sm'
+                        value={basicPrice}
+                        onChange={(e) => {
+                          setBasicPrice(Number(e.target.value))
+                        }}
+                      />
+                    </div>
+                  )}
+                </div>
+                {/** TAX */}
+                <div className='flex items-center'>
+                  {/** TAX type */}
+                  <div className='w-1/2 space-y-2 rounded-3xl mr-4'>
+                    <div className='flex items-center'> 
+                      <span className='text-sm text-slate-700'>{'Tax type'}</span>
+                      <Icons.Asterisk className='h-4 w-4 text-red-500' />
+                    </div>
+                    <Select onValueChange={(value) => setTaxType(Number(value))}>
+                      <SelectTrigger>
+                        <SelectValue placeholder='Select year...' />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value='0'> Free </SelectItem>
+                        <SelectItem value='1'> Taxable Goods </SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                  {/** TAX rate */}
+                  <div className='w-1/2 space-y-2'>
+                    <div className='flex items-center'>
+                      <span className='text-sm text-slate-700'>{'Tax Rate'}</span>
+                      <Icons.Asterisk className='h-4 w-4 text-red-500' />
+                    </div>
+                    <div className='flex items-center space-x-4'>
+                      <Input
+                        type='number'
+                        className='text-sm'
+                        value={taxRate}
+                        onChange={(e) => {
+                          setTaxRate(Number(e.target.value))
+                        }}
+                      />
+                      <span className='text-sm text-slate-700'>{'%'}</span>
+                    </div>
+                  </div>
+                </div>
               </CardContent>
             </Card>
           </div>
