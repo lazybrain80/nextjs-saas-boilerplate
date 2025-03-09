@@ -21,6 +21,7 @@ import * as Icons from '@/design/icons'
 import { InventoryProduct } from './mock-data'
 import { useEffect, useState } from 'react'
 import { NewInventoryProductDialog } from './dialogs'
+import { InventoryProvider } from './provider'
 
 interface InventoryTableProps extends React.HTMLAttributes<HTMLDivElement> {
   className?: string
@@ -35,23 +36,24 @@ export const InventoryTable = ({ className }: InventoryTableProps) => {
   const [filteredItems, setFilteredItems] = useState<InventoryProduct[]>([])
 
   useEffect(() => {
-    if (!searchQuery) {
-      setFilteredItems(cachedItems as InventoryProduct[])
-      const totalPages = Math.ceil((cachedItems?.length || 0) / itemsPerPage)
-      setTotalPages(totalPages)
-      return
+    let filteredItems = cachedItems as InventoryProduct[];
+
+    if (searchQuery) {
+      filteredItems = filteredItems.filter((item) =>
+        item.title.toLowerCase().includes(searchQuery.toLowerCase())
+      );
     }
 
-    const filteredItems = (cachedItems as InventoryProduct[])?.filter((item) =>
-      item.title.toLowerCase().includes(searchQuery.toLowerCase())
-    )
+    const totalPages = Math.ceil(filteredItems.length / itemsPerPage);
+    setTotalPages(totalPages);
 
-    const totalPages = Math.ceil((filteredItems?.length || 0) / itemsPerPage)
-    setTotalPages(totalPages)
-
-    setFilteredItems(filteredItems)
-    setCurrentPage(1)
-  }, [cachedItems, searchQuery, itemsPerPage])
+    if (filteredItems.length !== cachedItems.length) {
+      setFilteredItems(filteredItems);
+      setCurrentPage(1);
+    } else {
+      setFilteredItems(filteredItems);
+    }
+  }, [cachedItems, searchQuery, itemsPerPage]);
 
   const handlePageChange = (newPage: number) => {
     setCurrentPage(newPage)
@@ -121,7 +123,9 @@ export const InventoryTable = ({ className }: InventoryTableProps) => {
             onChange={(e) => setSearchQuery(e.target.value)}
           />
         </div>
-        <NewInventoryProductDialog />
+        <InventoryProvider>
+          <NewInventoryProductDialog />
+        </InventoryProvider>
       </div>
       <div className='overflow-x-auto'>
         <Table className='w-full'>
