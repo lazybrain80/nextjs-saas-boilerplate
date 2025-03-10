@@ -12,6 +12,9 @@ interface InventoryContextType {
   setDescription: (description: string) => void
   setPrice: (price: number) => void
   setDiscount: (discount: number) => void
+  setDiscountType: (discountType: string) => void
+  setTaxRate: (taxRate: number) => void
+  setTaxType: (taxType: string) => void
   setImages: (images: string[]) => void
   setStockCount: (stockCount: number) => void
   setVariartions: (variations: ProductVariation[]) => void
@@ -33,15 +36,28 @@ export const InventoryProvider: React.FC<InventoryProviderProps> = ({
   const [inventoryItem, setInventoryItem] = useState<InventoryProduct>({} as InventoryProduct)
 
   useLayoutEffect(() => {
-    setInventoryItem(product)
+    setInventoryItem({
+      ...product,
+      category: product.category || ProductCategory.Book,
+      title: product.title || '',
+      description: product.description || '',
+      price: product.price || 0,
+      discount: product.discount || 0,
+      discountType: product.discountType || 'NO_DISCOUNT',
+      taxRate: product.taxRate || 0,
+      taxType: product.taxType || '',
+      images: product.images || [],
+      stockCount: product.stockCount || 0,
+      variations: product.variations || []      
+    })
   }, [])
   
   const setCategory = (category: ProductCategory) => {
-    setInventoryItem(inventoryItem ? { ...inventoryItem, category } : { category } as InventoryProduct)
+    setInventoryItem({ ...inventoryItem, category })
   }
 
   const setTitle = (title: string) => {
-    setInventoryItem(inventoryItem ? { ...inventoryItem, title } : { title } as InventoryProduct)
+    setInventoryItem({ ...inventoryItem, title })
   }
 
   const setDescription = (description: string) => {
@@ -49,19 +65,31 @@ export const InventoryProvider: React.FC<InventoryProviderProps> = ({
   }
 
   const setPrice = (price: number) => {
-    setInventoryItem(inventoryItem ? { ...inventoryItem, price } : { price } as InventoryProduct)
+    setInventoryItem({...inventoryItem, price})
   }
 
   const setDiscount = (discount: number) => {
-    setInventoryItem(inventoryItem ? { ...inventoryItem, discount } : { discount } as InventoryProduct)
+    setInventoryItem({...inventoryItem, discount})
+  }
+
+  const setDiscountType = (discountType: string) => {
+    setInventoryItem({...inventoryItem, discountType})
+  }
+
+  const setTaxRate = (taxRate: number) => {
+    setInventoryItem({...inventoryItem, taxRate})
+  }
+
+  const setTaxType = (taxType: string) => {
+    setInventoryItem({...inventoryItem, taxType})
   }
 
   const setImages = (images: string[]) => {
-    setInventoryItem(inventoryItem ? { ...inventoryItem, images } : { images } as InventoryProduct)
+    setInventoryItem({...inventoryItem, images})
   }
 
   const setStockCount = (stockCount: number) => {
-    setInventoryItem(inventoryItem ? { ...inventoryItem, stockCount } : { stockCount } as InventoryProduct)
+    setInventoryItem({...inventoryItem, stockCount})
   }
 
   const setVariartions = (variations: ProductVariation[]) => {
@@ -79,6 +107,9 @@ export const InventoryProvider: React.FC<InventoryProviderProps> = ({
     setDescription,
     setPrice,
     setDiscount,
+    setDiscountType,
+    setTaxRate,
+    setTaxType,
     setImages,
     setStockCount,
     setVariartions,
