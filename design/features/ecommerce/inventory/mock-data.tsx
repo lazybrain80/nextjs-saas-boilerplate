@@ -20,6 +20,8 @@ export interface InventoryProduct extends CacheItemBase {
   images: string []
   stockCount: number
   variations: ProductVariation[]
+  tags: string[]
+  thumbnails: string[]
 }
 
 export const inventoryMockData = [

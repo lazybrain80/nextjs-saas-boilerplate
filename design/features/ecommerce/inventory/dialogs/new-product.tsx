@@ -31,6 +31,7 @@ import {
 import * as Icons from '@/design/icons'
 import { ProductCategory } from '../../common'
 import { useInventory } from '../provider'
+import { set } from 'lodash'
 
 interface ProductVariation {
   id: string
@@ -403,11 +404,94 @@ const ProductStatus = () => {
   )
 }
 
-export const NewInventoryProductDialog = () => {
+const ProductDetails = () => {
+  const { inventoryItem, setCategory, setTags } = useInventory()
 
-  const [category, setCategory] = useState<ProductCategory | null>(null)
-  const [tags, setTags] = useState<string[]>([])
-  const [thumbnails, setThumbnails] = useState<string[]>([])
+  return(
+    <Card className='rounded-3xl'>
+      <CardHeader>
+        <CardTitle className='flex items-center justify-between'>
+          {'Product Details'}
+        </CardTitle>
+      </CardHeader>
+      <CardContent>
+        <div className='flex items-center space-x-4'>
+          <span className='text-sm text-slate-700'>{'Category'}</span>
+          <Select
+            onValueChange={(value) => {
+              const category = Object.values(ProductCategory).find((c) => c === value);
+              if (category) {
+                setCategory(category);
+              }
+            }}
+          >
+            <SelectTrigger className='rounded-2xl'>
+              <SelectValue placeholder='Select year...' />
+            </SelectTrigger>
+            <SelectContent className='rounded-2xl'>
+              {Object.values(ProductCategory).map((c) => (
+                <SelectItem key={c} value={c}> {c} </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
+        <div className='space-y-2'>
+          <span className='text-sm text-slate-700'>{'Tags'}</span>
+          <ChipsInput
+            onChipAdd={(chip) => {
+              console.log(inventoryItem)
+              if (inventoryItem?.tags.length) {
+                setTags([...inventoryItem.tags, chip])
+              } else {
+                setTags([chip])
+              }
+            }}
+            onChipRemove={(chip) => {
+              if(inventoryItem) {
+                setTags( [...inventoryItem.tags.filter((t) => t !== chip)])
+              }
+            }}
+          />
+        </div>
+      </CardContent>
+    </Card>
+  )
+}
+
+const ProductThumbnails = () => {
+  const { inventoryItem, setThumbnails } = useInventory()
+
+  return(
+    <Card className='rounded-3xl'>
+      <CardHeader>
+        <CardTitle className='flex items-center justify-between'>
+          {'Thumbnail'}
+        </CardTitle>
+      </CardHeader>
+      <CardContent>
+        <FileImporter onFileDropedAction={(file) => {
+          setThumbnails([...(inventoryItem?.thumbnails || []), file.name])
+          }} 
+        />
+        <div className='space-y-2'> 
+          {inventoryItem?.thumbnails.map((thumb) => (
+            <div key={thumb} className='flex items-center space-x-2'>
+              <Image
+                src='/images/ecommerce/file_icon.svg'
+                alt='thumbnail'
+                width={24}
+                height={24}
+              />
+              <span>{thumb}</span>
+            </div>
+          ))}
+        </div>
+      </CardContent>
+    </Card>
+  )
+}
+
+export const NewInventoryProductDialog = () => {
 
   const { inventoryItem } = useInventory()
   const saveInventory = () => {
@@ -435,71 +519,8 @@ export const NewInventoryProductDialog = () => {
           {/* Right side */}
           <div className='col-span-1 space-y-4'>
             <ProductStatus />
-            <Card className='rounded-3xl'>
-              <CardHeader>
-                <CardTitle className='flex items-center justify-between'>
-                  {'Product Details'}
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className='flex items-center space-x-4'>
-                  <span className='text-sm text-slate-700'>{'Category'}</span>
-                  <Select
-                    defaultValue={category ? (category as any).id : undefined}
-                    onValueChange={(value) => {
-                      setCategory(Object.values(ProductCategory).find((c) => c === value) || null)
-                    }}
-                  >
-                    <SelectTrigger className='rounded-2xl'>
-                      <SelectValue placeholder='Select year...' />
-                    </SelectTrigger>
-                    <SelectContent className='rounded-2xl'>
-                      {Object.values(ProductCategory).map((c) => (
-                        <SelectItem key={c} value={c}> {c} </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </div>
-                <div className='space-y-2'>
-                  <span className='text-sm text-slate-700'>{'Tags'}</span>
-                  <ChipsInput
-                    initialChips={tags}
-                    onChipAdd={(chip) => {
-                      setTags((prev) => [...prev, chip])
-                    }}
-                    onChipRemove={(chip) => {
-                      setTags((prev) => prev.filter((t) => t !== chip))
-                    }}
-                  />
-                </div>
-              </CardContent>
-            </Card>
-            <Card className='rounded-3xl'>
-              <CardHeader>
-                <CardTitle className='flex items-center justify-between'>
-                  {'Thumbnail'}
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <FileImporter onFileDropedAction={(file) => {
-                  setThumbnails((prev) => [...prev, file.name])
-                }
-                } />
-                <div className='space-y-2'> 
-                  {thumbnails.map((thumb) => (
-                    <div key={thumb} className='flex items-center space-x-2'>
-                      <Image
-                        src='/images/ecommerce/file_icon.svg'
-                        alt='thumbnail'
-                        width={24}
-                        height={24}
-                      />
-                      <span>{thumb}</span>
-                    </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
+            <ProductDetails />
+            <ProductThumbnails />
           </div>
           <Button
             className='bg-blue-500 text-white hover:bg-blue-700 rounded-3xl'
