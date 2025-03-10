@@ -3,6 +3,7 @@
 import { useState, useEffect, use } from 'react'
 import Image from 'next/image'
 import { cn } from '@/utils/cn'
+import { generateId } from '@/utils/id-generator'
 import { Editor } from '@tiptap/react'
 import {
   Dialog,
@@ -31,7 +32,7 @@ import {
 import * as Icons from '@/design/icons'
 import { ProductCategory } from '../../common'
 import { useInventory } from '../provider'
-import { set } from 'lodash'
+import { useCachedItems } from '@/hooks/client-cache'
 
 interface ProductVariation {
   id: string
@@ -493,12 +494,28 @@ const ProductThumbnails = () => {
 
 export const NewInventoryProductDialog = () => {
 
-  const { inventoryItem } = useInventory()
+  const { inventoryItem, clearInventory } = useInventory()
+  const { addCacheItem } = useCachedItems()
+
+  const [open, setOpen] = useState(false)
+  
   const saveInventory = () => {
-    console.log(inventoryItem)
+    if (inventoryItem) {
+      inventoryItem.id = generateId()
+      inventoryItem.createdAt = new Date()
+      addCacheItem(inventoryItem)
+      clearInventory()
+      setOpen(false)
+    }
   }
+
+  const cancelInventory = () => {
+    clearInventory()
+    setOpen(false)
+  }
+
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <Button className='bg-blue-500 text-white hover:bg-blue-700 rounded-3xl space-x-2'>
           <Icons.PackagePlus className='h-6 w-6' />
@@ -521,12 +538,21 @@ export const NewInventoryProductDialog = () => {
             <ProductStatus />
             <ProductDetails />
             <ProductThumbnails />
+            
           </div>
+        </div>
+        <div className='flex justify-end space-x-4'>
           <Button
-            className='bg-blue-500 text-white hover:bg-blue-700 rounded-3xl'
+            className='w-48 bg-blue-500 text-white hover:bg-blue-700 rounded-3xl'
             onClick={saveInventory}
           >
             {'Save'}
+          </Button>
+          <Button
+            className='w-48 bg-blue-500 text-white hover:bg-blue-700 rounded-3xl'
+            onClick={cancelInventory}
+          >
+            {'cancel'}
           </Button>
         </div>
       </DialogContent>

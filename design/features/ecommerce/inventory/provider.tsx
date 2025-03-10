@@ -36,6 +36,24 @@ export const InventoryProvider: React.FC<InventoryProviderProps> = ({
   product = {} as InventoryProduct
 }: InventoryProviderProps) => {
   const [inventoryItem, setInventoryItem] = useState<InventoryProduct>({} as InventoryProduct)
+  const emptyProduct = {
+    id: '',
+    createdAt: new Date(),
+    category: ProductCategory.Book,
+    title: '',
+    description: '',
+    price: 0,
+    discount: 0,
+    discountType: 'NO_DISCOUNT',
+    taxRate: 0,
+    taxType: '',
+    status: 'DRAFT',
+    images: [],
+    stockCount: 0,
+    variations: [],
+    tags: [],
+    thumbnails: [],
+  } as InventoryProduct
 
   useLayoutEffect(() => {
     setInventoryItem({
@@ -114,7 +132,7 @@ export const InventoryProvider: React.FC<InventoryProviderProps> = ({
   }
 
   const clearInventory = () => {
-    setInventoryItem({} as InventoryProduct)
+    setInventoryItem(emptyProduct)
   }
 
   const contextValue = useMemo(() => ({

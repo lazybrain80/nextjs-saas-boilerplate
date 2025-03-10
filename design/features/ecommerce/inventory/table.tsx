@@ -164,19 +164,21 @@ export const InventoryTable = ({ className }: InventoryTableProps) => {
                   />
                 </TableHead>
                 <TableHead className='px-6 py-3 text-left text-sm font-medium text-gray-900'>
-                  <div className='flex items-center space-x-2'>
-                    <Image
-                      src={product.images[0]}
-                      alt={product.title}
-                      width={32}
-                      height={32}
-                      className='rounded-lg'
-                    />
-                    <div>
-                      <h3 className='font-medium text-gray-900'>{product.title}</h3>
-                      <span className='text-sm text-gray-500'>{product.category}</span>
-                    </div>
-                  </div>
+                    {product.images.length > 0 && (
+                      <div className='flex items-center space-x-2'>
+                        <Image
+                          src={product.images[0]}
+                          alt={product.title}
+                          width={32}
+                          height={32}
+                          className='rounded-lg'
+                        />
+                        <div>
+                        <h3 className='font-medium text-gray-900'>{product.title}</h3>
+                        <span className='text-sm text-gray-500'>{product.category}</span>
+                        </div>
+                      </div>
+                    )}
                 </TableHead>
                 <TableHead className='px-6 py-3 text-left text-sm font-medium text-gray-900'>
                   {product.createdAt.toLocaleDateString()}
