@@ -369,9 +369,42 @@ const ProductPricing = () => {
   )
 }
 
+const ProductStatus = () => {
+  const { inventoryItem, setStatus } = useInventory()
+
+  return(
+    <Card className='rounded-3xl'>
+      <CardHeader>
+        <CardTitle className='flex items-center justify-between'>
+          <span>{'Status'}</span>
+          <Icons.Circle className={cn(
+            'h-4 w-4',
+            statusColors[inventoryItem?.status as InventoryStatus]
+          )} />
+        </CardTitle>
+      </CardHeader>
+      <CardContent>
+        <Select
+          defaultValue={inventoryItem?.status}
+          onValueChange={(value) => setStatus(value as InventoryStatus)}>
+          <SelectTrigger className='rounded-2xl'>
+            <SelectValue placeholder='Select year...' />
+          </SelectTrigger>
+          <SelectContent className='rounded-2xl'>
+            <SelectItem value={inventoryStatus.ARCHIVED}> {'Archived'} </SelectItem>
+            <SelectItem value={inventoryStatus.DRAFT}> {'Draft'} </SelectItem>
+            <SelectItem value={inventoryStatus.INACTIVE}> {'Inactive'} </SelectItem>
+            <SelectItem value={inventoryStatus.PUBLISHED}> {'Published'} </SelectItem>
+            <SelectItem value={inventoryStatus.SCHEDULED}> {'Scheduled'} </SelectItem>
+          </SelectContent>
+        </Select>
+      </CardContent>
+    </Card>
+  )
+}
+
 export const NewInventoryProductDialog = () => {
 
-  const [iventoryStatus, setInventoryStatus] = useState<InventoryStatus>('DRAFT')
   const [category, setCategory] = useState<ProductCategory | null>(null)
   const [tags, setTags] = useState<string[]>([])
   const [thumbnails, setThumbnails] = useState<string[]>([])
@@ -401,33 +434,7 @@ export const NewInventoryProductDialog = () => {
           </div>
           {/* Right side */}
           <div className='col-span-1 space-y-4'>
-            <Card className='rounded-3xl'>
-              <CardHeader>
-                <CardTitle className='flex items-center justify-between'>
-                  <span>{'Status'}</span>
-                  <Icons.Circle className={cn(
-                    'h-4 w-4',
-                    statusColors[iventoryStatus]
-                  )} />
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <Select
-                  defaultValue={iventoryStatus}
-                  onValueChange={(value) => setInventoryStatus(value as InventoryStatus)}>
-                  <SelectTrigger className='rounded-2xl'>
-                    <SelectValue placeholder='Select year...' />
-                  </SelectTrigger>
-                  <SelectContent className='rounded-2xl'>
-                    <SelectItem value={inventoryStatus.ARCHIVED}> {'Archived'} </SelectItem>
-                    <SelectItem value={inventoryStatus.DRAFT}> {'Draft'} </SelectItem>
-                    <SelectItem value={inventoryStatus.INACTIVE}> {'Inactive'} </SelectItem>
-                    <SelectItem value={inventoryStatus.PUBLISHED}> {'Published'} </SelectItem>
-                    <SelectItem value={inventoryStatus.SCHEDULED}> {'Scheduled'} </SelectItem>
-                  </SelectContent>
-                </Select>
-              </CardContent>
-            </Card>
+            <ProductStatus />
             <Card className='rounded-3xl'>
               <CardHeader>
                 <CardTitle className='flex items-center justify-between'>

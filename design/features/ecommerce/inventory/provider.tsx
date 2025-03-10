@@ -18,6 +18,7 @@ interface InventoryContextType {
   setImages: (images: string[]) => void
   setStockCount: (stockCount: number) => void
   setVariartions: (variations: ProductVariation[]) => void
+  setStatus: (status: string) => void
 
   clearInventory: () => void
 }
@@ -46,6 +47,7 @@ export const InventoryProvider: React.FC<InventoryProviderProps> = ({
       discountType: product.discountType || 'NO_DISCOUNT',
       taxRate: product.taxRate || 0,
       taxType: product.taxType || '',
+      status: product.status || 'DRAFT',
       images: product.images || [],
       stockCount: product.stockCount || 0,
       variations: product.variations || []      
@@ -95,6 +97,10 @@ export const InventoryProvider: React.FC<InventoryProviderProps> = ({
   const setVariartions = (variations: ProductVariation[]) => {
     setInventoryItem({ ...inventoryItem, variations })
   }
+  
+  const setStatus = (status: string) => {
+    setInventoryItem({ ...inventoryItem, status })
+  }
 
   const clearInventory = () => {
     setInventoryItem({} as InventoryProduct)
@@ -113,6 +119,7 @@ export const InventoryProvider: React.FC<InventoryProviderProps> = ({
     setImages,
     setStockCount,
     setVariartions,
+    setStatus,
     clearInventory,
   }), [inventoryItem])
   

@@ -16,6 +16,7 @@ export interface InventoryProduct extends CacheItemBase {
   discountType: string
   taxRate: number
   taxType: string
+  status: string
   images: string []
   stockCount: number
   variations: ProductVariation[]
