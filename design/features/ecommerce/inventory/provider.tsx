@@ -56,23 +56,11 @@ export const InventoryProvider: React.FC<InventoryProviderProps> = ({
   } as InventoryProduct
 
   useLayoutEffect(() => {
-    setInventoryItem({
-      ...product,
-      category: product.category || ProductCategory.Book,
-      title: product.title || '',
-      description: product.description || '',
-      price: product.price || 0,
-      discount: product.discount || 0,
-      discountType: product.discountType || 'NO_DISCOUNT',
-      taxRate: product.taxRate || 0,
-      taxType: product.taxType || '',
-      status: product.status || 'DRAFT',
-      images: product.images || [],
-      stockCount: product.stockCount || 0,
-      variations: product.variations || [],
-      tags: product.tags || [],
-      thumbnails: product.thumbnails || [],
-    })
+    if(product) {
+      setInventoryItem(product)
+      return
+    }
+    setInventoryItem(emptyProduct)
   }, [])
   
   const setCategory = (category: ProductCategory) => {

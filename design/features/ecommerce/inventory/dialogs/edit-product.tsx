@@ -8,10 +8,9 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
-  Button
+  Button,
 } from '@/design/components/ui'
 import * as Icons from '@/design/icons'
-
 import { useInventory } from '../provider'
 import { useCachedItems } from '@/hooks/client-cache'
 import {
@@ -23,34 +22,29 @@ import {
   ProductThumbnails,
 } from './common'
 
-export const NewInventoryProductDialog = () => {
+export const EditInventoryProductDialog = () => {
 
-  const { inventoryItem, clearInventory } = useInventory()
-  const { addCacheItem } = useCachedItems()
+  const { inventoryItem } = useInventory()
+  const { updateCacheItem } = useCachedItems()
 
   const [open, setOpen] = useState(false)
   
   const saveInventory = () => {
     if (inventoryItem) {
-      inventoryItem.id = generateId()
-      inventoryItem.createdAt = new Date()
-      addCacheItem(inventoryItem)
-      clearInventory()
+      updateCacheItem(inventoryItem)
       setOpen(false)
     }
   }
 
   const cancelInventory = () => {
-    clearInventory()
     setOpen(false)
   }
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button className='bg-blue-500 text-white hover:bg-blue-700 rounded-3xl space-x-2'>
-          <Icons.PackagePlus className='h-6 w-6' />
-          <span>{'New Product'}</span>
+        <Button className='bg-white text-black hover:bg-slate-300 rounded-3xl space-x-2'>
+          <Icons.Edit className='w-6 h-6 text-gray-600' />
         </Button>
       </DialogTrigger>
       <DialogContent className='max-w-7xl h-[90%] bg-slate-100 overflow-y-auto scrollbar-hide'>

@@ -20,8 +20,11 @@ import {
 import * as Icons from '@/design/icons'
 import { InventoryProduct } from './mock-data'
 import { useEffect, useState } from 'react'
-import { NewInventoryProductDialog } from './dialogs'
 import { InventoryProvider } from './provider'
+import {
+  NewInventoryProductDialog,
+  EditInventoryProductDialog
+} from './dialogs'
 
 interface InventoryTableProps extends React.HTMLAttributes<HTMLDivElement> {
   className?: string
@@ -164,7 +167,8 @@ export const InventoryTable = ({ className }: InventoryTableProps) => {
                   />
                 </TableHead>
                 <TableHead className='px-6 py-3 text-left text-sm font-medium text-gray-900'>
-                    {product.images.length > 0 && (
+                    {product.images.length > 0 
+                    ? (
                       <div className='flex items-center space-x-2'>
                         <Image
                           src={product.images[0]}
@@ -176,6 +180,15 @@ export const InventoryTable = ({ className }: InventoryTableProps) => {
                         <div>
                         <h3 className='font-medium text-gray-900'>{product.title}</h3>
                         <span className='text-sm text-gray-500'>{product.category}</span>
+                        </div>
+                      </div>
+                    )
+                    : (
+                      <div className='flex items-center space-x-2'>
+                        <Icons.Image className='w-6 h-6 text-gray-600' />
+                        <div>
+                          <h3 className='font-medium text-gray-900'>{product.title}</h3>
+                          <span className='text-sm text-gray-500'>{product.category}</span>
                         </div>
                       </div>
                     )}
@@ -202,10 +215,9 @@ export const InventoryTable = ({ className }: InventoryTableProps) => {
                   {product.price}
                 </TableHead>
                 <TableHead className='px-6 py-3 text-left text-sm font-medium text-gray-900'>
-                  <div className='flex space-x-2'>
-                    <Icons.Add className='w-6 h-6 text-gray-600' />
-                    <Icons.Edit className='w-6 h-6 text-gray-600' />
-                  </div>
+                  <InventoryProvider product={product as InventoryProduct}>
+                    <EditInventoryProductDialog />
+                  </InventoryProvider>
                 </TableHead>
               </TableRow>
             ))}
