@@ -92,6 +92,7 @@ export const GeneralInformation = () => {
           <div className='space-y-2'>
             <div className='text-sm font-bold'>{'Description'}</div>
             <TextEditor
+              defaultValue={inventoryItem?.description}
               onCreate={(editor) => setEditor(editor)}
               onTextCountChange={descChange}
             />
@@ -103,23 +104,8 @@ export const GeneralInformation = () => {
 }
 
 export const ProductVariations = () => {
-  const { setVariartions } = useInventory()
-  const [innerVars, setInnerVars] = useState<ProductVariation[]>([
-    {
-      id: '1',
-      name: 'Color',
-      vars: ['Red', 'Green', 'Blue']
-    },
-    {
-      id: '2',
-      name: 'Size',
-      vars: ['S', 'M', 'L']
-    }
-  ])
+  const { inventoryItem, setVariartions } = useInventory()
 
-  useEffect(() => {
-    setVariartions(innerVars)
-  }, [innerVars])
 
   return (
     <Card className='rounded-3xl'>
@@ -132,14 +118,14 @@ export const ProductVariations = () => {
         <div className='space-y-2'>
           <div>{'Add Product Variation'}</div>
           {/* Variation */}
-          {innerVars.map((variation) => (
+          {(inventoryItem?.variations ?? []).map((variation) => (
             <div key={variation.id} className='space-y-2'>
               <div className='flex items-center justify-between'> 
                 <span className='text-sm text-slate-700'>{'Name'}</span>
                 <Button
                   className='w-4 h-4 p-0 bg-red-400 text-white hover:bg-red-700 rounded-3xl'
                   onClick={() => {
-                    setInnerVars((prev) => prev.filter((v) => v.id !== variation.id))
+                    setVariartions(inventoryItem?.variations.filter((v: ProductVariation) => v.id !== variation.id) || [])
                   }}
                 >
                   <Icons.Close />
@@ -147,18 +133,19 @@ export const ProductVariations = () => {
               </div>
               <Input
                 className='text-sm font-bold'
+                defaultValue={variation.name}
                 value={variation.name}
                 onChange={(e) => {
                   const newName = e.target.value
-                  setInnerVars((prev) => prev.map((v) => {
+                    setVariartions((inventoryItem?.variations ?? []).map((v: ProductVariation) => {
                     if (v.id === variation.id) {
                       return {
-                        ...v,
-                        name: newName
+                      ...v,
+                      name: newName
                       }
                     }
                     return v
-                  }))
+                    }))
                 }}
               />
               <span className='text-sm text-slate-700'>{'Options'}</span>
@@ -166,7 +153,7 @@ export const ProductVariations = () => {
                 <ChipsInput
                   initialChips={variation.vars}
                   onChipAdd={(chip) => {
-                    setInnerVars((prev) => prev.map((v) => {
+                    setVariartions((inventoryItem?.variations ?? []).map((v: ProductVariation) => {
                       if (v.id === variation.id) {
                         return {
                           ...v,
@@ -177,7 +164,7 @@ export const ProductVariations = () => {
                     }))
                   }}
                   onChipRemove={(chip) => {
-                    setInnerVars((prev) => prev.map((v) => {
+                    setVariartions((inventoryItem?.variations ?? []).map((v: ProductVariation) => {
                       if (v.id === variation.id) {
                         return {
                           ...v,
@@ -194,14 +181,14 @@ export const ProductVariations = () => {
           <Button
             className='bg-blue-500 text-white hover:bg-blue-700 rounded-3xl'
             onClick={() => {
-              setInnerVars((prev) => [
-                ...prev,
-                {
-                  id: String(prev.length + 1),
-                  name: '',
-                  vars: []
-                }
-              ])
+                setVariartions([
+                  ...(inventoryItem?.variations || []),
+                  {
+                    id: String((inventoryItem?.variations.length || 0) + 1),
+                    name: '',
+                    vars: []
+                  }
+                ])
             }}
           >
             <Icons.Add className='h-6 w-6' />
@@ -242,7 +229,7 @@ export const ProductPricing = () => {
         <Input
           type='number'
           className='text-sm'
-
+          defaultValue={inventoryItem?.price}
           onChange={(e) => {
             setPrice(Number(e.target.value))
           }}
@@ -287,7 +274,6 @@ export const ProductPricing = () => {
               <Input
                 type='number'
                 className='text-sm'
-                value={inventoryItem?.discount}
                 onChange={(e) => {
                   setDiscount(Number(e.target.value))
                 }}
@@ -317,7 +303,6 @@ export const ProductPricing = () => {
             <Input
               type='number'
               className='text-sm'
-              value={inventoryItem?.price}
               onChange={(e) => {
                 setPrice(Number(e.target.value))
               }}
@@ -353,7 +338,6 @@ export const ProductPricing = () => {
             <Input
               type='number'
               className='text-sm'
-              value={inventoryItem?.taxRate}
               onChange={(e) => {
                 setTaxRate(Number(e.target.value))
               }}

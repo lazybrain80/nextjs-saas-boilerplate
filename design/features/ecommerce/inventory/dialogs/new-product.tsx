@@ -69,7 +69,6 @@ export const NewInventoryProductDialog = () => {
             <ProductStatus />
             <ProductDetails />
             <ProductThumbnails />
-            
           </div>
         </div>
         <div className='flex justify-end space-x-4'>
