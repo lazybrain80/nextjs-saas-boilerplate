@@ -69,8 +69,9 @@ export type InventoryStatus = keyof typeof inventoryStatus
 export const GeneralInformation = () => {
   const { inventoryItem, setTitle, setDescription } = useInventory()
   const [editor, setEditor] = useState<Editor | null>(null)
+
   const descChange = (count: number) => {
-    setDescription(editor?.getHTML() || '')
+    setDescription(editor?.getText() || '')
   }
 
   return (
@@ -92,8 +93,11 @@ export const GeneralInformation = () => {
           <div className='space-y-2'>
             <div className='text-sm font-bold'>{'Description'}</div>
             <TextEditor
-              defaultValue={inventoryItem?.description}
-              onCreate={(editor) => setEditor(editor)}
+              onCreate={(editor) => {
+                editor.commands.setContent(inventoryItem?.description || '')
+                setEditor(editor)
+              }}
+              
               onTextCountChange={descChange}
             />
           </div>
@@ -399,6 +403,7 @@ export const ProductDetails = () => {
         <div className='flex items-center space-x-4'>
           <span className='text-sm text-slate-700'>{'Category'}</span>
           <Select
+            defaultValue={inventoryItem?.category}
             onValueChange={(value) => {
               const category = Object.values(ProductCategory).find((c) => c === value);
               if (category) {
@@ -419,9 +424,9 @@ export const ProductDetails = () => {
         <div className='space-y-2'>
           <span className='text-sm text-slate-700'>{'Tags'}</span>
           <ChipsInput
+            initialChips={inventoryItem?.tags || []}
             onChipAdd={(chip) => {
-              console.log(inventoryItem)
-              if (inventoryItem?.tags.length) {
+              if (inventoryItem?.tags?.length) {
                 setTags([...inventoryItem.tags, chip])
               } else {
                 setTags([chip])

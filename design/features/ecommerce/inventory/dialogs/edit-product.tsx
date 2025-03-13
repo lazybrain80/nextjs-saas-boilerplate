@@ -40,8 +40,12 @@ export const EditInventoryProductDialog = () => {
     setOpen(false)
   }
 
+  const openChangeAction = (open: boolean) => {
+    setOpen(open)
+  }
+
   return (
-    <Dialog open={open} onOpenChange={setOpen}>
+    <Dialog open={open} onOpenChange={openChangeAction} >
       <DialogTrigger asChild>
         <Button className='bg-white text-black hover:bg-slate-300 rounded-3xl space-x-2'>
           <Icons.Edit className='w-6 h-6 text-gray-600' />

@@ -165,7 +165,6 @@ export const TextEditor = ({ className, onCreate, onTextCountChange, ...props
 }: React.HTMLAttributes<HTMLDivElement> & { onCreate?: (editor: Editor) => void, onTextCountChange?: (count: number) => void }) => {
 
     const onEditorCreate = ({ editor }: { editor: Editor }) => {
-        onTextCountChange?.(editor.getText().length)
         onCreate?.(editor)
     }
 
