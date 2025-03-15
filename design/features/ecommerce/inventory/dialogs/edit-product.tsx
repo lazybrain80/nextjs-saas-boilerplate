@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import { generateId } from '@/utils/id-generator'
 import {
   Dialog,
   DialogTrigger,
@@ -53,7 +52,7 @@ export const EditInventoryProductDialog = () => {
       </DialogTrigger>
       <DialogContent className='max-w-7xl h-[90%] bg-slate-100 overflow-y-auto scrollbar-hide'>
         <DialogHeader>
-          <DialogTitle>{'New Product'}</DialogTitle>
+          <DialogTitle>{'Edit Product'}</DialogTitle>
         </DialogHeader>
         <div className='grid grid-cols-3 gap-4 p-6'>
           {/* Left side */}

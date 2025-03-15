@@ -23,7 +23,8 @@ import { useEffect, useState } from 'react'
 import { InventoryProvider } from './provider'
 import {
   NewInventoryProductDialog,
-  EditInventoryProductDialog
+  EditInventoryProductDialog,
+  DeleteInventoryProductDialog
 } from './dialogs'
 
 interface InventoryTableProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -217,6 +218,7 @@ export const InventoryTable = ({ className }: InventoryTableProps) => {
                 <TableHead className='px-6 py-3 text-left text-sm font-medium text-gray-900'>
                   <InventoryProvider product={product as InventoryProduct}>
                     <EditInventoryProductDialog />
+                    <DeleteInventoryProductDialog />
                   </InventoryProvider>
                 </TableHead>
               </TableRow>
