@@ -122,7 +122,9 @@ export const Heart = Lucide.Heart
 export const Star = Lucide.Star
 export const Asterisk = Lucide.Asterisk
 export const Inbox = Lucide.Inbox
-
+export const Components = Lucide.Component
+export const ChartLine = Lucide.ChartLine
+export const Table = Lucide.Table2
 
 
 export const System: Icon = (props) => (

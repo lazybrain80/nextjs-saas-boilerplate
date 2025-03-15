@@ -142,6 +142,36 @@ export const getUserBoardConfig = async (): Promise<PageNavConfig> => {
           },
         ]
       },
+      {
+        id: 'ui',
+        title: 'UI',
+        items: [
+          {
+            id: 'components',
+            title: 'Components',
+            icon: 'components',
+            items: []
+          },
+          {
+            id: 'forms',
+            title: 'Forms',
+            icon: 'forms',
+            items: []
+          },
+          {
+            id: 'charts',
+            title: 'Charts',
+            icon: 'charts',
+            items: []
+          },
+          {
+            id: 'tables',
+            title: 'Tables',
+            icon: 'tables',
+            items: []
+          },
+        ]
+      }
     ],
   };
 };

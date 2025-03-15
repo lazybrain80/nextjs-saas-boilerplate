@@ -41,6 +41,10 @@ const iconMap = new Map([
   ['ecommerce', Icons.ShoppingBag],
   ['shopping', Icons.ShoppingBasket],
   ['items-search', Icons.PackageSearch],
+  ['components', Icons.Components],
+  ['forms', Icons.FileText],
+  ['charts', Icons.ChartLine],
+  ['tables', Icons.Table],
 ])
 
 export function SidebarNav({ items }: SidebarNavProps) {
