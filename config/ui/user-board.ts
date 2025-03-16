@@ -150,7 +150,13 @@ export const getUserBoardConfig = async (): Promise<PageNavConfig> => {
             id: 'components',
             title: 'Components',
             icon: 'components',
-            items: []
+            items: [
+              {
+                id: 'accordion',
+                title: 'Accordion',
+                href: `/${locale}/components/accordion`
+              },
+            ]
           },
           {
             id: 'forms',
