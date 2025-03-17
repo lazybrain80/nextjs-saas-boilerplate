@@ -12,7 +12,14 @@ import {
   CardHeader,
   CardTitle,
   CardContent,
+  Dialog,
+  DialogTrigger,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  Button,
 } from '@/design/components/ui'
+import * as Icons from '@/design/icons'
 
 interface CustomAccordionProps {
   className?: string
@@ -46,7 +53,115 @@ const CustomAccordion = ({
   return (
     <Accordion 
       className={cn(
-        'rounded-2xl border p-6 mt-6 space-y-4',
+        'rounded-2xl border border-slate-500 p-4 mt-6',
+        className
+      )} 
+      {...props} 
+      type={props.type}
+    >
+      {children}
+    </Accordion>
+  )
+}
+
+const CustomAccordionItem = ({
+  className, 
+  children, 
+  disabled, 
+  value, 
+  ...props
+}: CustomAccordionItemProps) => {
+  return (
+    <AccordionItem 
+      className={cn(
+        'rounded-2xl data-[state=open]:shadow-md',
+        className
+      )}
+      disabled={disabled}
+      value={value}
+      {...props}
+    >
+      {children}
+    </AccordionItem>
+  )
+}
+
+const CustomAccordionTrigger = ({
+  className, 
+  children, 
+  ...props 
+}: CustomAccordionTriggerProps) => {
+  return (
+    <AccordionTrigger
+      className={cn(
+        'rounded-sm text-xl font-bold p-2',
+        'hover:bg-slate-200',
+        className
+      )} 
+      {...props}
+    >
+      {children}
+    </AccordionTrigger>
+  )
+}
+
+const CustomAccordionContent = ({ className, children, ...props }: CustomAccordionContentProps) => {
+  return (
+    <AccordionContent
+      className={cn(className)}
+      {...props}
+    >
+      {children}
+    </AccordionContent>
+  )
+}
+
+const SampleCodeDialog = () => {
+  return (
+    <Dialog>
+      <DialogTrigger asChild>
+        <Button>
+          <Icons.Code className='w-5 h-5' />
+        </Button>
+      </DialogTrigger>
+      <DialogContent className='max-w-3xl h-[90%] overflow-y-auto scrollbar-hide'>
+        <DialogHeader>
+          <DialogTitle>Accordion Sample Code</DialogTitle>
+            <pre className='bg-slate-100 p-4 rounded-lg'>
+                {`
+interface CustomAccordionProps {
+  className?: string
+  children: ReactNode
+  type: 'single' | 'multiple'
+  collapsible?: boolean
+}
+
+interface CustomAccordionItemProps {
+  className?: string
+  children: ReactNode
+  disabled?: boolean
+  value: string
+}
+
+interface CustomAccordionTriggerProps {
+  className?: string
+  children: ReactNode
+}
+
+interface CustomAccordionContentProps {
+  className?: string
+  children: ReactNode
+}
+
+const CustomAccordion = ({
+  className,
+  children,
+  ...props
+}: CustomAccordionProps) => {
+  return (
+    <Accordion 
+      className={cn(
+        'rounded-2xl border border-slate-500 p-4 mt-6',
         className
       )} 
       {...props} 
@@ -88,6 +203,7 @@ const CustomAccordionTrigger = ({
     <AccordionTrigger
       className={cn(
         'rounded-xl text-xl font-bold',
+        'hover:bg-slate-200',
         className
       )} 
       {...props}
@@ -97,7 +213,11 @@ const CustomAccordionTrigger = ({
   )
 }
 
-const CustomAccordionContent = ({ className, children, ...props }: CustomAccordionContentProps) => {
+const CustomAccordionContent = ({ 
+  className, 
+  children, 
+  ...props 
+}: CustomAccordionContentProps) => {
   return (
     <AccordionContent
       className={cn(className)}
@@ -105,6 +225,13 @@ const CustomAccordionContent = ({ className, children, ...props }: CustomAccordi
     >
       {children}
     </AccordionContent>
+  )
+}
+                `}
+            </pre>
+        </DialogHeader>
+      </DialogContent>
+    </Dialog>
   )
 }
 
@@ -115,7 +242,12 @@ export const CustomAccordionCard = () => {
         className='border-b border-slate-200'
         title='Accordion'
       >
-        <CardTitle>Custom Accordions</CardTitle>
+        <CardTitle>
+          <div className='flex items-center justify-between'>
+            <div> Custom Accordions </div>
+            <SampleCodeDialog />
+          </div>
+        </CardTitle>
       </CardHeader>
       <CardContent>
         <div className='grid grid-flow-col grid-cols-2 gap-6 my-6'>

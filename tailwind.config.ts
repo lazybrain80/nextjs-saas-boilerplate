@@ -13,6 +13,8 @@ export default {
         gradient: 'animatedgradient 6s ease infinite alternate',
 				fadein: 'fadein 1s',
       	fadeout: 'fadeout 1.5s',
+				'accordion-down': 'accordion-down 0.2s ease-out',
+				'accordion-up': 'accordion-up 0.2s ease-out',
       },
 			backgroundSize: {
         '300%': '300%',
@@ -39,6 +41,14 @@ export default {
 						opacity: '0',
 					},
 				},
+				'accordion-down': {
+          from: { height: '0' },
+          to: { height: 'var(--radix-accordion-content-height)' },
+        },
+        'accordion-up': {
+          from: { height: 'var(--radix-accordion-content-height)' },
+          to: { height: '0' },
+        },
       },
   		colors: {
   			background: 'hsl(var(--background))',
