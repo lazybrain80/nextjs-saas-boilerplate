@@ -5,6 +5,11 @@ export {
     AccordionTrigger,
     AccordionContent
 } from './accordion'
+export { 
+    Alert, 
+    AlertTitle, 
+    AlertDescription
+} from './alert'
 export {
     AlertDialog,
     AlertDialogPortal,
@@ -18,7 +23,6 @@ export {
     AlertDialogAction,
     AlertDialogCancel,
 } from './alert-dialog'
-export { Alert, AlertTitle, AlertDescription } from './alert'
 export { AnimatedGradientText } from './animated-gradient-text'
 export { AspectRatio } from './aspect-ratio'
 export { Avatar, AvatarImage, AvatarFallback } from './avatar'

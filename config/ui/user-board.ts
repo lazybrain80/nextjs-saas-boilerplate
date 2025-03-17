@@ -156,6 +156,11 @@ export const getUserBoardConfig = async (): Promise<PageNavConfig> => {
                 title: 'Accordion',
                 href: `/${locale}/components/accordion`
               },
+              {
+                id: 'alert',
+                title: 'Alert',
+                href: `/${locale}/components/alert`
+              },
             ]
           },
           {
