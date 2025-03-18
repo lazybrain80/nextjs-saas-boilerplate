@@ -7,14 +7,70 @@ import {
   Card,
   CardHeader,
   CardTitle,
-  CardContent
+  CardContent,
+  Dialog,
+  DialogTrigger,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  Button,
 } from '@/design/components/ui'
+import * as Icons from '@/design/icons'
+
+const SampleCodeDialog = () => {
+  return (
+    <Dialog>
+      <DialogTrigger asChild>
+        <Button>
+          <Icons.Code className='w-5 h-5' />
+        </Button>
+      </DialogTrigger>
+      <DialogContent className='max-w-3xl'>
+        <DialogHeader>
+          <DialogTitle>Alert Description Sample Code</DialogTitle>
+            <pre className='bg-slate-100 p-4 rounded-lg'>
+                {`
+import {
+  Alert,
+  AlertTitle,
+  AlertDescription
+} from '@/design/components/ui'
+
+<Alert>
+  <AlertTitle>Info Alert</AlertTitle>
+  <AlertDescription>Info alert description.</AlertDescription>
+</Alert>
+<Alert variant='success'> {/* success, warning, error */}
+  <AlertTitle>Success Alert</AlertTitle>
+  <AlertDescription>Success alert description.</AlertDescription>
+</Alert>
+<Alert type={'outline'}>
+  <AlertTitle>Info Alert</AlertTitle>
+  <AlertDescription>Info alert description.</AlertDescription>
+</Alert>
+<Alert variant='success' type={'outline'}>
+  <AlertTitle>Success Alert</AlertTitle>
+  <AlertDescription>Success alert description.</AlertDescription>
+</Alert>
+                `}
+            </pre>
+        </DialogHeader>
+      </DialogContent>
+    </Dialog>
+  )
+}
+
 
 export const DescAlert = () => {
   return (
     <Card className='rounded-2xl bg-white'>
       <CardHeader>
-        <CardTitle>Description Alert</CardTitle>
+        <CardTitle>
+          <div className='flex items-center justify-between'>
+            <div> Description Alert </div>
+            <SampleCodeDialog />
+          </div>
+        </CardTitle>
       </CardHeader>
       <CardContent>
         <div className='grid grid-flow-col grid-cols-2 gap-6 my-6'>

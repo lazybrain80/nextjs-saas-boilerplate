@@ -6,14 +6,65 @@ import {
   Card,
   CardHeader,
   CardTitle,
-  CardContent
+  CardContent,
+  Dialog,
+  DialogTrigger,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  Button,
 } from '@/design/components/ui'
+import * as Icons from '@/design/icons'
+
+const SampleCodeDialog = () => {
+  return (
+    <Dialog>
+      <DialogTrigger asChild>
+        <Button>
+          <Icons.Code className='w-5 h-5' />
+        </Button>
+      </DialogTrigger>
+      <DialogContent className='max-w-3xl'>
+        <DialogHeader>
+          <DialogTitle>Alert Basic Sample Code</DialogTitle>
+            <pre className='bg-slate-100 p-4 rounded-lg'>
+                {`
+import {
+  Alert,
+  AlertTitle
+} from '@/design/components/ui'
+
+<Alert>
+  <AlertTitle>Info Alert</AlertTitle>
+</Alert>
+<Alert variant='success'> {/* success, warning, error */}
+  <AlertTitle>Success Alert</AlertTitle>
+</Alert>
+<Alert type={'outline'}>
+  <AlertTitle>Info Alert</AlertTitle>
+</Alert>
+<Alert variant='success' type={'outline'}>
+  <AlertTitle>Success Alert</AlertTitle>
+</Alert>
+                `}
+            </pre>
+        </DialogHeader>
+      </DialogContent>
+    </Dialog>
+  )
+}
+
 
 export const BasicAlert = () => {
   return (
     <Card className='rounded-2xl bg-white'>
       <CardHeader>
-        <CardTitle>Basic Alert</CardTitle>
+        <CardTitle>
+          <div className='flex items-center justify-between'>
+            <div> Basic Alert </div>
+            <SampleCodeDialog />
+          </div>
+        </CardTitle>
       </CardHeader>
       <CardContent>
         <div className='grid grid-flow-col grid-cols-2 gap-6 my-6'>
