@@ -125,6 +125,9 @@ export const Inbox = Lucide.Inbox
 export const Components = Lucide.Component
 export const ChartLine = Lucide.ChartLine
 export const Table = Lucide.Table2
+export const TriangleAlert = Lucide.TriangleAlert
+export const BadgeInfo = Lucide.BadgeInfo
+export const BadgeCheck = Lucide.BadgeCheck
 
 
 export const System: Icon = (props) => (

@@ -1,17 +1,17 @@
 import * as React from 'react'
 import { VariantProps, cva } from 'class-variance-authority'
-
 import { cn } from '@/libs/utils'
+import * as Icons from '@/design/icons'
 
 const alertVariants = cva(
-  'relative w-full rounded-lg border p-4 [&>svg]:absolute [&>svg]:text-foreground [&>svg]:left-4 [&>svg]:top-4 [&>svg+div]:translate-y-[-3px] [&:has(svg)]:pl-11',
+  'w-full rounded-xl border p-2',
   {
     variants: {
       variant: {
-        default: 'bg-blue-600 text-blue-700',
-        success: 'bg-green-600 text-green-700',
-        error: 'bg-red-600 text-red-700',
-        warning: 'bg-orange-600 text-orange-700',
+        default: 'bg-blue-400 text-blue-400',
+        success: 'bg-green-400 text-green-400',
+        error: 'bg-red-400 text-red-400',
+        warning: 'bg-orange-400 text-orange-400',
       },
       type: {
         fill: 'text-white border-0',
@@ -32,9 +32,25 @@ const Alert = React.forwardRef<
   <div
     ref={ref}
     role='alert'
-    className={cn(alertVariants({ variant, type }), className)}
+    className={cn(
+      alertVariants({ variant, type }),
+      'flex items-center',
+      className)}
     {...props}
-  />
+  >
+      {variant === 'error' ? (
+        <Icons.CircleAlert className='w-6 h-6 mr-4' />
+      ) : variant === 'warning' ? (
+        <Icons.TriangleAlert className='w-6 h-6 mr-4' />
+      ) : variant === 'success' ? (
+        <Icons.CircleCheckBig className='w-6 h-6 mr-4' />
+      ) : (
+        <Icons.BadgeInfo className='w-6 h-6 mr-4' />
+      )}
+      <div>
+        {props.children}
+      </div>
+  </div>
 ))
 Alert.displayName = 'Alert'
 
@@ -44,7 +60,7 @@ const AlertTitle = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <h5
     ref={ref}
-    className={cn('mb-1 font-medium leading-none tracking-tight', className)}
+    className={cn('font-bold', className)}
     {...props}
   >
     {props.children}
