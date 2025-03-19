@@ -6,6 +6,7 @@ import {
 } from '@/design/features/user-board'
 import { BasicAlert } from './basic-alert'
 import { DescAlert } from './desc-alert'
+import { AlertDialogExample } from './alert-dialog'
 
 const AlertPage = () => {
 
@@ -16,6 +17,7 @@ const AlertPage = () => {
       {/* Alert examples */}
       <BasicAlert />
       <DescAlert />
+      <AlertDialogExample />
     </div>
   )
 }
