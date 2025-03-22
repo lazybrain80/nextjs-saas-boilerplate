@@ -6,7 +6,7 @@ import {
   Card,
   Carousel,
   CarouselItem
-} from '@/design/components/ui'
+} from '@/design/components'
 
 interface DetailFooterProps extends React.HTMLAttributes<HTMLDivElement> {
   className?: string

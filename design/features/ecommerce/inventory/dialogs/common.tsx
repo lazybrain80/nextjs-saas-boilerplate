@@ -21,7 +21,7 @@ import {
   SelectContent,
   SelectItem,
   FileImporter
-} from '@/design/components/ui'
+} from '@/design/components'
 import * as Icons from '@/design/icons'
 import { ProductCategory } from '../../common'
 import { useInventory } from '../provider'

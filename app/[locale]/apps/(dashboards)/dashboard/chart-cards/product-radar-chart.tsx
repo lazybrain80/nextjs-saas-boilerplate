@@ -8,13 +8,12 @@ import {
   CardTitle,
   CardContent,
   CardDescription,
-} from '@/design/components/ui'
+} from '@/design/components'
 import {
   Radar,
   RadarChart,
   PolarGrid,
   PolarAngleAxis,
-  PolarRadiusAxis,
   ResponsiveContainer,
 } from 'recharts'
 

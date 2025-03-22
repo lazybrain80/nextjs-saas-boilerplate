@@ -7,9 +7,7 @@ import {
   CardHeader,
   CardFooter,
   Button,
-  CardContent,
-} from '@/design/components/ui'
-import * as Icons from '@/design/icons'
+} from '@/design/components'
 
 interface ConnectionProps {
   imageUrl: string

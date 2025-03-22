@@ -8,7 +8,7 @@ import {
   CardHeader,
   CardTitle,
   CardDescription
-} from '@/design/components/ui'
+} from '@/design/components'
 import * as Icons from '@/design/icons'
 
 export const IntroductionCard = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => {

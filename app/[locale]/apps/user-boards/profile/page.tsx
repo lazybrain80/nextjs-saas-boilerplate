@@ -8,7 +8,7 @@ import {
 } from '@/design/features/user-board'
 import {
   Card,
-} from '@/design/components/ui'
+} from '@/design/components'
 import {
   IntroductionCard,
   TeamsCard,

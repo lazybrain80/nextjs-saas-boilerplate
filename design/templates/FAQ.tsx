@@ -5,8 +5,8 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from '@/design/components/ui'
-import { Section } from '@/design/components'
+  Section,
+} from '@/design/components'
 
 export const FAQ = () => {
   const t = useTranslations('FAQ')

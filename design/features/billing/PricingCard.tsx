@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 import React from 'react'
-import { buttonVariants } from '@/design/components/ui'
+import { buttonVariants } from '@/design/components'
 
 import type { BillingInterval } from '@/types/Subscription'
 

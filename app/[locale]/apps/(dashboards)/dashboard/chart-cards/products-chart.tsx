@@ -14,7 +14,7 @@ import {
   CardTitle,
   CardContent,
   CardDescription,
-} from '@/design/components/ui'
+} from '@/design/components'
 import {
   renderLabel
 } from '@/design/features/user-board/common'

@@ -4,7 +4,7 @@ import { Dispatch, SetStateAction } from 'react'
 // import { useRouter } from 'next/router'
 import { Drawer } from 'vaul'
 
-import { Dialog, DialogContent } from '@/design/components/ui/dialog'
+import { Dialog, DialogContent } from '@/design/components'
 import { useMediaQuery } from '@/hooks/use-media-query'
 import { cn } from '@/libs/utils'
 

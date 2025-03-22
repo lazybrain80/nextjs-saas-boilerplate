@@ -12,7 +12,7 @@ import {
   DialogFooter,
   DialogTitle,
   Button,
-} from '@/design/components/ui'
+} from '@/design/components'
 import * as Icons from '@/design/icons'
 
 

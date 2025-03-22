@@ -2,7 +2,7 @@
 
 import React from 'react'
 
-import { Button } from '@/design/components/ui/button'
+import { Button } from '@/design/components'
 import { cn } from '@/libs/utils'
 import { CheckIcon, CopyIcon } from '@radix-ui/react-icons';
 

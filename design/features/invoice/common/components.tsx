@@ -7,7 +7,7 @@ import {
   SelectItem,
   SelectValue,
   SelectTrigger,
-} from '@/design/components/ui'
+} from '@/design/components'
 import { orderStatus } from '.'
 
 

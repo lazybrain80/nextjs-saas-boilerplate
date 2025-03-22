@@ -8,7 +8,7 @@ import {
   Card,
   Button,
   Transition
-} from '@/design/components/ui'
+} from '@/design/components'
 import { BaseEcommerceProduct } from './common'
 import * as Icons from '@/design/icons'
 import { DetailProductDialog } from './dialogs'

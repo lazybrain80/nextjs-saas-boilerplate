@@ -9,7 +9,7 @@ import {
   Button,
   Separator,
   Transition
-} from '@/design/components/ui'
+} from '@/design/components'
 import { ShoppingCartItem } from '../common'
 import { useCart } from './provider'
 

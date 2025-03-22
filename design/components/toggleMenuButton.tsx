@@ -1,6 +1,6 @@
 import { type ForwardedRef, forwardRef } from 'react'
 
-import { Button } from '@/design/components/ui'
+import { Button } from '@/design/components'
 import { Menu } from '@/design/icons'
 
 /**

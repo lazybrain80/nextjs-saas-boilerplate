@@ -10,7 +10,7 @@ import {
 import {
   Card,
   Button,
-} from '@/design/components/ui'
+} from '@/design/components'
 import * as Icons from '@/design/icons'
 import { Folder, Note } from './common'
 import {

@@ -1,6 +1,6 @@
 import type { MDXComponents } from 'mdx/types';
 import Image from 'next/image'
-import { MdxCard } from '@/design/components/ui'
+import { MdxCard } from '@/design/components'
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {

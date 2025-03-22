@@ -6,7 +6,7 @@ import { signInWithOAuth, signInWithEmail } from '@/auth'
 import Link from 'next/link'
 import Image from 'next/image'
 import { useLocale, useTranslations } from 'next-intl'
-import { buttonVariants, Label, Input, toast } from '@/design/components/ui'
+import { buttonVariants, Label, Input, toast } from '@/design/components'
 import { ChevronLeft, Spinner } from '@/design/icons'
 import { IoLogoGoogle, IoLogoGithub } from 'react-icons/io5'
 

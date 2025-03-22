@@ -8,7 +8,7 @@ import TextStyle from "@tiptap/extension-text-style";
 import { EditorProvider, useCurrentEditor, Editor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import * as Icons from '@/design/icons'
-import { Button } from '@/design/components/ui'
+import { Button } from '@/design/components'
 
 const MenuButton = ({ className, disabled, ...props }: React.HTMLAttributes<HTMLButtonElement> & { disabled?: boolean }) => {
     return (

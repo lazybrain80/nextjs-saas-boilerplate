@@ -12,7 +12,7 @@ import {
   TableRow,
   TableCell,
   Button,
-} from '@/design/components/ui'
+} from '@/design/components'
 import * as Icons from '@/design/icons'
 
 import { ShowProperty } from './property-dialog'

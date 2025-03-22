@@ -16,7 +16,7 @@ import {
   SelectTrigger,
   SelectContent,
   SelectItem,
-} from '@/design/components/ui'
+} from '@/design/components'
 import * as Icons from '@/design/icons'
 import { InventoryProduct } from './mock-data'
 import { useEffect, useState } from 'react'

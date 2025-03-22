@@ -24,7 +24,7 @@ import {
   SelectItem,
   SelectValue,
   SelectTrigger,
-} from '@/design/components/ui'
+} from '@/design/components'
 import * as Icons from '@/design/icons'
 
 export const SalesPerformanceChart = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => {

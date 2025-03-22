@@ -12,7 +12,7 @@ import {
   TableCell,
   Button,
   Input,
-} from '@/design/components/ui'
+} from '@/design/components'
 
 import * as Icons from '@/design/icons'
 import { Invoice, InvoiceStatus, useInvoices } from './common'

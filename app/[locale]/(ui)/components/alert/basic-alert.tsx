@@ -13,7 +13,7 @@ import {
   DialogHeader,
   DialogTitle,
   Button,
-} from '@/design/components/ui'
+} from '@/design/components'
 import * as Icons from '@/design/icons'
 
 const SampleCodeDialog = () => {
@@ -32,7 +32,7 @@ const SampleCodeDialog = () => {
 import {
   Alert,
   AlertTitle
-} from '@/design/components/ui'
+} from '@/design/components'
 
 <Alert>
   <AlertTitle>Info Alert</AlertTitle>

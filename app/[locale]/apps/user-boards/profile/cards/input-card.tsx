@@ -9,7 +9,7 @@ import {
   CardFooter,
   Button,
   TextEditor
-} from '@/design/components/ui'
+} from '@/design/components'
 
 export const InputCard = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => {
   const [editor, setEditor] = useState<Editor | null>(null);

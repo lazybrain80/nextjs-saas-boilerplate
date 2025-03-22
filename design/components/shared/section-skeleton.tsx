@@ -1,4 +1,4 @@
-import { Skeleton } from '@/design/components/ui/skeleton'
+import { Skeleton } from '@/design/components'
 
 export function SkeletonSection({ card = false }: { card?: boolean }) {
   return (

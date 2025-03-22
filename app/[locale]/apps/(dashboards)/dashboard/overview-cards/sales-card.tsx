@@ -3,7 +3,7 @@ import {
   CardHeader,
   CardTitle,
   CardContent,
-} from '@/design/components/ui'
+} from '@/design/components'
 import { cn } from '@/libs/utils'
 import * as Icons from '@/design/icons'
 

@@ -161,6 +161,166 @@ export const getUserBoardConfig = async (): Promise<PageNavConfig> => {
                 title: 'Alert',
                 href: `/${locale}/components/alert`
               },
+              {
+                id: 'avatar',
+                title: 'Avatar',
+                href: `/${locale}/components/avatar`
+              },
+              {
+                id: 'badge',
+                title: 'Badge',
+                href: `/${locale}/components/badge`
+              },
+              {
+                id: 'button',
+                title: 'Button',
+                href: `/${locale}/components/button`
+              },
+              {
+                id: 'card',
+                title: 'Card',
+                href: `/${locale}/components/card`
+              },
+              {
+                id: 'carousel',
+                title: 'Carousel',
+                href: `/${locale}/components/carousel`
+              },
+              {
+                id: 'checkbox',
+                title: 'Checkbox',
+                href: `/${locale}/components/checkbox`
+              },
+              {
+                id: 'chips-input',
+                title: 'Chips Input',
+                href: `/${locale}/components/chips-input`
+              },
+              {
+                id: 'dialog',
+                title: 'Dialog',
+                href: `/${locale}/components/dialog`
+              },
+              {
+                id: 'drawer',
+                title: 'Drawer',
+                href: `/${locale}/components/drawer`
+              },
+              {
+                id: 'dropdown-menu',
+                title: 'Dropdown Menu',
+                href: `/${locale}/components/dropdown-menu`
+              },
+              {
+                id: 'file-importer',
+                title: 'File Importer',
+                href: `/${locale}/components/file-importer`
+              },
+              {
+                id: 'gradient-text',
+                title: 'Gradient Text',
+                href: `/${locale}/components/gradient-text`
+              },
+              {
+                id: 'input',
+                title: 'Input',
+                href: `/${locale}/components/input`
+              },
+              {
+                id: 'label',
+                title: 'Label',
+                href: `/${locale}/components/label`
+              },
+              {
+                id: 'menubar',
+                title: 'Menubar',
+                href: `/${locale}/components/menubar`
+              },
+              {
+                id: 'navigation-menu',
+                title: 'Navigation Menu',
+                href: `/${locale}/components/navigation-menu`
+              },
+              {
+                id: 'popover',
+                title: 'Popover',
+                href: `/${locale}/components/popover`
+              },
+              {
+                id: 'progress',
+                title: 'Progress',
+                href: `/${locale}/components/progress`
+              },
+              {
+                id: 'radio',
+                title: 'Radio',
+                href: `/${locale}/components/radio`
+              },
+              {
+                id: 'scroll-area',
+                title: 'Scroll Area',
+                href: `/${locale}/components/scroll-area`
+              },
+              {
+                id: 'select',
+                title: 'Select',
+                href: `/${locale}/components/select`
+              },
+              {
+                id: 'separator',
+                title: 'Separator',
+                href: `/${locale}/components/separator`
+              },
+              {
+                id: 'sheet',
+                title: 'Sheet',
+                href: `/${locale}/components/sheet`
+              },
+              {
+                id: 'slider',
+                title: 'Slider',
+                href: `/${locale}/components/slider`
+              },
+              {
+                id: 'switch',
+                title: 'Switch',
+                href: `/${locale}/components/switch`
+              },
+              {
+                id: 'table',
+                title: 'Table',
+                href: `/${locale}/components/table`
+              },
+              {
+                id: 'tabs',
+                title: 'Tabs',
+                href: `/${locale}/components/tabs`
+              },
+              {
+                id: 'text-editor',
+                title: 'Text Editor',
+                href: `/${locale}/components/text-editor`
+              },
+              {
+                id: 'textarea',
+                title: 'Textarea',
+                href: `/${locale}/components/textarea`
+              },
+              {
+                id: 'toast',
+                title: 'Toast',
+                href: `/${locale}/components/toast`
+              },
+              {
+                id: 'toggle',
+                title: 'Toggle',
+                href: `/${locale}/components/toggle`
+              },
+              {
+                id: 'tooltip',
+                title: 'Tooltip',
+                href: `/${locale}/components/tooltip`
+              },
             ]
           },
           {

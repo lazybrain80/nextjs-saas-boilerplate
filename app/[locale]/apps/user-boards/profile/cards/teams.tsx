@@ -7,7 +7,7 @@ import {
   CardHeader,
   CardTitle,
   CardContent
-} from '@/design/components/ui'
+} from '@/design/components'
 import * as Icons from '@/design/icons'
 
 export const TeamsCard = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => {

@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import {
   Card,
-} from '@/design/components/ui'
+} from '@/design/components'
 import * as Icons from '@/design/icons'
 import { orderStatus, useInvoices } from './common'
 

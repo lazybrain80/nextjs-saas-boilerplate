@@ -20,7 +20,7 @@ import {
   FormField,
   FormControl,
   FormMessage
-} from '@/design/components/ui'
+} from '@/design/components'
 import { useForm } from 'react-hook-form'
 import * as Icons from '@/design/icons'
 import { Event, EventColorSelector } from '../common'

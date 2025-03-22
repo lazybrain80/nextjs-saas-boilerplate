@@ -1,5 +1,5 @@
 import type { AvatarProps } from "@radix-ui/react-avatar"
-import { Avatar, AvatarFallback, AvatarImage } from "@/design/components/ui"
+import { Avatar, AvatarFallback, AvatarImage } from "@/design/components"
 import { UserMetaData } from '@/types'
 import { User } from "@/design/icons"
 

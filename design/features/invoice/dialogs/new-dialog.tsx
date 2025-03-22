@@ -20,7 +20,7 @@ import {
   TableRow,
   TableCell,
   Input,
-} from '@/design/components/ui'
+} from '@/design/components'
 import { Invoice, orderStatus, SelectInvoiceStatus } from '../common'
 import { generateId } from '@/utils/id-generator'
 

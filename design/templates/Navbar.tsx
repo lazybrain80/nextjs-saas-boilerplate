@@ -3,15 +3,16 @@
 import React, { useState } from 'react'
 import Link from 'next/link'
 import { useTranslations, useLocale } from 'next-intl'
-import { LocaleSwitcher, Logo } from '@/design/components'
 import {
   buttonVariants,
+  Section,
+  LocaleSwitcher, 
+  Logo,
   NavigationMenu,
   NavigationMenuList,
   NavigationMenuItem,
   NavigationMenuLink
-} from '@/design/components/ui'
-import { Section } from '@/design/components'
+} from '@/design/components'
 import { UserAccountNav } from '@/design/features/user-board'
 import { CenteredMenu, MobileNavbar } from '@/design/features/landing'
 import { cn } from '@/libs/utils'

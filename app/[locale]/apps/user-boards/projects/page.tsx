@@ -10,7 +10,7 @@ import {
 import {
   Input,
   Button
-} from '@/design/components/ui'
+} from '@/design/components'
 import * as Icons from '@/design/icons'
 import { ProjectCard } from './project-card'
 

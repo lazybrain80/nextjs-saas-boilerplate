@@ -9,7 +9,7 @@ import {
   CardContent,
   CardDescription,
   Progress,
-} from '@/design/components/ui'
+} from '@/design/components'
 
 const bestSellingData = [
   {

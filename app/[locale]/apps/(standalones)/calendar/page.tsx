@@ -14,7 +14,7 @@ import {
 } from '@/design/features/user-board'
 import {
   Card,
-} from '@/design/components/ui'
+} from '@/design/components'
 import { Event, generateId, predefinedColors } from './common'
 import { EditEventDialog, NewEventDialog } from './dialogs'
 

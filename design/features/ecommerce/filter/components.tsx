@@ -7,7 +7,7 @@ import {
   SelectItem,
   SelectValue,
   SelectTrigger,
-} from '@/design/components/ui'
+} from '@/design/components'
 import { useCachedItems } from '@/hooks/client-cache'
 import { BaseEcommerceProduct, ProductCategory } from '../common'
 import { useFilter } from './provider'

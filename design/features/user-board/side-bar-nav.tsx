@@ -14,7 +14,7 @@ import {
   AccordionItem,
   AccordionTrigger,
   AccordionContent
-} from '@/design/components/ui'
+} from '@/design/components'
 
 export interface SidebarNavProps {
   items: SidebarNavItem[]

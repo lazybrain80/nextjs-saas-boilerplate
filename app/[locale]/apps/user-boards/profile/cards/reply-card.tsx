@@ -6,8 +6,6 @@ import {
   CardHeader,
   CardContent,
   Button,
-} from '@/design/components/ui'
-import {
   UserAvatar
 } from '@/design/components'
 import * as Icons from '@/design/icons'

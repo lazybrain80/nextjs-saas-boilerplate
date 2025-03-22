@@ -18,7 +18,7 @@ import {
   TableHead,
   TableRow,
   TableCell,
-} from '@/design/components/ui'
+} from '@/design/components'
 import * as Icons from '@/design/icons'
 import { Invoice, InvoiceStatus } from '../common'
 

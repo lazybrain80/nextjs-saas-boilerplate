@@ -1,7 +1,10 @@
 import { useTranslations } from 'next-intl'
 import { HeroRightImage } from '@/design/features/landing'
-import { Section } from '@/design/components'
-import { buttonVariants, ReviewCard } from '@/design/components/ui'
+import { 
+    buttonVariants, 
+    ReviewCard, 
+    Section 
+} from '@/design/components'
 
 export const SecondHero = () => {
     const t = useTranslations('SecondHero')

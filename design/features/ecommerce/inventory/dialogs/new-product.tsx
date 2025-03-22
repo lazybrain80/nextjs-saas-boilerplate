@@ -9,7 +9,7 @@ import {
   DialogHeader,
   DialogTitle,
   Button
-} from '@/design/components/ui'
+} from '@/design/components'
 import * as Icons from '@/design/icons'
 
 import { useInventory } from '../provider'

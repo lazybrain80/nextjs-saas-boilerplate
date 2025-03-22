@@ -3,16 +3,15 @@
 import { useState, useEffect } from 'react'
 import { useLocale } from 'next-intl'
 import Image from 'next/image'
-import { Button } from '@/design/components/ui/button'
 import {
+  Button,
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuRadioGroup,
   DropdownMenuRadioItem,
   DropdownMenuTrigger,
-} from '@/design/components/ui/dropdown-menu'
+} from '@/design/components'
 import { usePathname, useRouter, allLocales } from '@/i18n/routing'
-import { Globe } from '@/design/icons'
 
 const flagMap = new Map([
   ['ko', '/locale/ko.png'],

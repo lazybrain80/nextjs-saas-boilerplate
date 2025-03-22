@@ -1,8 +1,8 @@
 import {
   Card,
   CardContent,
-} from '@/design/components/ui'
-import { LocaleSwitcher } from '@/design/components'
+  LocaleSwitcher
+} from '@/design/components'
 import { UserAccountNav } from './user-account-nav'
 import { cn } from '@/libs/utils'
 

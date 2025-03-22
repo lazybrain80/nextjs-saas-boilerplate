@@ -9,7 +9,7 @@ import {
   CardContent,
   CardDescription,
   Button
-} from '@/design/components/ui'
+} from '@/design/components'
 import { cn } from '@/libs/utils'
 
 export const WelcomeCard = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => {

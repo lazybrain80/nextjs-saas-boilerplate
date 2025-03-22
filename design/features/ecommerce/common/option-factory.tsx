@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { cn } from '@/utils/cn'
 import {
   Button,
-} from '@/design/components/ui'
+} from '@/design/components'
 import { ProductCategory } from '.'
 
 interface OptionsFactoryProps {

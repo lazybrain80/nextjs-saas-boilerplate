@@ -4,7 +4,7 @@ import {
   Card,
   Separator,
   Button,
-} from '@/design/components/ui'
+} from '@/design/components'
 import {
   FilterOrderby,
   FilterCategory,

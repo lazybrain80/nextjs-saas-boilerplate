@@ -13,7 +13,7 @@ import {
   CardTitle,
   CardContent,
   Button
-} from '@/design/components/ui'
+} from '@/design/components'
 import * as Icons from '@/design/icons'
 
 export const ProfileHeader = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => {

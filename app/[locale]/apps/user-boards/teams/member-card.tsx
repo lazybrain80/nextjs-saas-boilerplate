@@ -4,8 +4,6 @@ import { cn } from '@/libs/utils'
 import {
   Card,
   Button,
-} from '@/design/components/ui'
-import {
   UserAvatar
 } from '@/design/components'
 

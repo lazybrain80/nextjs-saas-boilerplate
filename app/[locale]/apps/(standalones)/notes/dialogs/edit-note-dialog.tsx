@@ -14,7 +14,7 @@ import {
   Button,
   Input,
   Textarea,
-} from '@/design/components/ui'
+} from '@/design/components'
 import * as Icons from '@/design/icons'
 import { Note } from '../common'
 

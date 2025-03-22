@@ -5,7 +5,7 @@ import Image from 'next/image'
 import {
   Card,
   CardContent
-} from '@/design/components/ui'
+} from '@/design/components'
 
 export const OverviewCards = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => {
   const t = useTranslations('DashboardPage')

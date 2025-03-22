@@ -6,7 +6,7 @@ import {
     CardTitle,
     CardContent,
     CardFooter
-} from '@/design/components/ui'
+} from '@/design/components'
 
 export const NewsCard = ({
     date,

@@ -7,9 +7,7 @@ import {
   CardContent,
   CardFooter,
   Button,
-  Input
-} from '@/design/components/ui'
-import {
+  Input,
   UserAvatar
 } from '@/design/components'
 import * as Icons from '@/design/icons'
