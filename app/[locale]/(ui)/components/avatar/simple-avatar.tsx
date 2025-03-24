@@ -9,16 +9,17 @@ export const SimpleAvatar = ({ user }: UserAvatarProps) => {
       <CardHeader>
         <CardTitle>
           <div className="flex items-center justify-between">
-            <div> Avatar Basic example </div>
+            <div> Basic example </div>
           </div>
         </CardTitle>
       </CardHeader>
       <CardContent>
-        <div className="flex items-center justify-center space-x-8">
+        <div className="flex items-center justify-center space-x-16">
           <div>
             <div className="border p-4">
               <div className="font-semibold mb-2">Round Rect Avatars</div>
-              <div className="flex items-center justify-center space-x-4">
+              <div className="flex items-center justify-center space-x-8">
+                <CustomUserAvatar user={user} size="h-32 w-32" shape="round-rect" />
                 <CustomUserAvatar user={user} size="h-20 w-20" shape="round-rect" />
                 <CustomUserAvatar user={user} size="h-16 w-16" shape="round-rect" />
                 <CustomUserAvatar
@@ -43,7 +44,8 @@ export const SimpleAvatar = ({ user }: UserAvatarProps) => {
           <div>
             <div className="border p-4">
               <div className="font-semibold mb-2">Circle Avatars</div>
-              <div className="flex items-center justify-center space-x-4">
+              <div className="flex items-center justify-center space-x-8">
+                <CustomUserAvatar user={user} size="h-32 w-32" shape="circle" />
                 <CustomUserAvatar user={user} size="h-20 w-20" shape="circle" />
                 <CustomUserAvatar user={user} size="h-16 w-16" shape="circle" />
                 <CustomUserAvatar
