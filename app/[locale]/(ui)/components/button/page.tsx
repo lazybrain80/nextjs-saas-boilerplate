@@ -6,7 +6,7 @@ import { BasicButtons } from './basic-button'
 import { SizeButtons } from './size-button'
 import { RoundedButtons } from './rounded-button'
 
-const AlertPage = () => {
+const ButtonPage = () => {
   return (
     <div className="flex-1 overflow-auto bg-slate-100 p-8 space-y-6">
       {/* Page Header */}
@@ -19,4 +19,4 @@ const AlertPage = () => {
   )
 }
 
-export default AlertPage
+export default ButtonPage
