@@ -1,7 +1,43 @@
 'use client'
 
-import { Card, CardHeader, CardTitle, CardContent } from '@/design/components'
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardContent,
+  Dialog,
+  DialogTrigger,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  Button,
+} from '@/design/components'
+import * as Icons from '@/design/icons'
 import { CustomUserAvatar, UserAvatarProps } from './custom-avatar'
+
+const SampleCodeDialog = () => {
+  return (
+    <Dialog>
+      <DialogTrigger asChild>
+        <Button>
+          <Icons.Code className="w-5 h-5" />
+        </Button>
+      </DialogTrigger>
+      <DialogContent className="max-w-3xl">
+        <DialogHeader>
+          <DialogTitle>Alert Basic Sample Code</DialogTitle>
+          <pre className="bg-slate-100 p-4 rounded-lg">
+            {`
+import { CustomUserAvatar, UserAvatarProps } from './custom-avatar'
+
+<CustomUserAvatar user={user} size="h-32 w-32" shape="round-rect" />
+`}
+          </pre>
+        </DialogHeader>
+      </DialogContent>
+    </Dialog>
+  )
+}
 
 export const SimpleAvatar = ({ user }: UserAvatarProps) => {
   return (
@@ -10,6 +46,7 @@ export const SimpleAvatar = ({ user }: UserAvatarProps) => {
         <CardTitle>
           <div className="flex items-center justify-between">
             <div> Basic example </div>
+            <SampleCodeDialog />
           </div>
         </CardTitle>
       </CardHeader>

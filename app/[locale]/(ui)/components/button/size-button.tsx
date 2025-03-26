@@ -5,7 +5,6 @@ import {
   CardHeader,
   CardTitle,
   CardContent,
-  Badge,
   Dialog,
   DialogTrigger,
   DialogContent,
@@ -28,11 +27,12 @@ const SampleCodeDialog = () => {
           <DialogTitle>Badge Basic Sample Code</DialogTitle>
           <pre className="bg-slate-100 p-4 rounded-lg">
             {`
-import { Badge } from '@/design/components'
+import { Button } from '@/design/components'
 
-<Badge variant="default">Default Badge</Badge>
-<Badge variant="secondary">Secondary Badge</Badge>
-<Badge variant="destructive">Destructive Badge</Badge>
+<Button variant="default">Default Button</Button>
+<Button variant="secondary">Secondary Button</Button>
+<Button variant="destructive">Destructive Button</Button>
+<Button variant="outline">Outline Button</Button>
 `}
           </pre>
         </DialogHeader>
@@ -41,26 +41,29 @@ import { Badge } from '@/design/components'
   )
 }
 
-export const BasicBadges = () => {
+export const SizeButtons = () => {
   return (
     <Card className="rounded-2xl bg-white">
       <CardHeader>
         <CardTitle>
           <div className="flex items-center justify-between">
-            <div> Basic Badges </div>
+            <div> Size Buttons </div>
             <SampleCodeDialog />
           </div>
         </CardTitle>
       </CardHeader>
       <CardContent>
         <div className="flex items-center justify-center space-x-4">
-          <Badge variant="default">Default Badge</Badge>
-          <Badge variant="secondary">Secondary Badge</Badge>
-          <Badge variant="destructive">Destructive Badge</Badge>
-          <Badge variant="outline">Outline Badge</Badge>
-          <Badge variant="success">Success Badge</Badge>
-          <Badge variant="danger">Danger Badge</Badge>
-          <Badge variant="info">Info Badge</Badge>
+          <Button variant="default">Default Button</Button>
+          <Button variant="default" size={'sm'}>
+            Size 'sm' Button
+          </Button>
+          <Button variant="default" size={'lg'}>
+            Size 'lg' Button
+          </Button>
+          <Button variant="default" size={'icon'}>
+            <Icons.Check className="w-5 h-5" />
+          </Button>
         </div>
       </CardContent>
     </Card>
