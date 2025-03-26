@@ -28,11 +28,16 @@ const SampleCodeDialog = () => {
           <pre className="bg-slate-100 p-4 rounded-lg">
             {`
 import { Button } from '@/design/components'
-
-<Button variant="default">Default Button</Button>
-<Button variant="secondary">Secondary Button</Button>
-<Button variant="destructive">Destructive Button</Button>
-<Button variant="outline">Outline Button</Button>
+{/* rounded = ['sm', 'lg', 'xl', '2xl', 'full'] */}
+<Button variant="default" rounded={'sm'}>
+  Rounded-sm Button
+</Button>
+<Button variant="default" rounded={'lg'}>
+  Rounded-lg Button
+</Button>
+<Button variant="default" rounded={'xl'}>
+  Rounded-xl Button
+</Button>
 `}
           </pre>
         </DialogHeader>

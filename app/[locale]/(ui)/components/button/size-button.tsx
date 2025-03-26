@@ -29,10 +29,15 @@ const SampleCodeDialog = () => {
             {`
 import { Button } from '@/design/components'
 
-<Button variant="default">Default Button</Button>
-<Button variant="secondary">Secondary Button</Button>
-<Button variant="destructive">Destructive Button</Button>
-<Button variant="outline">Outline Button</Button>
+<Button variant="default" size={'sm'}>
+  Size 'sm' Button
+</Button>
+<Button variant="default" size={'lg'}>
+  Size 'lg' Button
+</Button>
+<Button variant="default" size={'icon'}>
+  <Icons.Check className="w-5 h-5" />
+</Button>
 `}
           </pre>
         </DialogHeader>
