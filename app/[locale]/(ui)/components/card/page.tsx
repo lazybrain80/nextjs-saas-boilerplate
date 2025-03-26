@@ -73,7 +73,7 @@ const CardPage = () => {
         </CardFooter>
       </Card>
 
-      <Card className="shadow-lg">
+      <Card className="shadow-xl">
         <CardHeader className="border-b border-gray-300 bg-gray-100">
           <CardTitle>Shadow Card</CardTitle>
           <CardDescription>This card has a shadow effect.</CardDescription>
