@@ -10,7 +10,60 @@ import {
   CardContent,
   CardFooter,
   Button,
+  Dialog,
+  DialogTrigger,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
 } from '@/design/components'
+import * as Icons from '@/design/icons'
+
+const SampleCodeDialog1 = () => {
+  return (
+    <Dialog>
+      <DialogTrigger asChild>
+        <Button>
+          <Icons.Code className="w-5 h-5" />
+        </Button>
+      </DialogTrigger>
+      <DialogContent className="max-w-4xl">
+        <DialogHeader>
+          <DialogTitle>Card Sample Code</DialogTitle>
+          <pre className="bg-slate-100 p-4 rounded-lg">
+            {`
+import {   
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardContent,
+  CardFooter
+} from '@/design/components'
+
+<Card>
+  <CardHeader className="border-b border-gray-300 bg-gray-100">
+    <CardTitle>Sample Card Title</CardTitle>
+    <CardDescription>This is a sample card description.</CardDescription>
+  </CardHeader>
+  <CardContent>
+    <p>This is the content of the sample card. You can put any information here.</p>
+    <ul>
+      <li>Additional content item 1</li>
+      <li>Additional content item 2</li>
+      <li>Additional content item 3</li>
+    </ul>
+  </CardContent>
+  <CardFooter className="border-t border-gray-300 bg-gray-100">
+    <Button>Action</Button>
+  </CardFooter>
+</Card>
+`}
+          </pre>
+        </DialogHeader>
+      </DialogContent>
+    </Dialog>
+  )
+}
 
 const CardPage = () => {
   return (
@@ -20,7 +73,12 @@ const CardPage = () => {
       {/* Card examples */}
       <Card>
         <CardHeader className="border-b border-gray-300 bg-gray-100">
-          <CardTitle>Sample Card Title</CardTitle>
+          <CardTitle>
+            <div className="flex items-center justify-between">
+              <div> Sample Card Title </div>
+              <SampleCodeDialog1 />
+            </div>
+          </CardTitle>
           <CardDescription>This is a sample card description.</CardDescription>
         </CardHeader>
         <CardContent>
