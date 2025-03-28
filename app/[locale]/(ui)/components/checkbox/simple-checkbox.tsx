@@ -38,7 +38,7 @@ const SampleCodeDialog = () => {
       </DialogTrigger>
       <DialogContent className="max-w-4xl">
         <DialogHeader>
-          <DialogTitle>Badge Basic Sample Code</DialogTitle>
+          <DialogTitle>Checkbox Sample Code</DialogTitle>
           <pre className="bg-slate-100 p-4 rounded-lg">
             {`
 import { Checkbox } from '@/design/components'
