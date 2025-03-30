@@ -9,6 +9,7 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
+  FileImporter,
 } from '@/design/components'
 import * as Icons from '@/design/icons'
 
@@ -25,12 +26,12 @@ const SampleCodeDialog = () => {
           <DialogTitle>Sample Code</DialogTitle>
           <pre className="bg-slate-100 p-4 rounded-lg">
             {`
-import { ChipsInput } from '@/design/components'
+import { FileImporter } from '@/design/components'
 
-<ChipsInput
-  placeholder="Add a chip..."
-  initialChips={['Example Chip 1', 'Example Chip 2']}
-  showFooter
+<FileImporter
+  onFileDropedAction={file => {
+    console.log('File dropped:', file.name)
+  }}
 />
 `}
           </pre>
@@ -40,19 +41,26 @@ import { ChipsInput } from '@/design/components'
   )
 }
 
-export const SimpleDialog = () => {
+export const SimpleFileImporter = () => {
   return (
     <Card className="rounded-2xl bg-white">
       <CardHeader>
         <CardTitle>
           <div className="flex items-center justify-between">
-            <div> Simple Chip Input </div>
+            <div> FileImporter example </div>
             <SampleCodeDialog />
           </div>
         </CardTitle>
       </CardHeader>
       <CardContent>
-        <div className="flex items-center justify-center space-x-4">{/** component sample */}</div>
+        <div className="flex items-center justify-center space-x-4">
+          <FileImporter
+            className="bg-slate-400/10"
+            onFileDropedAction={file => {
+              console.log('File dropped:', file.name)
+            }}
+          />
+        </div>
       </CardContent>
     </Card>
   )
