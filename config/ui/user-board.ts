@@ -1,8 +1,8 @@
-import { getTranslations, getLocale } from 'next-intl/server';
-import type { PageNavConfig } from "@/types";
+import { getTranslations, getLocale } from 'next-intl/server'
+import type { PageNavConfig } from '@/types'
 
 export const getUserBoardConfig = async (): Promise<PageNavConfig> => {
-  const t = await getTranslations('UserSideNav');
+  const t = await getTranslations('UserSideNav')
   const locale = await getLocale()
   return {
     mainNav: [],
@@ -57,10 +57,10 @@ export const getUserBoardConfig = async (): Promise<PageNavConfig> => {
                 title: 'Purchase',
                 href: `/${locale}/purchase`,
                 icon: 'cart',
-              }
-            ]
-          }
-        ]
+              },
+            ],
+          },
+        ],
       },
       {
         id: 'apps',
@@ -94,8 +94,8 @@ export const getUserBoardConfig = async (): Promise<PageNavConfig> => {
                 title: 'Connections',
                 href: `/${locale}/apps/user-boards/connections`,
                 icon: 'connections',
-              }
-            ]
+              },
+            ],
           },
           {
             id: 'notes',
@@ -132,7 +132,7 @@ export const getUserBoardConfig = async (): Promise<PageNavConfig> => {
                 href: `/${locale}/apps/ecommerce/inventory`,
                 icon: 'items-search',
               },
-            ]
+            ],
           },
           {
             id: 'settings',
@@ -140,7 +140,7 @@ export const getUserBoardConfig = async (): Promise<PageNavConfig> => {
             href: `/${locale}/apps/settings`,
             icon: 'settings',
           },
-        ]
+        ],
       },
       {
         id: 'ui',
@@ -154,195 +154,185 @@ export const getUserBoardConfig = async (): Promise<PageNavConfig> => {
               {
                 id: 'accordion',
                 title: 'Accordion',
-                href: `/${locale}/components/accordion`
+                href: `/${locale}/components/accordion`,
               },
               {
                 id: 'alert',
                 title: 'Alert',
-                href: `/${locale}/components/alert`
+                href: `/${locale}/components/alert`,
               },
               {
                 id: 'avatar',
                 title: 'Avatar',
-                href: `/${locale}/components/avatar`
+                href: `/${locale}/components/avatar`,
               },
               {
                 id: 'badge',
                 title: 'Badge',
-                href: `/${locale}/components/badge`
+                href: `/${locale}/components/badge`,
               },
               {
                 id: 'button',
                 title: 'Button',
-                href: `/${locale}/components/button`
+                href: `/${locale}/components/button`,
               },
               {
                 id: 'card',
                 title: 'Card',
-                href: `/${locale}/components/card`
+                href: `/${locale}/components/card`,
               },
               {
                 id: 'carousel',
                 title: 'Carousel',
-                href: `/${locale}/components/carousel`
+                href: `/${locale}/components/carousel`,
               },
               {
                 id: 'checkbox',
                 title: 'Checkbox',
-                href: `/${locale}/components/checkbox`
+                href: `/${locale}/components/checkbox`,
               },
               {
                 id: 'chips-input',
                 title: 'Chips Input',
-                href: `/${locale}/components/chips-input`
+                href: `/${locale}/components/chips-input`,
               },
               {
                 id: 'dialog',
                 title: 'Dialog',
-                href: `/${locale}/components/dialog`
+                href: `/${locale}/components/dialog`,
               },
               {
                 id: 'drawer',
                 title: 'Drawer',
-                href: `/${locale}/components/drawer`
+                href: `/${locale}/components/drawer`,
               },
               {
                 id: 'dropdown-menu',
                 title: 'Dropdown Menu',
-                href: `/${locale}/components/dropdown-menu`
+                href: `/${locale}/components/dropdown-menu`,
               },
               {
                 id: 'file-importer',
                 title: 'File Importer',
-                href: `/${locale}/components/file-importer`
+                href: `/${locale}/components/file-importer`,
               },
               {
                 id: 'gradient-text',
                 title: 'Gradient Text',
-                href: `/${locale}/components/gradient-text`
-              },
-              {
-                id: 'input',
-                title: 'Input',
-                href: `/${locale}/components/input`
-              },
-              {
-                id: 'label',
-                title: 'Label',
-                href: `/${locale}/components/label`
+                href: `/${locale}/components/gradient-text`,
               },
               {
                 id: 'menubar',
                 title: 'Menubar',
-                href: `/${locale}/components/menubar`
+                href: `/${locale}/components/menubar`,
               },
               {
                 id: 'navigation-menu',
                 title: 'Navigation Menu',
-                href: `/${locale}/components/navigation-menu`
+                href: `/${locale}/components/navigation-menu`,
               },
               {
                 id: 'popover',
                 title: 'Popover',
-                href: `/${locale}/components/popover`
+                href: `/${locale}/components/popover`,
               },
               {
                 id: 'progress',
                 title: 'Progress',
-                href: `/${locale}/components/progress`
+                href: `/${locale}/components/progress`,
               },
               {
                 id: 'radio',
                 title: 'Radio',
-                href: `/${locale}/components/radio`
+                href: `/${locale}/components/radio`,
               },
               {
                 id: 'scroll-area',
                 title: 'Scroll Area',
-                href: `/${locale}/components/scroll-area`
+                href: `/${locale}/components/scroll-area`,
               },
               {
                 id: 'select',
                 title: 'Select',
-                href: `/${locale}/components/select`
+                href: `/${locale}/components/select`,
               },
               {
                 id: 'separator',
                 title: 'Separator',
-                href: `/${locale}/components/separator`
+                href: `/${locale}/components/separator`,
               },
               {
                 id: 'sheet',
                 title: 'Sheet',
-                href: `/${locale}/components/sheet`
+                href: `/${locale}/components/sheet`,
               },
               {
                 id: 'slider',
                 title: 'Slider',
-                href: `/${locale}/components/slider`
+                href: `/${locale}/components/slider`,
               },
               {
                 id: 'switch',
                 title: 'Switch',
-                href: `/${locale}/components/switch`
+                href: `/${locale}/components/switch`,
               },
               {
                 id: 'table',
                 title: 'Table',
-                href: `/${locale}/components/table`
+                href: `/${locale}/components/table`,
               },
               {
                 id: 'tabs',
                 title: 'Tabs',
-                href: `/${locale}/components/tabs`
+                href: `/${locale}/components/tabs`,
               },
               {
                 id: 'text-editor',
                 title: 'Text Editor',
-                href: `/${locale}/components/text-editor`
+                href: `/${locale}/components/text-editor`,
               },
               {
                 id: 'textarea',
                 title: 'Textarea',
-                href: `/${locale}/components/textarea`
+                href: `/${locale}/components/textarea`,
               },
               {
                 id: 'toast',
                 title: 'Toast',
-                href: `/${locale}/components/toast`
+                href: `/${locale}/components/toast`,
               },
               {
                 id: 'toggle',
                 title: 'Toggle',
-                href: `/${locale}/components/toggle`
+                href: `/${locale}/components/toggle`,
               },
               {
                 id: 'tooltip',
                 title: 'Tooltip',
-                href: `/${locale}/components/tooltip`
+                href: `/${locale}/components/tooltip`,
               },
-            ]
+            ],
           },
           {
             id: 'forms',
             title: 'Forms',
             icon: 'forms',
-            items: []
+            items: [],
           },
           {
             id: 'charts',
             title: 'Charts',
             icon: 'charts',
-            items: []
+            items: [],
           },
           {
             id: 'tables',
             title: 'Tables',
             icon: 'tables',
-            items: []
+            items: [],
           },
-        ]
-      }
+        ],
+      },
     ],
-  };
-};
+  }
+}
