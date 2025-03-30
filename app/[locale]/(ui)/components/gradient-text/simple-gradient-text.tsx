@@ -26,12 +26,11 @@ const SampleCodeDialog = () => {
           <DialogTitle>Sample Code</DialogTitle>
           <pre className="bg-slate-100 p-4 rounded-lg">
             {`
-import { ChipsInput } from '@/design/components'
+import { AnimatedGradientText } from '@/design/components'
 
-<ChipsInput
-  placeholder="Add a chip..."
-  initialChips={['Example Chip 1', 'Example Chip 2']}
-  showFooter
+<AnimatedGradientText
+  className="text-2xl font-bold"
+  text="this is a simple gradient text"
 />
 `}
           </pre>
