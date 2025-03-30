@@ -9,6 +9,7 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
+  AnimatedGradientText,
 } from '@/design/components'
 import * as Icons from '@/design/icons'
 
@@ -40,19 +41,29 @@ import { ChipsInput } from '@/design/components'
   )
 }
 
-export const SimpleDialog = () => {
+export const SimpleGradientText = () => {
   return (
     <Card className="rounded-2xl bg-white">
       <CardHeader>
         <CardTitle>
           <div className="flex items-center justify-between">
-            <div> Simple Chip Input </div>
+            <div> GradientText example </div>
             <SampleCodeDialog />
           </div>
         </CardTitle>
       </CardHeader>
       <CardContent>
-        <div className="flex items-center justify-center space-x-4">{/** component sample */}</div>
+        <div className="flex items-center justify-center space-x-4">
+          <AnimatedGradientText
+            className="text-2xl font-bold"
+            text="this is a simple gradient text"
+          />
+          <AnimatedGradientText
+            className="text-xl font-medium"
+            text="another gradient text example"
+          />
+          <AnimatedGradientText className="text-lg font-light" text="yet another example" />
+        </div>
       </CardContent>
     </Card>
   )
