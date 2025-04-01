@@ -27,13 +27,12 @@ const SampleCodeDialog = () => {
           <DialogTitle>Sample Code</DialogTitle>
           <pre className="bg-slate-100 p-4 rounded-lg">
             {`
-import { ChipsInput } from '@/design/components'
+import { Progress } from '@/design/components'
 
-<ChipsInput
-  placeholder="Add a chip..."
-  initialChips={['Example Chip 1', 'Example Chip 2']}
-  showFooter
-/>
+<div>
+  <p className="text-sm font-medium">Default Progress</p>
+  <Progress value={50} />
+</div>
 `}
           </pre>
         </DialogHeader>
