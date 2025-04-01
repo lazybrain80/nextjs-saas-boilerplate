@@ -27,13 +27,23 @@ const SampleCodeDialog = () => {
           <DialogTitle>Sample Code</DialogTitle>
           <pre className="bg-slate-100 p-4 rounded-lg">
             {`
-import { ChipsInput } from '@/design/components'
+import { 
+  RadioGroup,
+  RadioGroupItem
+} from '@/design/components'
 
-<ChipsInput
-  placeholder="Add a chip..."
-  initialChips={['Example Chip 1', 'Example Chip 2']}
-  showFooter
-/>
+<RadioGroup defaultValue="option1">
+  <div className="flex items-center space-x-6">
+    <div className="flex items-center space-x-2">
+      <RadioGroupItem value="option1" id="option1" />
+      <span>Option 1</span>
+    </div>
+    <div className="flex items-center space-x-2">
+      <RadioGroupItem value="option2" id="option2" />
+      <span>Option 2</span>
+    </div>
+  </div>
+</RadioGroup>
 `}
           </pre>
         </DialogHeader>
