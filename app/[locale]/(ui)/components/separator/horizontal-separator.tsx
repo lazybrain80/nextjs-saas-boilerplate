@@ -9,6 +9,7 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
+  Separator,
 } from '@/design/components'
 import * as Icons from '@/design/icons'
 
@@ -25,13 +26,13 @@ const SampleCodeDialog = () => {
           <DialogTitle>Sample Code</DialogTitle>
           <pre className="bg-slate-100 p-4 rounded-lg">
             {`
-import { ChipsInput } from '@/design/components'
+import { Separator } from '@/design/components'
 
-<ChipsInput
-  placeholder="Add a chip..."
-  initialChips={['Example Chip 1', 'Example Chip 2']}
-  showFooter
-/>
+<div className="space-y-4">
+  <div className="text-center">Content Above</div>
+  <Separator className="my-4" orientation="horizontal" decorative={false} />
+  <div className="text-center">Content Below</div>
+</div>
 `}
           </pre>
         </DialogHeader>
@@ -40,19 +41,23 @@ import { ChipsInput } from '@/design/components'
   )
 }
 
-export const SimpleDialog = () => {
+export const HorizontalSeparator = () => {
   return (
     <Card className="rounded-2xl bg-white">
       <CardHeader>
         <CardTitle>
           <div className="flex items-center justify-between">
-            <div> Simple Chip Input </div>
+            <div> Horizontal Separator Example </div>
             <SampleCodeDialog />
           </div>
         </CardTitle>
       </CardHeader>
       <CardContent>
-        <div className="flex items-center justify-center space-x-4">{/** component sample */}</div>
+        <div className="space-y-4">
+          <div className="text-center">Content Above</div>
+          <Separator className="my-4" orientation="horizontal" decorative={false} />
+          <div className="text-center">Content Below</div>
+        </div>
       </CardContent>
     </Card>
   )
