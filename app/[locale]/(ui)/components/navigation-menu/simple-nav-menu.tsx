@@ -34,13 +34,32 @@ const SampleCodeDialog = () => {
           <DialogTitle>Sample Code</DialogTitle>
           <pre className="bg-slate-100 p-4 rounded-lg">
             {`
-import { ChipsInput } from '@/design/components'
+import { NavigationMenu,
+  NavigationMenuList,
+  NavigationMenuItem,
+  NavigationMenuContent,
+  NavigationMenuTrigger,
+  NavigationMenuLink,
+  NavigationMenuIndicator,
+  NavigationMenuViewport, } from '@/design/components'
 
-<ChipsInput
-  placeholder="Add a chip..."
-  initialChips={['Example Chip 1', 'Example Chip 2']}
-  showFooter
-/>
+<NavigationMenu>
+  <NavigationMenuList>
+    <NavigationMenuItem>
+      <NavigationMenuLink
+        href="https://github.com/ecklf/tailwindcss-radix"
+        className={cn(
+          'px-3 py-2 text-sm rounded-md hover:bg-gray-100 dark:hover:bg-gray-900',
+          'text-sm font-medium text-gray-700 dark:text-gray-100'
+        )}
+      >
+        GitHub
+      </NavigationMenuLink>
+    </NavigationMenuItem>
+  </NavigationMenuList>
+  <NavigationMenuIndicator />
+  <NavigationMenuViewport />
+</NavigationMenu>
 `}
           </pre>
         </DialogHeader>
@@ -145,6 +164,7 @@ export const SimpleNavMenu = () => {
         <CardTitle>
           <div className="flex items-center justify-between">
             <div>Simple Navigation Menu</div>
+            <SampleCodeDialog />
           </div>
         </CardTitle>
       </CardHeader>
