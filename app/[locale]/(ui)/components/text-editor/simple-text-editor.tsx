@@ -1,3 +1,6 @@
+'use client'
+
+import { useState } from 'react'
 import {
   Card,
   CardHeader,
@@ -9,7 +12,9 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
+  TextEditor,
 } from '@/design/components'
+import { Editor } from '@tiptap/react'
 import * as Icons from '@/design/icons'
 
 const SampleCodeDialog = () => {
@@ -25,12 +30,11 @@ const SampleCodeDialog = () => {
           <DialogTitle>Sample Code</DialogTitle>
           <pre className="bg-slate-100 p-4 rounded-lg">
             {`
-import { ChipsInput } from '@/design/components'
+import { TextEditor } from '@/design/components'
 
-<ChipsInput
-  placeholder="Add a chip..."
-  initialChips={['Example Chip 1', 'Example Chip 2']}
-  showFooter
+<TextEditor
+  onCreate={editor => setEditor(editor)}
+  onTextCountChange={count => setTotalText(count)}
 />
 `}
           </pre>
@@ -40,19 +44,28 @@ import { ChipsInput } from '@/design/components'
   )
 }
 
-export const SimpleDialog = () => {
+export const SimpleTextEditor = () => {
+  const [editor, setEditor] = useState<Editor | null>(null)
+  const [totalText, setTotalText] = useState<number>(0)
+
   return (
     <Card className="rounded-2xl bg-white">
       <CardHeader>
         <CardTitle>
           <div className="flex items-center justify-between">
-            <div> Simple Chip Input </div>
+            <div> TextEditor example </div>
             <SampleCodeDialog />
           </div>
         </CardTitle>
       </CardHeader>
       <CardContent>
-        <div className="flex items-center justify-center space-x-4">{/** component sample */}</div>
+        <div className="flex items-center justify-center space-x-4">
+          <TextEditor
+            className="w-full"
+            onCreate={editor => setEditor(editor)}
+            onTextCountChange={count => setTotalText(count)}
+          />
+        </div>
       </CardContent>
     </Card>
   )
