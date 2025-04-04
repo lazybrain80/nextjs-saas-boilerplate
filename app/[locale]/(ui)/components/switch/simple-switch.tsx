@@ -56,7 +56,7 @@ export const SimpleSwitch = () => {
       <CardHeader>
         <CardTitle>
           <div className="flex items-center justify-between">
-            <div> Simple Chip Input </div>
+            <div> Switch example </div>
             <SampleCodeDialog />
           </div>
         </CardTitle>

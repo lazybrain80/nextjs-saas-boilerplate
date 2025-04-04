@@ -47,7 +47,7 @@ export const SimpleSlider = () => {
       <CardHeader>
         <CardTitle>
           <div className="flex items-center justify-between">
-            <div> Simple Chip Input </div>
+            <div> Slider example </div>
             <SampleCodeDialog />
           </div>
         </CardTitle>
