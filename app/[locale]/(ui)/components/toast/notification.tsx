@@ -1,5 +1,4 @@
-import React from 'react'
-import { createContext, useCallback, useContext, useState, useMemo, useLayoutEffect } from 'react'
+import React, { createContext, useCallback, useContext, useState, useMemo, ReactNode } from 'react'
 import * as Icons from '@radix-ui/react-icons'
 import { AnimatePresence, motion } from 'framer-motion'
 import {
@@ -26,12 +25,26 @@ interface Notification {
 
 interface NotificationsProps {
   position: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right'
-  children: React.ReactNode
+  children: ReactNode
 }
 
-const Notifications: React.FC<NotificationsProps> = props => {
-  const { position, children } = props
-  const [notifications, setNotifications] = React.useState<Map<string, Notification>>(new Map())
+interface ToastIconContainerProps {
+  type: 'success' | 'error'
+  children: ReactNode
+}
+
+const ToastIconContainer = ({ type, children }: ToastIconContainerProps) => (
+  <div
+    className={`flex items-center justify-center w-6 h-6 rounded-full ${
+      type === 'success' ? 'text-green-700 bg-green-300' : 'text-red-700 bg-red-300'
+    }`}
+  >
+    {children}
+  </div>
+)
+
+const Notifications = ({ position, children }: NotificationsProps) => {
+  const [notifications, setNotifications] = useState<Map<string, Notification>>(new Map())
   const isPositionedTop = position === 'top-left' || position === 'top-right'
 
   const handleAddToast = useCallback((toast: Notification) => {
@@ -104,7 +117,7 @@ const Notifications: React.FC<NotificationsProps> = props => {
                   }}
                   layout
                 >
-                  <div style={{ display: 'flex', gap: 14, alignItems: 'center' }}>
+                  <div className="flex gap-2 items-center">
                     <ToastIconContainer aria-hidden type={notification.type}>
                       {notification.type === 'success' ? <Icons.CheckIcon /> : <Icons.Cross2Icon />}
                     </ToastIconContainer>
@@ -129,23 +142,6 @@ const Notifications: React.FC<NotificationsProps> = props => {
   )
 }
 
-/* -----------------------------------------------------------------------------------------------*/
-
-const ToastIconContainer: React.FC<{ type: 'success' | 'error'; children: React.ReactNode }> = ({
-  type,
-  children,
-}) => (
-  <div
-    className={`flex items-center justify-center w-6 h-6 rounded-full ${
-      type === 'success' ? 'text-green-700 bg-green-300' : 'text-red-700 bg-red-300'
-    }`}
-  >
-    {children}
-  </div>
-)
-
-/* -----------------------------------------------------------------------------------------------*/
-
 const useNotification = () => {
   const context = useContext(NotificationContext)
   if (!context) {
@@ -153,7 +149,5 @@ const useNotification = () => {
   }
   return context
 }
-
-/* -----------------------------------------------------------------------------------------------*/
 
 export { Notifications, useNotification }

@@ -14,16 +14,16 @@ const ToastViewport = React.forwardRef<
   }
 >(({ className, position = 'bottom-right', ...props }, ref) => {
   const positionClasses = {
-    'bottom-right': 'fixed bottom-0 right-0 flex flex-col gap-4 p-12',
-    'bottom-left': 'fixed bottom-0 left-0 flex flex-col gap-4 p-12',
-    'top-right': 'fixed top-0 right-0 flex flex-col-reverse gap-4 p-12',
-    'top-left': 'fixed top-0 left-0 flex flex-col-reverse gap-4 p-12',
+    'bottom-right': 'bottom-0 right-0 flex-col gap-2 p-4',
+    'bottom-left': 'bottom-0 left-0 flex-col gap-2 p-4',
+    'top-right': 'top-0 right-0 flex-col-reverse gap-2 p-4',
+    'top-left': 'top-0 left-0 flex-col-reverse gap-2 p-4',
   }
   return (
     <ToastPrimitives.Viewport
       ref={ref}
       className={cn(
-        'fixed top-0 z-[100] flex max-h-screen w-full flex-col-reverse p-4 sm:bottom-0 sm:right-0 sm:top-auto sm:flex-col md:max-w-[420px]',
+        'flex fixed z-[100]',
         `${positionClasses[position as keyof typeof positionClasses]} outline-none`,
         className
       )}
@@ -45,7 +45,7 @@ const toastVariants = cva('flex justify-between items-center shadow-lg rounded-l
       left: 'data-[state=closed]:slide-out-to-left-full',
     },
     animation: {
-      basic: 'p-4 w-72  outline-none focus-visible:ring-2 focus-visible:ring-mauveA12',
+      basic: 'p-4 w-84 outline-none focus-visible:ring-2 focus-visible:ring-mauveA12',
       primary:
         'w-full space-x-4 overflow-hidden border p-6 pr-8 data-[swipe=move]:transition-none group relative pointer-events-auto transition-all data-[swipe=move]:translate-x-[var(--radix-toast-swipe-move-x)] data-[swipe=cancel]:translate-x-0 data-[swipe=end]:translate-x-[var(--radix-toast-swipe-end-x)] data-[state=open]:animate-in data-[state=closed]:animate-out data-[swipe=end]:animate-out data-[state=closed]:fade-out-80 data-[state=open]:slide-in-from-top-full data-[state=open]:sm:slide-in-from-bottom-full',
     },

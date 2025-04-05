@@ -34,14 +34,30 @@ const SampleCodeDialog = () => {
         <DialogHeader>
           <DialogTitle>Sample Code</DialogTitle>
           <pre className="bg-slate-100 p-4 rounded-lg">
-            {`
-import { ChipsInput } from '@/design/components'
+            {`import { 
+  ToastProvider,
+  ToastViewport,
+  Toast,
+  ToastTitle,
+  ToastDescription,
+  ToastClose,
+  ToastAction
+} from '@/design/components'
 
-<ChipsInput
-  placeholder="Add a chip..."
-  initialChips={['Example Chip 1', 'Example Chip 2']}
-  showFooter
-/>
+<ToastProvider swipeDirection={'right'} duration={3000}>
+  <div>
+    content
+  </div>
+  <Toast animation={'primary'} open={open} onOpenChange={setOpen}>
+    <div className="flex flex-col items-start">
+      <ToastTitle>{message.title}</ToastTitle>
+      <ToastDescription>{message.description}</ToastDescription>
+    </div>
+    <ToastClose />
+    <ToastAction altText="Undo">Undo</ToastAction>
+  </Toast>
+  <ToastViewport />
+</ToastProvider>
 `}
           </pre>
         </DialogHeader>
@@ -91,7 +107,7 @@ export const SimpleToast = () => {
         <CardHeader>
           <CardTitle>
             <div className="flex items-center justify-between">
-              <div> Toast example </div>
+              <div> Simple toast example </div>
               <SampleCodeDialog />
             </div>
           </CardTitle>
