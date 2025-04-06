@@ -9,6 +9,11 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
+  Tooltip,
+  TooltipTrigger,
+  TooltipContent,
+  TooltipPortal,
+  TooltipProvider,
 } from '@/design/components'
 import * as Icons from '@/design/icons'
 
@@ -40,7 +45,20 @@ import { ChipsInput } from '@/design/components'
   )
 }
 
-export const SimpleDialog = () => {
+const TooltipExample = () => {
+  return (
+    <TooltipProvider>
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <button className="px-4 py-2 bg-blue-500 text-white rounded-md">Hover me</button>
+        </TooltipTrigger>
+        <TooltipContent>This is a tooltip example!</TooltipContent>
+      </Tooltip>
+    </TooltipProvider>
+  )
+}
+
+export const SimpleTooltip = () => {
   return (
     <Card className="rounded-2xl bg-white">
       <CardHeader>
@@ -52,7 +70,9 @@ export const SimpleDialog = () => {
         </CardTitle>
       </CardHeader>
       <CardContent>
-        <div className="flex items-center justify-center space-x-4">{/** component sample */}</div>
+        <div className="flex items-center justify-center space-x-4">
+          <TooltipExample />
+        </div>
       </CardContent>
     </Card>
   )
