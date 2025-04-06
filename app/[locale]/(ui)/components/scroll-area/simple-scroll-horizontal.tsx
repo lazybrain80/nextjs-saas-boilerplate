@@ -51,7 +51,7 @@ const SampleCodeDialog = () => {
 
 export const ScrollAreaHorizontal = () => {
   return (
-    <Card className="rounded-2xl bg-white h-1/2">
+    <Card className="rounded-2xl bg-white h-1/2  shadow-2xl">
       <CardHeader>
         <CardTitle>
           <div className="flex items-center justify-between">

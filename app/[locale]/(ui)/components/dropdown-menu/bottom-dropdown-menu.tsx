@@ -87,7 +87,7 @@ const SampleCodeDialog = () => {
 
 export const BottomDropdownMenu = () => {
   return (
-    <Card className="rounded-2xl bg-white">
+    <Card className="rounded-2xl bg-white shadow-2xl">
       <CardHeader>
         <CardTitle>
           <div className="flex items-center justify-between">

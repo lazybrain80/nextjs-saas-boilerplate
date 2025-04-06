@@ -73,7 +73,7 @@ export const ProductsCarousel = () => {
   ]
 
   return (
-    <Card className="rounded-2xl bg-white">
+    <Card className="rounded-2xl bg-white shadow-2xl">
       <CardHeader className="border-b border-gray-300 bg-gray-100">
         <CardTitle>Products Carousel</CardTitle>
       </CardHeader>

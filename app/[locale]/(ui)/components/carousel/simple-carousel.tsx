@@ -100,7 +100,7 @@ export const SimpleCarousel = () => {
     '/images/ecommerce/face_cream.jpg',
   ]
   return (
-    <Card className="rounded-2xl bg-white">
+    <Card className="rounded-2xl bg-white shadow-2xl">
       <CardHeader className="border-b border-gray-300 bg-gray-100">
         <CardTitle>
           <div className="flex items-center justify-between">
