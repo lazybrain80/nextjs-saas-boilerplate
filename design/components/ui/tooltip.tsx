@@ -32,4 +32,14 @@ const TooltipContent = forwardRef<
 })
 TooltipContent.displayName = TooltipPrimitive.Content.displayName
 
-export { Tooltip, TooltipTrigger, TooltipContent, TooltipPortal, TooltipProvider }
+const TooltipArrow = forwardRef<
+  React.ComponentRef<typeof TooltipPrimitive.Arrow>,
+  React.ComponentPropsWithoutRef<typeof TooltipPrimitive.Arrow>
+>(({ className, ...props }, ref) => {
+  const combinedClassName = cn('fill-white shadow-md', className)
+
+  return <TooltipPrimitive.Arrow ref={ref} className={combinedClassName} {...props} />
+})
+TooltipArrow.displayName = TooltipPrimitive.Arrow.displayName
+
+export { Tooltip, TooltipTrigger, TooltipContent, TooltipPortal, TooltipProvider, TooltipArrow }

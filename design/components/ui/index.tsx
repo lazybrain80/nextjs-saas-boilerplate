@@ -157,5 +157,12 @@ export {
 export { useToast, toast } from './use-toast'
 export { ToggleGroup, ToggleGroupItem } from './toggle-group'
 export { Toggle, toggleVariants } from './toggle'
-export { Tooltip, TooltipTrigger, TooltipContent, TooltipPortal, TooltipProvider } from './tooltip'
+export {
+  Tooltip,
+  TooltipTrigger,
+  TooltipContent,
+  TooltipPortal,
+  TooltipProvider,
+  TooltipArrow,
+} from './tooltip'
 export { Transition } from './transition'
