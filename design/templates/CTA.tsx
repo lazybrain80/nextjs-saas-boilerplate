@@ -11,14 +11,11 @@ export const CTA = () => {
       <CTABanner
         title={t('title')}
         description={t('description')}
-        buttons={(
-          <a
-            className={buttonVariants({ variant: 'outline', size: 'lg' })}
-            href='/signup'
-          >
+        buttons={
+          <a className={buttonVariants({ variant: 'outline', size: 'lg' })} href="/signup">
             {t('button_text')}
           </a>
-        )}
+        }
       />
     </Section>
   )

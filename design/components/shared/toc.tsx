@@ -15,12 +15,12 @@ export function DashboardTableOfContents({ toc }: TocProps) {
     () =>
       toc.items
         ? toc.items
-            .flatMap((item) => [item.url, item?.items?.map((item) => item.url)])
+            .flatMap(item => [item.url, item?.items?.map(item => item.url)])
             .flat()
             .filter(Boolean)
-            .map((id) => id?.split('#')[1])
+            .map(id => id?.split('#')[1])
         : [],
-    [toc],
+    [toc]
   )
   const activeHeading = useActiveItem(itemIds)
   const mounted = useMounted()
@@ -30,8 +30,8 @@ export function DashboardTableOfContents({ toc }: TocProps) {
   }
 
   return mounted ? (
-    <div className='space-y-2'>
-      <p className='text-[15px] font-medium'>On This Page</p>
+    <div className="space-y-2">
+      <p className="text-[15px] font-medium">On This Page</p>
       <Tree tree={toc} activeItem={activeHeading} />
     </div>
   ) : null
@@ -42,17 +42,17 @@ function useActiveItem(itemIds: (string | undefined)[]) {
 
   React.useEffect(() => {
     const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
+      entries => {
+        entries.forEach(entry => {
           if (entry.isIntersecting) {
             setActiveId(entry.target.id)
           }
         })
       },
-      { rootMargin: `0% 0% -80% 0%` },
+      { rootMargin: `0% 0% -80% 0%` }
     )
 
-    itemIds?.forEach((id) => {
+    itemIds?.forEach(id => {
       if (!id) {
         return
       }
@@ -64,7 +64,7 @@ function useActiveItem(itemIds: (string | undefined)[]) {
     })
 
     return () => {
-      itemIds?.forEach((id) => {
+      itemIds?.forEach(id => {
         if (!id) {
           return
         }
@@ -96,9 +96,7 @@ function Tree({ tree, level = 1, activeItem }: TreeProps) {
               href={item.url}
               className={cn(
                 'inline-block text-sm no-underline',
-                item.url === `#${activeItem}`
-                  ? 'font-medium text-primary'
-                  : 'text-muted-foreground',
+                item.url === `#${activeItem}` ? 'font-medium text-primary' : 'text-muted-foreground'
               )}
             >
               {item.title}

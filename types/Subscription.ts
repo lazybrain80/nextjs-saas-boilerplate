@@ -37,8 +37,8 @@ export type PricingPlan = {
       website: number
       storage: number
       transfer: number
-    },
-    individual: string []
+    }
+    individual: string[]
   }
 }
 
@@ -51,11 +51,12 @@ export type IStripeSubscription = {
 
 export type PlanDetails =
   | {
-    isPaid: true
-    plan: PricingPlan
-    stripeDetails: IStripeSubscription
-  } | {
-    isPaid: false
-    plan: PricingPlan
-    stripeDetails?: undefined
-  }
+      isPaid: true
+      plan: PricingPlan
+      stripeDetails: IStripeSubscription
+    }
+  | {
+      isPaid: false
+      plan: PricingPlan
+      stripeDetails?: undefined
+    }

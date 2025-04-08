@@ -31,9 +31,9 @@ interface InventoryProviderProps {
   product?: InventoryProduct
 }
 
-export const InventoryProvider: React.FC<InventoryProviderProps> = ({ 
+export const InventoryProvider: React.FC<InventoryProviderProps> = ({
   children,
-  product = {} as InventoryProduct
+  product = {} as InventoryProduct,
 }: InventoryProviderProps) => {
   const [inventoryItem, setInventoryItem] = useState<InventoryProduct>({} as InventoryProduct)
   const emptyProduct = {
@@ -56,13 +56,13 @@ export const InventoryProvider: React.FC<InventoryProviderProps> = ({
   } as InventoryProduct
 
   useLayoutEffect(() => {
-    if(product) {
+    if (product) {
       setInventoryItem(product)
       return
     }
     setInventoryItem(emptyProduct)
   }, [])
-  
+
   const setCategory = (category: ProductCategory) => {
     setInventoryItem({ ...inventoryItem, category })
   }
@@ -76,37 +76,37 @@ export const InventoryProvider: React.FC<InventoryProviderProps> = ({
   }
 
   const setPrice = (price: number) => {
-    setInventoryItem({...inventoryItem, price})
+    setInventoryItem({ ...inventoryItem, price })
   }
 
   const setDiscount = (discount: number) => {
-    setInventoryItem({...inventoryItem, discount})
+    setInventoryItem({ ...inventoryItem, discount })
   }
 
   const setDiscountType = (discountType: string) => {
-    setInventoryItem({...inventoryItem, discountType})
+    setInventoryItem({ ...inventoryItem, discountType })
   }
 
   const setTaxRate = (taxRate: number) => {
-    setInventoryItem({...inventoryItem, taxRate})
+    setInventoryItem({ ...inventoryItem, taxRate })
   }
 
   const setTaxType = (taxType: string) => {
-    setInventoryItem({...inventoryItem, taxType})
+    setInventoryItem({ ...inventoryItem, taxType })
   }
 
   const setImages = (images: string[]) => {
-    setInventoryItem({...inventoryItem, images})
+    setInventoryItem({ ...inventoryItem, images })
   }
 
   const setStockCount = (stockCount: number) => {
-    setInventoryItem({...inventoryItem, stockCount})
+    setInventoryItem({ ...inventoryItem, stockCount })
   }
 
   const setVariartions = (variations: ProductVariation[]) => {
     setInventoryItem({ ...inventoryItem, variations })
   }
-  
+
   const setStatus = (status: string) => {
     setInventoryItem({ ...inventoryItem, status })
   }
@@ -123,31 +123,29 @@ export const InventoryProvider: React.FC<InventoryProviderProps> = ({
     setInventoryItem(emptyProduct)
   }
 
-  const contextValue = useMemo(() => ({
-    inventoryItem,
-    setCategory,
-    setTitle,
-    setDescription,
-    setPrice,
-    setDiscount,
-    setDiscountType,
-    setTaxRate,
-    setTaxType,
-    setImages,
-    setStockCount,
-    setVariartions,
-    setStatus,
-    setTags,
-    setThumbnails,
-    clearInventory,
-  }), [inventoryItem])
-  
-
-  return (
-    <InventoryContext.Provider value={contextValue}>
-      {children}
-    </InventoryContext.Provider>
+  const contextValue = useMemo(
+    () => ({
+      inventoryItem,
+      setCategory,
+      setTitle,
+      setDescription,
+      setPrice,
+      setDiscount,
+      setDiscountType,
+      setTaxRate,
+      setTaxType,
+      setImages,
+      setStockCount,
+      setVariartions,
+      setStatus,
+      setTags,
+      setThumbnails,
+      clearInventory,
+    }),
+    [inventoryItem]
   )
+
+  return <InventoryContext.Provider value={contextValue}>{children}</InventoryContext.Provider>
 }
 
 export const useInventory = () => {
@@ -157,4 +155,3 @@ export const useInventory = () => {
   }
   return context
 }
-

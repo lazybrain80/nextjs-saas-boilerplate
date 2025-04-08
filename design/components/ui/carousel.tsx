@@ -95,11 +95,13 @@ interface CarouselItemProps {
 }
 
 export const CarouselItem = ({ className, isSnapPoint, children }: CarouselItemProps) => (
-  <li className={cn(
-    `flex-shrink-0 ${isSnapPoint ? 'scroll-snap-align-start' : ''}`,
-    'p-1',
-    className
-  )}>
+  <li
+    className={cn(
+      `flex-shrink-0 ${isSnapPoint ? 'scroll-snap-align-start' : ''}`,
+      'p-1',
+      className
+    )}
+  >
     {children}
   </li>
 )

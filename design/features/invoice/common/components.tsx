@@ -1,15 +1,8 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectValue,
-  SelectTrigger,
-} from '@/design/components'
+import { Select, SelectContent, SelectItem, SelectValue, SelectTrigger } from '@/design/components'
 import { orderStatus } from '.'
-
 
 interface SelectInvoiceStatusProps {
   className?: string
@@ -17,10 +10,13 @@ interface SelectInvoiceStatusProps {
   onStatusChange?: (status: string) => void
 }
 
-
-export const SelectInvoiceStatus = ({ className, status, onStatusChange }: SelectInvoiceStatusProps) => {
+export const SelectInvoiceStatus = ({
+  className,
+  status,
+  onStatusChange,
+}: SelectInvoiceStatusProps) => {
   const [currentStatus, setCurrentStatus] = useState('')
-  
+
   useEffect(() => {
     setCurrentStatus(status)
   }, [status])
@@ -34,12 +30,12 @@ export const SelectInvoiceStatus = ({ className, status, onStatusChange }: Selec
     <div className={className}>
       <Select value={currentStatus} onValueChange={handleStatusChange}>
         <SelectTrigger>
-            <SelectValue aria-label={currentStatus}>{currentStatus}</SelectValue>
+          <SelectValue aria-label={currentStatus}>{currentStatus}</SelectValue>
         </SelectTrigger>
         <SelectContent>
-          {Object.values(orderStatus).map((status) => (
+          {Object.values(orderStatus).map(status => (
             <SelectItem key={status} value={status}>
-              {(status)}
+              {status}
             </SelectItem>
           ))}
         </SelectContent>

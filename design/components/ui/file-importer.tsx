@@ -50,17 +50,17 @@ export const FileImporter = ({ className, onFileDropedAction, children }: FileIm
         onDragLeave={handleDrag}
         onDrop={handleDrop}
       >
-        <Icons.Inbox className='mx-auto h-12 w-12 text-gray-400' />
-        <input type='file' id='file-upload' className='hidden' onChange={fileInputChanged} />
-        <label htmlFor='file-upload' className='cursor-pointer'>
-          <p className='mt-2 text-sm text-gray-600'>Drag and drop your files here or <span className='text-blue-600 underline'>click to browse</span></p>
+        <Icons.Inbox className="mx-auto h-12 w-12 text-gray-400" />
+        <input type="file" id="file-upload" className="hidden" onChange={fileInputChanged} />
+        <label htmlFor="file-upload" className="cursor-pointer">
+          <p className="mt-2 text-sm text-gray-600">
+            Drag and drop your files here or{' '}
+            <span className="text-blue-600 underline">click to browse</span>
+          </p>
         </label>
-        {file && <p className='text-green-500'>File uploaded: {file.name}</p>}
+        {file && <p className="text-green-500">File uploaded: {file.name}</p>}
       </div>
-      {children
-        ? <div>{children}</div>
-        : null
-      }
+      {children ? <div>{children}</div> : null}
     </div>
-  );
+  )
 }

@@ -18,14 +18,10 @@ import {
   AccordionItem,
   AccordionTrigger,
   AccordionContent,
-  Transition
+  Transition,
 } from '@/design/components'
 import * as Icons from '@/design/icons'
-import {
-  BaseEcommerceProduct,
-  OptionsFactory,
-  MoreDetailProduct
-} from '../common'
+import { BaseEcommerceProduct, OptionsFactory, MoreDetailProduct } from '../common'
 import { useCart } from '../cart'
 
 interface DetailProductDialogProps {
@@ -45,42 +41,40 @@ export const DetailProductDialog = ({ product }: DetailProductDialogProps) => {
       discount: product?.discount || 0,
       image: product.images[0],
       price: product.price,
-      quantity: quantity
+      quantity: quantity,
     }
     addItem(newItem)
   }
 
-  return(
+  return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button className='rounded-2xl bg-blue-500 text-white'>
-          <Icons.PackagePlus className='h-6 w-6' />
+        <Button className="rounded-2xl bg-blue-500 text-white">
+          <Icons.PackagePlus className="h-6 w-6" />
         </Button>
       </DialogTrigger>
-      <DialogContent
-        className='max-w-4xl h-[70%] overflow-y-auto scrollbar-hide'
-      >
+      <DialogContent className="max-w-4xl h-[70%] overflow-y-auto scrollbar-hide">
         <VisuallyHidden>
           <DialogHeader />
           <DialogTitle />
         </VisuallyHidden>
-        <div className='grid grid-cols-1 md:grid-cols-2 gap-8'>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Image Gallery */}
-          <div className='space-y-4'>
-            <div className='relative overflow-hidden rounded-lg'>
+          <div className="space-y-4">
+            <div className="relative overflow-hidden rounded-lg">
               <Image
                 src={product?.images[selectedImage] || ''}
                 alt={product?.title || 'Product image'}
                 width={256}
                 height={256}
-                className='w-full h-[500px] object-cover transform transition-transform duration-300 hover:scale-105'
+                className="w-full h-[500px] object-cover transform transition-transform duration-300 hover:scale-105"
               />
             </div>
             <Carousel
-              items={product?.images as string[] || []}
+              items={(product?.images as string[]) || []}
               renderItemAction={({ index, item, isSnapPoint }) => (
                 <CarouselItem
-                  className='w-24 h-24'
+                  className="w-24 h-24"
                   key={`carousel-item-${index}`}
                   isSnapPoint={isSnapPoint}
                 >
@@ -101,33 +95,37 @@ export const DetailProductDialog = ({ product }: DetailProductDialogProps) => {
             />
           </div>
           {/* Product Details */}
-          <div className='space-y-6'>
-            <h1 className='text-3xl font-bold'>{product?.title}</h1>
-            <div className='flex items-center space-x-4'>
-              <div className='flex items-center'>
-                {[...Array(5)].map((_, i) => (
-                  i < Math.floor(product?.avgRating ?? 0) ?
-                    <Icons.Star key={i} fill='yellow' className='h-5 w-5 text-yellow-400' /> :
-                    <Icons.Star key={i} className='h-5 w-5 text-yellow-400' />
-                ))}
+          <div className="space-y-6">
+            <h1 className="text-3xl font-bold">{product?.title}</h1>
+            <div className="flex items-center space-x-4">
+              <div className="flex items-center">
+                {[...Array(5)].map((_, i) =>
+                  i < Math.floor(product?.avgRating ?? 0) ? (
+                    <Icons.Star key={i} fill="yellow" className="h-5 w-5 text-yellow-400" />
+                  ) : (
+                    <Icons.Star key={i} className="h-5 w-5 text-yellow-400" />
+                  )
+                )}
               </div>
             </div>
-            <p className='text-gray-600'>{product?.description}</p>
-            {product?.discount && product.discount > 0
-              ? (<div>
-                  <span className="text-2xl font-bold">${(product.price * (1 - product.discount)).toFixed(2)}</span>
-                  <span className="ml-1 text-sm text-gray-500 line-through">${product.price}</span>
-                </div>)
-              : (
-                <span className="text-2xl font-bold">${product?.price}</span>
+            <p className="text-gray-600">{product?.description}</p>
+            {product?.discount && product.discount > 0 ? (
+              <div>
+                <span className="text-2xl font-bold">
+                  ${(product.price * (1 - product.discount)).toFixed(2)}
+                </span>
+                <span className="ml-1 text-sm text-gray-500 line-through">${product.price}</span>
+              </div>
+            ) : (
+              <span className="text-2xl font-bold">${product?.price}</span>
             )}
             {/* more info */}
             {product && <MoreDetailProduct product={product} />}
             <Separator />
             {/* Quantity */}
-            <div className='flex items-center'>
-              <div className='font-semibold mr-5'>{`Quantity: `}</div>
-              <div className='border rounded-l-full rounded-r-full'>
+            <div className="flex items-center">
+              <div className="font-semibold mr-5">{`Quantity: `}</div>
+              <div className="border rounded-l-full rounded-r-full">
                 <Button
                   onClick={() => setQuantity(Math.max(1, quantity - 1))}
                   className={cn(
@@ -138,10 +136,10 @@ export const DetailProductDialog = ({ product }: DetailProductDialogProps) => {
                   -
                 </Button>
                 <input
-                  type='number'
+                  type="number"
                   value={quantity}
-                  onChange={(e) => setQuantity(Math.max(1, parseInt(e.target.value) || 1))}
-                  className='w-16 text-center m-0'
+                  onChange={e => setQuantity(Math.max(1, parseInt(e.target.value) || 1))}
+                  className="w-16 text-center m-0"
                 />
                 <Button
                   onClick={() => setQuantity(quantity + 1)}
@@ -155,78 +153,74 @@ export const DetailProductDialog = ({ product }: DetailProductDialogProps) => {
               </div>
             </div>
             {/* Options */}
-            {product?.category && (
-              <OptionsFactory category={product.category} />
-            )}
+            {product?.category && <OptionsFactory category={product.category} />}
             {/* Actions */}
-            <div className='flex items-center space-x-4'>
-              <Button
-                className='w-full rounded-2xl bg-white text-blue-500 border border-blue-500 hover:bg-blue-100'
-              >
+            <div className="flex items-center space-x-4">
+              <Button className="w-full rounded-2xl bg-white text-blue-500 border border-blue-500 hover:bg-blue-100">
                 Add to Wishlist
               </Button>
-              
-              {cartItems.find((item) => item.id === product.id)
-              ? (
-                <Transition className='w-full flex items-center space-x-2'>
+
+              {cartItems.find(item => item.id === product.id) ? (
+                <Transition className="w-full flex items-center space-x-2">
                   <Button
                     disabled
-                    className='w-full rounded-2xl bg-white text-lime-600 border border-lime-600 hover:bg-lime-100'
+                    className="w-full rounded-2xl bg-white text-lime-600 border border-lime-600 hover:bg-lime-100"
                     onClick={handleAddToCart}
                   >
                     Added
                     <Icons.Check />
                   </Button>
-                </Transition>)
-              : (
+                </Transition>
+              ) : (
                 <Button
-                  className='w-full rounded-2xl bg-blue-500 text-white hover:bg-blue-700'
+                  className="w-full rounded-2xl bg-blue-500 text-white hover:bg-blue-700"
                   onClick={handleAddToCart}
                 >
                   Add to cart
                 </Button>
               )}
-              
             </div>
             {/* Reviews */}
-            {product?.reviews && product.reviews.length > 0
-              ?(
-                <div className='space-y-4 w-full'>
-                  <Accordion type='single' collapsible>
-                    <AccordionItem key={`accordion-key-${product.id}`} value={`accordion-value-${product.id}`}>
-                      <AccordionTrigger
-                        className='w-full p-4 bg-gray-50 border-t rounded-lg'
-                      >
-                        <div className='flex items-center justify-between'>
-                          <h2 className='text-xl font-bold'>{`${product?.reviews.length} Reviews`}</h2>
-                        </div>
-                      </AccordionTrigger>
-                      {product.reviews.map((review, index) => (
-                        <AccordionContent key={`review-${index}`}>
-                          <div className='rounded-2xl bg-slate-100 p-6 m-2'>
-                            <div className='flex items-center'>
-                              {[...Array(5)].map((_, i) => (
-                                i < Math.floor(review.rating ?? 0) ?
-                                  <Icons.Star key={i} fill='yellow' className='h-5 w-5 text-yellow-400' /> :
-                                  <Icons.Star key={i} className='h-5 w-5 text-yellow-400' />
-                              ))}
-                            </div>
-                            
-                            <div className='text-xl text-bold text-black my-2'>
-                              {review.user}
-                            </div>
-                            <p className='text-gray-600'>{review.comment}</p>
+            {product?.reviews && product.reviews.length > 0 ? (
+              <div className="space-y-4 w-full">
+                <Accordion type="single" collapsible>
+                  <AccordionItem
+                    key={`accordion-key-${product.id}`}
+                    value={`accordion-value-${product.id}`}
+                  >
+                    <AccordionTrigger className="w-full p-4 bg-gray-50 border-t rounded-lg">
+                      <div className="flex items-center justify-between">
+                        <h2 className="text-xl font-bold">{`${product?.reviews.length} Reviews`}</h2>
+                      </div>
+                    </AccordionTrigger>
+                    {product.reviews.map((review, index) => (
+                      <AccordionContent key={`review-${index}`}>
+                        <div className="rounded-2xl bg-slate-100 p-6 m-2">
+                          <div className="flex items-center">
+                            {[...Array(5)].map((_, i) =>
+                              i < Math.floor(review.rating ?? 0) ? (
+                                <Icons.Star
+                                  key={i}
+                                  fill="yellow"
+                                  className="h-5 w-5 text-yellow-400"
+                                />
+                              ) : (
+                                <Icons.Star key={i} className="h-5 w-5 text-yellow-400" />
+                              )
+                            )}
                           </div>
-                        </AccordionContent>
+
+                          <div className="text-xl text-bold text-black my-2">{review.user}</div>
+                          <p className="text-gray-600">{review.comment}</p>
+                        </div>
+                      </AccordionContent>
                     ))}
-                    </AccordionItem>
-                  </Accordion>
-                </div>
-              )
-              :(
-                <p className='text-gray-600'>No reviews yet</p>
-              )
-            }
+                  </AccordionItem>
+                </Accordion>
+              </div>
+            ) : (
+              <p className="text-gray-600">No reviews yet</p>
+            )}
           </div>
         </div>
       </DialogContent>

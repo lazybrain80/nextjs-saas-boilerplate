@@ -18,16 +18,16 @@ export enum ProductCategory {
   Clothing = 'clothing',
   Beauty = 'beauty',
   Toy = 'toy',
-  Sports = 'sports'
+  Sports = 'sports',
 }
 
 export interface BaseEcommerceProduct extends CacheItemBase {
-  category: ProductCategory,
+  category: ProductCategory
   title: string
   description: string
   price: number
   discount?: number
-  images: string []
+  images: string[]
   avgRating: number
   reviews: ProductReview[]
 }
@@ -123,32 +123,32 @@ export const ecommerceProductMockData = [
         id: '_ruf6zkrwx',
         rating: 5,
         user: 'User1',
-        comment: 'Great book!'
+        comment: 'Great book!',
       },
       {
         id: '_5ka15xscv',
         rating: 4,
         user: 'User2',
-        comment: 'Very informative.'
+        comment: 'Very informative.',
       },
       {
         id: '_zd7q450g9',
         rating: 3,
         user: 'User14',
-        comment: 'Good but could be better.'
+        comment: 'Good but could be better.',
       },
       {
         id: '_cgxwqg05i',
         rating: 5,
         user: 'User15',
-        comment: 'Loved it!'
+        comment: 'Loved it!',
       },
       {
         id: '_8on2bhqmg',
         rating: 4,
         user: 'User16',
-        comment: 'Well written.'
-      }
+        comment: 'Well written.',
+      },
     ],
     author: 'John Doe',
     publicationDate: '2023-01-01',
@@ -173,32 +173,32 @@ export const ecommerceProductMockData = [
         id: '_s34gfss2c',
         rating: 5,
         user: 'User3',
-        comment: 'Excellent guide for TypeScript.'
+        comment: 'Excellent guide for TypeScript.',
       },
       {
         id: '_y0qvk1eht',
         rating: 4,
         user: 'User17',
-        comment: 'Very helpful.'
+        comment: 'Very helpful.',
       },
       {
         id: '_svw3mvm3u',
         rating: 5,
         user: 'User18',
-        comment: 'Highly recommend.'
+        comment: 'Highly recommend.',
       },
       {
         id: '_halm4ll4a',
         rating: 3,
         user: 'User19',
-        comment: 'Good but some parts are confusing.'
+        comment: 'Good but some parts are confusing.',
       },
       {
         id: '_gkbmm3vgi',
         rating: 4,
         user: 'User20',
-        comment: 'Great for beginners.'
-      }
+        comment: 'Great for beginners.',
+      },
     ],
     author: 'Jane Smith',
     publicationDate: '2022-05-15',
@@ -223,32 +223,32 @@ export const ecommerceProductMockData = [
         id: '_t1kpjv1d3',
         rating: 4,
         user: 'User4',
-        comment: 'Comfortable and stylish.'
+        comment: 'Comfortable and stylish.',
       },
       {
         id: '_3t798grih',
         rating: 5,
         user: 'User21',
-        comment: 'Perfect for my living room.'
+        comment: 'Perfect for my living room.',
       },
       {
         id: '_8covbc8yc',
         rating: 4,
         user: 'User22',
-        comment: 'Good quality.'
+        comment: 'Good quality.',
       },
       {
         id: '_65ifll397',
         rating: 3,
         user: 'User23',
-        comment: 'Could be more comfortable.'
+        comment: 'Could be more comfortable.',
       },
       {
         id: '_j2gaxbuok',
         rating: 5,
         user: 'User24',
-        comment: 'Excellent product.'
-      }
+        comment: 'Excellent product.',
+      },
     ],
     material: 'Leather',
     color: 'Black',
@@ -267,32 +267,32 @@ export const ecommerceProductMockData = [
         id: '_grq1iqpgt',
         rating: 5,
         user: 'User5',
-        comment: 'Best smartphone I have ever used.'
+        comment: 'Best smartphone I have ever used.',
       },
       {
         id: '_m0358guv3',
         rating: 4,
         user: 'User25',
-        comment: 'Great features.'
+        comment: 'Great features.',
       },
       {
         id: '_nq2ngdf0v',
         rating: 5,
         user: 'User26',
-        comment: 'Very fast and responsive.'
+        comment: 'Very fast and responsive.',
       },
       {
         id: '_31erycyhl',
         rating: 3,
         user: 'User27',
-        comment: 'Battery life could be better.'
+        comment: 'Battery life could be better.',
       },
       {
         id: '_vc03b7nut',
         rating: 4,
         user: 'User28',
-        comment: 'Good value for money.'
-      }
+        comment: 'Good value for money.',
+      },
     ],
     brand: 'TechBrand',
     model: 'X1000',
@@ -313,32 +313,32 @@ export const ecommerceProductMockData = [
         id: '_p79k7aacr',
         rating: 4,
         user: 'User6',
-        comment: 'Good quality t-shirt.'
+        comment: 'Good quality t-shirt.',
       },
       {
         id: '_eahokf1ib',
         rating: 5,
         user: 'User29',
-        comment: 'Very comfortable.'
+        comment: 'Very comfortable.',
       },
       {
         id: '_41hq880ha',
         rating: 4,
         user: 'User30',
-        comment: 'Nice fit.'
+        comment: 'Nice fit.',
       },
       {
         id: '_q9hwm2yt6',
         rating: 3,
         user: 'User31',
-        comment: 'Color fades after washing.'
+        comment: 'Color fades after washing.',
       },
       {
         id: '_fsx8z8uy7',
         rating: 5,
         user: 'User32',
-        comment: 'Great for everyday wear.'
-      }
+        comment: 'Great for everyday wear.',
+      },
     ],
     size: 'L',
     material: 'Cotton',
@@ -358,32 +358,32 @@ export const ecommerceProductMockData = [
         id: '_xg3b8d30m',
         rating: 5,
         user: 'User7',
-        comment: 'Very moisturizing.'
+        comment: 'Very moisturizing.',
       },
       {
         id: '_47i5rqur1',
         rating: 4,
         user: 'User33',
-        comment: 'Good for dry skin.'
+        comment: 'Good for dry skin.',
       },
       {
         id: '_dbx4g6lm4',
         rating: 5,
         user: 'User34',
-        comment: 'Love the texture.'
+        comment: 'Love the texture.',
       },
       {
         id: '_beteilipf',
         rating: 3,
         user: 'User35',
-        comment: 'A bit greasy.'
+        comment: 'A bit greasy.',
       },
       {
         id: '_4kxlq3kuf',
         rating: 4,
         user: 'User36',
-        comment: 'Nice scent.'
-      }
+        comment: 'Nice scent.',
+      },
     ],
     brand: 'BeautyBrand',
     ingredients: ['Water', 'Glycerin', 'Shea Butter'],
@@ -404,32 +404,32 @@ export const ecommerceProductMockData = [
         id: '_pq7qbicvh',
         rating: 5,
         user: 'User8',
-        comment: 'My kids love these blocks.'
+        comment: 'My kids love these blocks.',
       },
       {
         id: '_xt5qqnayd',
         rating: 4,
         user: 'User37',
-        comment: 'Very colorful.'
+        comment: 'Very colorful.',
       },
       {
         id: '_ey386c06l',
         rating: 5,
         user: 'User38',
-        comment: 'Great for learning.'
+        comment: 'Great for learning.',
       },
       {
         id: '_3ad3wsjxn',
         rating: 3,
         user: 'User39',
-        comment: 'Some pieces are too small.'
+        comment: 'Some pieces are too small.',
       },
       {
         id: '_erff8y5k8',
         rating: 4,
         user: 'User40',
-        comment: 'Good quality plastic.'
-      }
+        comment: 'Good quality plastic.',
+      },
     ],
     ageGroup: '3-5 years',
     material: 'Plastic',
@@ -449,32 +449,32 @@ export const ecommerceProductMockData = [
         id: '_zkreejuee',
         rating: 4,
         user: 'User9',
-        comment: 'Great basketball.'
+        comment: 'Great basketball.',
       },
       {
         id: '_q0l66f8px',
         rating: 5,
         user: 'User41',
-        comment: 'Perfect size.'
+        comment: 'Perfect size.',
       },
       {
         id: '_oyr2x7s4c',
         rating: 4,
         user: 'User42',
-        comment: 'Good grip.'
+        comment: 'Good grip.',
       },
       {
         id: '_1gks97wlg',
         rating: 3,
         user: 'User43',
-        comment: 'A bit heavy.'
+        comment: 'A bit heavy.',
       },
       {
         id: '_gs6z4kqfn',
         rating: 5,
         user: 'User44',
-        comment: 'Excellent for games.'
-      }
+        comment: 'Excellent for games.',
+      },
     ],
     brand: 'SportBrand',
     sportcategory: 'Basketball',
@@ -494,32 +494,32 @@ export const ecommerceProductMockData = [
         id: '_klp9q98e9',
         rating: 5,
         user: 'User10',
-        comment: 'Perfect for beginners.'
+        comment: 'Perfect for beginners.',
       },
       {
         id: '_xrlyk5k25',
         rating: 4,
         user: 'User45',
-        comment: 'Very easy to understand.'
+        comment: 'Very easy to understand.',
       },
       {
         id: '_pf03upn0g',
         rating: 5,
         user: 'User46',
-        comment: 'Highly recommend for new learners.'
+        comment: 'Highly recommend for new learners.',
       },
       {
         id: '_ocuyihmn7',
         rating: 3,
         user: 'User47',
-        comment: 'Some parts are too basic.'
+        comment: 'Some parts are too basic.',
       },
       {
         id: '_itcff07s5',
         rating: 4,
         user: 'User48',
-        comment: 'Good introduction to React.'
-      }
+        comment: 'Good introduction to React.',
+      },
     ],
     author: 'Alice Johnson',
     publicationDate: '2021-11-20',
@@ -538,32 +538,32 @@ export const ecommerceProductMockData = [
         id: '_w9470nni8',
         rating: 4,
         user: 'User11',
-        comment: 'Sturdy and well-made.'
+        comment: 'Sturdy and well-made.',
       },
       {
         id: '_5dph08wbp',
         rating: 5,
         user: 'User49',
-        comment: 'Perfect for family dinners.'
+        comment: 'Perfect for family dinners.',
       },
       {
         id: '_5h7t99irj',
         rating: 4,
         user: 'User50',
-        comment: 'Good quality wood.'
+        comment: 'Good quality wood.',
       },
       {
         id: '_5iu8a40gv',
         rating: 3,
         user: 'User51',
-        comment: 'A bit difficult to assemble.'
+        comment: 'A bit difficult to assemble.',
       },
       {
         id: '_l0smcf5mc',
         rating: 5,
         user: 'User52',
-        comment: 'Looks great in my dining room.'
-      }
+        comment: 'Looks great in my dining room.',
+      },
     ],
     material: 'Wood',
     color: 'Brown',
@@ -582,32 +582,32 @@ export const ecommerceProductMockData = [
         id: '_equlv86op',
         rating: 5,
         user: 'User12',
-        comment: 'Very detailed and informative.'
+        comment: 'Very detailed and informative.',
       },
       {
         id: '_frz4j17zs',
         rating: 4,
         user: 'User53',
-        comment: 'Great for advanced learners.'
+        comment: 'Great for advanced learners.',
       },
       {
         id: '_wbefrv9v2',
         rating: 5,
         user: 'User54',
-        comment: 'Highly recommend for experienced developers.'
+        comment: 'Highly recommend for experienced developers.',
       },
       {
         id: '_y4vprr3wv',
         rating: 3,
         user: 'User55',
-        comment: 'Some parts are too complex.'
+        comment: 'Some parts are too complex.',
       },
       {
         id: '_4nhmgswdq',
         rating: 4,
         user: 'User56',
-        comment: 'Good reference book.'
-      }
+        comment: 'Good reference book.',
+      },
     ],
     author: 'Bob Brown',
     publicationDate: '2020-08-10',
@@ -626,34 +626,34 @@ export const ecommerceProductMockData = [
         id: '_zrjdeo0k9',
         rating: 4,
         user: 'User13',
-        comment: 'Comfortable for long hours.'
+        comment: 'Comfortable for long hours.',
       },
       {
         id: '_7wt03p2lb',
         rating: 5,
         user: 'User57',
-        comment: 'Great support for the back.'
+        comment: 'Great support for the back.',
       },
       {
         id: '_yct2bd7e8',
         rating: 4,
         user: 'User58',
-        comment: 'Good quality material.'
+        comment: 'Good quality material.',
       },
       {
         id: '_p0n6smxpk',
         rating: 3,
         user: 'User59',
-        comment: 'Armrests could be better.'
+        comment: 'Armrests could be better.',
       },
       {
         id: '_ffrbstdy9',
         rating: 5,
         user: 'User60',
-        comment: 'Perfect for my home office.'
-      }
+        comment: 'Perfect for my home office.',
+      },
     ],
     material: 'Mesh',
     color: 'Gray',
-  }
+  },
 ]

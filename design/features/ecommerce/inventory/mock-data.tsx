@@ -1,4 +1,4 @@
-import { ProductCategory } from "../common"
+import { ProductCategory } from '../common'
 import { CacheItemBase } from '@/hooks/client-cache'
 
 export interface ProductVariation {
@@ -8,7 +8,7 @@ export interface ProductVariation {
 }
 
 export interface InventoryProduct extends CacheItemBase {
-  category: ProductCategory,
+  category: ProductCategory
   title: string
   description: string
   price: number
@@ -17,7 +17,7 @@ export interface InventoryProduct extends CacheItemBase {
   taxRate: number
   taxType: string
   status: string
-  images: string []
+  images: string[]
   stockCount: number
   variations: ProductVariation[]
   tags: string[]
@@ -194,5 +194,5 @@ export const inventoryMockData = [
     material: 'Mesh',
     color: 'Gray',
     stockCount: 5,
-  }
+  },
 ]

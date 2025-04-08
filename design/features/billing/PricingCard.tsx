@@ -25,40 +25,34 @@ export const PricingCard = ({
   const t = useTranslations('PricingPlan')
 
   return (
-    <div className={`relative rounded-xl overflow-hidden border border-border text-center ${isPopular ? 'border-primary' : ''}`}>
-      <div className='px-6 py-8 bg-purple-100/70'>
-        <div className='text-lg font-semibold'>
-          {t(`${planId}_plan_name`)}
+    <div
+      className={`relative rounded-xl overflow-hidden border border-border text-center ${isPopular ? 'border-primary' : ''}`}
+    >
+      <div className="px-6 py-8 bg-purple-100/70">
+        <div className="text-lg font-semibold">{t(`${planId}_plan_name`)}</div>
+
+        <div className="mt-3 flex items-center justify-center">
+          <div className="text-5xl font-bold">{`$${price}`}</div>
+
+          <div className="ml-1 text-muted-foreground">{`/ ${t(`plan_interval_${interval}`)}`}</div>
         </div>
 
-        <div className='mt-3 flex items-center justify-center'>
-          <div className='text-5xl font-bold'>
-            {`$${price}`}
-          </div>
-
-          <div className='ml-1 text-muted-foreground'>
-            {`/ ${t(`plan_interval_${interval}`)}`}
-          </div>
-        </div>
-
-        <div className='mt-2 text-sm text-muted-foreground'>
-          {t(`${planId}_plan_description`)}
-        </div>
+        <div className="mt-2 text-sm text-muted-foreground">{t(`${planId}_plan_description`)}</div>
       </div>
-      <div className='px-6 py-8'>
-        <ul className='space-y-5'>{children}</ul>
+      <div className="px-6 py-8">
+        <ul className="space-y-5">{children}</ul>
 
         <Link
           className={buttonVariants({
             size: 'sm',
-            className: 'absolute inset-x-0 bottom-5 m-auto w-11/12 bg-gradient-to-br from-indigo-400 via-purple-400 to-pink-400',
+            className:
+              'absolute inset-x-0 bottom-5 m-auto w-11/12 bg-gradient-to-br from-indigo-400 via-purple-400 to-pink-400',
           })}
           href={href}
         >
           {t(btText)}
         </Link>
       </div>
-      
     </div>
   )
 }

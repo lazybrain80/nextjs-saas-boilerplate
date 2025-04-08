@@ -16,18 +16,17 @@ export const FilterProvider: React.FC<{ children: React.ReactNode }> = ({ childr
   const [order, setOrder] = useState<string>('Newest')
   const [category, setCategory] = useState<ProductCategory>(ProductCategory.All)
 
-  const contextValue = useMemo(() => ({
-    order,
-    category,
-    setOrder,
-    setCategory
-  }), [order, category])
-
-  return (
-    <FilterContext.Provider value={contextValue}>
-      {children}
-    </FilterContext.Provider>
+  const contextValue = useMemo(
+    () => ({
+      order,
+      category,
+      setOrder,
+      setCategory,
+    }),
+    [order, category]
   )
+
+  return <FilterContext.Provider value={contextValue}>{children}</FilterContext.Provider>
 }
 
 export const useFilter = () => {

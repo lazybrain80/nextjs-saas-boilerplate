@@ -1,4 +1,3 @@
-
 'use client'
 
 import { createContext, useContext, useState, useMemo, useLayoutEffect } from 'react'
@@ -20,11 +19,11 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [totalPrice, setTotalPrice] = useState<number>(0)
 
   useLayoutEffect(() => {
-    const cart = JSON.parse(localStorage.getItem('shoppingCart')|| '[]')
+    const cart = JSON.parse(localStorage.getItem('shoppingCart') || '[]')
     if (cart) {
       setCartItems(cart)
       const totalPrice: number = cart.reduce((acc: number, item: ShoppingCartItem): number => {
-        return acc + (item.price * item.quantity) - (item.price * item.quantity * item.discount)
+        return acc + item.price * item.quantity - item.price * item.quantity * item.discount
       }, 0)
       setTotalPrice(parseFloat(totalPrice.toFixed(2)))
     }
@@ -33,23 +32,26 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const updateItems = (newCartItems: ShoppingCartItem[]) => {
     localStorage.setItem('shoppingCart', JSON.stringify(newCartItems))
     setCartItems(newCartItems)
-    const totalPrice: number = newCartItems.reduce((acc: number, item: ShoppingCartItem): number => {
-      return acc + (item.price * item.quantity) - (item.price * item.quantity * item.discount)
-    }, 0)
+    const totalPrice: number = newCartItems.reduce(
+      (acc: number, item: ShoppingCartItem): number => {
+        return acc + item.price * item.quantity - item.price * item.quantity * item.discount
+      },
+      0
+    )
     setTotalPrice(parseFloat(totalPrice.toFixed(2)))
   }
 
   const deleteItem = (cartItemId: string) => {
-    setCartItems((prevItems) => prevItems.filter((item) => item.id !== cartItemId))
+    setCartItems(prevItems => prevItems.filter(item => item.id !== cartItemId))
   }
 
   const addItem = (newItem: ShoppingCartItem) => {
-    const cart = JSON.parse(localStorage.getItem('shoppingCart')|| '[]')
+    const cart = JSON.parse(localStorage.getItem('shoppingCart') || '[]')
     const newCart = [...cart, newItem]
     localStorage.setItem('shoppingCart', JSON.stringify(newCart))
-    setCartItems((prevItems) => [...prevItems, newItem])
+    setCartItems(prevItems => [...prevItems, newItem])
     const totalPrice: number = newCart.reduce((acc: number, item: ShoppingCartItem): number => {
-      return acc + (item.price * item.quantity) - (item.price * item.quantity * item.discount)
+      return acc + item.price * item.quantity - item.price * item.quantity * item.discount
     }, 0)
     setTotalPrice(parseFloat(totalPrice.toFixed(2)))
   }
@@ -60,20 +62,19 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
     setTotalPrice(0)
   }
 
-  const contextValue = useMemo(() => ({
-    cartItems,
-    totalPrice,
-    addItem,
-    updateItems,
-    deleteItem,
-    clearCart
-  }), [cartItems, totalPrice])
-
-  return (
-    <CartContext.Provider value={contextValue}>
-      {children}
-    </CartContext.Provider>
+  const contextValue = useMemo(
+    () => ({
+      cartItems,
+      totalPrice,
+      addItem,
+      updateItems,
+      deleteItem,
+      clearCart,
+    }),
+    [cartItems, totalPrice]
   )
+
+  return <CartContext.Provider value={contextValue}>{children}</CartContext.Provider>
 }
 
 export const useCart = () => {

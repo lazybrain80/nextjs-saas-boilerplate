@@ -6,12 +6,12 @@ import { useTranslations, useLocale } from 'next-intl'
 import {
   buttonVariants,
   Section,
-  LocaleSwitcher, 
+  LocaleSwitcher,
   Logo,
   NavigationMenu,
   NavigationMenuList,
   NavigationMenuItem,
-  NavigationMenuLink
+  NavigationMenuLink,
 } from '@/design/components'
 import { UserAccountNav } from '@/design/features/user-board'
 import { CenteredMenu, MobileNavbar } from '@/design/features/landing'
@@ -21,37 +21,30 @@ import { MainNavItem } from '@/types'
 import { EyeClosedIcon } from '@radix-ui/react-icons'
 import { useAuthClient } from '@/auth/provider'
 
-const ListItem = React.forwardRef<
-  React.ElementRef<'a'>,
-  React.ComponentPropsWithoutRef<'a'>
->(({ className, title, children, ...props }, ref) => {
-  return (
-    <li>
-      <NavigationMenuLink asChild>
-        <a
-          ref={ref}
-          className={cn(
-            'block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground',
-            className
-          )}
-          {...props}
-        >
-          <div className='text-sm font-medium leading-none'>{title}</div>
-          <p className='line-clamp-2 text-sm leading-snug text-muted-foreground'>
-            {children}
-          </p>
-        </a>
-      </NavigationMenuLink>
-    </li>
-  )
-})
+const ListItem = React.forwardRef<React.ComponentRef<'a'>, React.ComponentPropsWithoutRef<'a'>>(
+  ({ className, title, children, ...props }, ref) => {
+    return (
+      <li>
+        <NavigationMenuLink asChild>
+          <a
+            ref={ref}
+            className={cn(
+              'block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground',
+              className
+            )}
+            {...props}
+          >
+            <div className="text-sm font-medium leading-none">{title}</div>
+            <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">{children}</p>
+          </a>
+        </NavigationMenuLink>
+      </li>
+    )
+  }
+)
 ListItem.displayName = 'ListItem'
 
-export const Navbar = ({
-    items,
-  } : {
-    items: MainNavItem[]
-}) => {
+export const Navbar = ({ items }: { items: MainNavItem[] }) => {
   const locale = useLocale()
   const t = useTranslations('Navbar')
   const scrolled = useScroll(50)
@@ -60,31 +53,31 @@ export const Navbar = ({
   const supaUser = authClient?.supaUser
 
   const [showMobileMenu, setShowMobileMenu] = useState<boolean>(false)
-  const userSingInOutForm = !supaUser
-  ? (<>
-    <li className=''>
-      <LocaleSwitcher />
-    </li>
-    <li className='ml-1 mr-2.5'>
-      <Link href={`/${locale}/signin`}>
-        {t('sign_in')}
-      </Link>
-    </li>
-    <li className=''>
-      <Link className={buttonVariants()} href={`/${locale}/signup`}>
-        {t('sign_up')}
-      </Link>
-    </li>
-  </>)
-  : (<>
-    <li className=''>
-      <LocaleSwitcher />
-    </li>
-    <li className='ml-1 mr-2.5'>
-      <UserAccountNav />
-    </li>
-  </>)
-  
+  const userSingInOutForm = !supaUser ? (
+    <>
+      <li className="">
+        <LocaleSwitcher />
+      </li>
+      <li className="ml-1 mr-2.5">
+        <Link href={`/${locale}/signin`}>{t('sign_in')}</Link>
+      </li>
+      <li className="">
+        <Link className={buttonVariants()} href={`/${locale}/signup`}>
+          {t('sign_up')}
+        </Link>
+      </li>
+    </>
+  ) : (
+    <>
+      <li className="">
+        <LocaleSwitcher />
+      </li>
+      <li className="ml-1 mr-2.5">
+        <UserAccountNav />
+      </li>
+    </>
+  )
+
   const toggleMenu = () => {
     setShowMobileMenu(!showMobileMenu)
   }
@@ -98,43 +91,27 @@ export const Navbar = ({
         scrolled ? 'border-b' : 'bg-background/0'
       }`}
     >
-      <Section className='py-0 my-5 w-full'>
-        <CenteredMenu
-          logo={<Logo />}
-          rightMenu={(
-            <>
-              {userSingInOutForm}
-            </>
-          )}
-        >
-          <NavigationMenu
-            className='hidden gap-10 md:flex'
-          >
-            <NavigationMenuList
-              className='space-x-10 text-xl'
-            >
-              {items?.length ? (
-                items.map((item, index) => (
-                  <NavigationMenuItem
-                    key={index}
-                    className='hover:text-blue-700'
-                  >
-                    <Link
-                      href={item.disabled ? '#' : `/${locale}${item.href}`}
-                    >
-                      {item.title}
-                    </Link>
-                  </NavigationMenuItem>
-                ))
-              ) : null}
+      <Section className="py-0 my-5 w-full">
+        <CenteredMenu logo={<Logo />} rightMenu={<>{userSingInOutForm}</>}>
+          <NavigationMenu className="hidden gap-10 md:flex">
+            <NavigationMenuList className="space-x-10 text-xl">
+              {items?.length
+                ? items.map((item, index) => (
+                    <NavigationMenuItem key={index} className="hover:text-blue-700">
+                      <Link href={item.disabled ? '#' : `/${locale}${item.href}`}>
+                        {item.title}
+                      </Link>
+                    </NavigationMenuItem>
+                  ))
+                : null}
             </NavigationMenuList>
           </NavigationMenu>
           <button
-            className='flex items-center space-x-2 md:hidden ml-10'
+            className="flex items-center space-x-2 md:hidden ml-10"
             onClick={() => setShowMobileMenu(!showMobileMenu)}
           >
             {showMobileMenu ? <EyeClosedIcon /> : ''}
-            <span className='font-bold'>Menu</span>
+            <span className="font-bold">Menu</span>
           </button>
           {showMobileMenu && items && (
             <MobileNavbar items={items} menuItemClick={handleMenuItemClick} />

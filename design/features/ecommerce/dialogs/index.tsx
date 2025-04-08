@@ -1,1 +1,1 @@
-export { DetailProductDialog }  from './detail-product'
+export { DetailProductDialog } from './detail-product'

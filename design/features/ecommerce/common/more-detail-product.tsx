@@ -1,6 +1,16 @@
 'use client'
 
-import { ProductCategory, BaseEcommerceProduct, BookProduct, FunitureProduct, ElectronicsProduct, ClothingProduct, BeautyProduct, ToyProduct, SportsProduct } from '.'
+import {
+  ProductCategory,
+  BaseEcommerceProduct,
+  BookProduct,
+  FunitureProduct,
+  ElectronicsProduct,
+  ClothingProduct,
+  BeautyProduct,
+  ToyProduct,
+  SportsProduct,
+} from '.'
 
 interface MoreDetailProductProps {
   product: BaseEcommerceProduct
@@ -78,41 +88,23 @@ export const MoreDetailProduct = ({ product }: MoreDetailProductProps) => {
   const renderAdditionalDetails = () => {
     switch (product.category) {
       case ProductCategory.Book:
-        return (
-          MoreBookDetail({ product: product as BookProduct })
-        )
+        return MoreBookDetail({ product: product as BookProduct })
       case ProductCategory.Furniture:
-        return (
-          MoreFurnitureDetail({ product: product as FunitureProduct })
-        )
+        return MoreFurnitureDetail({ product: product as FunitureProduct })
       case ProductCategory.Electronics:
-        return (
-          MoreElectronicsDetail({ product: product as ElectronicsProduct })
-        )
+        return MoreElectronicsDetail({ product: product as ElectronicsProduct })
       case ProductCategory.Clothing:
-        return (
-          MoreClothingDetail({ product: product as ClothingProduct })
-        )
+        return MoreClothingDetail({ product: product as ClothingProduct })
       case ProductCategory.Beauty:
-        return (
-          MoreBeautyDetail({ product: product as BeautyProduct })
-        )
+        return MoreBeautyDetail({ product: product as BeautyProduct })
       case ProductCategory.Toy:
-        return (
-          MoreToyDetail({ product: product as ToyProduct })
-        )
+        return MoreToyDetail({ product: product as ToyProduct })
       case ProductCategory.Sports:
-        return (
-          MoreSportsDetail({ product: product as SportsProduct })
-        )
+        return MoreSportsDetail({ product: product as SportsProduct })
       default:
-        return null;
+        return null
     }
-  };
+  }
 
-  return (
-    <>
-      {renderAdditionalDetails()}
-    </>
-  )
+  return <>{renderAdditionalDetails()}</>
 }

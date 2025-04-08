@@ -4,25 +4,18 @@ import { useTranslations, useLocale } from 'next-intl'
 import { Logo, Section } from '@/design/components'
 import { CenteredFooter } from '@/design/features/landing'
 import { AppConfig } from '@/utils/AppConfig'
-import {
-  GitHub,
-  Meta,
-  TwitterX,
-  Youtube,
-  LinkedIn,
-  RSS
-} from '@/design/icons'
+import { GitHub, Meta, TwitterX, Youtube, LinkedIn } from '@/design/icons'
 
 export const Footer = () => {
   const t = useTranslations('Footer')
   const locale = useLocale()
 
   return (
-    <Section className='pb-16 pt-0'>
+    <Section className="pb-16 pt-0">
       <CenteredFooter
         logo={<Logo />}
         name={AppConfig.name}
-        iconList={(
+        iconList={
           <>
             <li>
               <Link href={`/${locale}`}>
@@ -54,8 +47,8 @@ export const Footer = () => {
               </Link>
             </li>
           </>
-        )}
-        legalLinks={(
+        }
+        legalLinks={
           <>
             <li>
               <Link href={`/${locale}/terms`}>{t('terms_of_service')}</Link>
@@ -64,19 +57,19 @@ export const Footer = () => {
               <Link href={`/${locale}/privacy`}>{t('privacy_policy')}</Link>
             </li>
           </>
-        )}
+        }
       >
         <li>
-          <Link href='/sign-up'>{t('about')}</Link>
+          <Link href="/sign-up">{t('about')}</Link>
         </li>
         <li>
-          <Link href='/sign-up'>{t('docs')}</Link>
+          <Link href="/sign-up">{t('docs')}</Link>
         </li>
         <li>
-          <Link href='/sign-up'>{t('blog')}</Link>
+          <Link href="/sign-up">{t('blog')}</Link>
         </li>
         <li>
-          <Link href='/sign-up'>{t('purchase')}</Link>
+          <Link href="/sign-up">{t('purchase')}</Link>
         </li>
       </CenteredFooter>
     </Section>

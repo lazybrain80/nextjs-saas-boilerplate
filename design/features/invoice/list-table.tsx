@@ -16,11 +16,7 @@ import {
 
 import * as Icons from '@/design/icons'
 import { Invoice, InvoiceStatus, useInvoices } from './common'
-import {
-  ViewInvoiceDialog,
-  EditInvoiceDialog,
-  NewInvoiceDialog,
-} from './dialogs'
+import { ViewInvoiceDialog, EditInvoiceDialog, NewInvoiceDialog } from './dialogs'
 
 interface InvoiceListTableProps extends React.HTMLAttributes<HTMLDivElement> {
   className?: string
@@ -36,18 +32,18 @@ export const InvoiceListTable = ({ className, ...props }: InvoiceListTableProps)
     if (checked) {
       setSelectedInvoices([...selectedInvoices, invoiceId])
     } else {
-      setSelectedInvoices(selectedInvoices.filter((id) => id !== invoiceId))
+      setSelectedInvoices(selectedInvoices.filter(id => id !== invoiceId))
     }
   }
 
   const deleteSelectedInvoices = () => {
-    setInvoices(invoices.filter((invoice) => !selectedInvoices.includes(invoice.id)))
+    setInvoices(invoices.filter(invoice => !selectedInvoices.includes(invoice.id)))
     setSelectedInvoices([])
   }
 
   const handleAllCheckboxChange = (checked: Boolean) => {
     if (checked) {
-      setSelectedInvoices(invoices.map((inv) => inv.id))
+      setSelectedInvoices(invoices.map(inv => inv.id))
     } else {
       setSelectedInvoices([])
     }
@@ -63,72 +59,79 @@ export const InvoiceListTable = ({ className, ...props }: InvoiceListTableProps)
 
   return (
     <div className={cn(className)}>
-      <div className='p-6 border-b'>
-        <div className='flex justify-between items-center'>
-          <h3 className='text-lg font-semibold'>{t('invoice_list')}</h3>
-          <div className='flex items-center'>
+      <div className="p-6 border-b">
+        <div className="flex justify-between items-center">
+          <h3 className="text-lg font-semibold">{t('invoice_list')}</h3>
+          <div className="flex items-center">
             {selectedInvoices.length > 0 && (
               <Button
-                className='bg-red-600 text-white px-4 py-2 hover:bg-red-700 rounded-3xl mr-4'
+                className="bg-red-600 text-white px-4 py-2 hover:bg-red-700 rounded-3xl mr-4"
                 onClick={deleteSelectedInvoices}
               >
                 {t('delete_selected')}
               </Button>
             )}
-            <NewInvoiceDialog
-              onInvoiceChange={(invoice) => handleNewInvoice(invoice)}
-            />
+            <NewInvoiceDialog onInvoiceChange={invoice => handleNewInvoice(invoice)} />
           </div>
         </div>
       </div>
-      <div className='overflow-x-auto'>
-        <Table className='w-full'>
-          <TableHeader className='bg-gray-50'>
+      <div className="overflow-x-auto">
+        <Table className="w-full">
+          <TableHeader className="bg-gray-50">
             <TableRow>
-              <TableHead className='px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase'>
+              <TableHead className="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase">
                 <Input
-                  className='w-6 h-6'
-                  type='checkbox'
+                  className="w-6 h-6"
+                  type="checkbox"
                   onChange={e => handleAllCheckboxChange(e.target.checked)}
                 />
               </TableHead>
-              <TableHead className='px-6 py-3 text-left text-sm font-bold text-gray-500 uppercase'>{('Bill from')}</TableHead>
-              <TableHead className='px-6 py-3 text-left text-sm font-bold text-gray-500 uppercase'>{('Bill to')}</TableHead>
-              <TableHead className='px-6 py-3 text-left text-sm font-bold text-gray-500 uppercase'>{('Total cost')}</TableHead>
-              <TableHead className='px-6 py-3 text-left text-sm font-bold text-gray-500 uppercase'>{('Status')}</TableHead>
-              <TableHead className='px-6 py-3 text-left text-sm font-bold text-gray-500 uppercase'>{('Actions')}</TableHead>
+              <TableHead className="px-6 py-3 text-left text-sm font-bold text-gray-500 uppercase">
+                {'Bill from'}
+              </TableHead>
+              <TableHead className="px-6 py-3 text-left text-sm font-bold text-gray-500 uppercase">
+                {'Bill to'}
+              </TableHead>
+              <TableHead className="px-6 py-3 text-left text-sm font-bold text-gray-500 uppercase">
+                {'Total cost'}
+              </TableHead>
+              <TableHead className="px-6 py-3 text-left text-sm font-bold text-gray-500 uppercase">
+                {'Status'}
+              </TableHead>
+              <TableHead className="px-6 py-3 text-left text-sm font-bold text-gray-500 uppercase">
+                {'Actions'}
+              </TableHead>
             </TableRow>
           </TableHeader>
-          <TableBody className='divide-y divide-gray-200'>
-            {invoices.map((invoice) => (
+          <TableBody className="divide-y divide-gray-200">
+            {invoices.map(invoice => (
               <TableRow key={invoice.id}>
-                <TableCell className='px-6 py-4'>
+                <TableCell className="px-6 py-4">
                   <Input
-                    className='w-6 h-6'
-                    type='checkbox'
+                    className="w-6 h-6"
+                    type="checkbox"
                     checked={selectedInvoices.includes(invoice.id)}
-                    onChange={(e) => handleCheckboxChange(invoice.id, e.target.checked)}
+                    onChange={e => handleCheckboxChange(invoice.id, e.target.checked)}
                   />
                 </TableCell>
-                <TableCell className='px-6 py-4'>
-                  {invoice.billFrom?.name}
+                <TableCell className="px-6 py-4">{invoice.billFrom?.name}</TableCell>
+                <TableCell className="px-6 py-4">{invoice.billTo?.name}</TableCell>
+                <TableCell className="px-6 py-4">
+                  {invoice.orderItems.reduce(
+                    (total, item) => total + item.quantity * item.price,
+                    0
+                  )}
                 </TableCell>
-                <TableCell className='px-6 py-4'>
-                  {invoice.billTo?.name}
-                </TableCell>
-                <TableCell className='px-6 py-4'>
-                    {invoice.orderItems.reduce((total, item) => total + item.quantity * item.price, 0)}
-                </TableCell>
-                <TableCell className='px-6 py-4'>
+                <TableCell className="px-6 py-4">
                   <InvoiceStatus status={invoice.orderStatus} />
                 </TableCell>
-                <TableCell className='px-6 py-4'>
+                <TableCell className="px-6 py-4">
                   <ViewInvoiceDialog invoice={invoice} />
-                  <EditInvoiceDialog invoice={invoice} onInvoiceChange={handleUpdateInvoice}/>
-                  
+                  <EditInvoiceDialog invoice={invoice} onInvoiceChange={handleUpdateInvoice} />
+
                   {/* Delete invoice */}
                   <Button
-                    className='bg-white text-red-600 hover:text-red-800 hover:bg-slate-300'
+                    className="bg-white text-red-600 hover:text-red-800 hover:bg-slate-300"
                     onClick={() => deleteInvoice(invoice.id)}
                   >
                     <Icons.Trash2 size={18} />

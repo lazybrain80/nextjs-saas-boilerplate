@@ -6,10 +6,7 @@ export const Pricing = () => {
   const t = useTranslations('Pricing')
 
   return (
-    <Section
-      title={t('section_title')}
-      description={t('section_description')}
-    >
+    <Section title={t('section_title')} description={t('section_description')}>
       <PricingInformation />
     </Section>
   )

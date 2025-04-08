@@ -4,7 +4,7 @@ import React from 'react'
 
 import { Button } from '@/design/components'
 import { cn } from '@/libs/utils'
-import { CheckIcon, CopyIcon } from '@radix-ui/react-icons';
+import { CheckIcon, CopyIcon } from '@radix-ui/react-icons'
 
 interface CopyButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   value: string
@@ -26,21 +26,17 @@ export function CopyButton({ value, className, ...props }: CopyButtonProps) {
 
   return (
     <Button
-      size='sm'
-      variant='ghost'
+      size="sm"
+      variant="ghost"
       className={cn(
         'z-10 size-[30px] border border-white/25 bg-zinc-900 p-1.5 text-primary-foreground hover:text-foreground dark:text-foreground',
-        className,
+        className
       )}
       onClick={() => handleCopyValue(value)}
       {...props}
     >
-      <span className='sr-only'>Copy</span>
-      {hasCopied ? (
-        <CheckIcon className='size-4' />
-      ) : (
-        <CopyIcon className='size-4' />
-      )}
+      <span className="sr-only">Copy</span>
+      {hasCopied ? <CheckIcon className="size-4" /> : <CopyIcon className="size-4" />}
     </Button>
   )
 }

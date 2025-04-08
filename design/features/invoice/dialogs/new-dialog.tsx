@@ -38,14 +38,14 @@ const emptyInvoice: Invoice = {
     name: '',
     address: '',
   },
-  orderItems: []
+  orderItems: [],
 }
 
 interface NewInvoiceDialogProps {
   onInvoiceChange?: (invoice: Invoice) => void
 }
 
-export const NewInvoiceDialog = ({ onInvoiceChange } : NewInvoiceDialogProps) => {
+export const NewInvoiceDialog = ({ onInvoiceChange }: NewInvoiceDialogProps) => {
   const t = useTranslations('InvoiceApp')
   const [tax, setTax] = useState(0)
   const [totalCost, setTotalCost] = useState(0)
@@ -76,183 +76,217 @@ export const NewInvoiceDialog = ({ onInvoiceChange } : NewInvoiceDialogProps) =>
     setMessage('Invoice successfully updated!')
   }
 
-  return(
-    <Dialog onOpenChange={(isOpen) => handleDialogOpenChange(isOpen)}>
+  return (
+    <Dialog onOpenChange={isOpen => handleDialogOpenChange(isOpen)}>
       <DialogTrigger asChild>
-        <Button
-          className='bg-blue-600 text-white px-4 py-2 hover:bg-blue-700 rounded-3xl'>
+        <Button className="bg-blue-600 text-white px-4 py-2 hover:bg-blue-700 rounded-3xl">
           {t('new_invoice')}
         </Button>
       </DialogTrigger>
-      <DialogContent className='max-w-4xl h-[90%] overflow-y-auto scrollbar-hide'>
+      <DialogContent className="max-w-4xl h-[90%] overflow-y-auto scrollbar-hide">
         <DialogHeader>
           <DialogTitle>{'Invoice detail'}</DialogTitle>
           <DialogDescription>{'Check invoice detail'}</DialogDescription>
           <DialogClose />
         </DialogHeader>
-        <div className='flex items-center justify-between'>
-          <div className='space-y-2'>
+        <div className="flex items-center justify-between">
+          <div className="space-y-2">
             <div>{`#ID: ${newInvoice.id}`}</div>
           </div>
-          <div className='w-1/3 space-y-2'>
+          <div className="w-1/3 space-y-2">
             <div>{'Order Status'}</div>
             <SelectInvoiceStatus
               status={newInvoice.orderStatus}
-              onStatusChange={(status) => setNewInvoice({
-                ...newInvoice,
-                orderStatus: status
-              })}
+              onStatusChange={status =>
+                setNewInvoice({
+                  ...newInvoice,
+                  orderStatus: status,
+                })
+              }
             />
           </div>
         </div>
         <Separator />
 
         {/** Bill info */}
-        <div className='flex items-center justify-between scroll-'>
+        <div className="flex items-center justify-between scroll-">
           {/** Bill from */}
-          <div className='w-1/2 mr-2'>
-            <div className='text-lg font-bold my-2'>{'Bill from'}</div>
-            <div className='space-y-4'>
-              <label className='block text-sm font-medium text-gray-700'>{'Name'}</label>
+          <div className="w-1/2 mr-2">
+            <div className="text-lg font-bold my-2">{'Bill from'}</div>
+            <div className="space-y-4">
+              <label className="block text-sm font-medium text-gray-700">{'Name'}</label>
               <Input
-                className='rounded-xl'
+                className="rounded-xl"
                 value={newInvoice.billFrom?.name}
-                onChange={(e) => setNewInvoice({
-                  ...newInvoice,
-                  billFrom: {
-                    ...newInvoice.billFrom,
-                    name: e.target.value
-                  }
-                })}
+                onChange={e =>
+                  setNewInvoice({
+                    ...newInvoice,
+                    billFrom: {
+                      ...newInvoice.billFrom,
+                      name: e.target.value,
+                    },
+                  })
+                }
               />
             </div>
-            <div className='mt-4 space-y-4'>
-              <label className='block text-sm font-medium text-gray-700'>{'Address'}</label>
+            <div className="mt-4 space-y-4">
+              <label className="block text-sm font-medium text-gray-700">{'Address'}</label>
               <Input
-                className='rounded-xl'
+                className="rounded-xl"
                 value={newInvoice.billFrom?.address}
-                onChange={(e) => setNewInvoice({
-                  ...newInvoice,
-                  billFrom: {
-                    ...newInvoice.billFrom,
-                    address: e.target.value
-                  }
-                })}
+                onChange={e =>
+                  setNewInvoice({
+                    ...newInvoice,
+                    billFrom: {
+                      ...newInvoice.billFrom,
+                      address: e.target.value,
+                    },
+                  })
+                }
               />
             </div>
           </div>
           {/** Bill to */}
-          <div className='w-1/2 ml-2'>
-            <div className='text-lg font-bold my-2'>{'Bill to'}</div>
-            <div className='space-y-4'>
-              <label className='block text-sm font-medium text-gray-700'>{'Name'}</label>
+          <div className="w-1/2 ml-2">
+            <div className="text-lg font-bold my-2">{'Bill to'}</div>
+            <div className="space-y-4">
+              <label className="block text-sm font-medium text-gray-700">{'Name'}</label>
               <Input
-                className='rounded-xl'
+                className="rounded-xl"
                 value={newInvoice.billTo?.name}
-                onChange={(e) => setNewInvoice({
-                  ...newInvoice,
-                  billTo: {
-                    ...newInvoice.billTo,
-                    name: e.target.value
-                  }
-                })}
+                onChange={e =>
+                  setNewInvoice({
+                    ...newInvoice,
+                    billTo: {
+                      ...newInvoice.billTo,
+                      name: e.target.value,
+                    },
+                  })
+                }
               />
             </div>
-            <div className='mt-4 space-y-4'>
-              <label className='block text-sm font-medium text-gray-700'>{'Address'}</label>
+            <div className="mt-4 space-y-4">
+              <label className="block text-sm font-medium text-gray-700">{'Address'}</label>
               <Input
-                className='rounded-xl'
+                className="rounded-xl"
                 value={newInvoice.billTo?.address}
-                onChange={(e) => setNewInvoice({
-                  ...newInvoice,
-                  billTo: {
-                    ...newInvoice.billTo,
-                    address: e.target.value
-                  }
-                })}
+                onChange={e =>
+                  setNewInvoice({
+                    ...newInvoice,
+                    billTo: {
+                      ...newInvoice.billTo,
+                      address: e.target.value,
+                    },
+                  })
+                }
               />
             </div>
           </div>
         </div>
 
         {/** order items */}
-        <div className='flex items-center justify-between'>
-          <div className='text-lg font-bold my-2'>{'Order items'}</div>
+        <div className="flex items-center justify-between">
+          <div className="text-lg font-bold my-2">{'Order items'}</div>
           <Button
-            className='bg-blue-600 text-white px-4 py-2 hover:bg-blue-700 rounded-3xl'
-            onClick={() => setNewInvoice({
-              ...newInvoice,
-              orderItems: [
-                ...newInvoice.orderItems,
-                {
-                  id: Math.random().toString(),
-                  name: '',
-                  price: 0,
-                  quantity: 0
-                }
-              ]
-            })}
+            className="bg-blue-600 text-white px-4 py-2 hover:bg-blue-700 rounded-3xl"
+            onClick={() =>
+              setNewInvoice({
+                ...newInvoice,
+                orderItems: [
+                  ...newInvoice.orderItems,
+                  {
+                    id: Math.random().toString(),
+                    name: '',
+                    price: 0,
+                    quantity: 0,
+                  },
+                ],
+              })
+            }
           >
             {'Add item'}
           </Button>
         </div>
         <Separator />
-        <div className='w-full mt-2 border border-slate-300 rounded-3xl'>
+        <div className="w-full mt-2 border border-slate-300 rounded-3xl">
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead className='px-6 py-3 text-left text-sm font-bold text-gray-700 uppercase'>{('Item name')}</TableHead>
-                <TableHead className='px-6 py-3 text-left text-sm font-bold text-gray-700 uppercase'>{('Price')}</TableHead>
-                <TableHead className='px-6 py-3 text-left text-sm font-bold text-gray-700 uppercase'>{('Qunatity')}</TableHead>
-                <TableHead className='px-6 py-3 text-left text-sm font-bold text-gray-700 uppercase'>{('Total')}</TableHead>
+                <TableHead className="px-6 py-3 text-left text-sm font-bold text-gray-700 uppercase">
+                  {'Item name'}
+                </TableHead>
+                <TableHead className="px-6 py-3 text-left text-sm font-bold text-gray-700 uppercase">
+                  {'Price'}
+                </TableHead>
+                <TableHead className="px-6 py-3 text-left text-sm font-bold text-gray-700 uppercase">
+                  {'Qunatity'}
+                </TableHead>
+                <TableHead className="px-6 py-3 text-left text-sm font-bold text-gray-700 uppercase">
+                  {'Total'}
+                </TableHead>
               </TableRow>
             </TableHeader>
-            <TableBody className='divide-y divide-gray-200'>
-              {newInvoice.orderItems.map((item) => (
+            <TableBody className="divide-y divide-gray-200">
+              {newInvoice.orderItems.map(item => (
                 <TableRow key={item.id}>
-                  <TableCell className='px-6 py-4'>
-                    <Input value={item.name} onChange={(e) => setNewInvoice({
-                      ...newInvoice,
-                      orderItems: newInvoice.orderItems.map((orderItem) => {
-                        if (orderItem.id === item.id) {
-                          return {
-                            ...orderItem,
-                            name: e.target.value
-                          }
-                        }
-                        return orderItem
-                      })
-                    })} />
+                  <TableCell className="px-6 py-4">
+                    <Input
+                      value={item.name}
+                      onChange={e =>
+                        setNewInvoice({
+                          ...newInvoice,
+                          orderItems: newInvoice.orderItems.map(orderItem => {
+                            if (orderItem.id === item.id) {
+                              return {
+                                ...orderItem,
+                                name: e.target.value,
+                              }
+                            }
+                            return orderItem
+                          }),
+                        })
+                      }
+                    />
                   </TableCell>
-                  <TableCell className='px-6 py-4'>
-                    <Input value={item.price} onChange={(e) => setNewInvoice({
-                      ...newInvoice,
-                      orderItems: newInvoice.orderItems.map((orderItem) => {
-                        if (orderItem.id === item.id) {
-                          return {
-                            ...orderItem,
-                            price: Number(e.target.value)
-                          }
-                        }
-                        return orderItem
-                      })
-                    })} />
+                  <TableCell className="px-6 py-4">
+                    <Input
+                      value={item.price}
+                      onChange={e =>
+                        setNewInvoice({
+                          ...newInvoice,
+                          orderItems: newInvoice.orderItems.map(orderItem => {
+                            if (orderItem.id === item.id) {
+                              return {
+                                ...orderItem,
+                                price: Number(e.target.value),
+                              }
+                            }
+                            return orderItem
+                          }),
+                        })
+                      }
+                    />
                   </TableCell>
-                  <TableCell className='px-6 py-4'>
-                    <Input value={item.quantity} onChange={(e) => setNewInvoice({
-                      ...newInvoice,
-                      orderItems: newInvoice.orderItems.map((orderItem) => {
-                        if (orderItem.id === item.id) {
-                          return {
-                            ...orderItem,
-                            quantity: Number(e.target.value)
-                          }
-                        }
-                        return orderItem
-                      })
-                    })} />
+                  <TableCell className="px-6 py-4">
+                    <Input
+                      value={item.quantity}
+                      onChange={e =>
+                        setNewInvoice({
+                          ...newInvoice,
+                          orderItems: newInvoice.orderItems.map(orderItem => {
+                            if (orderItem.id === item.id) {
+                              return {
+                                ...orderItem,
+                                quantity: Number(e.target.value),
+                              }
+                            }
+                            return orderItem
+                          }),
+                        })
+                      }
+                    />
                   </TableCell>
-                  <TableCell className='px-6 py-4'>{item.price * item.quantity}</TableCell>
+                  <TableCell className="px-6 py-4">{item.price * item.quantity}</TableCell>
                 </TableRow>
               ))}
             </TableBody>
@@ -260,28 +294,28 @@ export const NewInvoiceDialog = ({ onInvoiceChange } : NewInvoiceDialogProps) =>
         </div>
 
         {/** Tax and cost */}
-        <div className='w-full mt-2 border border-indigo-700 bg-indigo-50 rounded-3xl'>
-          <div className='flex items-center justify-between p-4'>
+        <div className="w-full mt-2 border border-indigo-700 bg-indigo-50 rounded-3xl">
+          <div className="flex items-center justify-between p-4">
             <div>{`Tax (${taxRate * 100}%):`}</div>
             <div>{tax}</div>
           </div>
-          <div className='flex items-center justify-between p-4'>
+          <div className="flex items-center justify-between p-4">
             <div>{'Total cost:'}</div>
             <div>{totalCost}</div>
           </div>
-          <div className='flex items-center justify-between p-4'>
+          <div className="flex items-center justify-between p-4">
             <div>{'Grand cost:'}</div>
             <div>{totalCost + tax}</div>
           </div>
         </div>
         <DialogFooter>
-          <div className='flex items-center justify-between w-full'>
+          <div className="flex items-center justify-between w-full">
             {message && <div className="text-green-500 mt-2">{message}</div>}
             <Button
-              className='bg-indigo-700 text-white ml-auto'
+              className="bg-indigo-700 text-white ml-auto"
               onClick={() => handleInvoiceChange(newInvoice)}
             >
-              {('Save')}
+              {'Save'}
             </Button>
           </div>
         </DialogFooter>

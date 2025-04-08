@@ -48,10 +48,7 @@ export interface SubscriptionPlan {
 }
 
 export type UserSubscriptionPlan = SubscriptionPlan &
-  Pick<
-    Customer,
-    'stripeCustomerId' | 'stripeSubscriptionId' | 'stripePriceId'
-  > & {
+  Pick<Customer, 'stripeCustomerId' | 'stripeSubscriptionId' | 'stripePriceId'> & {
     stripeCurrentPeriodEnd: number
     isPaid: boolean | '' | null
     interval: string | null
@@ -59,7 +56,7 @@ export type UserSubscriptionPlan = SubscriptionPlan &
   }
 
 export interface MdxDocContent {
-    content: string
+  content: string
 }
 
 export interface UserMetaData {
