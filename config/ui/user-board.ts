@@ -317,7 +317,18 @@ export const getUserBoardConfig = async (): Promise<PageNavConfig> => {
             id: 'forms',
             title: 'Forms',
             icon: 'forms',
-            items: [],
+            items: [
+              {
+                id: 'horizontal-form',
+                title: 'Horizontal',
+                href: `/${locale}/forms/horizontal`,
+              },
+              {
+                id: 'vertical-form',
+                title: 'Vertical',
+                href: `/${locale}/forms/vertical`,
+              },
+            ],
           },
           {
             id: 'charts',
