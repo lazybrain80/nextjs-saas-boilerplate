@@ -1,6 +1,7 @@
 'use client'
 
 import React from 'react'
+import { cn } from '@/libs/utils'
 import {
   Card,
   CardHeader,
@@ -16,6 +17,7 @@ import {
   SubmitHandler,
   Input,
 } from '@/design/components'
+import * as Icons from '@/design/icons'
 
 type ProfileFormValues = {
   name: string
@@ -32,12 +34,14 @@ const HorizontalFormField = ({
   type,
   placeholder,
   control,
+  icon: Icon,
 }: {
   name: keyof ProfileFormValues
   label: string
   type: string
   placeholder: string
   control: any
+  icon?: React.ElementType
 }) => (
   <FormField
     name={name}
@@ -46,12 +50,19 @@ const HorizontalFormField = ({
       <FormItem className="flex items-center space-x-4">
         <FormLabel className="w-1/5">{label}</FormLabel>
         <FormControl>
-          <Input
-            {...field}
-            type={type}
-            placeholder={placeholder}
-            className="w-4/5 border rounded-2xl px-3 py-2"
-          />
+          <div className="relative w-4/5">
+            {Icon && (
+              <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                <Icon className="w-5 h-5 text-gray-400" />
+              </div>
+            )}
+            <Input
+              {...field}
+              type={type}
+              placeholder={placeholder}
+              className={cn('border rounded-2xl px-3 py-2', Icon ? 'pl-12' : '')}
+            />
+          </div>
         </FormControl>
         <FormMessage />
       </FormItem>
@@ -59,7 +70,7 @@ const HorizontalFormField = ({
   />
 )
 
-export const SimpleHorizontalForm = () => {
+export const SimpleIconForm = () => {
   const profileForm = useForm<ProfileFormValues>({
     defaultValues: {
       name: '',
@@ -82,7 +93,7 @@ export const SimpleHorizontalForm = () => {
       <CardHeader className="border-b">
         <CardTitle>
           <div className="flex items-center justify-between">
-            <div>Simple form example</div>
+            <div>Simple form with icon example</div>
           </div>
         </CardTitle>
       </CardHeader>
@@ -96,6 +107,7 @@ export const SimpleHorizontalForm = () => {
                 type="text"
                 placeholder="Enter your name"
                 control={control}
+                icon={Icons.User}
               />
               <HorizontalFormField
                 name="age"
@@ -103,6 +115,7 @@ export const SimpleHorizontalForm = () => {
                 type="number"
                 placeholder="Enter your age"
                 control={control}
+                icon={Icons.Calendar}
               />
               <HorizontalFormField
                 name="company"
@@ -110,6 +123,7 @@ export const SimpleHorizontalForm = () => {
                 type="text"
                 placeholder="Enter your company"
                 control={control}
+                icon={Icons.Building}
               />
               <HorizontalFormField
                 name="email"
@@ -117,6 +131,7 @@ export const SimpleHorizontalForm = () => {
                 type="email"
                 placeholder="Enter your email"
                 control={control}
+                icon={Icons.Mail}
               />
               <HorizontalFormField
                 name="phone"
@@ -124,6 +139,7 @@ export const SimpleHorizontalForm = () => {
                 type="text"
                 placeholder="Enter your phone"
                 control={control}
+                icon={Icons.Phone}
               />
               <HorizontalFormField
                 name="address"
@@ -131,6 +147,7 @@ export const SimpleHorizontalForm = () => {
                 type="text"
                 placeholder="Enter your address"
                 control={control}
+                icon={Icons.MapPin}
               />
 
               {/* Submit Button */}
