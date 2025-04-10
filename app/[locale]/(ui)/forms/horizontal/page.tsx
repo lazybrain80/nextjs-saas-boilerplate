@@ -2,6 +2,7 @@
 
 import React from 'react'
 import { BoardHeader } from '@/design/features/user-board'
+import { SimpleHorizontalForm } from './simple-horizontal-form'
 
 const HorizontalFormExamplePage = () => {
   return (
@@ -9,6 +10,7 @@ const HorizontalFormExamplePage = () => {
       {/* Page Header */}
       <BoardHeader title={'Horizontal Form'} />
       {/* Horizontal Form examples */}
+      <SimpleHorizontalForm />
     </div>
   )
 }

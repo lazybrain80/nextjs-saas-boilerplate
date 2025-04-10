@@ -56,7 +56,7 @@ export {
 } from './dropdown-menu'
 export { FileImporter } from './file-importer'
 export {
-  useFormField,
+  useForm,
   Form,
   FormItem,
   FormLabel,
@@ -64,6 +64,7 @@ export {
   FormDescription,
   FormMessage,
   FormField,
+  type SubmitHandler,
 } from './form'
 export { Input } from './input'
 export { Label } from './label'

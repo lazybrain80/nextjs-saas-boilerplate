@@ -10,6 +10,8 @@ import {
   FieldValues,
   FormProvider,
   useFormContext,
+  useForm,
+  type SubmitHandler,
 } from 'react-hook-form'
 
 import { cn } from '@/libs/utils'
@@ -158,7 +160,7 @@ const FormMessage = React.forwardRef<
 FormMessage.displayName = 'FormMessage'
 
 export {
-  useFormField,
+  useForm,
   Form,
   FormItem,
   FormLabel,
@@ -166,4 +168,5 @@ export {
   FormDescription,
   FormMessage,
   FormField,
+  SubmitHandler,
 }
