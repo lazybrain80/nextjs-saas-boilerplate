@@ -14,34 +14,72 @@ import {
   FormMessage,
   FormField,
   SubmitHandler,
+  Input,
 } from '@/design/components'
 
-type FormValues = {
-  email: string
+type ProfileFormValues = {
   name: string
-  address: string
   age: number
+  company: string
+  email: string
+  phone: string
+  address: string
 }
 
+const HorizontalFormField = ({
+  name,
+  label,
+  type,
+  placeholder,
+  control,
+}: {
+  name: keyof ProfileFormValues
+  label: string
+  type: string
+  placeholder: string
+  control: any
+}) => (
+  <FormField
+    name={name}
+    control={control}
+    render={({ field }) => (
+      <FormItem className="flex items-center space-x-4">
+        <FormLabel className="w-1/5">{label}</FormLabel>
+        <FormControl>
+          <Input
+            {...field}
+            type={type}
+            placeholder={placeholder}
+            className="w-4/5 border rounded-2xl px-3 py-2"
+          />
+        </FormControl>
+        <FormMessage />
+      </FormItem>
+    )}
+  />
+)
+
 export const SimpleHorizontalForm = () => {
-  const profileForm = useForm<FormValues>({
+  const profileForm = useForm<ProfileFormValues>({
     defaultValues: {
-      email: '',
       name: '',
-      address: '',
       age: 0,
+      company: '',
+      email: '',
+      phone: '',
+      address: '',
     },
   })
 
-  const { control: formControl, handleSubmit } = profileForm
+  const { control, handleSubmit } = profileForm
 
-  const onSubmit: SubmitHandler<FormValues> = data => {
+  const onSubmit: SubmitHandler<ProfileFormValues> = data => {
     console.log('Form Data:', data)
   }
 
   return (
     <Card className="rounded-2xl bg-white shadow-2xl">
-      <CardHeader>
+      <CardHeader className="border-b">
         <CardTitle>
           <div className="flex items-center justify-between">
             <div>Simple form example</div>
@@ -49,91 +87,54 @@ export const SimpleHorizontalForm = () => {
         </CardTitle>
       </CardHeader>
       <CardContent>
-        <div className="flex flex-col items-center justify-center space-y-4">
+        <div className="flex flex-col items-center justify-center">
           <Form {...profileForm}>
-            <form onSubmit={handleSubmit(onSubmit)}>
-              {/* Email Field */}
-              <FormField
-                name="email"
-                control={formControl}
-                render={({ field }) => (
-                  <FormItem className="flex items-center space-x-4">
-                    <FormLabel className="w-32">Email</FormLabel>
-                    <FormControl>
-                      <input
-                        {...field}
-                        type="email"
-                        placeholder="Enter your email"
-                        className="border rounded px-3 py-2 w-full"
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-
-              {/* Name Field */}
-              <FormField
+            <form className="w-full space-y-4" onSubmit={handleSubmit(onSubmit)}>
+              <HorizontalFormField
                 name="name"
-                control={formControl}
-                render={({ field }) => (
-                  <FormItem className="flex items-center space-x-4">
-                    <FormLabel className="w-32">Name</FormLabel>
-                    <FormControl>
-                      <input
-                        {...field}
-                        type="text"
-                        placeholder="Enter your name"
-                        className="border rounded px-3 py-2 w-full"
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
+                label="Name"
+                type="text"
+                placeholder="Enter your name"
+                control={control}
               />
-
-              {/* Address Field */}
-              <FormField
-                name="address"
-                control={formControl}
-                render={({ field }) => (
-                  <FormItem className="flex items-center space-x-4">
-                    <FormLabel className="w-32">Address</FormLabel>
-                    <FormControl>
-                      <input
-                        {...field}
-                        type="text"
-                        placeholder="Enter your address"
-                        className="border rounded px-3 py-2 w-full"
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-
-              {/* Age Field */}
-              <FormField
+              <HorizontalFormField
                 name="age"
-                control={formControl}
-                render={({ field }) => (
-                  <FormItem className="flex items-center space-x-4">
-                    <FormLabel className="w-32">Age</FormLabel>
-                    <FormControl>
-                      <input
-                        {...field}
-                        type="number"
-                        placeholder="Enter your age"
-                        className="border rounded px-3 py-2 w-full"
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
+                label="Age"
+                type="number"
+                placeholder="Enter your age"
+                control={control}
+              />
+              <HorizontalFormField
+                name="company"
+                label="Company"
+                type="text"
+                placeholder="Enter your company"
+                control={control}
+              />
+              <HorizontalFormField
+                name="email"
+                label="Email"
+                type="email"
+                placeholder="Enter your email"
+                control={control}
+              />
+              <HorizontalFormField
+                name="phone"
+                label="Phone"
+                type="text"
+                placeholder="Enter your phone"
+                control={control}
+              />
+              <HorizontalFormField
+                name="address"
+                label="Address"
+                type="text"
+                placeholder="Enter your address"
+                control={control}
               />
 
               {/* Submit Button */}
-              <div className="flex justify-end w-full">
+              <div className="flex justify-end w-full mt-4">
                 <button
                   type="submit"
                   className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
